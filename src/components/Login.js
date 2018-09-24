@@ -64,13 +64,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   button: {
+    borderRadius: 50,
     marginBottom: 20,
     width: 260,
     alignItems: 'center',
     justifyContent: 'flex-end'
   },
   buttonText: {
-    padding: 20,
+    padding: 10,
     color: 'white',
     fontSize: 25,
   },

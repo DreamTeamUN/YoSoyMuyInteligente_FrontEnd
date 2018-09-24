@@ -32,6 +32,18 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  boxText: {
+    // backgroundColor: '#868ce1',
+    height: box_height,
+    justifyContent: 'flex-end',
+    // alignItems: 'center',
+  },
+  headling: {
+    color: '#515151',
+    fontWeight: 'bold',
+    fontSize: 42,
+    textAlign: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -45,5 +57,11 @@ const styles = StyleSheet.create({
     margin: 20,
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  botonregistro: {
+    backgroundColor: '#5D99C6'
+  },
+  botoniniciarsesion: {
+    backgroundColor: '#90CAF9'
   }
 });

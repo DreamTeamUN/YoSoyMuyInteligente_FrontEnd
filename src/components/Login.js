@@ -1,11 +1,10 @@
-import React from 'react';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Alert, Platform, Dimensions, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View } from 'react-native';
 
-export default class App extends React.Component {
-  _onPressButton() {
-    Alert.alert('You tapped the button!')
-  }
-  
+var { height } = Dimensions.get('window');
+var box_height = height / 2;
+
+export default class ButtonBasics extends Component {
   register() {
     Alert.alert('Registro!')
   }
@@ -16,16 +15,26 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Segundo commit. Yo Soy Muy Inteligente.</Text>
-        <Text>Todos los derechos reservados.</Text>
-
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={this._onPressButton}
-            title="Press Me"
-          />
+      <View>
+        
+        <View style={styles.boxText}>
+        <Text style={styles.headling}>Yo Soy Muy Inteligente</Text>
         </View>
+
+        <View style={styles.containerButtons}>
+          <TouchableHighlight onPress={this.register} underlayColor="white">
+            <View style={[styles.button, styles.botonregistro]}>
+              <Text style={styles.buttonText}>Registro</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={this.logIn} underlayColor="white">
+            <View style={[styles.button, styles.botoniniciarsesion]}>
+              <Text style={styles.buttonText}>Iniciar Sesión</Text>
+            </View>
+          </TouchableHighlight>
+        </View >
+
       </View>
     );
   }
@@ -44,19 +53,26 @@ const styles = StyleSheet.create({
     fontSize: 42,
     textAlign: 'center',
   },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  containerButtons: {
+    // backgroundColor: '#868ce1',
+    height: box_height,
+    // flex: 1,
+    flexDirection: 'column',
+    paddingTop: 60,
+    paddingBottom: 50,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
-  buttonContainer: {
-    margin: 20
+  button: {
+    marginBottom: 20,
+    width: 260,
+    alignItems: 'center',
+    justifyContent: 'flex-end'
   },
-  alternativeLayoutButtonContainer: {
-    margin: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+  buttonText: {
+    padding: 20,
+    color: 'white',
+    fontSize: 25,
   },
   botonregistro: {
     backgroundColor: '#5D99C6'

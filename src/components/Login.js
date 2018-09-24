@@ -4,7 +4,7 @@ import { Alert, Platform, Dimensions, StyleSheet, Text, TouchableHighlight, Touc
 var { height } = Dimensions.get('window');
 var box_height = height / 2;
 
-export default class ButtonBasics extends Component {
+export default class Login extends Component {
   register() {
     Alert.alert('Registro!')
   }

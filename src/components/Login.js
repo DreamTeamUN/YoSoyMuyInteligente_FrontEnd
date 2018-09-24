@@ -5,6 +5,14 @@ export default class App extends React.Component {
   _onPressButton() {
     Alert.alert('You tapped the button!')
   }
+  
+  register() {
+    Alert.alert('Registro!')
+  }
+  
+  logIn() {
+    Alert.alert('Inicio de sesion')
+  }
 
   render() {
     return (

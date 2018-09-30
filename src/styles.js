@@ -45,7 +45,20 @@ const styles = StyleSheet.create({
     },
     botoniniciarsesion: {
         backgroundColor: '#90CAF9'
+    },
+
+    // Adult Sign Up
+    adult_TextInputContainer: {
+        padding: 10, 
+        alignItems: 'center',
+    },
+    adult_TextInput: {
+        fontSize: 20,
+        height: 45,
+        width: 200,
     }
+
+
 });
 
-export {styles as default};
+export { styles as default };

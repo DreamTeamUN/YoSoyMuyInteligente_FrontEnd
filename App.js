@@ -2,15 +2,19 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import LogIn from './src/components/LogIn'
 import MainSignUp from './src/components/MainSignUp'
+import AdultSignUp from './src/components/AdultSignUp'
 
 const RootStack = createStackNavigator(
   {
-    LogIn: {
-      screen: LogIn,
-    },
-    MainSignUp: {
-      screen: MainSignUp,
-    },
+    // LogIn: {
+    //   screen: LogIn,
+    // },
+    // MainSignUp: {
+    //   screen: MainSignUp,
+    // },
+    LogIn: LogIn,
+    MainSignUp: MainSignUp,
+    AdultSignUp: AdultSignUp,
   },
   {
     initialRouteName: 'LogIn',

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     textContainer: {
         // backgroundColor: '#868ce1',
         height: box_height,
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         // alignItems: 'center',
     },
     headling: {
@@ -76,10 +76,7 @@ const styles = StyleSheet.create({
 
     // Home
     home_TextContainer: {
-        // backgroundColor: '#868ce1',
-        height: box_height,
-        justifyContent: 'center',
-        // alignItems: 'center',
+        padding: 30,
     },
     home_ContainerButtons: {
         // backgroundColor: '#868ce1',
@@ -87,7 +84,7 @@ const styles = StyleSheet.create({
         // flex: 1,
         flexDirection: 'column',
         paddingTop: 60,
-        paddingBottom: 10,
+        paddingBottom: 20,
         alignItems: 'center',
         justifyContent: 'flex-end',
     },

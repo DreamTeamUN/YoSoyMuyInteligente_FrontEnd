@@ -9,7 +9,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <View>
 
         <View style={styles.home_TextContainer}>
           <Text style={styles.headling}>¡Bienvenido!</Text>
@@ -28,14 +28,14 @@ export default class Home extends Component {
             </View>
           </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Ingresar al foro')} >
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Forum')} >
             <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Ingresar al foro</Text>
             </View>
           </TouchableNativeFeedback>
         </View >
 
-      </ScrollView>
+      </View>
     );
   }
 }

@@ -9,11 +9,13 @@ export default class AdultSignUp extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { username: '' };
-    this.state = { password: '' };
-    this.state = { password2: '' };
-    this.state = { email: '' };
-    // this.state = {telephone: ''};
+    this.state = {
+      username: '',
+      password: '',
+      password2: '',
+      email: '',
+      telephone: ''
+    };
   }
 
   render() {

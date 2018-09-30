@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, TouchableNativeFeedback, TextInput, View, ScrollView} from 'react-native';
+import { Alert, StyleSheet, Text, TouchableNativeFeedback, TextInput, View, ScrollView, Switch } from 'react-native';
 import styles from '../styles';
 
 export default class LogIn extends Component {
@@ -9,8 +9,16 @@ export default class LogIn extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { username: '' };
-    this.state = { password: '' };
+    this.toggleSwitch = this.toggleSwitch.bind(this);
+    this.state = {
+      username: '',
+      password: '',
+      rememberMe: false,
+    };
+  }
+
+  toggleSwitch() {
+    this.setState({ rememberMe: !this.state.rememberMe });
   }
 
   render() {
@@ -25,6 +33,7 @@ export default class LogIn extends Component {
             maxLength={45}
             onChangeText={(username) => this.setState({ username })}
           />
+
           <TextInput
             style={styles.adult_TextInput}
             secureTextEntry={true}
@@ -32,10 +41,19 @@ export default class LogIn extends Component {
             placeholder="Contraseña"
             onChangeText={(password) => this.setState({ password })}
           />
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={{ padding: 10, fontSize: 20 }}>
+              Recordar usuario
+            </Text>
+            <Switch
+              onValueChange={this.toggleSwitch}
+              value={this.state.rememberMe}
+            />
+          </View>
 
-          {/* <Text style={{padding: 10, fontSize: 20}}>
-          {this.state.username}
-        </Text> */}
+          {/* <Text style={{ padding: 10, fontSize: 20 }}>
+            {this.state.rememberMe.toString()}
+          </Text> */}
         </View>
 
         <View style={styles.buttonsContainer}>

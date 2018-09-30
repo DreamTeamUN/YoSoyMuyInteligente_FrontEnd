@@ -7,14 +7,6 @@ export default class MainSignUp extends Component {
     title: 'Registro',
   };
 
-  register() {
-    Alert.alert('Adulto responsable!')
-  }
-
-  logIn() {
-    Alert.alert('Docente')
-  }
-
   render() {
     return (
       <View>
@@ -41,9 +33,3 @@ export default class MainSignUp extends Component {
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   nombre: {
-//     atributo: valor,
-//   },
-// });

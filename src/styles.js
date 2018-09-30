@@ -56,7 +56,22 @@ const styles = StyleSheet.create({
         fontSize: 20,
         height: 45,
         width: 200,
-    }
+    },
+
+    // LogInTypeUser
+    loginTU_TextContainer: {
+        padding: 30, 
+    },
+    loginTU_ContainerButtons: {
+        // backgroundColor: '#868ce1',
+        height: box_height,
+        // flex: 1,
+        flexDirection: 'column',
+        paddingTop: 60,
+        paddingBottom: 10,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+    },
 
 
 });

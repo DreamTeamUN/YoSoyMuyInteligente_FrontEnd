@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Alert, Dimensions, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native';
 import styles from '../styles';
 
-export default class LogIn extends Component {
+export default class Main extends Component {
   // static navigationOptions = {
   //   title: 'Login',
   // };
@@ -26,7 +26,7 @@ export default class LogIn extends Component {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={this.logIn} underlayColor="white">
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('LogInTypeUser')} underlayColor="white">
             <View style={[styles.button, styles.botoniniciarsesion]}>
               <Text style={styles.buttonText}>Iniciar Sesión</Text>
             </View>

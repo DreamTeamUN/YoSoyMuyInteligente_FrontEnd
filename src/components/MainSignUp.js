@@ -11,19 +11,19 @@ export default class MainSignUp extends Component {
     return (
       <View>
 
-        <View style={styles.boxText}>
+        <View style={styles.textContainer}>
           <Text style={styles.headling}>¿Qué tipo de usuario desea crear?</Text>
         </View>
 
-        <View style={styles.containerButtons}>
+        <View style={styles.buttonsContainer}>
           <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('AdultSignUp')} underlayColor="white">
-            <View style={[styles.button, styles.botonregistro]}>
+            <View style={[styles.button, styles.buttonBlueA]}>
               <Text style={styles.buttonText}>Adulto responsable</Text>
             </View>
           </TouchableNativeFeedback>
 
           <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('TeacherSignUp')} underlayColor="white">
-            <View style={[styles.button, styles.botoniniciarsesion]}>
+            <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Docente</Text>
             </View>
           </TouchableNativeFeedback>

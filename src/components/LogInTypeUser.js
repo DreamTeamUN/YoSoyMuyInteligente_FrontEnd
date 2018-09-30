@@ -17,19 +17,19 @@ export default class LogInTypeUser extends Component {
 
         <View style={styles.loginTU_ContainerButtons}>
           <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Home')} underlayColor="white">
-            <View style={[styles.button, styles.botoniniciarsesion]}>
+            <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Estudiante</Text>
             </View>
           </TouchableNativeFeedback>
 
           <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('LogIn')} underlayColor="white">
-            <View style={[styles.button, styles.botonregistro]}>
+            <View style={[styles.button, styles.buttonBlueA]}>
               <Text style={styles.buttonText}>Adulto responsable</Text>
             </View>
           </TouchableNativeFeedback>
 
           <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('LogIn')} underlayColor="white">
-            <View style={[styles.button, styles.botoniniciarsesion]}>
+            <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Docente</Text>
             </View>
           </TouchableNativeFeedback>

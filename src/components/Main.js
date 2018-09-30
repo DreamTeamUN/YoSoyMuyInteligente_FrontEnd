@@ -15,19 +15,19 @@ export default class Main extends Component {
     return (
       <View >
 
-        <View style={styles.boxText}>
+        <View style={styles.textContainer}>
           <Text style={styles.headling}>Yo Soy Muy Inteligente</Text>
         </View>
 
-        <View style={styles.containerButtons}>
+        <View style={styles.buttonsContainer}>
           <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('MainSignUp')} underlayColor="white">
-            <View style={[styles.button, styles.botonregistro]}>
+            <View style={[styles.button, styles.buttonBlueA]}>
               <Text style={styles.buttonText}>Registro</Text>
             </View>
           </TouchableNativeFeedback>
 
           <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('LogInTypeUser')} underlayColor="white">
-            <View style={[styles.button, styles.botoniniciarsesion]}>
+            <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Iniciar Sesión</Text>
             </View>
           </TouchableNativeFeedback>

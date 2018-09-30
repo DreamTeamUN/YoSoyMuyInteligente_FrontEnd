@@ -6,7 +6,8 @@ const box_height = height / 2;
 
 const styles = StyleSheet.create({
 
-    boxText: {
+    // Common
+    textContainer: {
         // backgroundColor: '#868ce1',
         height: box_height,
         justifyContent: 'flex-end',
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
         fontSize: 42,
         textAlign: 'center',
     },
-    containerButtons: {
+    buttonsContainer: {
         // backgroundColor: '#868ce1',
         height: box_height,
         // flex: 1,
@@ -40,10 +41,10 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 25,
     },
-    botonregistro: {
+    buttonBlueA: {
         backgroundColor: '#5D99C6'
     },
-    botoniniciarsesion: {
+    buttonBlueB: {
         backgroundColor: '#90CAF9'
     },
 

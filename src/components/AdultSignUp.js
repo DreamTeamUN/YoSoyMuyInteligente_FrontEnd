@@ -52,15 +52,15 @@ export default class AdultSignUp extends Component {
         </Text> */}
         </View>
 
-        <View style={styles.containerButtons}>
+        <View style={styles.buttonsContainer}>
           <TouchableNativeFeedback onPress={() => Alert.alert('Añadir estudiante')} underlayColor="white">
-            <View style={[styles.button, styles.botonregistro]}>
+            <View style={[styles.button, styles.buttonBlueA]}>
               <Text style={styles.buttonText}>Añadir estudiante</Text>
             </View>
           </TouchableNativeFeedback>
 
           <TouchableNativeFeedback onPress={() => Alert.alert('Finalizar registro')} underlayColor="white">
-            <View style={[styles.button, styles.botoniniciarsesion]}>
+            <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Finalizar registro</Text>
             </View>
           </TouchableNativeFeedback>

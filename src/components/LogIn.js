@@ -1,45 +1,70 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native';
+import { Alert, StyleSheet, Text, TouchableNativeFeedback, TextInput, View, ScrollView, Switch } from 'react-native';
 import styles from '../styles';
 
 export default class LogIn extends Component {
   // static navigationOptions = {
-  //   title: 'Login',
+  //   title: 'Titulo',
   // };
 
-  logIn() {
-    Alert.alert('Inicio de sesion')
+  constructor(props) {
+    super(props);
+    this.toggleSwitch = this.toggleSwitch.bind(this);
+    this.state = {
+      username: '',
+      password: '',
+      rememberMe: false,
+    };
+  }
+
+  toggleSwitch() {
+    this.setState({ rememberMe: !this.state.rememberMe });
   }
 
   render() {
     return (
-      <View >
+      <ScrollView>
 
-        <View style={styles.boxText}>
-          <Text style={styles.headling}>Yo Soy Muy Inteligente</Text>
+        <View style={styles.adult_TextInputContainer}>
+          <TextInput
+            style={styles.adult_TextInput}
+            // textContentType={'username'} // IOS
+            placeholder="Nombre de usuario"
+            maxLength={45}
+            onChangeText={(username) => this.setState({ username })}
+          />
+
+          <TextInput
+            style={styles.adult_TextInput}
+            secureTextEntry={true}
+            // textContentType='password' // IOS
+            placeholder="Contraseña"
+            onChangeText={(password) => this.setState({ password })}
+          />
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={{ padding: 10, fontSize: 20 }}>
+              Recordar usuario
+            </Text>
+            <Switch
+              onValueChange={this.toggleSwitch}
+              value={this.state.rememberMe}
+            />
+          </View>
+
+          {/* <Text style={{ padding: 10, fontSize: 20 }}>
+            {this.state.rememberMe.toString()}
+          </Text> */}
         </View>
 
-        <View style={styles.containerButtons}>
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('MainSignUp')} underlayColor="white">
-            <View style={[styles.button, styles.botonregistro]}>
-              <Text style={styles.buttonText}>Registro</Text>
+        <View style={styles.buttonsContainer}>
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Home')} >
+            <View style={[styles.button, styles.buttonBlueA]}>
+              <Text style={styles.buttonText}>Enviar</Text>
             </View>
-          </TouchableHighlight>
-
-          <TouchableHighlight onPress={this.logIn} underlayColor="white">
-            <View style={[styles.button, styles.botoniniciarsesion]}>
-              <Text style={styles.buttonText}>Iniciar Sesión</Text>
-            </View>
-          </TouchableHighlight>
+          </TouchableNativeFeedback>
         </View >
 
-      </View>
+      </ScrollView>
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   nombre: {
-//     atributo: valor,
-//   },
-// });

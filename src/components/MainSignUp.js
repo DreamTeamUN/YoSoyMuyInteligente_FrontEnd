@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Alert, Platform, Dimensions, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View } from 'react-native';
 import styles from '../styles';
 
-var { height } = Dimensions.get('window');
-var box_height = height / 2;
-
 export default class MainSignUp extends Component {
   static navigationOptions = {
     title: 'Registro',
@@ -33,7 +30,7 @@ export default class MainSignUp extends Component {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={this.logIn} underlayColor="white">
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('TeacherSignUp')} underlayColor="white">
             <View style={[styles.button, styles.botoniniciarsesion]}>
               <Text style={styles.buttonText}>Docente</Text>
             </View>

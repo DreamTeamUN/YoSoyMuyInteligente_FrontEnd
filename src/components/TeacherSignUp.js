@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Alert, Dimensions, StyleSheet, Text, TouchableHighlight, TextInput, View, ScrollView } from 'react-native';
 import styles from '../styles';
 
-export default class AdultSignUp extends Component {
+export default class TeacherSignUp extends Component {
   static navigationOptions = {
-    title: 'Registro adulto',
+    title: 'Registro docente',
   };
 
   constructor(props) {
@@ -53,9 +53,9 @@ export default class AdultSignUp extends Component {
         </View>
 
         <View style={styles.containerButtons}>
-          <TouchableHighlight onPress={() => Alert.alert('Añadir estudiante')} underlayColor="white">
+          <TouchableHighlight onPress={() => Alert.alert('Crear aula')} underlayColor="white">
             <View style={[styles.button, styles.botonregistro]}>
-              <Text style={styles.buttonText}>Añadir estudiante</Text>
+              <Text style={styles.buttonText}>Crear aula</Text>
             </View>
           </TouchableHighlight>
 

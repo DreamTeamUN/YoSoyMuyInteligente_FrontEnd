@@ -5,6 +5,7 @@ import MainSignUp from './src/components/MainSignUp'
 import AdultSignUp from './src/components/AdultSignUp'
 import TeacherSignUp from './src/components/TeacherSignUp'
 import LogInTypeUser from './src/components/LogInTypeUser'
+import LogIn from './src/components/LogIn'
 
 const RootStack = createStackNavigator(
   {
@@ -20,6 +21,7 @@ const RootStack = createStackNavigator(
     AdultSignUp: AdultSignUp,
     TeacherSignUp: TeacherSignUp,
     LogInTypeUser: LogInTypeUser,
+    LogIn: LogIn,
   },
   {
     initialRouteName: 'Main',

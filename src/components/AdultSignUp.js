@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, Text, TouchableHighlight, TextInput, View, ScrollView } from 'react-native';
+import { Alert, Dimensions, StyleSheet, Text, TouchableNativeFeedback, TextInput, View, ScrollView } from 'react-native';
 import styles from '../styles';
 
 export default class AdultSignUp extends Component {
@@ -53,17 +53,17 @@ export default class AdultSignUp extends Component {
         </View>
 
         <View style={styles.containerButtons}>
-          <TouchableHighlight onPress={() => Alert.alert('Añadir estudiante')} underlayColor="white">
+          <TouchableNativeFeedback onPress={() => Alert.alert('Añadir estudiante')} underlayColor="white">
             <View style={[styles.button, styles.botonregistro]}>
               <Text style={styles.buttonText}>Añadir estudiante</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableNativeFeedback>
 
-          <TouchableHighlight onPress={() => Alert.alert('Finalizar registro')} underlayColor="white">
+          <TouchableNativeFeedback onPress={() => Alert.alert('Finalizar registro')} underlayColor="white">
             <View style={[styles.button, styles.botoniniciarsesion]}>
               <Text style={styles.buttonText}>Finalizar registro</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableNativeFeedback>
         </View >
 
       </ScrollView>

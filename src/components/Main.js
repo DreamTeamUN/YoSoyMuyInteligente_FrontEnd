@@ -20,17 +20,17 @@ export default class Main extends Component {
         </View>
 
         <View style={styles.containerButtons}>
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('MainSignUp')} underlayColor="white">
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('MainSignUp')} underlayColor="white">
             <View style={[styles.button, styles.botonregistro]}>
               <Text style={styles.buttonText}>Registro</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableNativeFeedback>
 
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('LogInTypeUser')} underlayColor="white">
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('LogInTypeUser')} underlayColor="white">
             <View style={[styles.button, styles.botoniniciarsesion]}>
               <Text style={styles.buttonText}>Iniciar Sesión</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableNativeFeedback>
         </View >
 
       </View>

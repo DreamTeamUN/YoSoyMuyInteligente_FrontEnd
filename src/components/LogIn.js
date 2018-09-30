@@ -57,7 +57,7 @@ export default class LogIn extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <TouchableNativeFeedback onPress={() => Alert.alert('Enviar')} underlayColor="white">
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Home')} >
             <View style={[styles.button, styles.buttonBlueA]}>
               <Text style={styles.buttonText}>Enviar</Text>
             </View>

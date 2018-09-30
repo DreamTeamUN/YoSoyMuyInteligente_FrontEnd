@@ -16,13 +16,13 @@ export default class MainSignUp extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('AdultSignUp')} underlayColor="white">
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('AdultSignUp')} >
             <View style={[styles.button, styles.buttonBlueA]}>
               <Text style={styles.buttonText}>Adulto responsable</Text>
             </View>
           </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('TeacherSignUp')} underlayColor="white">
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('TeacherSignUp')} >
             <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Docente</Text>
             </View>

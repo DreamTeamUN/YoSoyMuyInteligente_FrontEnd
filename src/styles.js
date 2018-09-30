@@ -74,6 +74,24 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
 
+    // Home
+    home_TextContainer: {
+        // backgroundColor: '#868ce1',
+        height: box_height,
+        justifyContent: 'center',
+        // alignItems: 'center',
+    },
+    home_ContainerButtons: {
+        // backgroundColor: '#868ce1',
+        height: box_height,
+        // flex: 1,
+        flexDirection: 'column',
+        paddingTop: 60,
+        paddingBottom: 10,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+    },
+
 
 });
 

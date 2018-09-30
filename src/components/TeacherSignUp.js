@@ -55,13 +55,13 @@ export default class TeacherSignUp extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <TouchableNativeFeedback onPress={() => Alert.alert('Crear aula')} underlayColor="white">
+          <TouchableNativeFeedback onPress={() => Alert.alert('Crear aula')} >
             <View style={[styles.button, styles.buttonBlueA]}>
               <Text style={styles.buttonText}>Crear aula</Text>
             </View>
           </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => Alert.alert('Finalizar registro')} underlayColor="white">
+          <TouchableNativeFeedback onPress={() => Alert.alert('Finalizar registro')} >
             <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Finalizar registro</Text>
             </View>

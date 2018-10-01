@@ -16,7 +16,7 @@ export default class Main extends Component {
       <View >
 
         <View style={styles.textContainer}>
-          <Text style={styles.headling}>Yo Soy Muy Inteligente</Text>
+          <Text style={styles.headling}>Yo Soy Muy Inteligente UN</Text>
         </View>
 
         <View style={styles.buttonsContainer}>

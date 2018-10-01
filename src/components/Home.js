@@ -16,7 +16,7 @@ export default class Home extends Component {
         </View>
 
         <View style={styles.home_ContainerButtons}>
-          <TouchableNativeFeedback onPress={() => Alert.alert('Progreso semanas')} >
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('WeekProgress')} >
             <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Progreso semanas</Text>
             </View>

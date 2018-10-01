@@ -7,6 +7,7 @@ import TeacherSignUp from './src/components/TeacherSignUp'
 import LogInTypeUser from './src/components/LogInTypeUser'
 import LogIn from './src/components/LogIn'
 import Home from './src/components/Home'
+import WeekProgress from './src/components/WeekProgress'
 
 const RootStack = createStackNavigator(
   {
@@ -24,6 +25,7 @@ const RootStack = createStackNavigator(
     LogInTypeUser: LogInTypeUser,
     LogIn: LogIn,
     Home: Home,
+    WeekProgress: WeekProgress,
   },
   {
     initialRouteName: 'Main',

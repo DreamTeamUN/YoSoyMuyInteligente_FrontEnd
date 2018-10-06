@@ -31,7 +31,7 @@ export default class Main extends Component {
               <Text style={styles.buttonText}>Iniciar Sesión</Text>
             </View>
           </TouchableNativeFeedback>
-        </View >
+        </View>
 
       </View>
     );

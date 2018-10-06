@@ -10,7 +10,6 @@ export default class Home extends Component {
   render() {
     return (
       <View>
-
         <View style={styles.home_TextContainer}>
           <Text style={styles.headling}>¡Bienvenido!</Text>
         </View>
@@ -33,7 +32,7 @@ export default class Home extends Component {
               <Text style={styles.buttonText}>Ingresar al foro</Text>
             </View>
           </TouchableNativeFeedback>
-        </View >
+        </View>
 
       </View>
     );

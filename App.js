@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { createStackNavigator } from 'react-navigation';
+import { Provider as PaperProvider } from 'react-native-paper';
 import Main from './src/components/Main'
 import MainSignUp from './src/components/MainSignUp'
 import AdultSignUp from './src/components/AdultSignUp'
@@ -35,7 +36,7 @@ const RootStack = createStackNavigator(
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#5D99C6',
-        height: 40,
+        height: 50,
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -47,6 +48,10 @@ const RootStack = createStackNavigator(
 
 export default class App extends React.Component {
   render() {
-    return <RootStack />;
+    return(
+      <PaperProvider>
+        <RootStack />
+      </PaperProvider>
+    );
   }
 }

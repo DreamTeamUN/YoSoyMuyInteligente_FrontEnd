@@ -22,7 +22,7 @@ export default class Home extends Component {
             </View>
           </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => Alert.alert('Progreso juegos')} >
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Sentence')} >
             <View style={[styles.button, styles.buttonBlueA]}>
               <Text style={styles.buttonText}>Progreso juegos</Text>
             </View>

@@ -8,6 +8,7 @@ import LogInTypeUser from './src/components/LogInTypeUser'
 import LogIn from './src/components/LogIn'
 import Home from './src/components/Home'
 import WeekProgress from './src/components/WeekProgress'
+import Sentence from './src/components/Sentence'
 
 const RootStack = createStackNavigator(
   {
@@ -26,9 +27,11 @@ const RootStack = createStackNavigator(
     LogIn: LogIn,
     Home: Home,
     WeekProgress: WeekProgress,
+    Sentence: Sentence,
   },
   {
-    initialRouteName: 'Main',
+    // initialRouteName: 'Main',
+    initialRouteName: 'Home',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#5D99C6',

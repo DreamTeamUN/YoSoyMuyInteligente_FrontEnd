@@ -11,21 +11,17 @@ const styles = StyleSheet.create({
         // backgroundColor: '#868ce1',
         height: box_height,
         justifyContent: 'center',
-        // alignItems: 'center',
     },
     headling: {
-        color: '#515151',
-        fontWeight: 'bold',
+        color: '#1F363D',
         fontSize: 42,
         textAlign: 'center',
     },
     buttonsContainer: {
-        // backgroundColor: '#868ce1',
         height: box_height,
-        // flex: 1,
         flexDirection: 'column',
-        paddingTop: 60,
-        paddingBottom: 70,
+        paddingTop: 50,
+        paddingBottom: 90,
         alignItems: 'center',
         justifyContent: 'flex-end',
     },
@@ -54,9 +50,7 @@ const styles = StyleSheet.create({
         padding: 30,
     },
     loginTU_ContainerButtons: {
-        // backgroundColor: '#868ce1',
         height: box_height,
-        // flex: 1,
         flexDirection: 'column',
         paddingTop: 60,
         paddingBottom: 10,
@@ -64,6 +58,21 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
 
+    // Home
+        home_TextContainer: {
+            padding: 30,
+          },
+
+        home_ContainerButtons: {
+            height: box_height,
+            flexDirection: 'column',
+            paddingTop: 60,
+            paddingBottom: 20,
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+        },
+
 });
+
 
 export { styles as default };

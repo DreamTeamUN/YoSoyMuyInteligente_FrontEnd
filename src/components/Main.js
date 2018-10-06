@@ -8,10 +8,6 @@ export default class Main extends Component {
   //   title: 'Login',
   // };
 
-  logIn() {
-    Alert.alert('Inicio de sesión')
-  }
-
   render() {
     return (
       <View >
@@ -23,7 +19,7 @@ export default class Main extends Component {
 
         <View style={styles.buttonsContainer}>
 
-            <View style={[styles.button]}>
+            <View style={styles.button}>
               <Button
                 mode="contained"
                 icon="person-add"
@@ -32,7 +28,7 @@ export default class Main extends Component {
             </View>
 
 
-            <View style={[styles.button]}>
+            <View style={styles.button}>
               <Button
                 mode="contained"
                 icon="person"

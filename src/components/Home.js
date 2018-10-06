@@ -19,7 +19,7 @@ export default class Home extends Component {
             <View style={styles.button}>
               <Button
                 mode="contained"
-                icon="done" //outline?
+                icon="apps"
                 onPress={() => this.props.navigation.navigate('WeekProgress')}>
                 Progreso Semanas</Button>
             </View>
@@ -27,7 +27,7 @@ export default class Home extends Component {
             <View style={styles.button}>
               <Button
                 mode="contained"
-                icon="done" //outline?
+                icon="videogame-asset"
                 color='#90CAF9'
                 onPress={() => this.props.navigation.navigate('Sentence')}>
                 Progreso Juegos</Button>
@@ -36,7 +36,7 @@ export default class Home extends Component {
             <View style={[styles.button, styles.buttonBlueB]}>
               <Button
                 mode="contained"
-                icon="done" //outline?
+                icon="forum" //outline?
                 onPress={() => this.props.navigation.navigate('Forum')}>
                 Ingreso al foro</Button>
             </View>

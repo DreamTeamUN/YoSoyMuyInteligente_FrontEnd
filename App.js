@@ -20,6 +20,15 @@ const theme = {
     primary: '#5D99C6',
     accent: '#90CAF9',
     text: '#1F363D',
+    /*
+    Botones #1: #5D99C6
+Botones #2: #90CAF9
+Texto: #1F363D
+Fondo (azúl): #1F363D
+Fondo (blanco): #FFFFFF
+*/
+
+
   }
 };
 

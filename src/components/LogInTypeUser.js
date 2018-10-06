@@ -20,14 +20,15 @@ export default class LogInTypeUser extends Component {
             <View style={styles.button}>
               <Button
                 mode="contained"
-                icon="done" //outline?
+                icon="child-care"
                 onPress={() => this.props.navigation.navigate('Home')}>
                 Estudiante</Button>
+            </View>
 
             <View style={styles.button}>
               <Button
                 mode="contained"
-                icon="done" //outline?
+                icon="face"
                 color='#90CAF9'
                 onPress={() => this.props.navigation.navigate('LogIn')}>
                 Adulto Responsable</Button>
@@ -36,13 +37,11 @@ export default class LogInTypeUser extends Component {
           <View style={styles.button}>
               <Button
                 mode="contained"
-                icon="done" //outline?
+                icon="school"
                 onPress={() => this.props.navigation.navigate('LogIn')}>
                 Docente</Button>
             </View>
-        </View>
-
-      </View>
+          </View>
       </View>
     );
   }

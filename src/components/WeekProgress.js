@@ -64,7 +64,7 @@ export default class WeekProgress extends Component {
             </TouchableNativeFeedback> */}
             <LogoTitle />
 
-          </View >
+          </View>
 
         </View>
       );

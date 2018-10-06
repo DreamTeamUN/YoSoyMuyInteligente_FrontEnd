@@ -20,7 +20,7 @@ export default class MainSignUp extends Component {
             <View style={styles.button}>
               <Button
                 mode="contained"
-                icon="done" //outline?
+                icon="face"
                 onPress={() => this.props.navigation.navigate('AdultSignUp')}>
                 Adulto Responsable</Button>
             </View>
@@ -28,7 +28,7 @@ export default class MainSignUp extends Component {
             <View style={styles.button}>
               <Button
                 mode="contained"
-                icon="done" //outline?
+                icon="school"
                 color='#90CAF9'
                 onPress={() => this.props.navigation.navigate('TeacherSignUp')}>
                 Docente</Button>

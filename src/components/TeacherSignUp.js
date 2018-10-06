@@ -59,7 +59,7 @@ export default class TeacherSignUp extends Component {
             <View style={[styles.button, styles.buttonBlueA]}>
               <Button
                 mode="contained"
-                icon="done" //outline?
+                icon="group-add"
                 onPress={() => Alert.alert('Crear aula')}>
                 Crear Aula</Button>
             </View>

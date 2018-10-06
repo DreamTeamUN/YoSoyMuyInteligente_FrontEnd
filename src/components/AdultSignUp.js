@@ -59,7 +59,7 @@ export default class AdultSignUp extends Component {
             <View style={[styles.button, styles.buttonBlueA]}>
               <Button
                 mode="contained"
-                icon="group-add"
+                icon="person-add"
                 onPress={() => Alert.alert('Añadir estudiante')}>
                 Añadir Estudiante</Button>
             </View>

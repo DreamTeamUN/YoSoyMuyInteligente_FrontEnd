@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, Dimensions, StyleSheet, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native';
-import {Text, Button} from 'react-native-paper'
+import {Text, Button, Title} from 'react-native-paper'
 import styles from '../styles';
 
 export default class Main extends Component {
@@ -9,7 +9,7 @@ export default class Main extends Component {
   // };
 
   logIn() {
-    Alert.alert('Inicio de sesion')
+    Alert.alert('Inicio de sesión')
   }
 
   render() {
@@ -17,26 +17,31 @@ export default class Main extends Component {
       <View >
 
         <View style={styles.textContainer}>
-          <Text style={styles.headling}>Yo Soy Muy Inteligente UN</Text>
+          <Text style={{fontSize:40, textAlign: 'center', textAlignVertical: 'center'}}>
+            Yo Soy Muy Inteligente UN</Text>
         </View>
 
         <View style={styles.buttonsContainer}>
-            <View style={[styles.button, styles.buttonBlueA]}>
+
+            <View style={[styles.button]}>
               <Button
                 mode="contained"
+                icon="person-add"
                 onPress={() => this.props.navigation.navigate('MainSignUp')}>
                 Registro</Button>
             </View>
 
 
-            <View style={[styles.button, styles.buttonBlueB]}>
+            <View style={[styles.button]}>
               <Button
                 mode="contained"
+                icon="person"
+                color='#90CAF9'
                 onPress={() => this.props.navigation.navigate('LogInTypeUser')}>
                 Iniciar Sesión</Button>
             </View>
-        </View>
 
+        </View>
       </View>
     );
   }

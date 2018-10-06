@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, Text, TouchableNativeFeedback, TextInput, View, ScrollView } from 'react-native';
+import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, TextInput, View, ScrollView } from 'react-native';
+import {Text, Button} from 'react-native-paper';
 import styles from '../styles';
 
 export default class TeacherSignUp extends Component {
@@ -55,18 +56,24 @@ export default class TeacherSignUp extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <TouchableNativeFeedback onPress={() => Alert.alert('Crear aula')} >
             <View style={[styles.button, styles.buttonBlueA]}>
-              <Text style={styles.buttonText}>Crear aula</Text>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                onPress={() => Alert.alert('Crear aula')}>
+                Crear Aula</Button>
             </View>
-          </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => Alert.alert('Finalizar registro')} >
+
             <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Finalizar registro</Text>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                color='#90CAF9'
+                onPress={() => Alert.alert('Finalizar registro')}>
+                Finalizar Registro</Button>
             </View>
-          </TouchableNativeFeedback>
-        </View >
+        </View>
 
       </ScrollView>
     );

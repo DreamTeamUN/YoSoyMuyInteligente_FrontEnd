@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, Dimensions, StyleSheet, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native';
-import {Text, Button, Title} from 'react-native-paper'
+import {Text, Button} from 'react-native-paper';
 import styles from '../styles';
 
 export default class Main extends Component {

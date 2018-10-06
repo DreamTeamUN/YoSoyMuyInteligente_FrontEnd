@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, TouchableNativeFeedback, TextInput, View, ScrollView, Switch } from 'react-native';
+import { Alert, StyleSheet, TouchableNativeFeedback, TextInput, View, ScrollView, Switch } from 'react-native';
+import {Text, Button} from 'react-native-paper';
 import styles from '../styles';
 
 export default class LogIn extends Component {
@@ -57,12 +58,15 @@ export default class LogIn extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Home')} >
-            <View style={[styles.button, styles.buttonBlueA]}>
-              <Text style={styles.buttonText}>Enviar</Text>
+            <View style={styles.button}>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                color='#90CAF9'
+                onPress={() => this.props.navigation.navigate('Home')}>
+                Enviar</Button>
             </View>
-          </TouchableNativeFeedback>
-        </View >
+        </View>
 
       </ScrollView>
     );

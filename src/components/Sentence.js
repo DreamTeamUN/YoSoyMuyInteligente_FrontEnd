@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, TouchableNativeFeedback, View, ScrollView } from 'react-native';
+import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView } from 'react-native';
+import {Text, Button} from 'react-native-paper';
 import styles from '../styles';
 
 class SentenceAux extends React.Component {
@@ -15,7 +16,7 @@ class SentenceAux extends React.Component {
     //   });
     // }, 1000);
   }
-  
+
   render() {
     let display = this.props.text;
     return (
@@ -51,7 +52,7 @@ export default class Sentence extends Component {
               <Text style={styles.buttonText}>Ingresar al foro</Text>
             </View>
           </TouchableNativeFeedback> */}
-        </View >
+        </View>
 
       </View>
     );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Platform, Dimensions, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View } from 'react-native';
+import { Alert, Platform, Dimensions, StyleSheet, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View } from 'react-native';
+import {Text, Button} from 'react-native-paper';
 import styles from '../styles';
 
 export default class MainSignUp extends Component {
@@ -16,18 +17,23 @@ export default class MainSignUp extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('AdultSignUp')} >
-            <View style={[styles.button, styles.buttonBlueA]}>
-              <Text style={styles.buttonText}>Adulto responsable</Text>
+            <View style={styles.button}>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                onPress={() => this.props.navigation.navigate('AdultSignUp')}>
+                Adulto Responsable</Button>
             </View>
-          </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('TeacherSignUp')} >
-            <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Docente</Text>
+            <View style={styles.button}>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                color='#90CAF9'
+                onPress={() => this.props.navigation.navigate('TeacherSignUp')}>
+                Docente</Button>
             </View>
-          </TouchableNativeFeedback>
-        </View >
+        </View>
 
       </View>
     );

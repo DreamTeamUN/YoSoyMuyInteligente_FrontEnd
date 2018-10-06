@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, TouchableNativeFeedback, View, ScrollView } from 'react-native';
+import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView } from 'react-native';
+import {Text, Button} from 'react-native-paper';
 import styles from '../styles';
 
 export default class Home extends Component {
@@ -15,25 +16,31 @@ export default class Home extends Component {
         </View>
 
         <View style={styles.home_ContainerButtons}>
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('WeekProgress')} >
-            <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Progreso semanas</Text>
+            <View style={styles.button}>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                onPress={() => this.props.navigation.navigate('WeekProgress')}>
+                Progreso Semanas</Button>
             </View>
-          </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Sentence')} >
-            <View style={[styles.button, styles.buttonBlueA]}>
-              <Text style={styles.buttonText}>Progreso juegos</Text>
+            <View style={styles.button}>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                color='#90CAF9'
+                onPress={() => this.props.navigation.navigate('Sentence')}>
+                Progreso Juegos</Button>
             </View>
-          </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Forum')} >
             <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Ingresar al foro</Text>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                onPress={() => this.props.navigation.navigate('Forum')}>
+                Ingreso al foro</Button>
             </View>
-          </TouchableNativeFeedback>
         </View>
-
       </View>
     );
   }

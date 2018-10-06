@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Platform, Dimensions, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View } from 'react-native';
+import { Alert, Platform, Dimensions, StyleSheet, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View } from 'react-native';
+import {Text, Button} from 'react-native-paper';
 import styles from '../styles';
 
 export default class LogInTypeUser extends Component {
@@ -16,32 +17,33 @@ export default class LogInTypeUser extends Component {
         </View>
 
         <View style={styles.loginTU_ContainerButtons}>
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Home')} >
-            <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Estudiante</Text>
-            </View>
-          </TouchableNativeFeedback>
+            <View style={styles.button}>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                onPress={() => this.props.navigation.navigate('Home')}>
+                Estudiante</Button>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('LogIn')} >
-            <View style={[styles.button, styles.buttonBlueA]}>
-              <Text style={styles.buttonText}>Adulto responsable</Text>
+            <View style={styles.button}>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                color='#90CAF9'
+                onPress={() => this.props.navigation.navigate('LogIn')}>
+                Adulto Responsable</Button>
             </View>
-          </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('LogIn')} >
-            <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Docente</Text>
+          <View style={styles.button}>
+              <Button
+                mode="contained"
+                icon="done" //outline?
+                onPress={() => this.props.navigation.navigate('LogIn')}>
+                Docente</Button>
             </View>
-          </TouchableNativeFeedback>
-        </View >
+        </View>
 
+      </View>
       </View>
     );
   }
-}
-
-// const styles = StyleSheet.create({
-//   nombre: {
-//     atributo: valor,
-//   },
-// });
+};

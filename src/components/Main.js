@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native';
+import { Alert, Dimensions, StyleSheet, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native';
+import {Text, Button} from 'react-native-paper'
 import styles from '../styles';
 
 export default class Main extends Component {
@@ -20,17 +21,20 @@ export default class Main extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('MainSignUp')} >
             <View style={[styles.button, styles.buttonBlueA]}>
-              <Text style={styles.buttonText}>Registro</Text>
+              <Button
+                mode="contained"
+                onPress={() => this.props.navigation.navigate('MainSignUp')}>
+                Registro</Button>
             </View>
-          </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('LogInTypeUser')} >
+
             <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Iniciar Sesión</Text>
+              <Button
+                mode="contained"
+                onPress={() => this.props.navigation.navigate('LogInTypeUser')}>
+                Iniciar Sesión</Button>
             </View>
-          </TouchableNativeFeedback>
         </View>
 
       </View>

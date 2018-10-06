@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import { Provider as PaperProvider } from 'react-native-paper';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import Main from './src/components/Main'
 import MainSignUp from './src/components/MainSignUp'
 import AdultSignUp from './src/components/AdultSignUp'
@@ -10,6 +10,19 @@ import LogIn from './src/components/LogIn'
 import Home from './src/components/Home'
 import WeekProgress from './src/components/WeekProgress'
 import Sentence from './src/components/Sentence'
+
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#5D99C6',
+    accent: '#90CAF9',
+    text: '#B00020',
+  }
+};
+
 
 const RootStack = createStackNavigator(
   {
@@ -49,7 +62,7 @@ const RootStack = createStackNavigator(
 export default class App extends React.Component {
   render() {
     return(
-      <PaperProvider>
+      <PaperProvider theme={theme}>
         <RootStack />
       </PaperProvider>
     );

@@ -30,8 +30,8 @@ const RootStack = createStackNavigator(
     Sentence: Sentence,
   },
   {
-    // initialRouteName: 'Main',
-    initialRouteName: 'Home',
+    initialRouteName: 'Main',
+    //initialRouteName: 'Home',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#5D99C6',

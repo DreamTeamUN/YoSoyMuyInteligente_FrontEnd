@@ -16,13 +16,13 @@ export default class Home extends Component {
         </View>
 
         <View style={styles.home_ContainerButtons}>
-          <TouchableNativeFeedback onPress={() => Alert.alert('Progreso semanas')} >
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('WeekProgress')} >
             <View style={[styles.button, styles.buttonBlueB]}>
               <Text style={styles.buttonText}>Progreso semanas</Text>
             </View>
           </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback onPress={() => Alert.alert('Progreso juegos')} >
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Sentence')} >
             <View style={[styles.button, styles.buttonBlueA]}>
               <Text style={styles.buttonText}>Progreso juegos</Text>
             </View>

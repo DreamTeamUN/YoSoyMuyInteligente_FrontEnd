@@ -13,7 +13,7 @@ export default class Main extends Component {
       <View >
 
         <View style={styles.textContainer}>
-          <Text style={{fontSize:40, textAlign: 'center', textAlignVertical: 'center'}}>
+          <Text style={{fontSize:52, textAlign: 'center', textAlignVertical: 'center'}}>
             Yo Soy Muy Inteligente UN</Text>
         </View>
 

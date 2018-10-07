@@ -21,14 +21,13 @@ const styles = StyleSheet.create({
         height: box_height,
         flexDirection: 'column',
         paddingTop: 50,
-        paddingBottom: 90,
+        paddingBottom: 100,
         alignItems: 'center',
         justifyContent: 'flex-end',
     },
 
     button: {
         marginBottom: 20,
-        width: 260,
         alignItems: 'center',
         justifyContent: 'flex-end'
     },
@@ -36,13 +35,14 @@ const styles = StyleSheet.create({
 
     // Adult Sign Up
     adult_TextInputContainer: {
-        padding: 10,
+        paddingTop: 80,
         alignItems: 'center',
     },
     adult_TextInput: {
-        fontSize: 20,
+        marginBottom: 20,
         height: 45,
-        width: 200,
+        width: 300,
+        backgroundColor: '#E9E9EF',
     },
 
     // LogInTypeUser

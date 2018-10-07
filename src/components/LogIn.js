@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, TouchableNativeFeedback, TextInput, View, ScrollView, Switch } from 'react-native';
-import {Text, Button} from 'react-native-paper';
+import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView, Switch } from 'react-native';
+import {Text, Button, TextInput} from 'react-native-paper';
 import styles from '../styles';
 
 export default class LogIn extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, TextInput, View, ScrollView } from 'react-native';
-import {Text, Button} from 'react-native-paper';
+import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, ScrollView } from 'react-native';
+import {Text, Button, TextInput} from 'react-native-paper';
 import styles from '../styles';
 
 export default class AdultSignUp extends Component {
@@ -50,9 +50,6 @@ export default class AdultSignUp extends Component {
             onChangeText={(email) => this.setState({ email })}
           />
 
-          {/* <Text style={{padding: 10, fontSize: 20}}>
-          {this.state.email}
-        </Text> */}
         </View>
 
         <View style={styles.buttonsContainer}>

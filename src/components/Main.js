@@ -35,18 +35,17 @@ export default class Main extends Component {
                 Yo Soy Muy Inteligente UN</Text>
           </Row>
 
-          <Row>
-            <Button iconLeft style = {{margin:10}} onPress={() => this.props.navigation.navigate('MainSignUp')}>
+          <Container style = {styles.buttonsContainers}>
+            <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('MainSignUp')}>
                 <Icon name="person-add" />
 
                 <Text>Registro</Text>
             </Button>
-
-            <Button iconLeft style = {{margin:10}} onPress={() => this.props.navigation.navigate('MainSignUp')}>
+            <Button iconLeft rounded style = {styles.buttondark} onPress={() => this.props.navigation.navigate('MainSignUp')}>
                 <Icon name="person" />
                 <Text>Iniciar Sesión</Text>
             </Button>
-          </Row>
+          </Container>
         </Grid>
       </Content>
     </Container>

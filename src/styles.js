@@ -18,12 +18,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     buttonsContainer: {
-        height: box_height,
-        flexDirection: 'column',
-        paddingTop: 50,
-        paddingBottom: 100,
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+      height: box_height,
+      flexDirection: 'column',
+      paddingTop: 50,
+      paddingBottom: 100,
+      alignItems: 'center',
+      justifyContent: 'flex-end',
     },
 
     button: {
@@ -32,6 +32,19 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     },
 
+    buttonclear: {
+        marginBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        backgroundColor: '#90CAF9',
+    },
+
+    buttondark: {
+        marginBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        backgroundColor: '#5D99C6',
+    },
 
     // Adult Sign Up
     adult_TextInputContainer: {

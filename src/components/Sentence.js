@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView } from 'react-native';
-import {Text, Button} from 'react-native-paper';
+import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 
 class SentenceAux extends React.Component {

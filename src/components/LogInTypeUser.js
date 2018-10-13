@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, Platform, Dimensions, StyleSheet, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View } from 'react-native';
-import {Text, Button} from 'react-native-paper';
+import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 
 export default class LogInTypeUser extends Component {
@@ -17,29 +17,28 @@ export default class LogInTypeUser extends Component {
         </View>
 
         <View style={styles.loginTU_ContainerButtons}>
+
+
+
             <View style={styles.button}>
-              <Button
-                mode="contained"
-                icon="child-care"
-                onPress={() => this.props.navigation.navigate('Home')}>
-                Estudiante</Button>
+              <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('Home')}>
+                  <Icon type="MaterialIcons" name="child-care" />
+                  <Text>Estudiante</Text>
+              </Button>
             </View>
 
             <View style={styles.button}>
-              <Button
-                mode="contained"
-                icon="face"
-                color='#90CAF9'
-                onPress={() => this.props.navigation.navigate('LogIn')}>
-                Adulto Responsable</Button>
+              <Button iconLeft rounded style = {styles.buttondark} onPress={() => this.props.navigation.navigate('LogIn')}>
+                  <Icon type="MaterialIcons" name="face" />
+                  <Text>Adulto Responsable</Text>
+              </Button>
             </View>
 
           <View style={styles.button}>
-              <Button
-                mode="contained"
-                icon="school"
-                onPress={() => this.props.navigation.navigate('LogIn')}>
-                Docente</Button>
+            <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('LogIn')}>
+                <Icon name="school" />
+                <Text>Docente</Text>
+            </Button>
             </View>
           </View>
       </View>

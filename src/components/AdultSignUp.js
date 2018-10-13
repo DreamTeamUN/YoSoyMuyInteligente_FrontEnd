@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, ScrollView } from 'react-native';
-import {Text, Button, TextInput} from 'react-native-paper';
+import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, TextInput } from 'react-native';
+import {Text, Button, Icon } from 'native-base';
 import styles from '../styles';
 
 export default class AdultSignUp extends Component {
@@ -21,8 +21,7 @@ export default class AdultSignUp extends Component {
 
   render() {
     return (
-      <ScrollView>
-
+      <View>
         <View style={styles.adult_TextInputContainer}>
           <TextInput
             style={styles.adult_TextInput}
@@ -53,32 +52,23 @@ export default class AdultSignUp extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-            <View style={[styles.button, styles.buttonBlueA]}>
-              <Button
-                mode="contained"
-                icon="person-add"
-                onPress={() => Alert.alert('Añadir estudiante')}>
-                Añadir Estudiante</Button>
+            <View style={styles.button}>
+              <Button iconLeft rounded style = {styles.buttonclear} onPress={() => Alert.alert('Añadir estudiante')}>
+                  <Icon name="person-add" />
+                  <Text>Añadir Estudiante</Text>
+              </Button>
             </View>
 
 
             <View style={styles.button}>
-              <Button
-                mode="contained"
-                icon="done" //outline?
-                color='#90CAF9'
-                onPress={() => Alert.alert('Finalizar registro')}>
-                Finalizar Registro</Button>
+
+              <Button iconLeft rounded style = {styles.buttondark} onPress={() => Alert.alert('Finalizar registro')}>
+                  <Icon type="MaterialIcons" name="done" />
+                  <Text>Finalizar Registro</Text>
+              </Button>
             </View>
         </View>
-
-      </ScrollView>
+      </View>
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   nombre: {
-//     atributo: valor,
-//   },
-// });

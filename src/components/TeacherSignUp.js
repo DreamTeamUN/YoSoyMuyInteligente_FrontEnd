@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, ScrollView } from 'react-native';
-import {Text, Button, TextInput} from 'react-native-paper';
+import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, ScrollView, TextInput } from 'react-native';
+import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 
 export default class TeacherSignUp extends Component {
@@ -50,28 +50,22 @@ export default class TeacherSignUp extends Component {
             onChangeText={(email) => this.setState({ email })}
           />
 
-          {/* <Text style={{padding: 10, fontSize: 20}}>
-          {this.state.email}
-        </Text> */}
         </View>
 
         <View style={styles.buttonsContainer}>
-            <View style={[styles.button, styles.buttonBlueA]}>
-              <Button
-                mode="contained"
-                icon="group-add"
-                onPress={() => Alert.alert('Crear aula')}>
-                Crear Aula</Button>
+            <View style={styles.button}>
+              <Button iconLeft rounded style = {styles.buttonclear} onPress={() => Alert.alert('Crear aula')}>
+                  <Icon type="MaterialIcons" name="group-add" />
+                  <Text>Crear Aula</Text>
+              </Button>
             </View>
 
 
-            <View style={[styles.button, styles.buttonBlueB]}>
-              <Button
-                mode="contained"
-                icon="done" //outline?
-                color='#90CAF9'
-                onPress={() => Alert.alert('Finalizar registro')}>
-                Finalizar Registro</Button>
+            <View style={styles.button}>
+              <Button iconLeft rounded style = {styles.buttondark} onPress={() => Alert.alert('Crear aula')}>
+                  <Icon type="MaterialIcons" name="done" />
+                  <Text>Finalizar Registro</Text>
+              </Button>
             </View>
         </View>
 

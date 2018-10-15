@@ -1,31 +1,33 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native';
+import { Alert, Dimensions, StyleSheet, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, View} from 'react-native';
 import styles from '../styles';
 import Expo from "expo";
 import {Button, Icon, Text } from 'native-base';
 
 export default class Main extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-  }
+    constructor(props) {
+      super(props);
+      this.state = { loading: true };
+    }
 
-  async componentWillMount() {
-    await Expo.Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-    });
-    this.setState({ loading: false });
-  }
-
- render() {
-   return (
-     <View>
-       <View style={styles.textContainer}>
-         <Text style={styles.headling}>Yo Soy Muy Inteligente UN</Text>
-       </View>
+    async componentWillMount() {
+      await Expo.Font.loadAsync({
+        Roboto: require("native-base/Fonts/Roboto.ttf"),
+        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+        Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
+      });
+      this.setState({ loading: false });
+    }
+    render() {
+      if (this.state.loading) {
+        return <Expo.AppLoading />;
+      }
+      return (
+        <View>
+          <View style={styles.textContainer}>
+          <Text style={styles.headling}>Yo Soy Muy Inteligente UN</Text>
+        </View>
 
           <View style = {styles.buttonsContainer}>
             <View style={styles.button}>

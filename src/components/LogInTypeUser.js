@@ -21,7 +21,7 @@ export default class LogInTypeUser extends Component {
 
 
             <View style={styles.button}>
-              <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('Home')}>
+              <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('HomeStudent')}>
                   <Icon type="MaterialIcons" name="child-care" />
                   <Text>Estudiante</Text>
               </Button>

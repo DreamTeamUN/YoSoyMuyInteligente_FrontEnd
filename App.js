@@ -9,7 +9,9 @@ import LogIn from './src/components/LogIn'
 import Home from './src/components/Home'
 import WeekProgress from './src/components/WeekProgress'
 import Sentence from './src/components/Sentence'
-
+import Juegos from './src/components/Juegos'
+import HomeStudent from './src/components/HomeStudent'
+import Practicas from './src/components/Practicas'
 
 const RootStack = createStackNavigator(
   {
@@ -22,6 +24,9 @@ const RootStack = createStackNavigator(
     Home: Home,
     WeekProgress: WeekProgress,
     Sentence: Sentence,
+    Juegos: Juegos,
+    HomeStudent: HomeStudent,
+    Practicas: Practicas,
   },
 
   {

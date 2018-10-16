@@ -3,7 +3,7 @@ import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, ScrollVie
 import {Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import styles from '../styles';
 
-export default class TeacherSignUp extends Component {
+export default class SignUpTeacher extends Component {
   static navigationOptions = {
     title: 'Registro docente',
   };
@@ -28,9 +28,9 @@ export default class TeacherSignUp extends Component {
       && formatomail.test(email)
       && password==password2
       && password.length >= 6){
-            Alert.alert('Estamos melos.');
+            Alert.alert('El formulario fue llenado correctamente.');
       }else{
-            Alert.alert('No estamos melos.');
+            Alert.alert('Hay errores en el formulario.');
       }
   }
 

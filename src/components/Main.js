@@ -31,7 +31,7 @@ export default class Main extends Component {
 
           <View style = {styles.buttonsContainer}>
             <View style={styles.button}>
-            <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('MainSignUp')}>
+            <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('SignUpMain')}>
                 <Icon name="person-add" />
                 <Text>Registro</Text>
             </Button>

@@ -3,7 +3,7 @@ import { Alert, Platform, Dimensions, StyleSheet, TouchableHighlight, TouchableO
 import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 
-export default class MainSignUp extends Component {
+export default class SignUpMain extends Component {
   static navigationOptions = {
     title: 'Registro',
   };
@@ -17,14 +17,14 @@ export default class MainSignUp extends Component {
 
         <View style={styles.buttonsContainer}>
             <View style={styles.button}>
-                <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('AdultSignUp')}>
+                <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('SignUpAdult')}>
                     <Icon type="MaterialCommunityIcons" name="face" />
                     <Text>Adulto Responsable</Text>
                 </Button>
             </View>
 
             <View style={styles.button}>
-              <Button iconLeft rounded style = {styles.buttondark} onPress={() => this.props.navigation.navigate('TeacherSignUp')}>
+              <Button iconLeft rounded style = {styles.buttondark} onPress={() => this.props.navigation.navigate('SignUpAdult')}>
                   <Icon name="school" />
                   <Text>Docente</Text>
               </Button>

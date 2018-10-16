@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
         color: '#1F363D',
         fontSize: 42,
         textAlign: 'center',
+        margin: 30,
+
     },
     buttonsContainer: {
       height: box_height,
@@ -77,13 +79,23 @@ const styles = StyleSheet.create({
           },
 
         home_ContainerButtons: {
-            height: box_height,
             flexDirection: 'column',
-            paddingTop: 60,
-            paddingBottom: 20,
             alignItems: 'center',
             justifyContent: 'flex-end',
         },
+
+        practicas_buttoncontainer: {
+          margin: 10,
+          marginTop:30,
+          marginLeft:40,
+          marginRight:40,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        },
+
+
+
 
 });
 

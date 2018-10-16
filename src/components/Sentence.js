@@ -23,11 +23,11 @@ import styles from '../styles';
 
   componentDidMount() {
     this.getLessons();
-    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
+    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
   }
 
   componentWillMount() {
-    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
+    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
   }
 
   getLessons = () => {

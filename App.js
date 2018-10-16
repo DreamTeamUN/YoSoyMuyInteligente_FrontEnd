@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import Main from './src/components/Main';
-import MainSignUp from './src/components/MainSignUp';
-import AdultSignUp from './src/components/AdultSignUp';
-import TeacherSignUp from './src/components/TeacherSignUp';
+import SignUpMain from './src/components/SignUpMain';
+import SignUpAdult from './src/components/SignUpAdult';
+import SignUpTeacher from './src/components/SignUpTeacher';
 import LogInTypeUser from './src/components/LogInTypeUser';
 import LogIn from './src/components/LogIn';
 import Home from './src/components/Home';
@@ -18,9 +18,9 @@ import AddStudent from './src/components/AddStudent';
 const RootStack = createStackNavigator(
   {
     Main: Main,
-    MainSignUp: MainSignUp,
-    AdultSignUp: AdultSignUp,
-    TeacherSignUp: TeacherSignUp,
+    SignUpMain: SignUpMain,
+    SignUpAdult: SignUpAdult,
+    SignUpTeacher: SignUpTeacher,
     LogInTypeUser: LogInTypeUser,
     LogIn: LogIn,
     Home: Home,

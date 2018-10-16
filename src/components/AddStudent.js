@@ -4,7 +4,7 @@ import {Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import { DocumentPicker, ImagePicker } from 'expo'; //por usar
 import styles from '../styles';
 
-export default class AdultSignUp extends Component {
+export default class AddStudent extends Component {
   static navigationOptions = {
     title: 'Añadir estudiante',
   };
@@ -21,9 +21,9 @@ export default class AdultSignUp extends Component {
       formatotexto=/^[a-zA-Z0-9]+$/;
 
       if(formatotexto.test(username)){
-            Alert.alert('Estamos melos.');
+            Alert.alert('El formulario fue llenado correctamente.');
       }else{
-            Alert.alert('No estamos melos.');
+            Alert.alert('Hay errores en el formulario.');
       }
   }
 

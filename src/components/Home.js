@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView } from 'react-native';
-import {Text, Button, Icon} from 'native-base';
+import {Text, Button, Icon, Content} from 'native-base';
 import styles from '../styles';
 
 export default class Home extends Component {
 
   render() {
     return (
-      <View>
-        <View style={styles.home_TextContainer}>
+        <View style={{flex:1, justifyContent: 'space-between'}}>
+        <View style={{flex: 0.5}}>
           <Text style={styles.headling}>¡Bienvenido!</Text>
         </View>
 
-        <View style={styles.home_ContainerButtons}>
+        <View style = {{flex: 0.5, alignItems:'center', justifyContent:'flex-end'}}>
 
           <View style={styles.button}>
             <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('WeekProgress')}>
@@ -40,13 +40,13 @@ export default class Home extends Component {
           <View style={styles.button}>
             <Button iconLeft rounded style = {styles.buttondark}
               onPress={() => this.props.navigation.navigate('AddStudent')}>
-                <Icon type="AntDesign" name="tool" />
+                <Icon type="MaterialCommunityIcons" name="settings" />
                 <Text>Administrar estudiantes</Text>
             </Button>
           </View>
 
         </View>
-      </View>
+        </View>
     );
   }
 }

@@ -26,7 +26,8 @@ export default class TeacherSignUp extends Component {
 
       if(formatotexto.test(username)
       && formatomail.test(email)
-      && password==password2){
+      && password==password2
+      && password.length >= 6){
             Alert.alert('Estamos melos.');
       }else{
             Alert.alert('No estamos melos.');

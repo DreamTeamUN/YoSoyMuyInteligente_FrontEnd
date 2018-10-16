@@ -19,6 +19,19 @@ export default class AdultSignUp extends Component {
     };
   }
 
+  validate(username, password, password2, email){
+      formatotexto=/^[a-zA-Z0-9]+$/;
+      formatomail=/\S+@\S+\.\S+/;
+
+      if(formatotexto.test(username)
+      && formatomail.test(email)
+      && password==password2){
+            Alert.alert('Estamos melos.');
+      }else{
+            Alert.alert('No estamos melos.');
+      }
+  }
+
   render() {
     return (
       <View>
@@ -27,26 +40,27 @@ export default class AdultSignUp extends Component {
                     <Label>Nombre de usuario</Label>
                     <Input
                     maxLength={45}
-                    onChangeText={(username) => this.setState({ username })}
+                    onChangeText={
+                    (username) => this.setState({username})}
                      />
                   </Item>
                 <Item floatingLabel>
                         <Label>Contraseña</Label>
                         <Input
                         onChangeText={
-                          (password) => this.setState({ password })}
+                          (password) => this.setState({password})}
                         secureTextEntry={true}/>
                 </Item>
                 <Item floatingLabel>
                             <Label>Repita su contraseña</Label>
                             <Input
-                              onChangeText={(password2) => this.setState({ password2 })}
+                              onChangeText={(password2) => this.setState({password2})}
                               secureTextEntry={true}/>
                 </Item>
                 <Item floatingLabel last>
                     <Label>Correo electrónico</Label>
                     <Input
-                      onChangeText={(email) => this.setState({ email })}
+                      onChangeText={(email) => this.setState({email})}
                     />
                 </Item>
               </Form>
@@ -61,7 +75,8 @@ export default class AdultSignUp extends Component {
 
             <View style={styles.button}>
 
-              <Button iconLeft rounded style = {styles.buttondark} onPress={() => Alert.alert('Finalizar registro')}>
+              <Button iconLeft rounded style = {styles.buttondark} onPress={() =>
+                this.validate(this.state.username, this.state.password, this.state.password2, this.state.email)}>
                   <Icon type="MaterialIcons" name="done" />
                   <Text>Finalizar Registro</Text>
               </Button>

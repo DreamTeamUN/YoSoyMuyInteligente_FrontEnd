@@ -17,12 +17,34 @@ import styles from '../styles';
     this.state = {
       isLoading: false,
       lessons: [],
+      text:"",
       url: 'https://ysmiapi.herokuapp.com/leccions/1',
     };
   }
 
   componentDidMount() {
     this.getLessons();
+
+    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
+    if (!this.state.isLoading){
+
+
+      var i = 0
+      var j = 0
+      var timer = setInterval(() => {
+        this.setState({ text: this.state.lessons[i].frase });
+        i++
+        if (i >= this.state.lessons.length) {
+          if(j > 5){
+            clearInterval(timer);
+            this.props.navigation.goBack();
+          }else{
+            j++;
+            i=0;
+          }
+        }
+      }, 1000);
+    }
     //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
   }
 
@@ -54,18 +76,12 @@ import styles from '../styles';
         </View>
       );
     }
-
     return (
-      <View style={{flex: 1, paddingTop:20}}>
-        <FlatList
-          data = {this.state.lessons}
-          renderItem = {
-            ({item}) => <Text style={{fontSize:50}}> {item.frase} </Text>
-          }
-          keyExtractor = {(item, index) => index.toString()}
-        />
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }} >
+        <Text style={{fontSize: 60}}>
+          {this.state.text}
+        </Text>
       </View>
-
     );
   }
 }

@@ -60,7 +60,7 @@ import styles from '../styles';
         <FlatList
           data = {this.state.lessons}
           renderItem = {
-            ({item}) => <Text> {item.frase} </Text>
+            ({item}) => <Text style={{fontSize:50}}> {item.frase} </Text>
           }
           keyExtractor = {(item, index) => index.toString()}
         />

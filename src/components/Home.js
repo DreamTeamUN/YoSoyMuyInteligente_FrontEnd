@@ -4,9 +4,6 @@ import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 
 export default class Home extends Component {
-  // static navigationOptions = {
-  //   title: 'Inicio',
-  // };
 
   render() {
     return (
@@ -26,7 +23,7 @@ export default class Home extends Component {
 
 
           <View style={styles.button}>
-            <Button iconLeft rounded style = {styles.buttondark} onPress={() => this.props.navigation.navigate('Sentence')}>
+            <Button iconLeft rounded style = {styles.buttondark} onPress={() => this.props.navigation.navigate('GameProgress')}>
                 <Icon type="MaterialIcons" name="videogame-asset" />
                 <Text>Progreso Juegos</Text>
             </Button>
@@ -39,6 +36,15 @@ export default class Home extends Component {
                 <Text>Ingreso al foro</Text>
             </Button>
           </View>
+
+          <View style={styles.button}>
+            <Button iconLeft rounded style = {styles.buttondark}
+              onPress={() => this.props.navigation.navigate('AddStudent')}>
+                <Icon type="AntDesign" name="tool" />
+                <Text>Administrar estudiantes</Text>
+            </Button>
+          </View>
+
         </View>
       </View>
     );

@@ -3,19 +3,19 @@ import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView, FlatList 
 import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 
-class LogoTitle extends React.Component {
+ class LogoTitle extends React.Component {
   render() {
     return (
       <TouchableNativeFeedback onPress={() => Alert.alert('Soy una leccion!')} >
         <View style={[styles.button, styles.buttonBlueA]}>
-          <Text style={styles.buttonText}>Descargando Pokemon</Text>
+          <Text style={styles.buttonText}>Cargando progreso semanas...</Text>
         </View>
       </TouchableNativeFeedback>
     );
   }
 }
 
-export default class WeekProgress extends Component {
+ export default class WeekProgress extends Component {
   // static navigationOptions = {
   //   title: 'Inicio',
   // };
@@ -41,7 +41,7 @@ export default class WeekProgress extends Component {
       .then(resp => {
 
         this.setState({
-          lessons: resp.results,
+          lessons: resp.frase,
           isLoading: false
         })
       });

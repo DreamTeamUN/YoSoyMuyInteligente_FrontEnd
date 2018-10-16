@@ -6,28 +6,28 @@ import styles from '../styles';
  class LogoTitle extends React.Component {
   render() {
     return (
-      <View><Text>Cargando...</Text></View>
+      <TouchableNativeFeedback onPress={() => Alert.alert('Soy una leccion!')} >
+        <View style={[styles.button, styles.buttonBlueA]}>
+          <Text style={styles.buttonText}>Cargando progreso juegos...</Text>
+        </View>
+      </TouchableNativeFeedback>
     );
   }
 }
 
- export default class WeekProgress extends Component {
+ export default class GameProgress extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       isLoading: false,
       lessons: [],
-      url: 'https://ysmiapi.herokuapp.com/leccions/1',
+      url: 'https://pokeapi.co/api/v2/pokemon/',
     };
   }
 
   componentDidMount() {
     this.getLessons();
-    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
-  }
-
-  componentWillMount() {
-    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
   }
 
   getLessons = () => {
@@ -48,9 +48,21 @@ import styles from '../styles';
     if (this.state.isLoading) {
       return (
         <View>
+
           <View style={styles.home_TextContainer}>
-            <Text style={styles.headling}>Cargando...</Text>
+            <Text style={styles.headling}>¡Bienvenido!</Text>
           </View>
+
+          <View style={styles.home_ContainerButtons}>
+            {/* <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('WeekProgress')} >
+              <View style={[styles.button, styles.buttonBlueB]}>
+                <Text style={styles.buttonText}>Progreso semanas</Text>
+              </View>
+            </TouchableNativeFeedback> */}
+            <LogoTitle />
+
+          </View>
+
         </View>
       );
     }
@@ -60,12 +72,13 @@ import styles from '../styles';
         <FlatList
           data = {this.state.lessons}
           renderItem = {
-            ({item}) => <Text> {item.frase} </Text>
+            ({item}) => <Text> {item.name} </Text>
           }
           keyExtractor = {(item, index) => index.toString()}
         />
-      </View>
 
+      </View>
     );
+
   }
 }

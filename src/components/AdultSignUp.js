@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, TextInput } from 'react-native';
-import {Text, Button, Icon } from 'native-base';
+import {Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import styles from '../styles';
 
 export default class AdultSignUp extends Component {
@@ -22,34 +22,34 @@ export default class AdultSignUp extends Component {
   render() {
     return (
       <View>
-        <View style={styles.adult_TextInputContainer}>
-          <TextInput
-            style={styles.adult_TextInput}
-            // textContentType={'username'} // IOS
-            placeholder="Nombre de usuario"
-            maxLength={45}
-            onChangeText={(username) => this.setState({ username })}
-          />
-          <TextInput
-            style={styles.adult_TextInput}
-            secureTextEntry={true}
-            // textContentType='password' // IOS
-            placeholder="Contraseña"
-            onChangeText={(password) => this.setState({ password })}
-          />
-          <TextInput
-            style={styles.adult_TextInput}
-            secureTextEntry={true}
-            placeholder="Repetir contraseña"
-            onChangeText={(password2) => this.setState({ password2 })}
-          />
-          <TextInput
-            style={styles.adult_TextInput}
-            placeholder="Correo electronico"
-            onChangeText={(email) => this.setState({ email })}
-          />
-
-        </View>
+        <Form style={styles.adult_TextInputContainer}>
+              <Item floatingLabel>
+                    <Label>Nombre de usuario</Label>
+                    <Input
+                    maxLength={45}
+                    onChangeText={(username) => this.setState({ username })}
+                     />
+                  </Item>
+                <Item floatingLabel>
+                        <Label>Contraseña</Label>
+                        <Input
+                        onChangeText={
+                          (password) => this.setState({ password })}
+                        secureTextEntry={true}/>
+                </Item>
+                <Item floatingLabel>
+                            <Label>Repita su contraseña</Label>
+                            <Input
+                              onChangeText={(password2) => this.setState({ password2 })}
+                              secureTextEntry={true}/>
+                </Item>
+                <Item floatingLabel last>
+                    <Label>Correo electrónico</Label>
+                    <Input
+                      onChangeText={(email) => this.setState({ email })}
+                    />
+                </Item>
+              </Form>
 
         <View style={styles.buttonsContainer}>
             <View style={styles.button}>
@@ -58,7 +58,6 @@ export default class AdultSignUp extends Component {
                   <Text>Añadir Estudiante</Text>
               </Button>
             </View>
-
 
             <View style={styles.button}>
 

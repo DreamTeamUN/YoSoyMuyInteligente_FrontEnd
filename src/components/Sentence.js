@@ -1,59 +1,71 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, TouchableNativeFeedback, View, ScrollView } from 'react-native';
+import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView, FlatList } from 'react-native';
+import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 
-class SentenceAux extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   isLoading: false,
-    // };
-
-    // setInterval(() => {
-    //   this.setState(previousState => {
-    //     return { isShowingText: !previousState.isShowingText };
-    //   });
-    // }, 1000);
-  }
-  
+ class LogoTitle extends React.Component {
   render() {
-    let display = this.props.text;
     return (
-        // <View style={[styles.button, styles.buttonBlueA]}>
-          // <Text style={styles.buttonText}>Descargando Pokemon</Text>
-          <Text style={styles.headling}>{display}</Text>
-        // </View>
+      <View><Text>Cargando...</Text></View>
     );
   }
 }
 
-export default class Sentence extends Component {
-  // static navigationOptions = {
-  //   title: 'Inicio',
-  // };
+ export default class WeekProgress extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false,
+      lessons: [],
+      url: 'https://ysmiapi.herokuapp.com/leccions/1',
+    };
+  }
 
   componentDidMount() {
-    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
+    this.getLessons();
+    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
   }
 
-  componentWillUnmount() {
-    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
+  componentWillMount() {
+    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
   }
+
+  getLessons = () => {
+    this.setState({ isLoading: true })
+
+    fetch(this.state.url)
+      .then(resp => resp.json())
+      .then(resp => {
+
+        this.setState({
+          lessons: resp.frase,
+          isLoading: false
+        })
+      });
+  };
+
   render() {
+    if (this.state.isLoading) {
+      return (
+        <View>
+          <View style={styles.home_TextContainer}>
+            <Text style={styles.headling}>Cargando...</Text>
+          </View>
+        </View>
+      );
+    }
+
     return (
-      <View>
-        <SentenceAux text="Higüi"/>
-
-        <View style={styles.home_ContainerButtons}>
-
-          {/* <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Forum')} >
-            <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Ingresar al foro</Text>
-            </View>
-          </TouchableNativeFeedback> */}
-        </View >
-
+      <View style={{flex: 1, paddingTop:20}}>
+        <FlatList
+          data = {this.state.lessons}
+          renderItem = {
+            ({item}) => <Text style={{fontSize:50}}> {item.frase} </Text>
+          }
+          keyExtractor = {(item, index) => index.toString()}
+        />
       </View>
+
     );
   }
 }

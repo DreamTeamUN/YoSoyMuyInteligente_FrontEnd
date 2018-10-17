@@ -11,62 +11,61 @@ const styles = StyleSheet.create({
         // backgroundColor: '#868ce1',
         height: box_height,
         justifyContent: 'center',
-        // alignItems: 'center',
     },
     headling: {
-        color: '#515151',
-        fontWeight: 'bold',
+        color: '#1F363D',
         fontSize: 42,
         textAlign: 'center',
+        margin: 30,
+
     },
     buttonsContainer: {
-        // backgroundColor: '#868ce1',
-        height: box_height,
-        // flex: 1,
-        flexDirection: 'column',
-        paddingTop: 60,
-        paddingBottom: 70,
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+      height: box_height,
+      flexDirection: 'column',
+      paddingTop: 50,
+      paddingBottom: 100,
+      alignItems: 'center',
+      justifyContent: 'flex-end',
     },
+
     button: {
-        borderRadius: 50,
         marginBottom: 20,
-        width: 260,
         alignItems: 'center',
         justifyContent: 'flex-end'
     },
-    buttonText: {
-        padding: 10,
-        color: 'white',
-        fontSize: 25,
+
+    buttonclear: {
+        marginBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        backgroundColor: '#90CAF9',
     },
-    buttonBlueA: {
-        backgroundColor: '#5D99C6'
-    },
-    buttonBlueB: {
-        backgroundColor: '#90CAF9'
+
+    buttondark: {
+        marginBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        backgroundColor: '#5D99C6',
     },
 
     // Adult Sign Up
     adult_TextInputContainer: {
-        padding: 10, 
+        paddingTop: 80,
         alignItems: 'center',
     },
     adult_TextInput: {
-        fontSize: 20,
+        marginBottom: 20,
         height: 45,
-        width: 200,
+        width: 300,
+        backgroundColor: '#E9E9EF',
     },
 
     // LogInTypeUser
     loginTU_TextContainer: {
-        padding: 30, 
+        padding: 30,
     },
     loginTU_ContainerButtons: {
-        // backgroundColor: '#868ce1',
         height: box_height,
-        // flex: 1,
         flexDirection: 'column',
         paddingTop: 60,
         paddingBottom: 10,
@@ -75,21 +74,30 @@ const styles = StyleSheet.create({
     },
 
     // Home
-    home_TextContainer: {
-        padding: 30,
-    },
-    home_ContainerButtons: {
-        // backgroundColor: '#868ce1',
-        height: box_height,
-        // flex: 1,
-        flexDirection: 'column',
-        paddingTop: 60,
-        paddingBottom: 20,
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-    },
+        home_TextContainer: {
+            padding: 30,
+          },
+
+        home_ContainerButtons: {
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+        },
+
+        practicas_buttoncontainer: {
+          margin: 10,
+          marginTop:30,
+          marginLeft:40,
+          marginRight:40,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        },
+
+
 
 
 });
+
 
 export { styles as default };

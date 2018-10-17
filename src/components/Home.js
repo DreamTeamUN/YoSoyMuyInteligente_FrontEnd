@@ -1,41 +1,52 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, TouchableNativeFeedback, View, ScrollView } from 'react-native';
+import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView } from 'react-native';
+import {Text, Button, Icon, Content} from 'native-base';
 import styles from '../styles';
 
 export default class Home extends Component {
-  // static navigationOptions = {
-  //   title: 'Inicio',
-  // };
 
   render() {
     return (
-      <View>
-
-        <View style={styles.home_TextContainer}>
+        <View style={{flex:1, justifyContent: 'space-between'}}>
+        <View style={{flex: 0.5}}>
           <Text style={styles.headling}>¡Bienvenido!</Text>
         </View>
 
-        <View style={styles.home_ContainerButtons}>
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('WeekProgress')} >
-            <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Progreso semanas</Text>
-            </View>
-          </TouchableNativeFeedback>
+        <View style = {{flex: 0.5, alignItems:'center', justifyContent:'flex-end'}}>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Sentence')} >
-            <View style={[styles.button, styles.buttonBlueA]}>
-              <Text style={styles.buttonText}>Progreso juegos</Text>
-            </View>
-          </TouchableNativeFeedback>
+          <View style={styles.button}>
+            <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('WeekProgress')}>
+                <Icon name="apps" />
+                <Text>Progreso Semanas</Text>
+            </Button>
+          </View>
 
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Forum')} >
-            <View style={[styles.button, styles.buttonBlueB]}>
-              <Text style={styles.buttonText}>Ingresar al foro</Text>
-            </View>
-          </TouchableNativeFeedback>
-        </View >
 
-      </View>
+          <View style={styles.button}>
+            <Button iconLeft rounded style = {styles.buttondark} onPress={() => this.props.navigation.navigate('GameProgress')}>
+                <Icon type="MaterialIcons" name="videogame-asset" />
+                <Text>Progreso Juegos</Text>
+            </Button>
+          </View>
+
+
+          <View style={styles.button}>
+            <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('Forum')}>
+                <Icon type="MaterialCommunityIcons" name="forum" />
+                <Text>Ingreso al foro</Text>
+            </Button>
+          </View>
+
+          <View style={styles.button}>
+            <Button iconLeft rounded style = {styles.buttondark}
+              onPress={() => this.props.navigation.navigate('AddStudent')}>
+                <Icon type="MaterialCommunityIcons" name="settings" />
+                <Text>Administrar estudiantes</Text>
+            </Button>
+          </View>
+
+        </View>
+        </View>
     );
   }
 }

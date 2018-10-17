@@ -1,8 +1,15 @@
-#Limpiar:
+# Yo Soy Muy Inteligente (FrontEnd)
+
+Navigation: [Website][1] | **FrontEnd repository** | [BackEnd repository][2]
+
+  [1]: https://github.com/DreamTeamUN
+  [2]: https://github.com/DreamTeamUN/YoSoyMuyInteligente_BackEnd
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
+
+Añadiendo Material Design.
 
 ## Table of Contents
 

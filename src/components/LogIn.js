@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, TouchableNativeFeedback, TextInput, View, ScrollView, Switch } from 'react-native';
+import { Alert, StyleSheet, TouchableNativeFeedback, View, Switch, TextInput } from 'react-native';
+import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 
 export default class LogIn extends Component {
@@ -23,8 +24,7 @@ export default class LogIn extends Component {
 
   render() {
     return (
-      <ScrollView>
-
+      <View>
         <View style={styles.adult_TextInputContainer}>
           <TextInput
             style={styles.adult_TextInput}
@@ -57,14 +57,15 @@ export default class LogIn extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Home')} >
-            <View style={[styles.button, styles.buttonBlueA]}>
-              <Text style={styles.buttonText}>Enviar</Text>
+            <View style={styles.button}>
+              <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('Home')}>
+                  <Icon type="MaterialIcons" name="done" />
+                  <Text>Enviar</Text>
+              </Button>
             </View>
-          </TouchableNativeFeedback>
-        </View >
+        </View>
 
-      </ScrollView>
+      </View>
     );
   }
 }

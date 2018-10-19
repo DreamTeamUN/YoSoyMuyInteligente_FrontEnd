@@ -1,52 +1,41 @@
 import React, { Component } from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
-
-const { height } = Dimensions.get('window');
-const box_height = height / 2;
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
 
     // Common
     textContainer: {
-        // backgroundColor: '#868ce1',
-        height: box_height,
+        height: hp('50%'),
         justifyContent: 'center',
     },
     headling: {
         color: '#1F363D',
-        fontSize: 42,
+        fontSize: hp('10%'),
         textAlign: 'center',
-        margin: 30,
-
+        margin: hp('5%'),
     },
     buttonsContainer: {
-      height: box_height,
+      height: hp('50%'),
       flexDirection: 'column',
       paddingTop: 50,
       paddingBottom: 100,
       alignItems: 'center',
       justifyContent: 'flex-end',
     },
-
-    button: {
-        marginBottom: 20,
-        alignItems: 'center',
-        justifyContent: 'flex-end'
-    },
-
     buttonclear: {
         marginBottom: 20,
         alignItems: 'center',
         justifyContent: 'flex-end',
         backgroundColor: '#90CAF9',
     },
-
     buttondark: {
         marginBottom: 20,
         alignItems: 'center',
         justifyContent: 'flex-end',
         backgroundColor: '#5D99C6',
     },
+
 
     // Adult Sign Up
     adult_TextInputContainer: {
@@ -60,12 +49,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#E9E9EF',
     },
 
+
     // LogInTypeUser
     loginTU_TextContainer: {
         padding: 30,
     },
     loginTU_ContainerButtons: {
-        height: box_height,
+        height: hp('50%'),
         flexDirection: 'column',
         paddingTop: 60,
         paddingBottom: 10,
@@ -73,17 +63,16 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
 
+
     // Home
         home_TextContainer: {
             padding: 30,
           },
-
         home_ContainerButtons: {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'flex-end',
         },
-
         practicas_buttoncontainer: {
           margin: 10,
           marginTop:30,
@@ -93,11 +82,6 @@ const styles = StyleSheet.create({
           alignItems: 'center',
           justifyContent: 'space-between',
         },
-
-
-
-
 });
-
 
 export { styles as default };

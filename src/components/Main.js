@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, View} from 'react-native';
+import { View} from 'react-native';
 import styles from '../styles';
 import Expo from "expo";
 import {Button, Icon, Text } from 'native-base';
@@ -19,6 +19,7 @@ export default class Main extends Component {
       });
       this.setState({ loading: false });
     }
+    
     render() {
       if (this.state.loading) {
         return <Expo.AppLoading />;

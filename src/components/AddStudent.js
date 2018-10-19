@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, TextInput } from 'react-native';
+import { Alert, View, TextInput } from 'react-native';
 import {Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import { DocumentPicker, ImagePicker } from 'expo'; //por usar
 import styles from '../styles';
@@ -17,6 +17,7 @@ export default class AddStudent extends Component {
     };
   }
 
+//Validación
   validate(username){
       formatotexto=/^[a-zA-Z0-9]+$/;
 
@@ -26,6 +27,7 @@ export default class AddStudent extends Component {
             Alert.alert('Hay errores en el formulario.');
       }
   }
+
 
   render() {
     return (
@@ -40,7 +42,7 @@ export default class AddStudent extends Component {
                      />
                   </Item>
                 <Item floatingLabel last>
-                    <Label>Fotico</Label>
+                    <Label>Foto</Label>
                     <Input
                       onChangeText={(email) => this.setState({email})}
                     />

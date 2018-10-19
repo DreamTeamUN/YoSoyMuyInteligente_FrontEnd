@@ -10,29 +10,29 @@ export default class Practicas extends Component {
     return (
       <Container>
         <Content>
-          <View style={styles.practicas_buttoncontainer}>
+          <View style={styles.menupracticas}>
           <View style={styles.button}>
             <Button style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('Sentence')}>
-                <Text style = {{fontSize: 40}}>#1</Text>
+                <Text style = {styles.numbers}>#1</Text>
             </Button>
           </View>
 
           <View style={styles.button}>
             <Button style = {styles.buttondark} onPress={() => this.props.navigation.navigate('Sentence')}>
-                <Text style = {{fontSize: 40}}>#2</Text>
+                <Text style = {styles.numbers}>#2</Text>
             </Button>
           </View>
 
 
           <View style={styles.button}>
             <Button style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('Sentence')}>
-                <Text style = {{fontSize: 40}}>#3</Text>
+                <Text style = {styles.numbers}>#3</Text>
             </Button>
           </View>
 
           <View style={styles.button}>
             <Button style = {styles.buttondark} onPress={() => this.props.navigation.navigate('Sentence')}>
-                <Text style = {{fontSize: 40}}>#4</Text>
+                <Text style = {styles.numbers}>#4</Text>
             </Button>
           </View>
 

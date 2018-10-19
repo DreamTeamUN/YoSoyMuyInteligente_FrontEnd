@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, ScrollView, TextInput } from 'react-native';
+import { Alert, View, TextInput } from 'react-native';
 import {Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import styles from '../styles';
 
@@ -69,23 +69,20 @@ export default class SignUpTeacher extends Component {
               </Form>
 
         <View style={styles.buttonsContainer}>
-            <View style={styles.button}>
-              <Button iconLeft rounded style = {styles.buttonclear} onPress={() => Alert.alert('Crear aula')}>
+          <View>
+              <Button iconLeft rounded style = {styles.buttonclear} onPress={() => Alert.alert('Pantalla faltante')}>
                   <Icon type="MaterialIcons" name="group-add" />
-                  <Text>Crear Aula</Text>
+                  <Text>Crear Aula (PF)</Text>
               </Button>
-            </View>
-
-
-            <View style={styles.button}>
-              <Button iconLeft rounded style = {styles.buttondark} onPress={() =>
+          </View>
+          <View>
+            <Button iconLeft rounded style = {styles.buttondark} onPress={() =>
                 this.validate(this.state.username, this.state.password, this.state.password2, this.state.email)}>
                   <Icon type="MaterialIcons" name="done" />
                   <Text>Finalizar Registro</Text>
-              </Button>
-            </View>
+            </Button>
+              </View>
         </View>
-
       </View>
     );
   }

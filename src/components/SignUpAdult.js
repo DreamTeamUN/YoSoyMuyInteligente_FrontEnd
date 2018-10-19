@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, TouchableNativeFeedback, View, TextInput } from 'react-native';
+import { Alert, View } from 'react-native';
 import {Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import styles from '../styles';
 
@@ -15,10 +15,11 @@ export default class SignUpAdult extends Component {
       password: '',
       password2: '',
       email: '',
-      //telephone: '' - not being used
     };
   }
 
+
+  //Validación Formulario
   validate(username, password, password2, email){
       formatotexto=/^[a-zA-Z0-9]+$/;
       formatomail=/\S+@\S+\.\S+/;
@@ -34,11 +35,12 @@ export default class SignUpAdult extends Component {
       }
   }
 
+
   render() {
     return (
       <View>
         <Form style={styles.adult_TextInputContainer}>
-              <Item floatingLabel>
+              <Item floatingLabel style={styles.adult_TextInput}>
                     <Label>Nombre de usuario</Label>
                     <Input
                     maxLength={45}
@@ -46,20 +48,20 @@ export default class SignUpAdult extends Component {
                     (username) => this.setState({username})}
                      />
                   </Item>
-                <Item floatingLabel>
+                <Item floatingLabel style={styles.adult_TextInput}>
                         <Label>Contraseña</Label>
                         <Input
                         onChangeText={
                           (password) => this.setState({password})}
                         secureTextEntry={true}/>
                 </Item>
-                <Item floatingLabel>
+                <Item floatingLabel style={styles.adult_TextInput}>
                             <Label>Repita su contraseña</Label>
                             <Input
                               onChangeText={(password2) => this.setState({password2})}
                               secureTextEntry={true}/>
                 </Item>
-                <Item floatingLabel last>
+                <Item floatingLabel last style={styles.adult_TextInput}>
                     <Label>Correo electrónico</Label>
                     <Input
                       onChangeText={(email) => this.setState({email})}

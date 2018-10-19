@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View} from 'react-native';
+import { View } from 'react-native';
 import styles from '../styles';
 import Expo from "expo";
 import {Button, Icon, Text } from 'native-base';
@@ -19,7 +19,7 @@ export default class Main extends Component {
       });
       this.setState({ loading: false });
     }
-    
+
     render() {
       if (this.state.loading) {
         return <Expo.AppLoading />;
@@ -27,23 +27,22 @@ export default class Main extends Component {
       return (
         <View>
           <View style={styles.textContainer}>
-          <Text style={styles.headling}>Yo Soy Muy Inteligente UN</Text>
+          <Text style={styles.title}>Yo Soy Muy Inteligente UN</Text>
         </View>
 
           <View style = {styles.buttonsContainer}>
-            <View style={styles.button}>
-            <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('SignUpMain')}>
+            <View><Button iconLeft rounded style = {styles.buttonclear}
+              onPress={() => this.props.navigation.navigate('SignUpMain')}>
                 <Icon name="person-add" />
                 <Text>Registro</Text>
             </Button>
             </View>
 
-            <View style={styles.button}>
-            <Button iconLeft rounded style = {styles.buttondark} onPress={() => this.props.navigation.navigate('LogInTypeUser')}>
+            <View><Button iconLeft rounded style = {styles.buttondark}
+              onPress={() => this.props.navigation.navigate('LogInTypeUser')}>
                 <Icon name="person" />
                 <Text>Iniciar Sesión</Text>
-            </Button>
-            </View>
+            </Button></View>
           </View>
         </View>
     );

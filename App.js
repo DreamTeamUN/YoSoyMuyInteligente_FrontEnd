@@ -6,7 +6,7 @@ import SignUpAdult from './src/components/SignUpAdult';
 import SignUpTeacher from './src/components/SignUpTeacher';
 import LogInTypeUser from './src/components/LogInTypeUser';
 import LogIn from './src/components/LogIn';
-import Home from './src/components/Home';
+import HomeAdult from './src/components/HomeAdult';
 import WeekProgress from './src/components/WeekProgress';
 import Sentence from './src/components/Sentence';
 import Juegos from './src/components/Juegos';
@@ -23,11 +23,11 @@ const RootStack = createStackNavigator(
     SignUpTeacher: SignUpTeacher,
     LogInTypeUser: LogInTypeUser,
     LogIn: LogIn,
-    Home: Home,
     WeekProgress: WeekProgress,
     GameProgress: GameProgress,
     Sentence: Sentence,
     Juegos: Juegos,
+    HomeAdult: HomeAdult,
     HomeStudent: HomeStudent,
     Practicas: Practicas,
     AddStudent: AddStudent

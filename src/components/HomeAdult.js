@@ -1,50 +1,47 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView } from 'react-native';
+import { Alert, View } from 'react-native';
 import {Text, Button, Icon, Content} from 'native-base';
 import styles from '../styles';
 
-export default class Home extends Component {
+export default class HomeAdult extends Component {
 
   render() {
     return (
-        <View style={{flex:1, justifyContent: 'space-between'}}>
-        <View style={{flex: 0.5}}>
+        <View>
+        <View style={styles.adulthome_TextContainer}>
           <Text style={styles.headling}>¡Bienvenido!</Text>
         </View>
 
-        <View style = {{flex: 0.5, alignItems:'center', justifyContent:'flex-end'}}>
+        <View style = {styles.adulthome_buttonsContainer}>
 
-          <View style={styles.button}>
+          <View>
             <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('WeekProgress')}>
                 <Icon name="apps" />
                 <Text>Progreso Semanas</Text>
             </Button>
           </View>
 
-
-          <View style={styles.button}>
+          <View>
             <Button iconLeft rounded style = {styles.buttondark} onPress={() => this.props.navigation.navigate('GameProgress')}>
                 <Icon type="MaterialIcons" name="videogame-asset" />
                 <Text>Progreso Juegos</Text>
             </Button>
           </View>
 
-
-          <View style={styles.button}>
-            <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('Forum')}>
+          <View>
+          <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('Forum')}>
                 <Icon type="MaterialCommunityIcons" name="forum" />
                 <Text>Ingreso al foro</Text>
             </Button>
           </View>
 
-          <View style={styles.button}>
-            <Button iconLeft rounded style = {styles.buttondark}
+        <View>
+          <Button iconLeft rounded style = {styles.buttondark}
               onPress={() => this.props.navigation.navigate('AddStudent')}>
                 <Icon type="MaterialCommunityIcons" name="settings" />
                 <Text>Administrar estudiantes</Text>
             </Button>
-          </View>
-
+        </View>
         </View>
         </View>
     );

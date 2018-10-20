@@ -105,7 +105,7 @@ export default class SignUpAdult extends Component {
             <Label>Correo electrónico</Label>
             <Input
               onChangeText={(email) => this.setState({ email })}
-              alue={this.state.email}
+              value={this.state.email}
             />
           </Item>
 

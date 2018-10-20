@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
 
@@ -22,16 +22,16 @@ const styles = StyleSheet.create({
         margin: hp('5%'),
     },
     buttonsContainer: {
-      height: wp('50%'),
-      alignItems: 'center',
-      paddingTop: hp('20%'),
+        height: wp('50%'),
+        alignItems: 'center',
+        paddingTop: hp('20%'),
     },
     threebuttonsContainer: {
-      height: hp('50%'),
-      flexDirection: 'column',
-      paddingTop: 60,
-      paddingBottom: 10,
-      alignItems: 'center',
+        height: hp('50%'),
+        flexDirection: 'column',
+        paddingTop: 60,
+        paddingBottom: 10,
+        alignItems: 'center',
     },
     buttonclear: {
         marginBottom: hp('3%'),
@@ -45,14 +45,23 @@ const styles = StyleSheet.create({
 
     // Adult Sign Up
     adult_TextInputContainer: {
-        marginTop: hp('10%'),
-        marginLeft: wp('10%'),
+        height: hp('60%'),
+        marginTop: hp('1.0%'),
+        marginLeft: wp('7%'),
         width: wp('80%'),
         alignItems: 'center',
     },
     adult_TextInput: {
-        marginBottom: hp('1.5%'),
+        marginBottom: hp('0.5%'),
         backgroundColor: '#E9E9EF',
+    },
+    adult_ButtonsContainer: {
+        height: hp('20%'),
+        width: wp('100%'),
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // marginTop: hp('5%'),
     },
 
     // Adult login
@@ -67,11 +76,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#E9E9EF',
     },
     login_Toggle: {
-      flexDirection: 'row',
+        flexDirection: 'row',
     },
     login_ToggleText: {
-      padding: 10,
-      fontSize: 20,
+        padding: 10,
+        fontSize: 20,
     },
 
     //Adult/Teacher Home
@@ -80,28 +89,28 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     adulthome_buttonsContainer: {
-      marginTop: hp('5%'),
-      height: hp('70%'),
-      flexDirection: 'column',
-      alignItems: 'center',
+        marginTop: hp('5%'),
+        height: hp('70%'),
+        flexDirection: 'column',
+        alignItems: 'center',
     },
 
 
 
 
     // Practicas
-        menupracticas: {
-          margin: 10,
-          marginTop:30,
-          marginLeft:40,
-          marginRight:40,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        },
-        numbers: {
-          fontSize: 40,
-        }
+    menupracticas: {
+        margin: 10,
+        marginTop: 30,
+        marginLeft: 40,
+        marginRight: 40,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    numbers: {
+        fontSize: 40,
+    }
 });
 
 export { styles as default };

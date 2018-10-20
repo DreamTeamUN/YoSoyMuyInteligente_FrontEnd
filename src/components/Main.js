@@ -8,7 +8,7 @@ export default class Main extends Component {
 
     constructor(props) {
       super(props);
-      this.state = { loading: true };
+      this.state = { isLoading: true };
     }
 
     async componentWillMount() {
@@ -17,17 +17,17 @@ export default class Main extends Component {
         Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
         Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
       });
-      this.setState({ loading: false });
+      this.setState({ isLoading: false });
     }
 
     render() {
-      if (this.state.loading) {
+      if (this.state.isLoading) {
         return <Expo.AppLoading />;
       }
       return (
         <View>
           <View style={styles.textContainer}>
-          <Text style={styles.title}>Yo Soy Muy Inteligente UN</Text>
+          <Text style={styles.title}>Yo Soy Muy Inteligente</Text>
         </View>
 
           <View style = {styles.buttonsContainer}>

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 
     // Common
     textContainer: {
-        height: hp('50%'),
+        height: hp('40%'),
         justifyContent: 'center',
     },
     title: {

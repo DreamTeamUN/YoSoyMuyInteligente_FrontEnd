@@ -16,7 +16,7 @@ export default class HomeStudent extends Component {
 
           <View>
             <Button iconLeft rounded style = {styles.buttondark}
-            onPress={() => this.props.navigation.navigate('Practicas')}>
+            onPress={() => this.props.navigation.navigate('Practices')}>
                 <Icon type="MaterialIcons" name="videogame-asset" />
                 <Text>Practicas</Text>
             </Button>
@@ -24,7 +24,7 @@ export default class HomeStudent extends Component {
 
           <View>
             <Button iconLeft rounded style = {styles.buttonclear}
-              onPress={() => this.props.navigation.navigate('Juegos')}>
+              onPress={() => this.props.navigation.navigate('Games')}>
                 <Icon type="MaterialCommunityIcons" name="forum" />
                 <Text>Juegos</Text>
             </Button>

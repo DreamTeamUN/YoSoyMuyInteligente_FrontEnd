@@ -74,14 +74,14 @@ const styles = StyleSheet.create({
       fontSize: 20,
     },
 
-    //AdultHome
+    //Adult/Teacher Home
     adulthome_TextContainer: {
-        height: hp('40%'),
+        height: hp('30%'),
         justifyContent: 'center',
     },
     adulthome_buttonsContainer: {
       marginTop: hp('5%'),
-      height: hp('60%'),
+      height: hp('70%'),
       flexDirection: 'column',
       alignItems: 'center',
     },

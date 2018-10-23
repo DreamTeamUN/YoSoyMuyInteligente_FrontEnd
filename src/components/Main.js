@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import styles from '../styles';
 import Expo from "expo";
-import {Button, Icon, Text } from 'native-base';
+import { Button, Icon, Text } from 'native-base';
 
 export default class Main extends Component {
 

@@ -4,6 +4,9 @@ import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import styles from '../styles';
 
 export default class LogIn extends Component {
+  static navigationOptions = {
+    title: 'Iniciar sesión',
+  };
 
   constructor(props) {
     super(props);
@@ -51,9 +54,10 @@ export default class LogIn extends Component {
 
         </Form>
 
-        <View style={styles.buttonsContainer}>
+        <View style={styles.homeAdult_buttonsContainer}>
           <View>
-            <Button iconLeft rounded style={styles.buttonclear} onPress={() => this.props.navigation.navigate('HomeAdult')}>
+            <Button iconLeft rounded style={styles.buttonclear}
+              onPress={() => this.props.navigation.navigate('HomeAdult')}>
               <Icon type="MaterialIcons" name="done" />
               <Text>Enviar</Text>
             </Button>

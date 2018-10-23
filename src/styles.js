@@ -84,11 +84,11 @@ const styles = StyleSheet.create({
     },
 
     //Adult/Teacher Home
-    adulthome_TextContainer: {
+    homeAdult_TextContainer: {
         height: hp('30%'),
         justifyContent: 'center',
     },
-    adulthome_buttonsContainer: {
+    homeAdult_buttonsContainer: {
         marginTop: hp('5%'),
         height: hp('70%'),
         flexDirection: 'column',

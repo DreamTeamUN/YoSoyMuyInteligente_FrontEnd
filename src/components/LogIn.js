@@ -4,7 +4,7 @@ import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import { API_LOG_IN } from '../config/const';
 import styles from '../styles';
 
-const ACCEST_TOKEN = 'access_token';
+const ACCESS_TOKEN = 'access_token';
 
 export default class LogIn extends Component {
   static navigationOptions = {
@@ -24,6 +24,33 @@ export default class LogIn extends Component {
 
   toggleSwitch() {
     this.setState({ rememberMe: !this.state.rememberMe });
+  }
+
+  async _storeToken(accessToken) {
+    try {
+      await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
+      this._getToken();
+    } catch (error) {
+      console.log("Something went wrong")
+    }
+  }
+
+  async _getToken() {
+    try {
+      let token = await AsyncStorage.getItem(ACCESS_TOKEN);
+      console.log("token is: " + token)
+    } catch (error) {
+      console.log("Something went wrong")
+    }
+  }
+
+  async _removeToken() {
+    try {
+      await AsyncStorage.removeItem(ACCESS_TOKEN);
+      this._getToken();
+    } catch (error) {
+      console.log("Something went wrong")
+    }
   }
 
   async _sendData() {
@@ -82,17 +109,20 @@ export default class LogIn extends Component {
       if (response.status >= 200 && response.status < 300) {
         // Success
         let res = await response.json();
-        this.setState({error: ""})
+        this.setState({ error: "" })
         let accessToken = res.jwt
+        this._storeToken(accessToken);
         console.log("Access Token: " + accessToken)
       } else {
         // Error
         // let error = res;
         // throw error;
+        this._removeToken()
         this.setState({ error: "Algo salio mal" })
       }
 
     } catch (error) {
+      // this._removeToken()
       this.setState({ error: error })
       console.log("error: " + error)
     }

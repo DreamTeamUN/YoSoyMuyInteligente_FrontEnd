@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, View } from 'react-native';
-import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
+import { Alert, View, ScrollView } from 'react-native';
+import { Container, Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import axios from 'axios';
 import { API_SIGN_UP_ADULT } from '../config/const';
 import styles from '../styles';
@@ -17,7 +17,8 @@ export default class SignUpAdult extends Component {
       password: '',
       password2: '',
       email: '',
-      birthdate: ''
+      birthdate: '',
+      errors: [],
     };
   }
 
@@ -52,86 +53,114 @@ export default class SignUpAdult extends Component {
   //   }
   // }
 
-  _createAdult() {
+  async _createAdult() {
     if (this._validate(this.state.username, this.state.password, this.state.password2, this.state.email)) {
       Alert.alert("Creando adulto")
-      axios.post(API_SIGN_UP_ADULT, {
-        "usuario": {
-          "user": this.state.username,
-          "password": this.state.password,
-          "nombre": this.state.username,
-          "email": this.state.email,
-          "archivo_id": 0
-        }
-      });
+      try {
+        // Axios version:
+        // axios.post(API_SIGN_UP_ADULT, {
+        //   "usuario": {
+        //     "user": this.state.username,
+        //     "password": this.state.password,
+        //     "nombre": this.state.username,
+        //     "email": this.state.email,
+        //     "archivo_id": 0
+        //   }
+        // });
+
+        // Fetch version:
+        let response = await fetch(API_SIGN_UP_ADULT, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            "usuario": {
+              "user": this.state.username,
+              "password": this.state.password,
+              "nombre": this.state.username,
+              "email": this.state.email,
+              "archivo_id": 0
+            }
+          })
+        });
+
+        let res = await response.text();
+        console.log("res is: " + res);
+      } catch (error) {
+        console.log("catch errors: " + error)
+      }
     }
   };
 
   render() {
     return (
-      <View>
+      // <Container>
+        <View>
 
-        <Form style={styles.adult_TextInputContainer}>
+          <Form style={styles.adult_TextInputContainer}>
 
-          <Item floatingLabel style={styles.adult_TextInput}>
-            <Label>Nombre de usuario</Label>
-            <Input
-              maxLength={45}
-              // onChangeText={(username) => this._validateUsername(username)}
-              onChangeText={(username) => this.setState({ username })}
-              value={this.state.username}
-            />
-          </Item>
+            <Item floatingLabel style={styles.adult_TextInput}>
+              <Label>Nombre de usuario</Label>
+              <Input
+                maxLength={45}
+                // onChangeText={(username) => this._validateUsername(username)}
+                onChangeText={(username) => this.setState({ username })}
+                value={this.state.username}
+              />
+            </Item>
 
-          <Item floatingLabel style={styles.adult_TextInput}>
-            <Label>Contraseña</Label>
-            <Input
-              secureTextEntry={true}
-              onChangeText={(password) => this.setState({ password })}
-              value={this.state.password}
-            />
-          </Item>
+            <Item floatingLabel style={styles.adult_TextInput}>
+              <Label>Contraseña</Label>
+              <Input
+                secureTextEntry={true}
+                onChangeText={(password) => this.setState({ password })}
+                value={this.state.password}
+              />
+            </Item>
 
-          <Item floatingLabel style={styles.adult_TextInput}>
-            <Label>Repita su contraseña</Label>
-            <Input
-              secureTextEntry={true}
-              onChangeText={(password2) => this.setState({ password2 })}
-              value={this.state.password2}
-            />
-          </Item>
+            <Item floatingLabel style={styles.adult_TextInput}>
+              <Label>Repita su contraseña</Label>
+              <Input
+                secureTextEntry={true}
+                onChangeText={(password2) => this.setState({ password2 })}
+                value={this.state.password2}
+              />
+            </Item>
 
-          <Item floatingLabel last style={styles.adult_TextInput}>
-            <Label>Correo electrónico</Label>
-            <Input
-              onChangeText={(email) => this.setState({ email })}
-              value={this.state.email}
-            />
-          </Item>
+            <Item floatingLabel last style={styles.adult_TextInput}>
+              <Label>Correo electrónico</Label>
+              <Input
+                onChangeText={(email) => this.setState({ email })}
+                value={this.state.email}
+              />
+            </Item>
 
-        </Form>
+          </Form>
 
-        <View style={styles.adult_ButtonsContainer}>
-          <View style={styles.button}>
-            <Button iconLeft rounded style={styles.buttonclear}
-              onPress={() => this.props.navigation.navigate('AddStudent')}>
-              <Icon name="person-add" />
-              <Text>Añadir Estudiante</Text>
-            </Button>
-            {/* </View> */}
+          <View style={styles.adult_ButtonsContainer}>
+            <View style={styles.button}>
+              <Button iconLeft rounded style={styles.buttonclear}
+                onPress={() => this.props.navigation.navigate('AddStudent')}>
+                <Icon name="person-add" />
+                <Text>Añadir Estudiante</Text>
+              </Button>
+              {/* </View> */}
 
-            {/* <View style={styles.button}> */}
-            <Button iconLeft rounded
-              style={styles.buttondark}
-              onPress={this._createAdult.bind(this)} >
-              <Icon type="MaterialIcons" name="done" />
-              <Text>Finalizar Registro</Text>
-            </Button>
+              {/* <View style={styles.button}> */}
+              <Button iconLeft rounded
+                style={styles.buttondark}
+                onPress={this._createAdult.bind(this)} >
+                <Icon type="MaterialIcons" name="done" />
+                <Text>Finalizar Registro</Text>
+              </Button>
+            </View>
+
           </View>
 
         </View>
-
-      </View>
+      // </Container>
     );
   }
 }

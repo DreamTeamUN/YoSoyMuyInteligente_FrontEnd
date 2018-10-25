@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { View, Switch, AsyncStorage } from 'react-native';
 import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
+import { API_LOG_IN } from '../config/const';
 import styles from '../styles';
+
+const ACCEST_TOKEN = 'access_token';
 
 export default class LogIn extends Component {
   static navigationOptions = {
@@ -14,7 +17,8 @@ export default class LogIn extends Component {
     this.state = {
       username: '',
       password: '',
-      rememberMe: false
+      rememberMe: false,
+      error: '',
     };
   }
 
@@ -22,35 +26,75 @@ export default class LogIn extends Component {
     this.setState({ rememberMe: !this.state.rememberMe });
   }
 
-  _sendData() {
-    const arrayData = [];
+  async _sendData() {
+    // const arrayData = [];
 
-    const data = {
-      username: this.state.username,
-      password: this.state.password
-    }
-    arrayData.push(data);
+    // const data = {
+    //   username: this.state.username,
+    //   password: this.state.password
+    // }
+    // arrayData.push(data);
+    // try {
+    //   AsyncStorage.getItem('database_form')
+    //     .then((value) => {
+    //       if (value != null) { // hay datos en database_form
+    //         // AsyncStorage.clear()
+
+    //         const d = JSON.parse(value);
+    //         d.push(data)
+    //         AsyncStorage.setItem('database_form', JSON.stringify(d))
+    //           .then(() => {
+    //             this.props.navigation.navigate('HomeAdult')
+    //           })
+    //       } else { // primera vez que entraran datos
+    //         AsyncStorage.setItem('database_form', JSON.stringify(arrayData))
+    //           .then(() => {
+    //             this.props.navigation.navigate('HomeAdult')
+    //           })
+    //       }
+    //     })
+    // } catch (error) {
+    //   console.log(error)
+    // }
+
     try {
-      AsyncStorage.getItem('database_form')
-        .then((value) => {
-          if (value != null) { // hay datos en database_form
-            AsyncStorage.clear()
-            
-            const d = JSON.parse(value);
-            d.push(data)
-            AsyncStorage.setItem('database_form', JSON.stringify(d))
-              .then(() => {
-                this.props.navigation.navigate('HomeAdult')
-              })
-          } else { // primera vez que entraran datos
-            AsyncStorage.setItem('database_form', JSON.stringify(arrayData))
-              .then(() => {
-                this.props.navigation.navigate('HomeAdult')
-              })
+      // Fetch version:
+      let response = await fetch(API_LOG_IN, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "auth": {
+            "email": this.state.email,
+            "password": this.state.password,
           }
         })
+      });
+
+      // let res = await response.json();
+      // console.log("res: " + res.jwt)
+      // console.log("jwt: " + response.text().json().jwt);
+      // let responseJson = await response.json();
+      // console.log("jwt is " + responseJson.jwt)
+
+      if (response.status >= 200 && response.status < 300) {
+        // Success
+        let res = await response.json();
+        this.setState({error: ""})
+        let accessToken = res.jwt
+        console.log("Access Token: " + accessToken)
+      } else {
+        // Error
+        // let error = res;
+        // throw error;
+        this.setState({ error: "Algo salio mal" })
+      }
+
     } catch (error) {
-      console.log(error)
+      this.setState({ error: error })
+      console.log("error: " + error)
     }
 
   }
@@ -61,11 +105,11 @@ export default class LogIn extends Component {
         <Form style={styles.adult_TextInputContainer}>
 
           <Item floatingLabel style={styles.adult_TextInput}>
-            <Label>Nombre de usuario</Label>
+            <Label>Correo electronico</Label>
             <Input
               maxLength={45}
-              onChangeText={(username) => this.setState({ username })}
-              value={this.state.username}
+              onChangeText={(email) => this.setState({ email })}
+              value={this.state.email}
             />
           </Item>
 
@@ -98,7 +142,9 @@ export default class LogIn extends Component {
               <Text>Enviar</Text>
             </Button>
           </View>
+          <Text>{this.state.error}</Text>
         </View>
+
 
       </View>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, View, ScrollView } from 'react-native';
+import { Alert, View, ScrollView, AsyncStorage } from 'react-native';
 import { Text, Button, Icon, Content } from 'native-base';
 import styles from '../styles';
 
@@ -8,7 +8,28 @@ export default class HomeAdult extends Component {
   //   title: 'Adulto/Docente',
   // };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      rememberMe: false,
+      list: '',
+    };
+    try {
+      AsyncStorage.getItem('database_form')
+      .then((value) => {
+        this.setState({
+          list: value
+        })
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   render() {
+    const data = JSON.stringify(this.state.list)
     return (
       <ScrollView>
         <View style={styles.homeAdult_TextContainer}>
@@ -49,6 +70,7 @@ export default class HomeAdult extends Component {
             </Button>
           </View>
         </View>
+        <Text>{data}</Text>
       </ScrollView>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Switch } from 'react-native';
+import { View, Switch, AsyncStorage } from 'react-native';
 import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import styles from '../styles';
 
@@ -14,12 +14,45 @@ export default class LogIn extends Component {
     this.state = {
       username: '',
       password: '',
-      rememberMe: false,
+      rememberMe: false
     };
   }
 
   toggleSwitch() {
     this.setState({ rememberMe: !this.state.rememberMe });
+  }
+
+  _sendData() {
+    const arrayData = [];
+
+    const data = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    arrayData.push(data);
+    try {
+      AsyncStorage.getItem('database_form')
+        .then((value) => {
+          if (value != null) { // hay datos en database_form
+            AsyncStorage.clear()
+            
+            const d = JSON.parse(value);
+            d.push(data)
+            AsyncStorage.setItem('database_form', JSON.stringify(d))
+              .then(() => {
+                this.props.navigation.navigate('HomeAdult')
+              })
+          } else { // primera vez que entraran datos
+            AsyncStorage.setItem('database_form', JSON.stringify(arrayData))
+              .then(() => {
+                this.props.navigation.navigate('HomeAdult')
+              })
+          }
+        })
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   render() {
@@ -32,14 +65,17 @@ export default class LogIn extends Component {
             <Input
               maxLength={45}
               onChangeText={(username) => this.setState({ username })}
+              value={this.state.username}
             />
           </Item>
 
           <Item floatingLabel style={styles.adult_TextInput}>
             <Label>Contraseña</Label>
             <Input
+              secureTextEntry={true}
               onChangeText={(password) => this.setState({ password })}
-              secureTextEntry={true} />
+              value={this.state.password}
+            />
           </Item>
 
           <View style={styles.login_Toggle}>
@@ -57,7 +93,7 @@ export default class LogIn extends Component {
         <View style={styles.homeAdult_buttonsContainer}>
           <View>
             <Button iconLeft rounded style={styles.buttonclear}
-              onPress={() => this.props.navigation.navigate('HomeAdult')}>
+              onPress={() => this._sendData()}>
               <Icon type="MaterialIcons" name="done" />
               <Text>Enviar</Text>
             </Button>

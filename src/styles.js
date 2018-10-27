@@ -41,11 +41,18 @@ const styles = StyleSheet.create({
         marginBottom: hp('3%'),
         backgroundColor: '#5D99C6',
     },
-
+    buttonred: {
+        marginBottom: hp('3%'),
+        backgroundColor: '#DC143C',
+    },
+    buttonfb: {
+        marginBottom: hp('3%'),
+        backgroundColor: '#4267B2',
+    },
 
     // Adult Sign Up
     adult_TextInputContainer: {
-        height: hp('60%'),
+        height: hp('50%'),
         marginTop: hp('1.0%'),
         marginLeft: wp('7%'),
         width: wp('80%'),
@@ -82,6 +89,18 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 20,
     },
+    googleIconViewStyle: {
+    height: 21,
+    width: 21 ,
+    marginLeft: wp('5%'),
+  },
+  fbIconViewStyle: {
+  height: 22,
+  width: 22 ,
+  marginLeft: wp('5%'),
+},
+
+
 
     //Adult/Teacher Home
     homeAdult_TextContainer: {
@@ -90,6 +109,12 @@ const styles = StyleSheet.create({
     },
     homeAdult_buttonsContainer: {
         marginTop: hp('5%'),
+        height: hp('70%'),
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    login_buttonsContainer: {
+        marginTop: hp('1%'),
         height: hp('70%'),
         flexDirection: 'column',
         alignItems: 'center',

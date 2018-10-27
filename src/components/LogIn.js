@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Switch, AsyncStorage } from 'react-native';
+import { View, Switch, AsyncStorage, Image } from 'react-native';
 import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import { API_LOG_IN } from '../config/const';
 import styles from '../styles';
@@ -164,7 +164,28 @@ export default class LogIn extends Component {
 
         </Form>
 
-        <View style={styles.homeAdult_buttonsContainer}>
+        <View style={styles.login_buttonsContainer}>
+
+        <View>
+        <Button iconLeft rounded style={styles.buttonred}
+        onPress={() => this.props.navigation.navigate('LogIn')}>
+        <View>
+        <Image style={styles.googleIconViewStyle} source={require('../assets/googlelettericon.png')} />
+        </View>
+             <Text >Google</Text>
+       </Button>
+       </View>
+
+       <View>
+       <Button iconLeft rounded style={styles.buttonfb}
+       onPress={() => this.props.navigation.navigate('LogIn')}>
+       <View>
+       <Image style={styles.fbIconViewStyle} source={require('../assets/facebooklettericon.png')} />
+       </View>
+            <Text >Facebook</Text>
+      </Button>
+      </View>
+
           <View>
             <Button iconLeft rounded style={styles.buttonclear}
               onPress={() => this._sendData()}>

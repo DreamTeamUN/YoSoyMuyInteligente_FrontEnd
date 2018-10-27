@@ -168,7 +168,7 @@ export default class LogIn extends Component {
 
         <View>
         <Button iconLeft rounded style={styles.buttonred}
-        onPress={() => this.props.navigation.navigate('LogIn')}>
+        onPress={() => this.props.navigation.navigate('HomeAdult')}>
         <View>
         <Image style={styles.googleIconViewStyle} source={require('../assets/googlelettericon.png')} />
         </View>

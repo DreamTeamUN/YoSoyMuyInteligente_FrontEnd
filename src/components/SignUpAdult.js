@@ -26,7 +26,7 @@ export default class SignUpAdult extends Component {
   // Validación Formulario
   _validate(username, password, password2, email) {
     formatotexto = /\S+$/;
-    formatomail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-])+/;
+    formatomail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-])+$/;
 
     if (formatotexto.test(username)
       && formatomail.test(email)

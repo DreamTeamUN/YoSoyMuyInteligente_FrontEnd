@@ -38,7 +38,7 @@ export default class LogIn extends Component {
   async _getToken() {
     try {
       let token = await AsyncStorage.getItem(ACCESS_TOKEN);
-      console.log("token is: " + token)
+      console.log("_getToken | token is: " + token)
     } catch (error) {
       console.log("Something went wrong")
     }
@@ -49,7 +49,7 @@ export default class LogIn extends Component {
       await AsyncStorage.removeItem(ACCESS_TOKEN);
       this._getToken();
     } catch (error) {
-      console.log("Something went wrong")
+      console.log("_removeToken | Something went wrong")
     }
   }
 
@@ -113,6 +113,7 @@ export default class LogIn extends Component {
         let accessToken = res.jwt
         this._storeToken(accessToken);
         console.log("Access Token: " + accessToken)
+        this.props.navigation.navigate('HomeAdult')
       } else {
         // Error
         // let error = res;

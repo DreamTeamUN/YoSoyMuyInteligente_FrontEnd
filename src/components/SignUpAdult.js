@@ -25,8 +25,8 @@ export default class SignUpAdult extends Component {
 
   // Validación Formulario
   _validate(username, password, password2, email) {
-    formatotexto = /\S+$/;
-    formatomail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-])+$/;
+    formatotexto = /\S+/;
+    formatomail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-])+/;
 
     if (formatotexto.test(username)
       && formatomail.test(email)
@@ -38,6 +38,12 @@ export default class SignUpAdult extends Component {
     } else {
       Alert.alert('Hay errores en el formulario.');
       return false;
+    }
+
+    try {
+      
+    } catch (error) {
+      
     }
   }
 
@@ -102,13 +108,14 @@ export default class SignUpAdult extends Component {
           <Form style={styles.adult_TextInputContainer}>
 
             <Item floatingLabel style={styles.adult_TextInput}>
-              <Label>Nombre de usuario</Label>
-              <Input
+              <Label style={{color: '#E40808',}}>Nombre de usuario</Label>
+              <Input success
                 maxLength={45}
                 // onChangeText={(username) => this._validateUsername(username)}
                 onChangeText={(username) => this.setState({ username })}
                 value={this.state.username}
               />
+              <Icon name='checkmark-circle' />
             </Item>
 
             <Item floatingLabel style={styles.adult_TextInput}>

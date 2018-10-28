@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        // marginTop: hp('5%'),
+        marginTop: hp('5%'),
     },
 
     // Adult login

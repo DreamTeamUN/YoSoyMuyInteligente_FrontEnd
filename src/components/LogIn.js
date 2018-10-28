@@ -3,6 +3,7 @@ import { View, Switch, AsyncStorage, Image } from 'react-native';
 import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import { API_LOG_IN } from '../config/const';
 import styles from '../styles';
+import Expo from "expo";
 
 const ACCESS_TOKEN = 'access_token';
 
@@ -19,7 +20,33 @@ export default class LogIn extends Component {
       password: '',
       rememberMe: false,
       error: '',
+      signedIn: false,
+      name: '',
+      photoUrl: ''
     };
+  }
+
+  async _signIn() {
+    try {
+      const result = await Expo.Google.logInAsync({
+        androidClientId:
+          "99894503572-hi17jagkv4uc28222pdl9eki2n2rsovf.apps.googleusercontent.com",
+        //iosClientId: YOUR_CLIENT_ID_HERE,  <-- if you use iOS
+        scopes: ["profile", "email"]
+      })
+
+      if (result.type === "success") {
+        this.setState({
+          signedIn: true,
+          name: result.user.name,
+          photoUrl: result.user.photoUrl
+        })
+      } else {
+        console.log("cancelled")
+      }
+    } catch (e) {
+      console.log("error", e)
+    }
   }
 
   toggleSwitch() {
@@ -169,7 +196,7 @@ export default class LogIn extends Component {
 
         <View>
         <Button iconLeft rounded style={styles.buttonred}
-        onPress={() => this.props.navigation.navigate('HomeAdult')}>
+        onPress={() => this._signIn()}>
         <View>
         <Image style={styles.googleIconViewStyle} source={require('../assets/googlelettericon.png')} />
         </View>

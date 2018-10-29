@@ -18,7 +18,7 @@ export default class SignUpAdult extends Component {
       password2: '',
       email: '',
       birthdate: '',
-      // errors: [],
+      errors: [],
       isLoading: false,
     };
   }
@@ -63,7 +63,6 @@ export default class SignUpAdult extends Component {
   async _createAdult() {
     if (this._validate(this.state.username, this.state.password, this.state.password2, this.state.email)) {
       this.setState({ isLoading: true })
-      // Alert.alert("Creando adulto")
       try {
         // Axios version:
         // axios.post(API_SIGN_UP_ADULT, {
@@ -99,17 +98,28 @@ export default class SignUpAdult extends Component {
         let status = response.status
         console.log("res status: " + status);
 
-        if (status == 201) {
-          console.log("Nuevo usuario!");
-        } else if (status == 422) {
+        switch (status) {
+          case 201:
+            this.setState({ errors: [] })
+            console.log("Nuevo usuario!");
+            break;
 
-          let res = await response.json();
-          if (res.hasOwnProperty("user")) {
-            console.log(res.user.toString())
-          } else if (res.hasOwnProperty("email")) {
-            console.log(res.email.toString())
-          }
+          case 422:
+            let res = await response.json();
+
+            var properties = ["user", "email"];
+            for (var i = 0; i < properties.length; i++) {
+              if (res[properties[i]] != undefined) {
+                console.log(res[properties[i]].toString())
+                this.state.errors.push(res[properties[i]].toString())
+              }
+            }
+            break;
+
+          default:
+            break;
         }
+
         this.setState({ isLoading: false })
 
       } catch (error) {
@@ -193,7 +203,7 @@ export default class SignUpAdult extends Component {
               <Text>Finalizar Registro</Text>
             </Button>
           </View>
-
+          <Text>{this.state.errors.toString()}</Text>
         </View>
 
       </View>

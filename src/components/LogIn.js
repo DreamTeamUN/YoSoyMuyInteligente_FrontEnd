@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, TouchableNativeFeedback, View, Switch, TextInput } from 'react-native';
-import {Text, Button, Icon} from 'native-base';
+import { View, Switch, AsyncStorage, Image } from 'react-native';
+import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
+import { API_LOG_IN } from '../config/const';
 import styles from '../styles';
+import Expo from "expo";
+
+const ACCESS_TOKEN = 'access_token';
 
 export default class LogIn extends Component {
-  // static navigationOptions = {
-  //   title: 'Titulo',
-  // };
+  static navigationOptions = {
+    title: 'Iniciar sesión',
+  };
 
   constructor(props) {
     super(props);
@@ -15,34 +19,169 @@ export default class LogIn extends Component {
       username: '',
       password: '',
       rememberMe: false,
+      error: '',
+      signedIn: false,
+      name: '',
+      photoUrl: ''
     };
+  }
+
+  async _signIn() {
+    try {
+      const result = await Expo.Google.logInAsync({
+        androidClientId:
+          "99894503572-hi17jagkv4uc28222pdl9eki2n2rsovf.apps.googleusercontent.com",
+        //iosClientId: YOUR_CLIENT_ID_HERE,  <-- if you use iOS
+        scopes: ["profile", "email"]
+      })
+
+      if (result.type === "success") {
+        this.setState({
+          signedIn: true,
+          name: result.user.name,
+          photoUrl: result.user.photoUrl
+        })
+      } else {
+        console.log("cancelled")
+      }
+    } catch (e) {
+      console.log("error", e)
+    }
   }
 
   toggleSwitch() {
     this.setState({ rememberMe: !this.state.rememberMe });
   }
 
+  async _storeToken(accessToken) {
+    try {
+      await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
+      this._getToken();
+    } catch (error) {
+      console.log("Something went wrong")
+    }
+  }
+
+  async _getToken() {
+    try {
+      let token = await AsyncStorage.getItem(ACCESS_TOKEN);
+      console.log("_getToken | token is: " + token)
+    } catch (error) {
+      console.log("Something went wrong")
+    }
+  }
+
+  async _removeToken() {
+    try {
+      await AsyncStorage.removeItem(ACCESS_TOKEN);
+      this._getToken();
+    } catch (error) {
+      console.log("_removeToken | Something went wrong")
+    }
+  }
+
+  async _sendData() {
+    // const arrayData = [];
+
+    // const data = {
+    //   username: this.state.username,
+    //   password: this.state.password
+    // }
+    // arrayData.push(data);
+    // try {
+    //   AsyncStorage.getItem('database_form')
+    //     .then((value) => {
+    //       if (value != null) { // hay datos en database_form
+    //         // AsyncStorage.clear()
+
+    //         const d = JSON.parse(value);
+    //         d.push(data)
+    //         AsyncStorage.setItem('database_form', JSON.stringify(d))
+    //           .then(() => {
+    //             this.props.navigation.navigate('HomeAdult')
+    //           })
+    //       } else { // primera vez que entraran datos
+    //         AsyncStorage.setItem('database_form', JSON.stringify(arrayData))
+    //           .then(() => {
+    //             this.props.navigation.navigate('HomeAdult')
+    //           })
+    //       }
+    //     })
+    // } catch (error) {
+    //   console.log(error)
+    // }
+
+    try {
+      // Fetch version:
+      let response = await fetch(API_LOG_IN, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "auth": {
+            "email": this.state.email,
+            "password": this.state.password,
+          }
+        })
+      });
+
+      // let res = await response.json();
+      // console.log("res: " + res.jwt)
+      // console.log("jwt: " + response.text().json().jwt);
+      // let responseJson = await response.json();
+      // console.log("jwt is " + responseJson.jwt)
+
+      if (response.status >= 200 && response.status < 300) {
+        // Success
+        let res = await response.json();
+        this.setState({ error: "" })
+        let accessToken = res.jwt
+        this._storeToken(accessToken);
+        console.log("Access Token: " + accessToken)
+        this.props.navigation.navigate('HomeAdult')
+      } else {
+        // Error
+        // let error = res;
+        // throw error;
+        this._removeToken()
+        this.setState({ error: "Algo salio mal" })
+      }
+
+    } catch (error) {
+      // this._removeToken()
+      this.setState({ error: error })
+      console.log("error: " + error)
+    }
+
+  }
+
   render() {
     return (
       <View>
-        <View style={styles.adult_TextInputContainer}>
-          <TextInput
-            style={styles.adult_TextInput}
-            // textContentType={'username'} // IOS
-            placeholder="Nombre de usuario"
-            maxLength={45}
-            onChangeText={(username) => this.setState({ username })}
-          />
+        <Form style={styles.adult_TextInputContainer}>
 
-          <TextInput
-            style={styles.adult_TextInput}
-            secureTextEntry={true}
-            // textContentType='password' // IOS
-            placeholder="Contraseña"
-            onChangeText={(password) => this.setState({ password })}
-          />
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={{ padding: 10, fontSize: 20 }}>
+          <Item floatingLabel style={styles.adult_TextInput}>
+            <Label>Correo electronico</Label>
+            <Input
+              maxLength={45}
+              onChangeText={(email) => this.setState({ email })}
+              value={this.state.email}
+            />
+          </Item>
+
+          <Item floatingLabel style={styles.adult_TextInput}>
+            <Label>Contraseña</Label>
+            <Input
+              secureTextEntry={true}
+              onChangeText={(password) => this.setState({ password })}
+              value={this.state.password}
+            />
+          </Item>
+
+          <View style={styles.login_Toggle}>
+            <Text style={styles.login_ToggleText}>
               Recordar usuario
             </Text>
             <Switch
@@ -51,19 +190,40 @@ export default class LogIn extends Component {
             />
           </View>
 
-          {/* <Text style={{ padding: 10, fontSize: 20 }}>
-            {this.state.rememberMe.toString()}
-          </Text> */}
+        </Form>
+
+        <View style={styles.login_buttonsContainer}>
+
+        <View>
+        <Button iconLeft rounded style={styles.buttonred}
+        onPress={() => this._signIn()}>
+        <View>
+        <Image style={styles.googleIconViewStyle} source={require('../assets/googlelettericon.png')} />
+        </View>
+             <Text >Google</Text>
+       </Button>
+       </View>
+
+       <View>
+       <Button iconLeft rounded style={styles.buttonfb}
+       onPress={() => this.props.navigation.navigate('LogIn')}>
+       <View>
+       <Image style={styles.fbIconViewStyle} source={require('../assets/facebooklettericon.png')} />
+       </View>
+            <Text >Facebook</Text>
+      </Button>
+      </View>
+
+          <View>
+            <Button iconLeft rounded style={styles.buttonclear}
+              onPress={() => this._sendData()}>
+              <Icon type="MaterialIcons" name="done" />
+              <Text>Enviar</Text>
+            </Button>
+          </View>
+          <Text>{this.state.error}</Text>
         </View>
 
-        <View style={styles.buttonsContainer}>
-            <View style={styles.button}>
-              <Button iconLeft rounded style = {styles.buttonclear} onPress={() => this.props.navigation.navigate('Home')}>
-                  <Icon type="MaterialIcons" name="done" />
-                  <Text>Enviar</Text>
-              </Button>
-            </View>
-        </View>
 
       </View>
     );

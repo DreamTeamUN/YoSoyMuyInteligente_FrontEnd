@@ -1,103 +1,141 @@
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet } from 'react-native';
-
-const { height } = Dimensions.get('window');
-const box_height = height / 2;
+import { StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
 
     // Common
     textContainer: {
-        // backgroundColor: '#868ce1',
-        height: box_height,
+        height: hp('40%'),
         justifyContent: 'center',
+    },
+    title: {
+        color: '#1F363D',
+        fontSize: hp('8%'),
+        textAlign: 'center',
+        margin: hp('5%'),
     },
     headling: {
         color: '#1F363D',
-        fontSize: 42,
+        fontSize: hp('6%'),
         textAlign: 'center',
-        margin: 30,
-
+        margin: hp('5%'),
     },
     buttonsContainer: {
-      height: box_height,
-      flexDirection: 'column',
-      paddingTop: 50,
-      paddingBottom: 100,
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-    },
-
-    button: {
-        marginBottom: 20,
+        height: wp('50%'),
         alignItems: 'center',
-        justifyContent: 'flex-end'
+        paddingTop: hp('20%'),
     },
-
-    buttonclear: {
-        marginBottom: 20,
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        backgroundColor: '#90CAF9',
-    },
-
-    buttondark: {
-        marginBottom: 20,
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        backgroundColor: '#5D99C6',
-    },
-
-    // Adult Sign Up
-    adult_TextInputContainer: {
-        paddingTop: 80,
-        alignItems: 'center',
-    },
-    adult_TextInput: {
-        marginBottom: 20,
-        height: 45,
-        width: 300,
-        backgroundColor: '#E9E9EF',
-    },
-
-    // LogInTypeUser
-    loginTU_TextContainer: {
-        padding: 30,
-    },
-    loginTU_ContainerButtons: {
-        height: box_height,
+    threebuttonsContainer: {
+        height: hp('50%'),
         flexDirection: 'column',
         paddingTop: 60,
         paddingBottom: 10,
         alignItems: 'center',
-        justifyContent: 'flex-end',
+    },
+    buttonclear: {
+        marginBottom: hp('3%'),
+        backgroundColor: '#90CAF9',
+    },
+    buttondark: {
+        marginBottom: hp('3%'),
+        backgroundColor: '#5D99C6',
+    },
+    buttonred: {
+        marginBottom: hp('3%'),
+        backgroundColor: '#DC143C',
+    },
+    buttonfb: {
+        marginBottom: hp('3%'),
+        backgroundColor: '#4267B2',
     },
 
-    // Home
-        home_TextContainer: {
-            padding: 30,
-          },
+    // Adult Sign Up
+    adult_TextInputContainer: {
+        height: hp('50%'),
+        marginTop: hp('1.0%'),
+        marginLeft: wp('7%'),
+        width: wp('80%'),
+        alignItems: 'center',
+    },
+    adult_TextInput: {
+        marginBottom: hp('0.5%'),
+        backgroundColor: '#E9E9EF',
+    },
+    adult_ButtonsContainer: {
+        height: hp('20%'),
+        width: wp('100%'),
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: hp('5%'),
+    },
 
-        home_ContainerButtons: {
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-        },
+    // Adult login
+    login_TextInputContainer: {
+        marginTop: hp('10%'),
+        marginLeft: wp('10%'),
+        width: wp('80%'),
+        alignItems: 'center',
+    },
+    login_TextInput: {
+        marginBottom: hp('1.5%'),
+        backgroundColor: '#E9E9EF',
+    },
+    login_Toggle: {
+        flexDirection: 'row',
+    },
+    login_ToggleText: {
+        padding: 10,
+        fontSize: 20,
+    },
+    googleIconViewStyle: {
+    height: 21,
+    width: 21 ,
+    marginLeft: wp('5%'),
+  },
+  fbIconViewStyle: {
+  height: 22,
+  width: 22 ,
+  marginLeft: wp('5%'),
+},
 
-        practicas_buttoncontainer: {
-          margin: 10,
-          marginTop:30,
-          marginLeft:40,
-          marginRight:40,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        },
+
+
+    //Adult/Teacher Home
+    homeAdult_TextContainer: {
+        height: hp('30%'),
+        justifyContent: 'center',
+    },
+    homeAdult_buttonsContainer: {
+        marginTop: hp('5%'),
+        height: hp('70%'),
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    login_buttonsContainer: {
+        marginTop: hp('1%'),
+        height: hp('70%'),
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
 
 
 
 
+    // Practicas
+    menupracticas: {
+        margin: 10,
+        marginTop: 30,
+        marginLeft: 40,
+        marginRight: 40,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    numbers: {
+        fontSize: 40,
+    }
 });
-
 
 export { styles as default };

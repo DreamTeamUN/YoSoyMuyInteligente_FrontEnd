@@ -1,57 +1,50 @@
-import * as React from 'react';
-import { createStackNavigator } from 'react-navigation';
-import Main from './src/components/Main';
-import SignUpMain from './src/components/SignUpMain';
-import SignUpAdult from './src/components/SignUpAdult';
-import SignUpTeacher from './src/components/SignUpTeacher';
-import LogInTypeUser from './src/components/LogInTypeUser';
-import LogIn from './src/components/LogIn';
-import HomeAdult from './src/components/HomeAdult';
-import WeekProgress from './src/components/WeekProgress';
-import Sentence from './src/components/Sentence';
-import Games from './src/components/Games';
-import HomeStudent from './src/components/HomeStudent';
-import Practices from './src/components/Practices';
-import GameProgress from './src/components/GameProgress';
-import AddStudent from './src/components/AddStudent';
+import React from 'react';
+import { ActivityIndicator, AsyncStorage, StatusBar, View } from 'react-native';
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import { AppStack, AuthStack } from './src/routes';
+import styles from './src/styles';
 
-const RootStack = createStackNavigator(
-  {
-    Main: Main,
-    SignUpMain: SignUpMain,
-    SignUpAdult: SignUpAdult,
-    SignUpTeacher: SignUpTeacher,
-    LogInTypeUser: LogInTypeUser,
-    LogIn: LogIn,
-    WeekProgress: WeekProgress,
-    GameProgress: GameProgress,
-    Sentence: Sentence,
-    Games: Games,
-    HomeAdult: HomeAdult,
-    HomeStudent: HomeStudent,
-    Practices: Practices,
-    AddStudent: AddStudent
-  },
+class LoadingScreen extends React.Component {
 
-  {
-    initialRouteName: 'Main',
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#5D99C6',
-        height: 50,
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true };
   }
-);
 
-export default class App extends React.Component {
+  async componentWillMount() {
+    await Expo.Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
+    });
+    this.setState({ isLoading: false });
+    this._bootstrapAsync();
+  }
+
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem('access_token');
+    let initialRouteName = userToken ? 'App' : 'Auth';
+    this.props.navigation.navigate(initialRouteName);
+  };
+
   render() {
-    return(
-        <RootStack/>
+    if (this.state.isLoading) {
+      return <Expo.AppLoading />;
+    }
+    return (
+      <View style={styles.textContainer}>
+        <ActivityIndicator />
+        <StatusBar barStyle="default" />
+      </View>
     );
   }
 }
+
+// const AppStack = createStackNavigator({ Home: HomeScreen, Other: OtherScreen });
+// const AuthStack = createStackNavigator({ SignIn: SignInScreen });
+
+export default createSwitchNavigator({
+  Loading: LoadingScreen,
+  App: AppStack,
+  Auth: AuthStack,
+});

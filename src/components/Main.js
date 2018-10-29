@@ -8,22 +8,22 @@ export default class Main extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { isLoading: true };
+    // this.state = { isLoading: true };
   }
 
-  async componentWillMount() {
-    await Expo.Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-    });
-    this.setState({ isLoading: false });
-  }
+  // async componentWillMount() {
+  //   await Expo.Font.loadAsync({
+  //     Roboto: require("native-base/Fonts/Roboto.ttf"),
+  //     Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+  //     Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
+  //   });
+  //   this.setState({ isLoading: false });
+  // }
 
   render() {
-    if (this.state.isLoading) {
-      return <Expo.AppLoading />;
-    }
+    // if (this.state.isLoading) {
+    //   return <Expo.AppLoading />;
+    // }
     return (
       <Container>
         <View style={styles.textContainer}>

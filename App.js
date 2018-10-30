@@ -40,8 +40,6 @@ class LoadingScreen extends React.Component {
   }
 }
 
-// const AppStack = createStackNavigator({ Home: HomeScreen, Other: OtherScreen });
-// const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 
 export default createSwitchNavigator({
   Loading: LoadingScreen,

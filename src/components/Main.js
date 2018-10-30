@@ -1,31 +1,18 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import styles from '../styles';
 import Expo from "expo";
-import { Container, Button, Icon, Text } from 'native-base';
+import { Button, Icon, Text } from 'native-base';
+import styles from '../styles';
 
 export default class Main extends Component {
 
   constructor(props) {
     super(props);
-    // this.state = { isLoading: true };
   }
 
-  // async componentWillMount() {
-  //   await Expo.Font.loadAsync({
-  //     Roboto: require("native-base/Fonts/Roboto.ttf"),
-  //     Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-  //     Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-  //   });
-  //   this.setState({ isLoading: false });
-  // }
-
   render() {
-    // if (this.state.isLoading) {
-    //   return <Expo.AppLoading />;
-    // }
     return (
-      <Container>
+      <View>
         <View style={styles.textContainer}>
           <Text style={styles.title}>Yo Soy Muy Inteligente</Text>
         </View>
@@ -46,7 +33,7 @@ export default class Main extends Component {
             </Button>
           </View>
         </View>
-      </Container>
+      </View>
     );
   }
 }

@@ -34,7 +34,7 @@ export default class LogIn extends Component {
         //iosClientId: YOUR_CLIENT_ID_HERE,  <-- if you use iOS
         scopes: ["profile", "email"]
       })
-
+      console.log(result)
       if (result.type === "success") {
         this.setState({
           signedIn: true,
@@ -48,6 +48,25 @@ export default class LogIn extends Component {
       console.log("error", e)
     }
   }
+
+  async _logIn() {
+  const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
+    "769489916725698",
+    {
+      permissions: ["public_profile", "email", "user_birthday"]
+    }
+  );
+  if (type === "success") {
+    // Handle successful authentication here
+    const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}&fields=id,name,birthday,email,picture.type(large)`
+      );
+      const { picture, name, birthday,email } = await response.json();
+      console.log(name,email,birthday)
+  } else {
+    console.log("cancelled")
+  }
+}
 
   toggleSwitch() {
     this.setState({ rememberMe: !this.state.rememberMe });
@@ -206,7 +225,7 @@ export default class LogIn extends Component {
 
        <View>
        <Button iconLeft rounded style={styles.buttonfb}
-       onPress={() => this.props.navigation.navigate('LogIn')}>
+       onPress={this._logIn}>
        <View>
        <Image style={styles.fbIconViewStyle} source={require('../assets/facebooklettericon.png')} />
        </View>

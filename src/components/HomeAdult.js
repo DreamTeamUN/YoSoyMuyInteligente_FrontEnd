@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, View, ScrollView, AsyncStorage } from 'react-native';
+import { Alert, View, ScrollView, AsyncStorage, StatusBar } from 'react-native';
 import { Text, Button, Icon, Content } from 'native-base';
 import axios from "axios";
 import { API_USERS } from '../config/const';
@@ -40,7 +40,7 @@ export default class HomeAdult extends Component {
   }
 
   render() {
-    const data = JSON.stringify(this.state.list)
+
     return (
       <ScrollView>
         <View style={styles.homeAdult_TextContainer}>
@@ -88,9 +88,30 @@ export default class HomeAdult extends Component {
               <Text>Administrar cuenta</Text>
             </Button>
           </View>
+
+          <View>
+            {/* <Button iconLeft rounded style={styles.buttondark} */}
+            <Button rounded style={styles.buttondark}
+              onPress={this._signOutAsync}>
+              {/* <Icon type="MaterialCommunityIcons" name="exit_to_app" /> */}
+              <Text>Cerrar sesion</Text>
+            </Button>
+            <StatusBar
+              backgroundColor="blue"
+              barStyle="light-content"
+            />
+          </View>
+
+
         </View>
-        <Text>{data}</Text>
+
       </ScrollView>
     );
   }
+
+  _signOutAsync = async () => {
+    console.log("Cerrando sesion...")
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth');
+  };
 }

@@ -51,6 +51,14 @@ export default class HomeAdult extends Component {
 
           <View>
             <Button iconLeft rounded style={styles.buttonclear}
+              onPress={() => this.props.navigation.navigate('EditProfile')}>
+              <Icon name="apps" />
+              <Text>Editar perfil</Text>
+            </Button>
+          </View>
+
+          <View>
+            <Button iconLeft rounded style={styles.buttonclear}
               onPress={() => this.props.navigation.navigate('WeekProgress')}>
               <Icon name="apps" />
               <Text>Progreso Semanas</Text>
@@ -81,13 +89,13 @@ export default class HomeAdult extends Component {
             </Button>
           </View>
 
-          <View>
+          {/* <View>
             <Button iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('AddStudent')}>
               <Icon type="MaterialCommunityIcons" name="settings" />
               <Text>Administrar cuenta</Text>
             </Button>
-          </View>
+          </View> */}
 
           <View>
             {/* <Button iconLeft rounded style={styles.buttondark} */}

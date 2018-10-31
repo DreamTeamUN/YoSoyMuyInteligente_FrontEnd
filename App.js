@@ -1,14 +1,18 @@
-import React from 'react';
-import { ActivityIndicator, AsyncStorage, StatusBar, View } from 'react-native';
+import React, { Component } from 'react';
+import { ActivityIndicator, AsyncStorage, StatusBar,  } from 'react-native';
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 import { AppStack, AuthStack } from './src/routes';
 import styles from './src/styles';
 
-class LoadingScreen extends React.Component {
+import { StyleProvider, View } from "native-base";
+import getTheme from "./native-base-theme/components";
+import variables from "./native-base-theme/variables/commonColor";
+
+class LoadingScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { isLoading: true };
+    // this.state = { isLoading: true };
   }
 
   async componentWillMount() {
@@ -17,7 +21,7 @@ class LoadingScreen extends React.Component {
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
     });
-    this.setState({ isLoading: false });
+    // this.setState({ isLoading: false });
     this._bootstrapAsync();
   }
 
@@ -28,14 +32,20 @@ class LoadingScreen extends React.Component {
   };
 
   render() {
-    if (this.state.isLoading) {
-      return <Expo.AppLoading />;
-    }
+    // if (this.state.isLoading) {
+    //   return (
+    //     <StyleProvider style={getTheme(variables)}>
+    //       <Expo.AppLoading />
+    //     </StyleProvider>
+    //   );
+    // }
     return (
-      <View style={styles.textContainer}>
-        <ActivityIndicator />
-        <StatusBar barStyle="default" />
-      </View>
+      // <StyleProvider style={getTheme(variables)}>
+        <View style={styles.textContainer}>
+          <ActivityIndicator />
+          <StatusBar barStyle="default" />
+        </View>
+      // </StyleProvider>
     );
   }
 }

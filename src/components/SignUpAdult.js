@@ -26,18 +26,26 @@ export default class SignUpAdult extends Component {
 
   // Validación Formulario
   _validate(username, password, password2, email) {
-    formatotexto = /\S+/;
+    formatotexto = /^[a-zA-Z0-9]+$/;
     formatomail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-])+/;
+
+    if(!(formatotexto.test(username))){
+      Alert.alert('No se puede completar el registro. Por favor revise que escribió un nombre de usuario alfanumérico.');
+    }else if(!(password == password2)){
+      Alert.alert('No se puede completar el registro. Las contraseñas ingresadas no coinciden.');
+    }else if(!(password.length >= 6)){
+      Alert.alert('No se puede completar el registro. La longitud de su contraseña debe ser de al menos 6 caracteres.');
+    }else if(!(formatomail.test(email))){
+      Alert.alert('No se puede completar el registro. Por favor revise que escribió su correo correctamente.');
+    }
+
 
     if (formatotexto.test(username)
       && formatomail.test(email)
       && password == password2
-      && password.length >= 6
-    ) {
-      // Alert.alert('El formulario fue llenado correctamente.');
+      && password.length >= 6) {
       return true;
     } else {
-      Alert.alert('Hay errores en el formulario.');
       return false;
     }
 

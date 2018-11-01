@@ -9,14 +9,14 @@ import variables from "../../native-base-theme/variables/commonColor";
 // import custom from '../../native-base-theme/variables/custom';
 
 export default class EditProfile extends Component {
-  // static navigationOptions = {
-  //   title: 'Editar perfil',
-  //   // headerMode: "none"
-  // };
 
   constructor(props) {
     super(props);
   }
+
+
+//  Crear validate.
+
 
   render() {
     return (

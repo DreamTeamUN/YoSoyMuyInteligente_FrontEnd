@@ -37,7 +37,7 @@ export const AppStack = createStackNavigator(
                 backgroundColor: '#5D99C6',
                 height: 50,
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#E9E9EF',
             headerTitleStyle: {
                 fontWeight: 'bold',
             },
@@ -63,7 +63,7 @@ export const AuthStack = createStackNavigator(
                 backgroundColor: '#5D99C6',
                 height: 50,
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#E9E9EF',
             headerTitleStyle: {
                 fontWeight: 'bold',
             },

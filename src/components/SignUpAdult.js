@@ -147,7 +147,7 @@ export default class SignUpAdult extends Component {
 
           <Item floatingLabel style={styles.adult_TextInput}>
             <Label>Nombre de usuario</Label>
-            {/* <Label style={{color: '#E40808',}}>Nombre de usuario</Label> */}
+            {/* <Label style={{color: --- ,}}>Nombre de usuario</Label> */}
             <Input
               // <Input success
               maxLength={45}

@@ -3,6 +3,7 @@ import { ActivityIndicator, Alert, View, ScrollView } from 'react-native';
 import { Container, Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import axios from 'axios';
 import { API_SIGN_UP_ADULT } from '../config/const';
+import { validateForm } from "../utils/validations";
 import styles from '../styles';
 
 export default class SignUpAdult extends Component {
@@ -23,53 +24,8 @@ export default class SignUpAdult extends Component {
     };
   }
 
-
-  // Validación Formulario
-  _validate(username, password, password2, email) {
-    formatotexto = /^[a-zA-Z0-9]+$/;
-    formatomail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-])+/;
-
-    if(!(formatotexto.test(username))){
-      Alert.alert('No se puede completar el registro. Por favor revise que escribió un nombre de usuario alfanumérico.');
-    }else if(!(password == password2)){
-      Alert.alert('No se puede completar el registro. Las contraseñas ingresadas no coinciden.');
-    }else if(!(password.length >= 6)){
-      Alert.alert('No se puede completar el registro. La longitud de su contraseña debe ser de al menos 6 caracteres.');
-    }else if(!(formatomail.test(email))){
-      Alert.alert('No se puede completar el registro. Por favor revise que escribió su correo correctamente.');
-    }
-
-
-    if (formatotexto.test(username)
-      && formatomail.test(email)
-      && password == password2
-      && password.length >= 6) {
-      return true;
-    } else {
-      return false;
-    }
-
-    try {
-
-    } catch (error) {
-
-    }
-  }
-
-  // prototipo para despues validar cada paramentro individualmente:
-  // _validateUsername(text) {
-  //   let regExp = /^[a-zA-Z0-9]+$/;
-  //   if (!regExp.test(text)) {
-  //     this.setState({username:text})
-  //     return false
-  //   } else {
-  //     this.setState({username:text})
-  //     return true
-  //   }
-  // }
-
   async _createAdult() {
-    if (this._validate(this.state.username, this.state.password, this.state.password2, this.state.email)) {
+    if (validateForm(this.state.username, this.state.password, this.state.password2, this.state.email)) {
       this.setState({ isLoading: true })
       try {
         // Axios version:

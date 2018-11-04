@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     textContainer: {
-        height: hp('50%'),
+        height: hp('40%'),
         justifyContent: 'center',
     },
     imageContainer: {

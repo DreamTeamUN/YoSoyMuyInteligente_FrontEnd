@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
-// import {  } from 'native-base';
 // import axios from 'axios';
 // import {  } from '../config/const';
-import styles from '../styles';
 
 function validateUsername(username) {
     formatotexto = /^[a-zA-Z0-9]+$/;

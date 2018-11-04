@@ -4,6 +4,8 @@ import { Container, Text, Button, Icon, Label, Form, Item, Input } from 'native-
 import axios from 'axios';
 import { API_SIGN_UP_ADULT } from '../config/const';
 import { validateForm } from "../utils/validations";
+import { sendDataToSignUp } from "../utils/signUp";
+import { sendDataToLogIn, storeToken, getToken, removeToken } from '../utils/logIn';
 import styles from '../styles';
 
 export default class SignUpAdult extends Component {
@@ -14,10 +16,15 @@ export default class SignUpAdult extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
-      password2: '',
-      email: '',
+      username: 'Benito19',
+      password: '123123',
+      password2: '123123',
+      email: 'Benito19@gmail.com',
+      // username: '',
+      // password: '',
+      // password2: '',
+      // fullname: '',
+      // email: '',
       birthdate: '',
       errors: [],
       isLoading: false,
@@ -26,51 +33,38 @@ export default class SignUpAdult extends Component {
 
   async _createAdult() {
     if (validateForm(this.state.username, this.state.password, this.state.password2, this.state.email)) {
-      this.setState({ isLoading: true })
       try {
-        // Axios version:
-        // axios.post(API_SIGN_UP_ADULT, {
-        //   "usuario": {
-        //     "user": this.state.username,
-        //     "password": this.state.password,
-        //     "nombre": this.state.username,
-        //     "email": this.state.email,
-        //     "archivo_id": 0
-        //   }
-        // });
+        this.setState({ isLoading: true })
 
-        // Fetch version:
-        let response = await fetch(API_SIGN_UP_ADULT, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            "usuario": {
-              "user": this.state.username,
-              "password": this.state.password,
-              "nombre": this.state.username,
-              "email": this.state.email,
-              "archivo_id": 0
-            }
-          })
-        });
+        let response = await sendDataToSignUp(API_SIGN_UP_ADULT,
+          this.state.username,
+          this.state.password,
+          this.state.username, // aca va fullname
+          this.state.email
+        )
 
-        // let res = await response.text();
-        // console.log("res is: " + res);
-        let status = response.status
+        let status = response.status;
         console.log("res status: " + status);
 
         switch (status) {
           case 201:
             this.setState({ errors: [] })
             console.log("Nuevo usuario!");
+
+            let resToken = await sendDataToLogIn(this.state.email, this.state.password)
+            resToken = await resToken.json()
+            let accessToken = resToken.jwt
+            storeToken(accessToken);
+            console.log("Access Token: " + accessToken)
+
+            this.setState({ isLoading: false })
+            this.props.navigation.navigate('HomeAdult')
+
             break;
 
           case 422:
             let res = await response.json();
-
+            this.setState({ errors: [] })
             var properties = ["user", "email"];
             for (var i = 0; i < properties.length; i++) {
               if (res[properties[i]] != undefined) {
@@ -78,15 +72,17 @@ export default class SignUpAdult extends Component {
                 this.state.errors.push(res[properties[i]].toString())
               }
             }
+            this.setState({ isLoading: false })
             break;
 
           default:
             break;
         }
 
-        this.setState({ isLoading: false })
+
 
       } catch (error) {
+        this.setState({ isLoading: false })
         console.log("catch errors: " + error)
       }
     }

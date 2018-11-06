@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { View, Switch, AsyncStorage, Image } from 'react-native';
-import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
-import { API_LOG_IN } from '../config/const';
+import { ActivityIndicator, Switch, AsyncStorage, Image } from 'react-native';
+import { View, Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
+// import { API_LOG_IN } from '../config/const';
+import { sendDataToLogIn, storeToken, getToken, removeToken } from '../utils/logIn';
 import styles from '../styles';
 import Expo from "expo";
-
-const ACCESS_TOKEN = 'access_token';
 
 export default class LogIn extends Component {
   static navigationOptions = {
@@ -16,13 +15,16 @@ export default class LogIn extends Component {
     super(props);
     this.toggleSwitch = this.toggleSwitch.bind(this);
     this.state = {
-      username: '',
-      password: '',
+      email: 'Veneco@gmail.com',
+      password: '123123',
+      // email: '',
+      // password: '',
       rememberMe: false,
       error: '',
       signedIn: false,
       name: '',
-      photoUrl: ''
+      photoUrl: '',
+      isLoading: false,
     };
   }
 
@@ -42,7 +44,7 @@ export default class LogIn extends Component {
           photoUrl: result.user.photoUrl
         })
       } else {
-        console.log("cancelled")
+        console.log("Google | Cancelled")
       }
     } catch (e) {
       console.log("error", e)
@@ -50,133 +52,70 @@ export default class LogIn extends Component {
   }
 
   async _logIn() {
-  const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
-    "769489916725698",
-    {
-      permissions: ["public_profile", "email", "user_birthday"]
-    }
-  );
-  if (type === "success") {
-    // Handle successful authentication here
-    const response = await fetch(
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
+      "769489916725698",
+      {
+        permissions: ["public_profile", "email", "user_birthday"]
+      }
+    );
+    if (type === "success") {
+      // Handle successful authentication here
+      const response = await fetch(
         `https://graph.facebook.com/me?access_token=${token}&fields=id,name,birthday,email,picture.type(large)`
       );
-      const { picture, name, birthday,email } = await response.json();
-      console.log(name,email,birthday)
-  } else {
-    console.log("cancelled")
+      const { picture, name, birthday, email } = await response.json();
+      console.log(name, email, birthday)
+    } else {
+      console.log("Facebook | Cancelled")
+    }
   }
-}
 
   toggleSwitch() {
     this.setState({ rememberMe: !this.state.rememberMe });
   }
 
-  async _storeToken(accessToken) {
-    try {
-      await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
-      this._getToken();
-    } catch (error) {
-      console.log("Something went wrong")
-    }
-  }
-
-  async _getToken() {
-    try {
-      let token = await AsyncStorage.getItem(ACCESS_TOKEN);
-      console.log("_getToken | token is: " + token)
-    } catch (error) {
-      console.log("Something went wrong")
-    }
-  }
-
-  async _removeToken() {
-    try {
-      await AsyncStorage.removeItem(ACCESS_TOKEN);
-      this._getToken();
-    } catch (error) {
-      console.log("_removeToken | Something went wrong")
-    }
-  }
-
   async _sendData() {
-    // const arrayData = [];
-
-    // const data = {
-    //   username: this.state.username,
-    //   password: this.state.password
-    // }
-    // arrayData.push(data);
-    // try {
-    //   AsyncStorage.getItem('database_form')
-    //     .then((value) => {
-    //       if (value != null) { // hay datos en database_form
-    //         // AsyncStorage.clear()
-
-    //         const d = JSON.parse(value);
-    //         d.push(data)
-    //         AsyncStorage.setItem('database_form', JSON.stringify(d))
-    //           .then(() => {
-    //             this.props.navigation.navigate('HomeAdult')
-    //           })
-    //       } else { // primera vez que entraran datos
-    //         AsyncStorage.setItem('database_form', JSON.stringify(arrayData))
-    //           .then(() => {
-    //             this.props.navigation.navigate('HomeAdult')
-    //           })
-    //       }
-    //     })
-    // } catch (error) {
-    //   console.log(error)
-    // }
 
     try {
-      // Fetch version:
-      let response = await fetch(API_LOG_IN, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          "auth": {
-            "email": this.state.email,
-            "password": this.state.password,
-          }
-        })
-      });
+      // this.setState({ isLoading: true })
+      let response = await sendDataToLogIn(this.state.email, this.state.password)
 
-      // let res = await response.json();
-      // console.log("res: " + res.jwt)
-      // console.log("jwt: " + response.text().json().jwt);
-      // let responseJson = await response.json();
-      // console.log("jwt is " + responseJson.jwt)
+      console.log("login | res status: " + response.status)
 
       if (response.status >= 200 && response.status < 300) {
         // Success
         let res = await response.json();
         this.setState({ error: "" })
         let accessToken = res.jwt
-        this._storeToken(accessToken);
+        storeToken(accessToken);
         console.log("Access Token: " + accessToken)
         this.props.navigation.navigate('HomeAdult')
       } else {
         // Error
         // let error = res;
         // throw error;
-        this._removeToken()
+        removeToken()
         this.setState({ error: "Algo salio mal" })
       }
-
+      // this.setState({ isLoading: false })
     } catch (error) {
       // this._removeToken()
       this.setState({ error: error })
       console.log("error: " + error)
     }
-
   }
 
   render() {
+    // if (this.state.isLoading) {
+    //   return (
+    //     <View>
+    //       <View style={styles.home_TextContainer}>
+    //         <Text style={styles.headling}>Cargando</Text>
+    //         <ActivityIndicator size="large" color="#4267B2" />
+    //       </View>
+    //     </View>
+    //   );
+    // }
     return (
       <View>
         <Form style={styles.adult_TextInputContainer}>
@@ -212,26 +151,27 @@ export default class LogIn extends Component {
         </Form>
 
         <View style={styles.login_buttonsContainer}>
+          <Text>{this.state.error}</Text>
 
-        <View>
-        <Button iconLeft rounded style={styles.buttonred}
-        onPress={() => this._signIn()}>
-        <View>
-        <Image style={styles.googleIconViewStyle} source={require('../assets/googlelettericon.png')} />
-        </View>
-             <Text >Google</Text>
-       </Button>
-       </View>
+          <View>
+            <Button iconLeft rounded style={styles.buttonred}
+              onPress={() => this._signIn()}>
+              <View>
+                <Image style={styles.googleIconViewStyle} source={require('../assets/googlelettericon.png')} />
+              </View>
+              <Text >Google</Text>
+            </Button>
+          </View>
 
-       <View>
-       <Button iconLeft rounded style={styles.buttonfb}
-       onPress={this._logIn}>
-       <View>
-       <Image style={styles.fbIconViewStyle} source={require('../assets/facebooklettericon.png')} />
-       </View>
-            <Text >Facebook</Text>
-      </Button>
-      </View>
+          <View>
+            <Button iconLeft rounded style={styles.buttonfb}
+              onPress={this._logIn}>
+              <View>
+                <Image style={styles.fbIconViewStyle} source={require('../assets/facebooklettericon.png')} />
+              </View>
+              <Text >Facebook</Text>
+            </Button>
+          </View>
 
           <View>
             <Button iconLeft rounded style={styles.buttonclear}
@@ -240,7 +180,6 @@ export default class LogIn extends Component {
               <Text>Enviar</Text>
             </Button>
           </View>
-          <Text>{this.state.error}</Text>
         </View>
 
 

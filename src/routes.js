@@ -14,6 +14,7 @@ import HomeStudent from './components/HomeStudent';
 import Practices from './components/Practices';
 import GameProgress from './components/GameProgress';
 import AddStudent from './components/AddStudent';
+import EditProfile from './components/EditProfile';
 
 // export const RootStack = createStackNavigator(
 export const AppStack = createStackNavigator(
@@ -25,7 +26,8 @@ export const AppStack = createStackNavigator(
         Sentence: Sentence,
         Games: Games,
         Practices: Practices,
-        AddStudent: AddStudent
+        AddStudent: AddStudent,
+        EditProfile: EditProfile,
     },
 
     {
@@ -35,11 +37,12 @@ export const AppStack = createStackNavigator(
                 backgroundColor: '#5D99C6',
                 height: 50,
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#E9E9EF',
             headerTitleStyle: {
                 fontWeight: 'bold',
             },
         },
+        // headerMode: "none",
     }
 );
 
@@ -60,10 +63,11 @@ export const AuthStack = createStackNavigator(
                 backgroundColor: '#5D99C6',
                 height: 50,
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#E9E9EF',
             headerTitleStyle: {
                 fontWeight: 'bold',
             },
         },
+        // headerMode: "none",
     }
 );

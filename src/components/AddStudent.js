@@ -22,9 +22,9 @@ export default class AddStudent extends Component {
     formatotexto = /^[a-zA-Z0-9]+$/;
 
     if (formatotexto.test(username)) {
-      Alert.alert('El formulario fue llenado correctamente.');
+      Alert.alert('La actualización fue realizada correctamente.');
     } else {
-      Alert.alert('Hay errores en el formulario.');
+      Alert.alert('No se puede realizar la actualización. Por favor revise el nombre ingresado (no puede contener símbolos especiales).');
     }
   }
 
@@ -42,7 +42,7 @@ export default class AddStudent extends Component {
             />
           </Item>
           <Item floatingLabel last>
-            <Label>Foto</Label>
+            <Label>Foto (acá se subirá un archivo).</Label>
             <Input
               onChangeText={(email) => this.setState({ email })}
             />

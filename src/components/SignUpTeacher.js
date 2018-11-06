@@ -3,6 +3,7 @@ import { Alert, View, TextInput } from 'react-native';
 import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import axios from 'axios';
 import { API_SIGN_UP_TEACHER } from '../config/const';
+import { validateForm } from '../utils/validations';
 import styles from '../styles';
 
 export default class SignUpTeacher extends Component {
@@ -21,27 +22,8 @@ export default class SignUpTeacher extends Component {
     };
   }
 
-
-  // Validación Formulario
-  _validate(username, password, password2, email) {
-    formatotexto = /^[a-zA-Z0-9]+$/;
-    formatomail = /\S+@\S+\.\S+/;
-
-    if (formatotexto.test(username)
-      && formatomail.test(email)
-      && password == password2
-      && password.length >= 6
-    ) {
-      // Alert.alert('El formulario fue llenado correctamente.');
-      return true;
-    } else {
-      Alert.alert('Hay errores en el formulario.');
-      return false;
-    }
-  }
-
   _createTeacher() {
-    if (this._validate(this.state.username, this.state.password, this.state.password2, this.state.email)) {
+    if (validateForm(this.state.username, this.state.password, this.state.password2, this.state.email)) {
       Alert.alert("Creando docente")
       axios.post(API_SIGN_UP_TEACHER, {
         "usuario": {

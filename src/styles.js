@@ -5,9 +5,17 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 const styles = StyleSheet.create({
 
     // Common
+    logoinicial: {
+        width: wp('100%'),
+        resizeMode: 'contain',
+    },
     textContainer: {
         height: hp('40%'),
         justifyContent: 'center',
+    },
+    imageContainer: {
+        height: hp('50%'),
+        justifyContent: 'flex-end',
     },
     title: {
         color: '#1F363D',
@@ -25,6 +33,7 @@ const styles = StyleSheet.create({
         height: wp('50%'),
         alignItems: 'center',
         paddingTop: hp('20%'),
+        justifyContent: 'center',
     },
     threebuttonsContainer: {
         height: hp('50%'),

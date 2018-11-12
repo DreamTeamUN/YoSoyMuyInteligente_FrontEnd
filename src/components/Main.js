@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import Expo from "expo";
 import { Button, Icon, Text } from 'native-base';
 import styles from '../styles';
@@ -13,8 +13,8 @@ export default class Main extends Component {
   render() {
     return (
       <View>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Yo Soy Muy Inteligente</Text>
+        <View style={styles.imageContainer}>
+          <Image style={styles.logoinicial} source={require('../assets/logoinicial.png')} />
         </View>
 
         <View style={styles.buttonsContainer}>
@@ -27,7 +27,7 @@ export default class Main extends Component {
 
           <View>
             <Button iconLeft rounded style={styles.buttondark}
-              onPress={() => this.props.navigation.navigate('LogInTypeUser')}>
+              onPress={() => this.props.navigation.navigate('LogIn')}>
               <Icon name="person" />
               <Text>Iniciar Sesión</Text>
             </Button>

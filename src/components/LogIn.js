@@ -156,9 +156,7 @@ export default class LogIn extends Component {
           <View>
             <Button iconLeft rounded style={styles.buttonred}
               onPress={() => this._signIn()}>
-              <View>
-                <Image style={styles.googleIconViewStyle} source={require('../assets/googlelettericon.png')} />
-              </View>
+              <Icon type="FontAwesome" name="google" />
               <Text >Google</Text>
             </Button>
           </View>
@@ -166,9 +164,7 @@ export default class LogIn extends Component {
           <View>
             <Button iconLeft rounded style={styles.buttonfb}
               onPress={this._logIn}>
-              <View>
-                <Image style={styles.fbIconViewStyle} source={require('../assets/facebooklettericon.png')} />
-              </View>
+              <Icon type="EvilIcons" name="sc-facebook" />
               <Text >Facebook</Text>
             </Button>
           </View>

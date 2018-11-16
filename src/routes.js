@@ -31,7 +31,7 @@ export const AppStack = createStackNavigator(
     },
 
     {
-        initialRouteName: 'HomeAdult',
+        initialRouteName: 'Practices',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',
@@ -55,9 +55,10 @@ export const AuthStack = createStackNavigator(
         SignUpTeacher: SignUpTeacher,
         LogInTypeUser: LogInTypeUser,
         LogIn: LogIn,
+        Practices:Practices,
     },
     {
-        initialRouteName: 'Main',
+        initialRouteName: 'Practices',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',

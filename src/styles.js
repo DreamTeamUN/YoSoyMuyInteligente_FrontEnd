@@ -50,6 +50,16 @@ const styles = StyleSheet.create({
         marginBottom: hp('3%'),
         backgroundColor: '#5D99C6',
     },
+    buttonclearpra: {
+        marginBottom: hp('3%'),
+        width: wp('18%'),
+        backgroundColor: '#90CAF9',
+    },
+    buttondarkpra: {
+        marginBottom: hp('3%'),
+        width: wp('18%'),
+        backgroundColor: '#5D99C6',
+    },
     buttonred: {
         marginBottom: hp('3%'),
         backgroundColor: '#DC143C',
@@ -133,17 +143,32 @@ const styles = StyleSheet.create({
 
 
     // Practicas
+    textopracticas: {
+        marginTop: hp('8%'),
+        marginBottom: hp('5%'),
+        width: wp('100%'),
+        fontSize: wp('10%'),
+        textAlign: 'center',
+
+    },
     menupracticas: {
-        margin: 10,
-        marginTop: 30,
-        marginLeft: 40,
-        marginRight: 40,
+        paddingTop: hp('5%'),
+        justifyContent: 'space-between',
+    },
+    filapracticas: {
+        width: wp('90%'),
+        marginTop: hp('2%'),
+        marginLeft: hp('2%'),
+        marginRight: hp('2%'),
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
     },
     numbers: {
-        fontSize: 40,
+        fontSize: wp('8%'),
+        fontWeight: 'bold',
+        width: wp('18%'),
+        textAlign: 'center',
     }
 });
 

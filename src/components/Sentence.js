@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView, FlatList } from 'react-native';
 import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
+import numWeek from './Practices';
 
  class LogoTitle extends React.Component {
   render() {
@@ -18,9 +19,10 @@ import styles from '../styles';
       isLoading: false,
       lessons: [],
       text:"",
-      url: 'https://ysmiapi.herokuapp.com/leccions/1',
+      var url = 'https://ysmiapi.herokuapp.com/leccions/' + practices.numWeek,
     };
   }
+
 
   componentDidMount() {
     this.getLessons();

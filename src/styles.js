@@ -119,8 +119,6 @@ const styles = StyleSheet.create({
   marginLeft: wp('5%'),
 },
 
-
-
     //Adult/Teacher Home
     homeAdult_TextContainer: {
         height: hp('30%'),
@@ -139,20 +137,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-
-
-
     // Practicas
     textopracticas: {
-        marginTop: hp('8%'),
-        marginBottom: hp('5%'),
+        marginBottom: hp('3%'),
         width: wp('100%'),
-        fontSize: wp('10%'),
+        fontSize: wp('13%'),
         textAlign: 'center',
 
     },
     menupracticas: {
-        paddingTop: hp('5%'),
+      
+        paddingTop: hp('3%'),
         justifyContent: 'space-between',
     },
     filapracticas: {

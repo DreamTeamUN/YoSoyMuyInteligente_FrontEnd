@@ -56,6 +56,7 @@ export const AuthStack = createStackNavigator(
         LogInTypeUser: LogInTypeUser,
         LogIn: LogIn,
         Practices:Practices,
+        Sentence: Sentence,
     },
     {
         initialRouteName: 'Practices',

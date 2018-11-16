@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView, FlatList } from 'react-native';
 import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
-import numWeek from './Practices';
+import { WEEK } from './Practices';
+import { API_LESSONS } from '../config/const';
 
  class LogoTitle extends React.Component {
   render() {
@@ -15,11 +16,12 @@ import numWeek from './Practices';
  export default class WeekProgress extends Component {
   constructor(props) {
     super(props);
+    console.log(WEEK);
     this.state = {
       isLoading: false,
       lessons: [],
-      text:"",
-      var url = 'https://ysmiapi.herokuapp.com/leccions/' + practices.numWeek,
+      text: "",
+      url: API_LESSONS.concat(WEEK),
     };
   }
 
@@ -29,7 +31,6 @@ import numWeek from './Practices';
 
     //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
     if (!this.state.isLoading){
-
 
       var i = 0
       var j = 0

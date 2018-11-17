@@ -31,7 +31,7 @@ export const AppStack = createStackNavigator(
     },
 
     {
-        initialRouteName: 'Practices',
+        initialRouteName: 'HomeAdult',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',
@@ -42,7 +42,6 @@ export const AppStack = createStackNavigator(
                 fontWeight: 'bold',
             },
         },
-        // headerMode: "none",
     }
 );
 
@@ -50,6 +49,7 @@ export const AppStack = createStackNavigator(
 export const AuthStack = createStackNavigator(
     {
         Main: Main,
+        HomeAdult: HomeAdult,
         SignUpMain: SignUpMain,
         SignUpAdult: SignUpAdult,
         SignUpTeacher: SignUpTeacher,
@@ -59,7 +59,7 @@ export const AuthStack = createStackNavigator(
         Sentence: Sentence,
     },
     {
-        initialRouteName: 'Practices',
+        initialRouteName: 'Main',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',
@@ -70,6 +70,5 @@ export const AuthStack = createStackNavigator(
                 fontWeight: 'bold',
             },
         },
-        // headerMode: "none",
     }
 );

@@ -4,7 +4,6 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const styles = StyleSheet.create({
 
-    // Common
     logoinicial: {
         width: wp('100%'),
         resizeMode: 'contain',
@@ -14,7 +13,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imageContainer: {
-        height: hp('50%'),
+        height: hp('40%'),
         justifyContent: 'flex-end',
     },
     title: {
@@ -146,7 +145,7 @@ const styles = StyleSheet.create({
 
     },
     menupracticas: {
-      
+
         paddingTop: hp('3%'),
         justifyContent: 'space-between',
     },

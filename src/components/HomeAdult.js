@@ -69,13 +69,13 @@ export default class HomeAdult extends Component {
           <View>
             <Button iconLeft rounded style={styles.buttonclear}
               onPress={() => this.props.navigation.navigate('EditProfile')}>
-              <Icon name="apps" />
+              <Icon type="Feather" name="edit" />
               <Text>Editar perfil</Text>
             </Button>
           </View>
 
           <View>
-            <Button iconLeft rounded style={styles.buttonclear}
+            <Button iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('WeekProgress')}>
               <Icon name="apps" />
               <Text>Progreso Semanas</Text>
@@ -83,7 +83,7 @@ export default class HomeAdult extends Component {
           </View>
 
           <View>
-            <Button iconLeft rounded style={styles.buttondark}
+            <Button iconLeft rounded style={styles.buttonclear}
               onPress={() => this.props.navigation.navigate('GameProgress')}>
               <Icon type="MaterialIcons" name="videogame-asset" />
               <Text>Progreso Juegos</Text>
@@ -91,7 +91,7 @@ export default class HomeAdult extends Component {
           </View>
 
           <View>
-            <Button iconLeft rounded style={styles.buttonclear}
+            <Button iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('Forum')}>
               <Icon type="MaterialCommunityIcons" name="forum" />
               <Text>Ingreso al foro</Text>
@@ -99,7 +99,7 @@ export default class HomeAdult extends Component {
           </View>
 
           <View>
-            <Button iconLeft rounded style={styles.buttondark}
+            <Button iconLeft rounded style={styles.buttonclear}
               onPress={() => this.props.navigation.navigate('AddStudent')}>
               <Icon type="MaterialCommunityIcons" name="settings" />
               <Text>Administrar estudiantes</Text>
@@ -118,7 +118,7 @@ export default class HomeAdult extends Component {
             {/* <Button iconLeft rounded style={styles.buttondark} */}
             <Button rounded style={styles.buttondark}
               onPress={this._signOutAsync}>
-              {/* <Icon type="MaterialCommunityIcons" name="exit_to_app" /> */}
+              <Icon type="Entypo" name="log-out" />
               <Text>Cerrar sesion</Text>
             </Button>
             <StatusBar

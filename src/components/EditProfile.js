@@ -6,7 +6,6 @@ import styles from '../styles';
 import { StyleProvider } from "native-base";
 import getTheme from "../../native-base-theme/components";
 import variables from "../../native-base-theme/variables/commonColor";
-// import custom from '../../native-base-theme/variables/custom';
 
 export default class EditProfile extends Component {
 

@@ -15,9 +15,6 @@ class LogoTitle extends React.Component {
 }
 
 export default class WeekProgress extends Component {
-  // static navigationOptions = {
-  //   title: 'Inicio',
-  // };
 
   constructor(props) {
     super(props);

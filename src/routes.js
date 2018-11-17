@@ -16,7 +16,6 @@ import GameProgress from './components/GameProgress';
 import AddStudent from './components/AddStudent';
 import EditProfile from './components/EditProfile';
 
-// export const RootStack = createStackNavigator(
 export const AppStack = createStackNavigator(
     {
         HomeAdult: HomeAdult,
@@ -42,7 +41,6 @@ export const AppStack = createStackNavigator(
                 fontWeight: 'bold',
             },
         },
-        // headerMode: "none",
     }
 );
 
@@ -50,11 +48,14 @@ export const AppStack = createStackNavigator(
 export const AuthStack = createStackNavigator(
     {
         Main: Main,
+        HomeAdult: HomeAdult,
         SignUpMain: SignUpMain,
         SignUpAdult: SignUpAdult,
         SignUpTeacher: SignUpTeacher,
         LogInTypeUser: LogInTypeUser,
         LogIn: LogIn,
+        Practices:Practices,
+        Sentence: Sentence,
     },
     {
         initialRouteName: 'Main',
@@ -68,6 +69,5 @@ export const AuthStack = createStackNavigator(
                 fontWeight: 'bold',
             },
         },
-        // headerMode: "none",
     }
 );

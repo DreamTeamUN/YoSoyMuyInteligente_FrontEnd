@@ -7,9 +7,6 @@ import { getToken, removeToken } from '../utils/logIn';
 import styles from '../styles';
 
 export default class HomeAdult extends Component {
-  // static navigationOptions = {
-  //   title: 'Adulto/Docente',
-  // };
 
   constructor(props) {
     super(props);
@@ -76,7 +73,8 @@ export default class HomeAdult extends Component {
 
           <View>
             <Button iconLeft rounded style={styles.buttondark}
-              onPress={() => this.props.navigation.navigate('WeekProgress')}>
+              //onPress={() => this.props.navigation.navigate('WeekProgress')}>
+              onPress={() => this.props.navigation.navigate('Practices')}>
               <Icon name="apps" />
               <Text>Progreso Semanas</Text>
             </Button>

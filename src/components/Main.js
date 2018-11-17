@@ -67,8 +67,6 @@ export default class Main extends Component {
         this.props.navigation.navigate('HomeAdult')
       } else {
         // Error
-        // let error = res;
-        // throw error;
         removeToken()
         this.setState({ error: "Algo salio mal" })
       }

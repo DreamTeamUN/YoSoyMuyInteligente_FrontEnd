@@ -4,6 +4,7 @@ import { Text, Button, Icon, Content } from 'native-base';
 import axios from "axios";
 import { API_USERS } from '../config/const';
 import { getToken, removeToken } from '../utils/logIn';
+import { getUserData, getUsername } from '../utils/home';
 import styles from '../styles';
 
 export default class HomeAdult extends Component {
@@ -21,15 +22,10 @@ export default class HomeAdult extends Component {
     try {
       let token = await getToken()
       console.log("HomeAdult componentWillMount | token: " + token)
-      let response = await fetch(API_USERS, {
-        method: 'GET',
-        headers: new Headers({
-          "Authorization": 'Bearer ' + token
-        }),
-      });
-      let res = await response.json();
+      getUserData(token);
+      // let res = await response.json();
       this.setState({
-        username: res.user,
+        username: await getUsername(),
       })
       console.log("HomeAdult | user: " + this.state.username)
     } catch (error) {

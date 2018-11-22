@@ -48,14 +48,11 @@ export const AppStack = createStackNavigator(
 export const AuthStack = createStackNavigator(
     {
         Main: Main,
-        HomeAdult: HomeAdult,
         SignUpMain: SignUpMain,
         SignUpAdult: SignUpAdult,
         SignUpTeacher: SignUpTeacher,
         LogInTypeUser: LogInTypeUser,
         LogIn: LogIn,
-        Practices:Practices,
-        Sentence: Sentence,
     },
     {
         initialRouteName: 'Main',

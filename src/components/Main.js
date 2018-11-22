@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import Expo from "expo";
 import { Button, Icon, Text } from 'native-base';
+import { sendDataToLogIn, storeToken, getToken, removeToken, sendDataToSocials } from '../utils/logIn';
 import styles from '../styles';
 
 export default class Main extends Component {
@@ -15,16 +16,26 @@ export default class Main extends Component {
       const result = await Expo.Google.logInAsync({
         androidClientId:
           "99894503572-hi17jagkv4uc28222pdl9eki2n2rsovf.apps.googleusercontent.com",
+        //iosClientId: YOUR_CLIENT_ID_HERE,  <-- if you use iOS
         scopes: ["profile", "email"]
       })
-      console.log(result)
-      if (result.type === "success") {
-        this.setState({
-          signedIn: true,
-          name: result.user.name,
-          photoUrl: result.user.photoUrl
-        })
-      } else {
+      //console.log(result)
+      //if (result.type === "success") {
+        //this.setState({
+          //signedIn: true,
+          //name: result.user.name,
+          //photoUrl: result.user.photoUrl
+        //})
+      //} else {
+        //console.log("Google | Cancelled")
+      //}
+      if (result.type === "success"){
+        let response = await sendDataToSocials(result.user.name, result.user.email, 1)
+        let res = await response.json();
+        storeToken(res.jwt);
+        this.props.navigation.navigate('HomeAdult')
+
+      }else {
         console.log("Google | Cancelled")
       }
     } catch (e) {

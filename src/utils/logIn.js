@@ -10,7 +10,7 @@ export const storeToken = async (accessToken) => {
         await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
         getToken();
     } catch (error) {
-        console.log("Something went wrong")
+        console.log("storeToken | Something went wrong")
     }
 }
 

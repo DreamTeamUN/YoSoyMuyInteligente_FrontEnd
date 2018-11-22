@@ -14,7 +14,7 @@ export default class LogIn extends Component {
     super(props);
     this.toggleSwitch = this.toggleSwitch.bind(this);
     this.state = {
-      email: 'prueba@gmail.com',
+      email: 'Benito19@gmail.com',
       password: '123123',
       rememberMe: false,
       error: '',

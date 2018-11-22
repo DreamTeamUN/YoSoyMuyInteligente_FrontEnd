@@ -15,6 +15,7 @@ import Practices from './components/Practices';
 import GameProgress from './components/GameProgress';
 import AddStudent from './components/AddStudent';
 import EditProfile from './components/EditProfile';
+import ForumScreen from './components/ForumScreen';
 
 export const AppStack = createStackNavigator(
     {
@@ -27,6 +28,7 @@ export const AppStack = createStackNavigator(
         Practices: Practices,
         AddStudent: AddStudent,
         EditProfile: EditProfile,
+        ForumScreen: ForumScreen,
     },
 
     {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
 // import {  } from 'native-base';
-import { API_LOG_IN } from '../config/const';
+import { API_LOG_IN, API_SOCIALS } from '../config/const';
 
 const ACCESS_TOKEN = 'access_token';
 
@@ -10,7 +10,7 @@ export const storeToken = async (accessToken) => {
         await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
         getToken();
     } catch (error) {
-        console.log("Something went wrong")
+        console.log("storeToken | Something went wrong")
     }
 }
 
@@ -46,6 +46,23 @@ export const sendDataToLogIn = async (email, password) => {
                 "email": email,
                 "password": password,
             }
+        })
+    })
+
+}
+
+export const sendDataToSocials = async (name, email, tipo_usuario) => {
+    // Fetch version:
+    return fetch(API_SOCIALS, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "name": name,
+          "email": email,
+          "tipo_usuario": tipo_usuario
         })
     })
 

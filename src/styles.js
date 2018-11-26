@@ -4,7 +4,6 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const styles = StyleSheet.create({
 
-    // Common
     logoinicial: {
         width: wp('100%'),
         resizeMode: 'contain',
@@ -14,7 +13,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imageContainer: {
-        height: hp('50%'),
+        height: hp('40%'),
         justifyContent: 'flex-end',
     },
     title: {
@@ -48,6 +47,16 @@ const styles = StyleSheet.create({
     },
     buttondark: {
         marginBottom: hp('3%'),
+        backgroundColor: '#5D99C6',
+    },
+    buttonclearpra: {
+        marginBottom: hp('3%'),
+        width: wp('18%'),
+        backgroundColor: '#90CAF9',
+    },
+    buttondarkpra: {
+        marginBottom: hp('3%'),
+        width: wp('18%'),
         backgroundColor: '#5D99C6',
     },
     buttonred: {
@@ -109,8 +118,6 @@ const styles = StyleSheet.create({
   marginLeft: wp('5%'),
 },
 
-
-
     //Adult/Teacher Home
     homeAdult_TextContainer: {
         height: hp('30%'),
@@ -129,21 +136,33 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-
-
-
     // Practicas
+    textopracticas: {
+        marginBottom: hp('3%'),
+        width: wp('100%'),
+        fontSize: wp('13%'),
+        textAlign: 'center',
+
+    },
     menupracticas: {
-        margin: 10,
-        marginTop: 30,
-        marginLeft: 40,
-        marginRight: 40,
+
+        paddingTop: hp('3%'),
+        justifyContent: 'space-between',
+    },
+    filapracticas: {
+        width: wp('90%'),
+        marginTop: hp('2%'),
+        marginLeft: hp('2%'),
+        marginRight: hp('2%'),
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
     },
     numbers: {
-        fontSize: 40,
+        fontSize: wp('8%'),
+        fontWeight: 'bold',
+        width: wp('18%'),
+        textAlign: 'center',
     }
 });
 

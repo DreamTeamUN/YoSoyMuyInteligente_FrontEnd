@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Alert } from 'react-native';
-import { Container, Header, Content, Form, Item, Label, Input, Button, Icon, Title, Left, Right, Body, Text } from 'native-base';
+import { Container, Header, Content, Form, Item, Label, Input, Button, Icon, Title, Left, Right, Body, Text, List, ListItem } from 'native-base';
 import styles from '../styles';
 
 import { StyleProvider } from "native-base";
@@ -13,8 +13,16 @@ export default class EditProfile extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      fullname: '',
+      password: '',
+      password2: '',
+      birthdate: '',
+      // foto: '',
+      errors: [],
+      isLoading: false,
+    };
   }
-
 
   async _sendNewData() {
     putEditData("Benito Camelas")
@@ -27,7 +35,7 @@ export default class EditProfile extends Component {
     return (
       <StyleProvider style={getTheme(variables)}>
         <Container>
-          <Header>
+          {/* <Header>
             <Left>
               <Button transparent onPress={() => this.props.navigation.goBack()}>
                 <Icon name="arrow-back" />
@@ -37,19 +45,27 @@ export default class EditProfile extends Component {
               <Title>Editar perfil</Title>
             </Body>
             <Right />
-          </Header>
+          </Header> */}
 
           <Content>
-            <Form>
-              <Item inlineLabel>
-                <Label>Username</Label>
-                <Input />
-              </Item>
-              <Item inlineLabel last>
-                <Label>Password</Label>
-                <Input />
-              </Item>
-            </Form>
+
+            <List>
+              <ListItem
+                // onPress={this._sendNewData.bind(this)}
+                >
+                <Text>Nombre</Text>
+              </ListItem>
+              <ListItem>
+                <Text>Cambiar Contraseña</Text>
+              </ListItem>
+              <ListItem>
+                <Text>Cumpleaños</Text>
+              </ListItem>
+              <ListItem>
+                <Text>Cambiar foto (temporal)</Text>
+              </ListItem>
+            </List>
+
           </Content>
 
           <View>
@@ -60,6 +76,7 @@ export default class EditProfile extends Component {
               <Text>Enviar cambios</Text>
             </Button>
           </View>
+
         </Container>
       </StyleProvider>
     );

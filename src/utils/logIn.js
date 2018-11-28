@@ -51,7 +51,7 @@ export const sendDataToLogIn = async (email, password) => {
 
 }
 
-export const sendDataToSocials = async (name, email, tipo_usuario) => {
+export const sendDataToSocials = async (name, email, tipo_usuario, token) => {
     // Fetch version:
     return fetch(API_SOCIALS, {
         method: 'POST',
@@ -62,7 +62,8 @@ export const sendDataToSocials = async (name, email, tipo_usuario) => {
         body: JSON.stringify({
           "name": name,
           "email": email,
-          "tipo_usuario": tipo_usuario
+          "tipo_usuario": tipo_usuario,
+          "token": token
         })
     })
 

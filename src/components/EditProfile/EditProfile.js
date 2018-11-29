@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { View, Alert } from 'react-native';
 import { Container, Header, Content, Form, Item, Label, Input, Button, Icon, Title, Left, Right, Body, Text, List, ListItem } from 'native-base';
-import styles from '../styles';
+import styles from '../../styles';
 
 import { StyleProvider } from "native-base";
-import getTheme from "../../native-base-theme/components";
-import variables from "../../native-base-theme/variables/commonColor";
+import getTheme from "../../../native-base-theme/components";
+import variables from "../../../native-base-theme/variables/commonColor";
 
-import { putEditData } from '../utils/editProfile';
+import { putEditData } from '../../utils/editProfile';
 
 export default class EditProfile extends Component {
 

@@ -53,7 +53,8 @@ export default class EditProfile extends Component {
                 <Text>Cambiar Contraseña</Text>
               </ListItem>
 
-              <ListItem>
+              <ListItem
+                onPress={() => this.props.navigation.navigate('ChangeBirthdate')}>
                 <Text>Cumpleaños</Text>
               </ListItem>
               <ListItem>

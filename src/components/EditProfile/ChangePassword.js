@@ -2,21 +2,25 @@ import React, { Component } from 'react';
 import { View, Alert } from 'react-native';
 import { Container, Header, Content, Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import styles from '../../styles';
-import { editFullname } from '../../utils/editProfile';
+import { validatePassword } from '../../utils/validations';
+import { editPassword } from '../../utils/editProfile';
 
-export default class ChangeFullname extends Component {
+export default class ChangePassword extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            fullname: '',
+            password: '',
+            password2: '',
         };
     }
 
     async _sendNewData() {
-        editFullname(this.state.fullname)
-        console.log("editFullname Done")
-        this.props.navigation.goBack()
+        if (validatePassword(this.state.password, this.state.password2)) {
+            editPassword(this.state.password)
+            console.log("editPassword Done")
+            this.props.navigation.goBack()
+        }
     }
 
     render() {
@@ -29,12 +33,19 @@ export default class ChangeFullname extends Component {
                     <Form style={styles.adult_TextInputContainer}>
 
                         <Item floatingLabel style={styles.adult_TextInput}>
-                            <Label>Nombre completo</Label>
-                            {/* <Label style={{color: --- ,}}>Nombre de usuario</Label> */}
+                            <Label>Nueva contraseña</Label>
                             <Input
-                                maxLength={45}
-                                onChangeText={(fullname) => this.setState({ fullname })}
-                                value={this.state.fullname}
+                                secureTextEntry={true}
+                                onChangeText={(password) => this.setState({ password })}
+                                value={this.state.password}
+                            />
+                        </Item>
+                        <Item floatingLabel style={styles.adult_TextInput}>
+                            <Label>Confirmar contraseña</Label>
+                            <Input
+                                secureTextEntry={true}
+                                onChangeText={(password2) => this.setState({ password2 })}
+                                value={this.state.password2}
                             />
                         </Item>
                         <View>

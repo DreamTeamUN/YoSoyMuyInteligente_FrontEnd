@@ -7,7 +7,7 @@ import { StyleProvider } from "native-base";
 import getTheme from "../../../native-base-theme/components";
 import variables from "../../../native-base-theme/variables/commonColor";
 
-import { putEditData } from '../../utils/editProfile';
+// import { putEditData } from '../../utils/editProfile';
 
 export default class EditProfile extends Component {
 
@@ -22,13 +22,6 @@ export default class EditProfile extends Component {
       errors: [],
       isLoading: false,
     };
-  }
-
-  async _sendNewData() {
-    putEditData("Benito Camelas")
-    // let token = await getToken()
-    // getUserData(token);
-    console.log("_sendNewData Done")
   }
 
   render() {
@@ -51,13 +44,15 @@ export default class EditProfile extends Component {
 
             <List>
               <ListItem
-                // onPress={this._sendNewData.bind(this)}
-                >
+                onPress={() => this.props.navigation.navigate('ChangeFullname')} >
                 <Text>Nombre</Text>
               </ListItem>
-              <ListItem>
+
+              <ListItem
+                onPress={() => this.props.navigation.navigate('ChangePassword')}>
                 <Text>Cambiar Contraseña</Text>
               </ListItem>
+
               <ListItem>
                 <Text>Cumpleaños</Text>
               </ListItem>
@@ -67,15 +62,6 @@ export default class EditProfile extends Component {
             </List>
 
           </Content>
-
-          <View>
-            <Button iconLeft rounded
-              style={styles.buttondark}
-              onPress={this._sendNewData.bind(this)} >
-              <Icon type="MaterialIcons" name="done" />
-              <Text>Enviar cambios</Text>
-            </Button>
-          </View>
 
         </Container>
       </StyleProvider>

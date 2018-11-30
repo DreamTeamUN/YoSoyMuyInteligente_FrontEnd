@@ -4,7 +4,7 @@ import { API_USERS } from '../config/const';
 import { getID } from './home';
 import { getToken } from './logIn';
 
-export const putEditData = async (fullname) => {
+export const editFullname = async (fullname) => {
     try {
         let ID = await getID();
         const API_USERS_PUT = `${API_USERS}/${ID}`;
@@ -16,11 +16,32 @@ export const putEditData = async (fullname) => {
             }),
             body: JSON.stringify({
                 "usuario": {
-                    "user": fullname
+                    "nombre": fullname
                 }
             })
         });
     } catch (error) {
-        console.log("putEditData | Something went wrong")
+        console.log("editFullname | Something went wrong")
+    }
+}
+
+export const editPassword = async (password) => {
+    try {
+        let ID = await getID();
+        const API_USERS_PUT = `${API_USERS}/${ID}`;
+        let response = await fetch(API_USERS_PUT, {
+            method: 'PUT',
+            headers: new Headers({
+                "Authorization": 'Bearer ' + await getToken(),
+                'Content-Type': 'application/json',
+            }),
+            body: JSON.stringify({
+                "usuario": {
+                    "password": password
+                }
+            })
+        });
+    } catch (error) {
+        console.log("editPassword | Something went wrong")
     }
 }

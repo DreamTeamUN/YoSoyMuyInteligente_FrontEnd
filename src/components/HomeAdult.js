@@ -86,7 +86,7 @@ export default class HomeAdult extends Component {
 
           <View>
             <Button iconLeft rounded style={styles.buttondark}
-              onPress={() => this.props.navigation.navigate('ForumScreen')}>
+              onPress={() => this.props.navigation.navigate('HomeForum')}>
               <Icon type="MaterialCommunityIcons" name="forum" />
               <Text>Ingreso al foro</Text>
             </Button>

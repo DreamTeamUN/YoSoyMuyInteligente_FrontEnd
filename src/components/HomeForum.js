@@ -18,7 +18,7 @@ export default class CardImageExample extends Component {
               </Left>
             </CardItem>
             <CardItem cardBody>
-              <Image source={{uri: 'Image URL'}} style={{height: 200, width: null, flex: 1}}/>
+              <Image source={{uri: 'https://i1.sndcdn.com/artworks-000273861158-p5s2iy-t500x500.jpg'}} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
               <Left>

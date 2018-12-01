@@ -22,7 +22,7 @@ export default class HomeAdult extends Component {
     try {
       let token = await getToken()
       console.log("HomeAdult componentWillMount | token: " + token)
-      getUserData(token);
+      await getUserData(token);
       // let res = await response.json();
       this.setState({
         username: await getUsername(),

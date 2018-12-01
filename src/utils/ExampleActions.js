@@ -1,6 +1,4 @@
-/**
- * Created by tino on 1/15/18.
- */
+
 
 const sampleCommentsRaw = require('./sampleComments');
 

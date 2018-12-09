@@ -25,6 +25,8 @@
     "native-base": "^2.8.1",
     "react": "16.3.1",
     "react-native": "~0.55.2",
+    "react-native-orientation": "git+https://github.com/yamill/react-native-orientation.git",
+    "react-native-orientation-locker": "^1.0.22",
     "react-native-comments": "^1.1.1",
     "react-native-responsive-screen": "^1.1.9",
     "react-navigation": "^2.17.0"

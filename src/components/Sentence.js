@@ -4,6 +4,7 @@ import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 import { WEEK } from './Practices';
 import { API_LESSONS } from '../config/const';
+import Orientation from 'react-native-orientation';
 
  class LogoTitle extends React.Component {
   render() {
@@ -25,11 +26,14 @@ import { API_LESSONS } from '../config/const';
     };
   }
 
-
   componentDidMount() {
+
+    //Orientation.addOrientationListener(() => {Orientation.lockToLandscape()});
+
+    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
+
     this.getLessons();
 
-    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
     if (!this.state.isLoading){
 
       var i = 0
@@ -49,10 +53,6 @@ import { API_LESSONS } from '../config/const';
       }, 1000);
     }
     //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
-  }
-
-  componentWillMount() {
-    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
   }
 
   getLessons = () => {

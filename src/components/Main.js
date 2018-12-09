@@ -30,7 +30,8 @@ export default class Main extends Component {
         //console.log("Google | Cancelled")
       //}
       if (result.type === "success"){
-        let response = await sendDataToSocials(result.user.name, result.user.email, 1)
+        console.log(result)
+        let response = await sendDataToSocials(result.user.name, result.user.email, 1, result.accessToken)
         let res = await response.json();
         storeToken(res.jwt);
         this.props.navigation.navigate('HomeAdult')

@@ -19,6 +19,8 @@ import EditProfile from './components/EditProfile/EditProfile';
 import ChangeFullname from './components/EditProfile/ChangeFullname';
 import ChangePassword from './components/EditProfile/ChangePassword';
 import ChangeBirthdate from './components/EditProfile/ChangeBirthdate';
+import ForumScreen from './components/ForumScreen';
+import HomeForum from './components/HomeForum'
 
 export const AppStack = createStackNavigator(
     {
@@ -34,6 +36,8 @@ export const AppStack = createStackNavigator(
         ChangeFullname: ChangeFullname,
         ChangePassword: ChangePassword,
         ChangeBirthdate: ChangeBirthdate,
+        ForumScreen: ForumScreen,
+        HomeForum: HomeForum,
     },
 
     {

@@ -55,7 +55,7 @@ export default class EditProfile extends Component {
 
               <ListItem
                 onPress={() => this.props.navigation.navigate('ChangeBirthdate')}>
-                <Text>Cumpleaños</Text>
+                <Text>Fecha de nacimiento</Text>
               </ListItem>
               <ListItem>
                 <Text>Cambiar foto (temporal)</Text>

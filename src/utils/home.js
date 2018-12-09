@@ -16,7 +16,7 @@ const storeUserData = async (id, username, tipo_usuario_id) => {
     }
 }
 
-export const getUserData = async (token) => {
+export const setUserData = async (token) => {
     try {
         let response = await fetch(API_USERS, {
             method: 'GET',
@@ -28,7 +28,7 @@ export const getUserData = async (token) => {
         storeUserData(res.id, res.user, res.tipo_usuario_id);
         return response
     } catch (error) {
-        console.log("getUserData | Something went wrong")
+        console.log("setUserData | Something went wrong")
     }
 }
 

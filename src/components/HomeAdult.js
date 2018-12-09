@@ -4,7 +4,7 @@ import { Text, Button, Icon, Content } from 'native-base';
 import axios from "axios";
 import { API_USERS } from '../config/const';
 import { getToken, removeToken } from '../utils/logIn';
-import { getUserData, getUsername } from '../utils/home';
+import { setUserData, getUsername } from '../utils/home';
 import styles from '../styles';
 
 export default class HomeAdult extends Component {
@@ -22,7 +22,7 @@ export default class HomeAdult extends Component {
     try {
       let token = await getToken()
       console.log("HomeAdult componentWillMount | token: " + token)
-      getUserData(token);
+      await setUserData(token);
       // let res = await response.json();
       this.setState({
         username: await getUsername(),
@@ -86,7 +86,7 @@ export default class HomeAdult extends Component {
 
           <View>
             <Button iconLeft rounded style={styles.buttondark}
-              onPress={() => this.props.navigation.navigate('Forum')}>
+              onPress={() => this.props.navigation.navigate('HomeForum')}>
               <Icon type="MaterialCommunityIcons" name="forum" />
               <Text>Ingreso al foro</Text>
             </Button>

@@ -4,7 +4,6 @@ import {Text, Button, Icon} from 'native-base';
 import styles from '../styles';
 import { WEEK } from './Practices';
 import { API_LESSONS } from '../config/const';
-import Orientation from 'react-native-orientation';
 
  class LogoTitle extends React.Component {
   render() {

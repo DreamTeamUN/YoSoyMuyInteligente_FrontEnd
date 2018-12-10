@@ -131,7 +131,7 @@ export default class ForumScreen extends Component {
           style={{ height: 200 }}
           source={{
             uri:
-              "https://vignette.wikia.nocookie.net/overlordmaruyama/images/8/81/Shalltear_Bloodfallen.png/revision/latest?cb=20150324031532"
+              "https://i1.sndcdn.com/artworks-000273861158-p5s2iy-t500x500.jpg"
           }}
         />
 

@@ -8,7 +8,7 @@ export default class CardImageExample extends Component {
         <Header />
         <Content>
           <Card>
-            <CardItem>
+            <CardItem >
               <Left>
                 <Thumbnail source={{uri: 'Image URL'}} />
                 <Body>
@@ -17,7 +17,7 @@ export default class CardImageExample extends Component {
                 </Body>
               </Left>
             </CardItem>
-            <CardItem cardBody>
+            <CardItem cardBody button onPress={() => this.props.navigation.navigate('ForumScreen')}>
               <Image source={{uri: 'https://i1.sndcdn.com/artworks-000273861158-p5s2iy-t500x500.jpg'}} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>

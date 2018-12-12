@@ -21,6 +21,7 @@ import ChangePassword from './components/EditProfile/ChangePassword';
 import ChangeBirthdate from './components/EditProfile/ChangeBirthdate';
 import ForumScreen from './components/ForumScreen';
 import HomeForum from './components/HomeForum'
+import ClassRoom from './components/classroom'
 
 export const AppStack = createStackNavigator(
     {
@@ -28,6 +29,7 @@ export const AppStack = createStackNavigator(
         HomeStudent: HomeStudent,
         WeekProgress: WeekProgress,
         GameProgress: GameProgress,
+        ClassRoom: ClassRoom,
         Sentence: Sentence,
         Games: Games,
         Practices: Practices,

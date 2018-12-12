@@ -94,7 +94,7 @@ export default class HomeAdult extends Component {
 
           <View>
             <Button iconLeft rounded style={styles.buttonclear}
-              onPress={() => this.props.navigation.navigate('AddStudent')}>
+              onPress={() => this.props.navigation.navigate('ClassRoom')}>
               <Icon type="MaterialCommunityIcons" name="settings" />
               <Text>Administrar estudiantes</Text>
             </Button>

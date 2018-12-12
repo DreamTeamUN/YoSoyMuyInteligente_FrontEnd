@@ -27,8 +27,6 @@ import { API_LESSONS } from '../config/const';
 
   componentDidMount() {
 
-    //Orientation.addOrientationListener(() => {Orientation.lockToLandscape()});
-
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
 
     this.getLessons();
@@ -51,7 +49,7 @@ import { API_LESSONS } from '../config/const';
         }
       }, 1000);
     }
-    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
+
   }
 
   getLessons = () => {
@@ -85,5 +83,12 @@ import { API_LESSONS } from '../config/const';
         </Text>
       </View>
     );
+  }
+
+  componentWillUnmount(){
+      if (!this.state.isLoading) {
+        Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
+      }
+
   }
 }

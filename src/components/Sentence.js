@@ -6,6 +6,7 @@ import { WEEK } from './Practices';
 import { API_LESSONS } from '../config/const';
 
  class LogoTitle extends React.Component {
+
   render() {
     return (
       <View><Text>Cargando...</Text></View>
@@ -14,7 +15,12 @@ import { API_LESSONS } from '../config/const';
 }
 
  export default class WeekProgress extends Component {
-  constructor(props) {
+
+   static navigationOptions = {
+       header: null
+   }
+
+   constructor(props) {
     super(props);
     console.log(WEEK);
     this.state = {

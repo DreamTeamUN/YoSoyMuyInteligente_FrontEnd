@@ -4,6 +4,13 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const styles = StyleSheet.create({
 
+    headerStyle: {
+      backgroundColor: '#5D99C6',
+      height: hp('12%'),
+      zIndex: 10,
+      paddingTop: hp('1.5%'),
+    },
+
     logoinicial: {
         width: wp('100%'),
         resizeMode: 'contain',

@@ -22,10 +22,12 @@ import ChangeBirthdate from './components/EditProfile/ChangeBirthdate';
 import ForumScreen from './components/ForumScreen';
 import HomeForum from './components/HomeForum'
 import ClassRoom from './components/classroom'
+import AddClassRoom from './components/AddClassRoom'
 
 export const AppStack = createStackNavigator(
     {
         HomeAdult: HomeAdult,
+        AddClassRoom: AddClassRoom,
         HomeStudent: HomeStudent,
         WeekProgress: WeekProgress,
         GameProgress: GameProgress,

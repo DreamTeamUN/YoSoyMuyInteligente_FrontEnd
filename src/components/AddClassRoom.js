@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Text, Fab, Icon, View, Container, Header, Body, Title, Content, Left, Button} from 'native-base';
+import {Text, Fab, Icon, View, Container, Header, Body, Title,
+  Content, Left, Button, Item, Form, Label, Input} from 'native-base';
 import styles from '../styles';
 
 
@@ -29,9 +30,26 @@ export default class AddClassRoom extends Component {
           </Header>
 
           <Content>
-            <View style = {{flex: 1}}>
-              <Text> Texto kjnafjjdf, vad,fn sd</Text>
-            </View>
+            <Text style = {styles.subtitle}>
+              Por favor ingrese los siguientes datos para crear la nueva aula
+            </Text>
+
+            <Form>
+              <Item floatingLabel style = {styles.marginAddAula}>
+                <Label > Nombre del Aula</Label>
+                <Input />
+              </Item>
+
+              <Item floatingLabel style = {styles.marginAddAula}>
+                <Label >Programa</Label>
+                <Input />
+              </Item>
+            </Form>
+
+            <Button full rounded style = {styles.buttonAceptarAula}>
+              <Text>Aceptar</Text>
+            </Button>
+
           </Content>
 
         </Container>

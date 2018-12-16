@@ -4,6 +4,28 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const styles = StyleSheet.create({
 
+    headerStyle: {
+      backgroundColor: '#5D99C6',
+      height: hp('12%'),
+      zIndex: 10,
+      paddingTop: hp('1.5%'),
+    },
+
+    maxHeight: {
+      flex:1,
+    },
+
+    marginAddAula: {
+      marginTop: hp('1%'),
+      marginLeft: wp('5%'),
+      marginRight: wp('5%'),
+    },
+
+    buttonAceptarAula: {
+      backgroundColor: '#5D99C6',
+      margin: wp('5%'),
+    },
+
     logoinicial: {
         width: wp('100%'),
         resizeMode: 'contain',
@@ -16,12 +38,21 @@ const styles = StyleSheet.create({
         height: hp('40%'),
         justifyContent: 'flex-end',
     },
+
     title: {
         color: '#1F363D',
         fontSize: hp('8%'),
         textAlign: 'center',
         margin: hp('5%'),
     },
+
+    subtitle: {
+      color: '#1F363D',
+      fontSize: hp('4%'),
+      textAlign: 'center',
+      margin: hp('3%'),
+    },
+
     headling: {
         color: '#1F363D',
         fontSize: hp('6%'),
@@ -44,10 +75,16 @@ const styles = StyleSheet.create({
     buttonclear: {
         marginBottom: hp('3%'),
         backgroundColor: '#90CAF9',
+        justifyContent: 'flex-start',
+        flexDirection:'column',
+        alignItems: 'flex-start',
     },
     buttondark: {
         marginBottom: hp('3%'),
         backgroundColor: '#5D99C6',
+        justifyContent: 'flex-start',
+        flexDirection:'column',
+        alignItems: 'flex-start',
     },
     buttonclearpra: {
         marginBottom: hp('3%'),
@@ -120,9 +157,16 @@ const styles = StyleSheet.create({
 
     //Adult/Teacher Home
     homeAdult_TextContainer: {
-        height: hp('30%'),
+        height: hp('25%'),
         justifyContent: 'center',
     },
+
+    viewButtonHome: {
+      width:wp('80%'),
+      marginLeft: wp('3%'),
+      marginRight: wp('3%'),
+    },
+
     homeAdult_buttonsContainer: {
         marginTop: hp('5%'),
         height: hp('70%'),

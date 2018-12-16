@@ -59,16 +59,16 @@ export default class HomeAdult extends Component {
 
         <View style={styles.homeAdult_buttonsContainer}>
 
-          <View>
-            <Button iconLeft rounded style={styles.buttonclear}
+          <View style = {styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttonclear}
               onPress={() => this.props.navigation.navigate('EditProfile')}>
               <Icon type="Feather" name="edit" />
               <Text>Editar perfil</Text>
             </Button>
           </View>
 
-          <View>
-            <Button iconLeft rounded style={styles.buttondark}
+          <View style = {styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttondark}
               //onPress={() => this.props.navigation.navigate('WeekProgress')}>
               onPress={() => this.props.navigation.navigate('Practices')}>
               <Icon name="apps" />
@@ -76,41 +76,32 @@ export default class HomeAdult extends Component {
             </Button>
           </View>
 
-          <View>
-            <Button iconLeft rounded style={styles.buttonclear}
+          <View style = {styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttonclear}
               onPress={() => this.props.navigation.navigate('GameProgress')}>
               <Icon type="MaterialIcons" name="videogame-asset" />
               <Text>Progreso Juegos</Text>
             </Button>
           </View>
 
-          <View>
-            <Button iconLeft rounded style={styles.buttondark}
+          <View style = {styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('HomeForum')}>
               <Icon type="MaterialCommunityIcons" name="forum" />
               <Text>Ingreso al foro</Text>
             </Button>
           </View>
 
-          <View>
-            <Button iconLeft rounded style={styles.buttonclear}
-              onPress={() => this.props.navigation.navigate('AddStudent')}>
+          <View style = {styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttonclear}
+              onPress={() => this.props.navigation.navigate('ClassRoom')}>
               <Icon type="MaterialCommunityIcons" name="settings" />
-              <Text>Administrar estudiantes</Text>
+              <Text>Aulas y estudiantes</Text>
             </Button>
           </View>
 
-          {/* <View>
-            <Button iconLeft rounded style={styles.buttondark}
-              onPress={() => this.props.navigation.navigate('AddStudent')}>
-              <Icon type="MaterialCommunityIcons" name="settings" />
-              <Text>Administrar cuenta</Text>
-            </Button>
-          </View> */}
-
-          <View>
-            {/* <Button iconLeft rounded style={styles.buttondark} */}
-            <Button rounded style={styles.buttondark}
+          <View style = {styles.viewButtonHome}>
+            <Button full rounded style={styles.buttondark}
               onPress={this._signOutAsync}>
               <Icon type="Entypo" name="log-out" />
               <Text>Cerrar sesion</Text>
@@ -120,10 +111,7 @@ export default class HomeAdult extends Component {
               barStyle="light-content"
             />
           </View>
-
-
         </View>
-
       </ScrollView>
     );
   }

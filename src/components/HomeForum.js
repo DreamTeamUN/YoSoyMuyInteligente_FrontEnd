@@ -1,24 +1,66 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
-export default class CardImageExample extends Component {
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
+import Dataset from 'impagination';
+export default class HomeForum extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dataset: null,
+      datasetState: null,
+    };
+  }
+
+
+  setupImpagination() {
+    let dataset = new Dataset({
+      pageSize: 10,
+      observe: (datasetState) => {
+        this.setState({datasetState});
+      },
+
+      // Where to fetch the data from.
+      fetch(pageOffset, pageSize, stats) {
+        return fetch(`https://ysmiapi.herokuapp.com/entradas/1/0/${pageOffset + 1}`)
+          .then(response => response.json())
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    });
+    dataset.setReadOffset(0);
+    this.setState({dataset});
+  }
+
+  componentWillMount() {
+      this.setupImpagination();
+    }
+
+
   render() {
     return (
       <Container>
         <Header />
         <Content>
+          {this.state.datasetState.map(record => {
+            if (!record.isSettled) {
+              return <Spinner key={Math.random()}/>;
+            }
+            return (
           <Card>
             <CardItem >
               <Left>
                 <Thumbnail source={{uri: 'Image URL'}} />
                 <Body>
-                  <Text>NativeBase</Text>
-                  <Text note>GeekyAnts</Text>
+                  <Text>{record.content.titulo}</Text>
+                  <Text note>{record.content.usuario.user}</Text>
                 </Body>
               </Left>
             </CardItem>
             <CardItem cardBody button onPress={() => this.props.navigation.navigate('ForumScreen')}>
-              <Image source={{uri: 'https://i1.sndcdn.com/artworks-000273861158-p5s2iy-t500x500.jpg'}} style={{height: 200, width: null, flex: 1}}/>
+              <Text>{record.content.resumen}</Text>
             </CardItem>
             <CardItem>
               <Left>
@@ -30,14 +72,16 @@ export default class CardImageExample extends Component {
               <Body>
                 <Button transparent>
                   <Icon active name="chatbubbles" />
-                  <Text>4 Comments</Text>
+                  <Text>{record.content.ramificacion - 1}</Text>
                 </Button>
               </Body>
               <Right>
-                <Text>11h ago</Text>
+                <Text>{record.content.created_at}</Text>
               </Right>
             </CardItem>
           </Card>
+        );
+       })}
         </Content>
       </Container>
     );

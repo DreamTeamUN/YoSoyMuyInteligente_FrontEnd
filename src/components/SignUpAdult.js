@@ -16,10 +16,10 @@ export default class SignUpAdult extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'AndresVilla',
+      username: 'AVN',
       password: '123123',
       password2: '123123',
-      email: 'AndresVilla@gmail.com',
+      email: 'AVN@gmail.com',
       // username: '',
       // password: '',
       // password2: '',

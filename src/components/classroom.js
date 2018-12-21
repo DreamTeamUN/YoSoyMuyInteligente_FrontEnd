@@ -10,14 +10,57 @@ export default class ClassRoom extends Component {
         header: null
     }
 
+
     constructor(props) {
       super(props);
       this.state = {
-        active: 'true'
+        active: 'true',
+        isLoading: false,
+        data: [],
       };
     }
 
+    getData() {
+      const {page, seed} = this.state;
+      this.setState({isLoading: true});
+      const url = 'https://swapi.co/api/people/?format=json';
+      return fetch(url)
+          .then((response) => response.json())
+          .then((responseJson) => {
+              this.setState({
+                  data: responseJson.results,
+                  isLoading: false,
+              });
+          })
+          .catch((error) => {
+              console.error(error);
+          });
+      }
+
+    componentDidMount() {
+
+      this.getData();
+
+    }
+
     render() {
+
+      let display = this.state.data.map(function (NewsData, index) {
+          return (
+              <View key={NewsData.id}>
+                <Card>
+                  <CardItem button onPress={() => this.props.navigation.navigate('AddClassRoom')}>
+                    <Icon active name="home" />
+                    <Text>{NewsData.name}</Text>
+                    <Right>
+                      <Icon name="arrow-forward" />
+                    </Right>
+                   </CardItem>
+                </Card>
+              </View>
+          )
+      });
+
       return (
         <Container>
           <Header style = {styles.headerStyle}>
@@ -35,26 +78,7 @@ export default class ClassRoom extends Component {
           </Header>
 
           <Content style = {styles.maxHeight}>
-          <Card>
-
-            <CardItem button onPress={() => this.props.navigation.navigate('AddClassRoom')}>
-              <Icon active name="home" />
-              <Text>Aula 1</Text>
-              <Right>
-                <Icon name="arrow-forward" />
-              </Right>
-             </CardItem>
-
-           <CardItem>
-             <Icon active name="home" />
-             <Text>Aula 2</Text>
-             <Right>
-               <Icon name="arrow-forward" />
-             </Right>
-            </CardItem>
-
-          </Card>
-
+            {display}
         </Content>
 
          <Fab

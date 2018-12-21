@@ -93,7 +93,7 @@ import { API_LESSONS } from '../config/const';
 
   componentWillUnmount(){
       if (!this.state.isLoading) {
-        Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
+        Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAID);
       }
 
   }

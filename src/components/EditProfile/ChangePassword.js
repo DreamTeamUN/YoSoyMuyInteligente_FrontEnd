@@ -25,13 +25,8 @@ export default class ChangePassword extends Component {
 
     render() {
         return (
-            // <StyleProvider style={getTheme(variables)}>
-            <Container>
-
-                <Content>
-
+            <View>
                     <Form style={styles.adult_TextInputContainer}>
-
                         <Item floatingLabel style={styles.adult_TextInput}>
                             <Label>Nueva contraseña</Label>
                             <Input
@@ -40,7 +35,7 @@ export default class ChangePassword extends Component {
                                 value={this.state.password}
                             />
                         </Item>
-                        <Item floatingLabel style={styles.adult_TextInput}>
+                        <Item floatingLabel style={styles.editprofile_TextInput}>
                             <Label>Confirmar contraseña</Label>
                             <Input
                                 secureTextEntry={true}
@@ -58,11 +53,7 @@ export default class ChangePassword extends Component {
                             </Button>
                         </View>
                     </Form>
-
-                </Content>
-
-            </Container>
-            // </StyleProvider>
+                </View>
         );
     }
 }

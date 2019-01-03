@@ -1,6 +1,18 @@
 {
   "expo": {
+    "name": "Yo Soy Muy Inteligente",
+    "icon": "./android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+    "version": "0.8.1",
+    "description": "Developed by DreamTeam for Software Engineering II - Universidad Nacional de Colombia",
+    "slug": "ysmi",
     "sdkVersion": "27.0.0",
-    "orientation": "portrait"
+    "primaryColor": "#5D99C6",
+    "orientation": "portrait",
+    "ios": {
+      "bundleIdentifier": "com.dreamteam.yosoymuyinteligente"
+    },
+    "android": {
+      "package": "com.dreamteam.yosoymuyinteligente"
+    }
   }
 }

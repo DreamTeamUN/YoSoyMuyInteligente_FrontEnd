@@ -27,37 +27,37 @@ export default class ChangeBirthdate extends Component {
 
     render() {
         return (
-            <Container>
-                <Content>
+            <View>
+            <View style={styles.editDate}>
                     <DatePicker
-                        defaultDate={new Date(2018, 4, 4)}
-                        minimumDate={new Date(2018, 1, 1)}
-                        maximumDate={new Date(2018, 12, 31)}
+                        defaultDate={new Date(2000, 12, 31)}
+                        minimumDate={new Date(1900, 1, 1)}
+                        maximumDate={new Date(2000, 12, 31)}
                         locale={"co"}
                         timeZoneOffsetInMinutes={undefined}
-                        modalTransparent={false}
+                        modalTransparent={true}
                         animationType={"fade"}
                         androidMode={"default"}
-                        placeHolderText="Select date"
+                        placeHolderText="Presione aquí para seleccionar una fecha"
                         textStyle={{ color: "green" }}
-                        placeHolderTextStyle={{ color: "#d3d3d3" }}
+                        placeHolderTextStyle={{ color: "#696969" }}
                         onDateChange={(newDate) => this.setState({ birthdate: newDate })}
                     />
                     <Text>
-                        Date: {this.state.birthdate.toString().substr(4, 12)}
+                        Se ha elegido la siguiente fecha: {this.state.birthdate.toString().substr(4, 12)}.
                     </Text>
+                    </View>
+                    <View style={styles.simplecenter}>
                     <View>
                         <Button iconLeft rounded
                             style={styles.buttondark}
-                            onPress={this._sendNewData.bind(this)}
-                        >
+                            onPress={this._sendNewData.bind(this)}>
                             <Icon type="MaterialIcons" name="done" />
                             <Text>Enviar cambios</Text>
                         </Button>
                     </View>
-
-                </Content>
-            </Container>
+                    </View>
+                </View>
         );
     }
 }

@@ -112,8 +112,8 @@ export default class Main extends Component {
               <Icon type="FontAwesome" name="google" />
               <Text >Iniciar con Google</Text>
             </Button>
-          </View>
-
+            </View>
+            
           <View>
             <Button iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('LogIn')}>

@@ -351,8 +351,24 @@ const styles = StyleSheet.create({
     borderColor: "silver",
     borderRadius: 5,
     margin: 10
+  },
 
+  //Editarperfil
+  editprofile_TextInput: {
+      marginBottom: hp('4%'),
+      backgroundColor: '#E9E9EF',
+  },
+
+  editDate: {
+    alignItems: 'center',
+      marginTop: hp('4%'),
+      marginBottom: hp('4%'),
+  },
+  simplecenter: {
+    width: wp('100%'),
+    alignItems: 'center',
   }
+
 });
 
 export { styles as default };

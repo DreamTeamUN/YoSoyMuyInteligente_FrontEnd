@@ -112,22 +112,13 @@ export default class Main extends Component {
               <Icon type="FontAwesome" name="google" />
               <Text >Iniciar con Google</Text>
             </Button>
-          </View>
-
-          <View>
-            <Button iconLeft rounded style={styles.buttonfb}
-              onPress={this._logIn}>
-              <Icon type="EvilIcons" name="sc-facebook" />
-              <Text >Iniciar con Facebook</Text>
-            </Button>
-          </View>
-
-
+            </View>
+            
           <View>
             <Button iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('LogIn')}>
               <Icon name="person" />
-              <Text>Iniciar Sesión con correo</Text>
+              <Text>Iniciar sesión con correo</Text>
             </Button>
           </View>
         </View>

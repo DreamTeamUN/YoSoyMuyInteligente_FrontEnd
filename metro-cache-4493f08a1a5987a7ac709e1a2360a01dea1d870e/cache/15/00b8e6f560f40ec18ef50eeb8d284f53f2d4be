@@ -1,0 +1,12 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var def = _require(_dependencyMap[0], './$').setDesc,
+      has = _require(_dependencyMap[1], './$.has'),
+      TAG = _require(_dependencyMap[2], './$.wks')('toStringTag');
+
+  module.exports = function (it, tag, stat) {
+    if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, {
+      configurable: true,
+      value: tag
+    });
+  };
+});

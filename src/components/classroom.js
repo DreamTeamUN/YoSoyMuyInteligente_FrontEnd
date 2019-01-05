@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Text, Fab, Icon, View, Container, Content, Header, Title, Button,
    Left, Body, Card, CardItem, Right} from 'native-base';
 import styles from '../styles';
+import {API_CREATE_AULA} from '../config/const'
+import {getID, getTipoUsuario} from '../utils/home';
 
 
 export default class ClassRoom extends Component {
@@ -17,6 +19,8 @@ export default class ClassRoom extends Component {
         active: 'true',
         isLoading: false,
         data: [],
+        tipo_usuario: '-1',
+        idUsuario: '',
       };
     }
 
@@ -37,10 +41,15 @@ export default class ClassRoom extends Component {
           });
       }
 
+  async componentWillMount(){
+      this.setState({
+        tipo_usuario: await getTipoUsuario(),
+        idUsuario: await getID(),
+      });
+    }
+
     componentDidMount() {
-
       this.getData();
-
     }
 
     render() {
@@ -78,6 +87,10 @@ export default class ClassRoom extends Component {
           </Header>
 
           <Content style = {styles.maxHeight}>
+          <Text>
+            TIPO_USUARIO: {this.state.tipo_usuario}
+            ID: {this.state.idUsuario}
+          </Text>
             {display}
         </Content>
 
@@ -94,5 +107,5 @@ export default class ClassRoom extends Component {
         </Container>
 
       );
-    }
+  }
 }

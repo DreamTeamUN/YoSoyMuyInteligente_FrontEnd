@@ -1,0 +1,240 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.getComments = getComments;
+  exports.paginateComments = paginateComments;
+  exports.like = like;
+  exports.edit = edit;
+  exports.deleteComment = deleteComment;
+  exports.save = save;
+  exports.report = report;
+
+  var _moment = _require(_dependencyMap[0], "moment");
+
+  var _moment2 = _interopRequireDefault(_moment);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+  var sampleCommentsRaw = _require(_dependencyMap[1], './sampleComments');
+
+  sampleCommentsRaw.forEach(function (c) {
+    if (c.children) {
+      c.childrenCount = c.children.length;
+    }
+  });
+  var sampleComments = Object.freeze(sampleCommentsRaw);
+
+  function getComments() {
+    var c = [].concat(_toConsumableArray(sampleComments));
+    return c.splice(c.length - 5);
+  }
+
+  function paginateComments(comments, from_commentId, direction, parent_commentId) {
+    var c = [].concat(_toConsumableArray(sampleComments));
+
+    if (!parent_commentId) {
+      var lastIndex = sampleComments.findIndex(function (c) {
+        return c.commentId == from_commentId;
+      });
+
+      if (direction == "up") {
+        comments = comments.concat(c.splice(lastIndex + 1, 5));
+      } else {
+        var start = lastIndex - 6 > 1 ? lastIndex - 6 : 0;
+        var part = c.slice(start, lastIndex);
+        console.log(start, lastIndex);
+        comments = [].concat(_toConsumableArray(part), _toConsumableArray(comments));
+      }
+    } else {
+      var parentLastIndexDB = sampleComments.findIndex(function (c) {
+        return c.commentId == parent_commentId;
+      });
+      var children = c[parentLastIndexDB].children;
+      var target = children.findIndex(function (c) {
+        return c.commentId == from_commentId;
+      });
+      var existingIndex = comments.findIndex(function (c) {
+        return c.commentId == parent_commentId;
+      });
+
+      if (direction == "up") {
+        var append = children.slice(target + 1, 5);
+        comments[existingIndex].children.concat(append);
+      } else {
+        var _start = target - 6 >= 0 ? target : 0;
+
+        var prepend = children.slice(_start - 6, target);
+        comments[existingIndex].children = [].concat(_toConsumableArray(prepend), _toConsumableArray(comments[existingIndex].children));
+      }
+    }
+
+    return comments;
+  }
+
+  function like(comments, cmnt) {
+    if (!cmnt.parentId) {
+      if (comments) {
+        comments.find(function (c) {
+          if (c.commentId === cmnt.commentId) {
+            c.liked = !c.liked;
+            return true;
+          }
+        });
+      }
+    } else {
+      comments.find(function (c) {
+        if (c.children) {
+          var isItFound = false;
+          c.children.find(function (child) {
+            if (child.commentId === cmnt.commentId) {
+              child.liked = !child.liked;
+              isItFound = true;
+            }
+          });
+          return isItFound;
+        }
+      });
+    }
+
+    return comments;
+  }
+
+  function edit(comments, cmnt, text) {
+    if (!cmnt.parentId) {
+      if (comments) {
+        comments.find(function (c) {
+          if (c.commentId === cmnt.commentId) {
+            c.body = text;
+            return true;
+          }
+        });
+      }
+    } else {
+      comments.find(function (c) {
+        if (c.children) {
+          var isItFound = false;
+          c.children.find(function (child) {
+            if (child.commentId === cmnt.commentId) {
+              child.body = text;
+              isItFound = true;
+            }
+          });
+          return isItFound;
+        }
+      });
+    }
+
+    return comments;
+  }
+
+  function deleteComment(comments, cmnt) {
+    if (!cmnt.parentId) {
+      if (comments) {
+        var index = comments.findIndex(function (c) {
+          return c.commentId === cmnt.commentId;
+        });
+        comments.splice(index, 1);
+      }
+    } else {
+      comments.find(function (c) {
+        if (c.children) {
+          var isItFound = false;
+
+          var _index = c.children.findIndex(function (child) {
+            if (child.commentId === cmnt.commentId) {
+              isItFound = true;
+            }
+          });
+
+          if (_index) {
+            c.children.splice(_index, 1);
+          }
+
+          return isItFound;
+        }
+      });
+    }
+
+    return comments;
+  }
+
+  function save(comments, text, parentCommentId, date, username) {
+    var lastCommentId = 0;
+    sampleComments.forEach(function (c) {
+      if (c.commentId > lastCommentId) {
+        lastCommentId = c.commentId;
+      }
+
+      if (c.children) {
+        c.children.forEach(function (c2) {
+          if (c2.commentId > lastCommentId) {
+            lastCommentId = c2.commentId;
+          }
+        });
+      }
+    });
+    var com = {
+      parentId: null,
+      commentId: lastCommentId + 1,
+      created_at: date,
+      updated_at: date,
+      liked: false,
+      reported: false,
+      email: username,
+      body: text,
+      likes: []
+    };
+
+    if (!parentCommentId) {
+      comments.push(com);
+    } else {
+      comments.find(function (c) {
+        if (c.commentId === parentCommentId) {
+          com.parentId = c.commentId;
+
+          if (c.children) {
+            c.childrenCount = c.childrenCount + 1;
+            c.children.push(com);
+          } else {
+            c.childrenCount = 1;
+            c.children = [com];
+          }
+
+          return true;
+        }
+      }, this);
+    }
+
+    console.log(3, comments);
+    return comments;
+  }
+
+  function report(comments, cmnt) {
+    if (!cmnt.parentId) {
+      comments.find(function (c) {
+        if (c.commentId === cmnt.commentId) {
+          c.reported = true;
+          return true;
+        }
+      });
+    } else {
+      comments.find(function (c) {
+        if (c.children) {
+          var isItFound = false;
+          c.children.find(function (child) {
+            if (child.commentId === cmnt.commentId) {
+              child.reported = true;
+              isItFound = true;
+            }
+          });
+          return isItFound;
+        }
+      });
+    }
+
+    return comments;
+  }
+});

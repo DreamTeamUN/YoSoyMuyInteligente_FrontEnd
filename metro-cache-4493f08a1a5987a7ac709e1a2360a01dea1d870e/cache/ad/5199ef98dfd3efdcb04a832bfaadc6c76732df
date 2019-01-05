@@ -1,0 +1,8 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var isObject = _require(_dependencyMap[0], './$.is-object');
+
+  module.exports = function (it) {
+    if (!isObject(it)) throw TypeError(it + ' is not an object!');
+    return it;
+  };
+});

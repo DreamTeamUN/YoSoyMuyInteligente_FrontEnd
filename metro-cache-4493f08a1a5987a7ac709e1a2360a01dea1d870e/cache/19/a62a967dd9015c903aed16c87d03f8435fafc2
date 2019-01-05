@@ -1,0 +1,8 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var id = 0,
+      px = Math.random();
+
+  module.exports = function (key) {
+    return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+  };
+});

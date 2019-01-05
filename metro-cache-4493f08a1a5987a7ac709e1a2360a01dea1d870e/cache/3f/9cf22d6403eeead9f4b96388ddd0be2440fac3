@@ -1,0 +1,369 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/Games.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+  var _styles = _require(_dependencyMap[4], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    Games: {
+      displayName: "Games"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/Games.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Games = _wrapComponent("Games")(function (_Component) {
+    _inherits(Games, _Component);
+
+    function Games() {
+      _classCallCheck(this, Games);
+
+      return _possibleConstructorReturn(this, (Games.__proto__ || Object.getPrototypeOf(Games)).apply(this, arguments));
+    }
+
+    _createClass(Games, [{
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _nativeBase.Content,
+          {
+            style: {
+              margin: 10
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 10
+            }
+          },
+          _react3.default.createElement(
+            _nativeBase.Card,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 11
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.CardItem,
+              {
+                header: true,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 12
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 13
+                  }
+                },
+                "Encontrar parejas (palabra/sonido)"
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.CardItem,
+              {
+                style: {
+                  flex: 1
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 15
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Body,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 16
+                  }
+                },
+                _react3.default.createElement(_reactNative.Image, {
+                  source: {
+                    uri: 'https://www.frikids.com/wp-content/uploads/2015/04/parejaslearn2.jpeg'
+                  },
+                  style: {
+                    height: 200,
+                    width: 400
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 17
+                  }
+                })
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.CardItem,
+              {
+                footer: true,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 23
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  transparent: true,
+                  info: true,
+                  onPress: function onPress() {
+                    return _reactNative.Alert.alert('DisplayGame1');
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 24
+                  }
+                },
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 25
+                    }
+                  },
+                  "\xA1Quiero jugar!"
+                )
+              )
+            )
+          ),
+          _react3.default.createElement(
+            _nativeBase.Card,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 30
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.CardItem,
+              {
+                header: true,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 31
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 32
+                  }
+                },
+                "Encontrar parejas (palabra/imagen)"
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.CardItem,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 34
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Body,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 35
+                  }
+                },
+                _react3.default.createElement(_reactNative.Image, {
+                  style: {
+                    height: 200,
+                    width: 400
+                  },
+                  source: {
+                    uri: 'http://jonsegador.com/wp-content/uploads/2014/07/parejas-3.png'
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 36
+                  }
+                })
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.CardItem,
+              {
+                footer: true,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 42
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  transparent: true,
+                  info: true,
+                  onPress: function onPress() {
+                    return _reactNative.Alert.alert('DisplayGame2');
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 43
+                  }
+                },
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 44
+                    }
+                  },
+                  "\xA1Quiero jugar!"
+                )
+              )
+            )
+          ),
+          _react3.default.createElement(
+            _nativeBase.Card,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 50
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.CardItem,
+              {
+                header: true,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 51
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 52
+                  }
+                },
+                "Enlazar Palabras con su Imagen"
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.CardItem,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 54
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Body,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 55
+                  }
+                },
+                _react3.default.createElement(_reactNative.Image, {
+                  style: {
+                    height: 200,
+                    width: 200
+                  },
+                  source: {
+                    uri: 'https://st2.depositphotos.com/1742172/5445/v/950/depositphotos_54453599-stock-illustration-cartoon-ostrich.jpg'
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 56
+                  }
+                })
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.CardItem,
+              {
+                footer: true,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 62
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  transparent: true,
+                  info: true,
+                  onPress: function onPress() {
+                    return _reactNative.Alert.alert('DisplayGame3');
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 63
+                  }
+                },
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 64
+                    }
+                  },
+                  "\xA1Quiero jugar!"
+                )
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return Games;
+  }(_react2.Component));
+
+  exports.default = Games;
+});

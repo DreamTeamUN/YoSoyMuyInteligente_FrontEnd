@@ -1,0 +1,9 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var toObject = _require(_dependencyMap[0], './$.to-object');
+
+  _require(_dependencyMap[1], './$.object-sap')('keys', function ($keys) {
+    return function keys(it) {
+      return $keys(toObject(it));
+    };
+  });
+});

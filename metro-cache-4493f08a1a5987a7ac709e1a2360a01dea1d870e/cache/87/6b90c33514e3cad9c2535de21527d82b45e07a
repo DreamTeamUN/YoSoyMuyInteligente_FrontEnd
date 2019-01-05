@@ -1,0 +1,6 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var core = module.exports = {
+    version: '1.2.6'
+  };
+  if (typeof __e == 'number') __e = core;
+});

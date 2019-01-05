@@ -1,0 +1,240 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/WeekProgress.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+  var _styles = _require(_dependencyMap[4], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    LogoTitle: {
+      displayName: "LogoTitle"
+    },
+    WeekProgress: {
+      displayName: "WeekProgress"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/WeekProgress.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var LogoTitle = _wrapComponent("LogoTitle")(function (_React$Component) {
+    _inherits(LogoTitle, _React$Component);
+
+    function LogoTitle() {
+      _classCallCheck(this, LogoTitle);
+
+      return _possibleConstructorReturn(this, (LogoTitle.__proto__ || Object.getPrototypeOf(LogoTitle)).apply(this, arguments));
+    }
+
+    _createClass(LogoTitle, [{
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _reactNative.TouchableNativeFeedback,
+          {
+            onPress: function onPress() {
+              return _reactNative.Alert.alert('Soy una leccion!');
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 9
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: [_styles2.default.button, _styles2.default.buttonBlueA],
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 10
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Text,
+              {
+                style: _styles2.default.buttonText,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 11
+                }
+              },
+              "Cargando progreso semanas..."
+            )
+          )
+        );
+      }
+    }]);
+
+    return LogoTitle;
+  }(_react3.default.Component));
+
+  var WeekProgress = _wrapComponent("WeekProgress")(function (_Component) {
+    _inherits(WeekProgress, _Component);
+
+    function WeekProgress(props) {
+      _classCallCheck(this, WeekProgress);
+
+      var _this2 = _possibleConstructorReturn(this, (WeekProgress.__proto__ || Object.getPrototypeOf(WeekProgress)).call(this, props));
+
+      _this2.getLessons = function () {
+        _this2.setState({
+          isLoading: true
+        });
+
+        fetch(_this2.state.url).then(function (resp) {
+          return resp.json();
+        }).then(function (resp) {
+          _this2.setState({
+            lessons: resp.frase,
+            isLoading: false
+          });
+        });
+      };
+
+      _this2.state = {
+        isLoading: false,
+        lessons: [],
+        url: 'https://pokeapi.co/api/v2/pokemon/'
+      };
+      return _this2;
+    }
+
+    _createClass(WeekProgress, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        this.getLessons();
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        if (this.state.isLoading) {
+          return _react3.default.createElement(
+            _reactNative.View,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 50
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: _styles2.default.home_TextContainer,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 52
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  style: _styles2.default.headling,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 53
+                  }
+                },
+                "\xA1Bienvenido!"
+              )
+            ),
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: _styles2.default.home_ContainerButtons,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 56
+                }
+              },
+              _react3.default.createElement(LogoTitle, {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 62
+                }
+              })
+            )
+          );
+        }
+
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            style: {
+              flex: 1,
+              paddingTop: 20
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 71
+            }
+          },
+          _react3.default.createElement(_reactNative.FlatList, {
+            data: this.state.lessons,
+            renderItem: function renderItem(_ref) {
+              var item = _ref.item;
+              return _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 75
+                  }
+                },
+                " ",
+                item.name,
+                " "
+              );
+            },
+            keyExtractor: function keyExtractor(item, index) {
+              return index.toString();
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 72
+            }
+          })
+        );
+      }
+    }]);
+
+    return WeekProgress;
+  }(_react2.Component));
+
+  exports.default = WeekProgress;
+});

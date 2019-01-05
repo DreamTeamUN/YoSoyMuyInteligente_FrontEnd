@@ -1,0 +1,156 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.sendDataToSocials = exports.sendDataToLogIn = exports.removeToken = exports.getToken = exports.storeToken = undefined;
+
+    var _this = this;
+
+    var _react = _require(_dependencyMap[0], "react");
+
+    var _react2 = _interopRequireDefault(_react);
+
+    var _reactNative = _require(_dependencyMap[1], "react-native");
+
+    var _const = _require(_dependencyMap[2], "../config/const");
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    var ACCESS_TOKEN = 'access_token';
+
+    var storeToken = exports.storeToken = function storeToken(accessToken) {
+        return regeneratorRuntime.async(function storeToken$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        _context.prev = 0;
+                        _context.next = 3;
+                        return regeneratorRuntime.awrap(_reactNative.AsyncStorage.setItem(ACCESS_TOKEN, accessToken));
+
+                    case 3:
+                        getToken();
+                        _context.next = 9;
+                        break;
+
+                    case 6:
+                        _context.prev = 6;
+                        _context.t0 = _context["catch"](0);
+                        console.log("storeToken | Something went wrong");
+
+                    case 9:
+                    case "end":
+                        return _context.stop();
+                }
+            }
+        }, null, _this, [[0, 6]]);
+    };
+
+    var getToken = exports.getToken = function getToken() {
+        var token;
+        return regeneratorRuntime.async(function getToken$(_context2) {
+            while (1) {
+                switch (_context2.prev = _context2.next) {
+                    case 0:
+                        _context2.prev = 0;
+                        _context2.next = 3;
+                        return regeneratorRuntime.awrap(_reactNative.AsyncStorage.getItem(ACCESS_TOKEN));
+
+                    case 3:
+                        token = _context2.sent;
+                        console.log("getToken | token is: " + token);
+                        return _context2.abrupt("return", token);
+
+                    case 8:
+                        _context2.prev = 8;
+                        _context2.t0 = _context2["catch"](0);
+                        console.log("Something went wrong");
+
+                    case 11:
+                    case "end":
+                        return _context2.stop();
+                }
+            }
+        }, null, _this, [[0, 8]]);
+    };
+
+    var removeToken = exports.removeToken = function removeToken() {
+        return regeneratorRuntime.async(function removeToken$(_context3) {
+            while (1) {
+                switch (_context3.prev = _context3.next) {
+                    case 0:
+                        _context3.prev = 0;
+                        _context3.next = 3;
+                        return regeneratorRuntime.awrap(_reactNative.AsyncStorage.removeItem(ACCESS_TOKEN));
+
+                    case 3:
+                        getToken();
+                        _context3.next = 9;
+                        break;
+
+                    case 6:
+                        _context3.prev = 6;
+                        _context3.t0 = _context3["catch"](0);
+                        console.log("removeToken | Something went wrong");
+
+                    case 9:
+                    case "end":
+                        return _context3.stop();
+                }
+            }
+        }, null, _this, [[0, 6]]);
+    };
+
+    var sendDataToLogIn = exports.sendDataToLogIn = function sendDataToLogIn(email, password) {
+        return regeneratorRuntime.async(function sendDataToLogIn$(_context4) {
+            while (1) {
+                switch (_context4.prev = _context4.next) {
+                    case 0:
+                        return _context4.abrupt("return", fetch(_const.API_LOG_IN, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                "auth": {
+                                    "email": email,
+                                    "password": password
+                                }
+                            })
+                        }));
+
+                    case 1:
+                    case "end":
+                        return _context4.stop();
+                }
+            }
+        }, null, _this);
+    };
+
+    var sendDataToSocials = exports.sendDataToSocials = function sendDataToSocials(name, email, tipo_usuario, token) {
+        return regeneratorRuntime.async(function sendDataToSocials$(_context5) {
+            while (1) {
+                switch (_context5.prev = _context5.next) {
+                    case 0:
+                        return _context5.abrupt("return", fetch(_const.API_SOCIALS, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                "name": name,
+                                "email": email,
+                                "tipo_usuario": tipo_usuario,
+                                "token": token
+                            })
+                        }));
+
+                    case 1:
+                    case "end":
+                        return _context5.stop();
+                }
+            }
+        }, null, _this);
+    };
+});

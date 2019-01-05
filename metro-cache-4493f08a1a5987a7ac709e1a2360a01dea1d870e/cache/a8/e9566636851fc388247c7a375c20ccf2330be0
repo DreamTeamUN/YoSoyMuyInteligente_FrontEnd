@@ -1,0 +1,7 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  _require(_dependencyMap[0], '../../modules/es6.string.iterator');
+
+  _require(_dependencyMap[1], '../../modules/web.dom.iterable');
+
+  module.exports = _require(_dependencyMap[2], '../../modules/$.wks')('iterator');
+});

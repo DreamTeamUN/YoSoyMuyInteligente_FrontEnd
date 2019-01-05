@@ -1,0 +1,179 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  'use strict';
+
+  var _createClass = _require(_dependencyMap[0], "babel-runtime/helpers/create-class")['default'];
+
+  var _classCallCheck = _require(_dependencyMap[1], "babel-runtime/helpers/class-call-check")['default'];
+
+  var _Object$assign = _require(_dependencyMap[2], "babel-runtime/core-js/object/assign")['default'];
+
+  var _interopRequireDefault = _require(_dependencyMap[3], "babel-runtime/helpers/interop-require-default")['default'];
+
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+
+  var _state = _require(_dependencyMap[4], './state');
+
+  var _state2 = _interopRequireDefault(_state);
+
+  var _record = _require(_dependencyMap[5], './record');
+
+  var _record2 = _interopRequireDefault(_record);
+
+  var _findIndex = _require(_dependencyMap[6], './find-index');
+
+  var _findIndex2 = _interopRequireDefault(_findIndex);
+
+  var Dataset = function () {
+    function Dataset() {
+      var attrs = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+      _classCallCheck(this, Dataset);
+
+      this.state = new _state2['default']({
+        pageSize: Number(attrs.pageSize),
+        loadHorizon: Number(attrs.loadHorizon || attrs.pageSize),
+        unloadHorizon: Number(attrs.unloadHorizon) || Infinity,
+        filter: attrs.filter,
+        stats: attrs.stats || {
+          totalPages: undefined
+        }
+      });
+      this.fetch = attrs.fetch;
+
+      this.observe = attrs.observe || function () {};
+
+      ;
+
+      this.unfetch = attrs.unfetch || function () {};
+
+      if (!this.fetch) {
+        throw new Error('created Dataset without fetch()');
+      }
+    }
+
+    _createClass(Dataset, [{
+      key: 'setReadOffset',
+      value: function setReadOffset(offset) {
+        var readOffset = Math.max(Number(offset), 0);
+
+        if (isNaN(readOffset)) {
+          throw new Error(offset + ' is not a Number');
+        }
+
+        if (readOffset !== this.state.readOffset) {
+          this.state = this.state.setReadOffset(readOffset);
+
+          this._fetchPages(this.state.unrequested);
+
+          this._unfetchPages(this.state.unfetchable);
+
+          this.observe(this.state);
+        }
+      }
+    }, {
+      key: 'refilter',
+      value: function refilter(filterCallback) {
+        filterCallback = filterCallback || this.state.filter;
+        this.state = this.state.refilter(filterCallback);
+        this.observe(this.state);
+      }
+    }, {
+      key: 'reset',
+      value: function reset(readOffset) {
+        this._unfetchPages(this.state.unfetchable.concat(this.state.resolved));
+
+        this.state = new _state2['default']({
+          pageSize: this.state.pageSize,
+          loadHorizon: this.state.loadHorizon,
+          unloadHorizon: this.state.unloadHorizon,
+          stats: this.state.stats,
+          readOffset: undefined
+        });
+
+        if (readOffset !== this.state.readOffset) {
+          this.setReadOffset(readOffset);
+        } else {
+          this.observe(this.state);
+        }
+      }
+    }, {
+      key: 'post',
+      value: function post(data) {
+        var index = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
+
+        try {
+          this.state = this.state.splice(index, 0, data);
+        } catch (err) {
+          console.error('Error: Impagination did not POST ' + data + '. Could not find resolved page for record at index ' + index);
+        }
+
+        this.observe(this.state);
+      }
+    }, {
+      key: 'put',
+      value: function put(data, index) {
+        index = index || this.state.readOffset;
+
+        try {
+          var record = this.state.getRecord(index);
+
+          var item = _Object$assign({}, record.page.records[record.index], data);
+
+          this.state = this.state.splice(index, 1, item);
+        } catch (err) {
+          console.error('Error: Impagination did not PUT ' + data + '. Could not find resolved page for record at index ' + index);
+        }
+
+        this.observe(this.state);
+      }
+    }, {
+      key: 'delete',
+      value: function _delete(index) {
+        index = index || this.state.readOffset;
+
+        try {
+          this.state = this.state.splice(index, 1);
+        } catch (err) {
+          console.error('Error: Impagination did not DELETE record at ' + index + '. Could not find resolved page for record at index ' + index);
+        }
+
+        this.observe(this.state);
+      }
+    }, {
+      key: '_fetchPages',
+      value: function _fetchPages(fetchable) {
+        var _this = this;
+
+        var stats = this.state.stats;
+        fetchable.forEach(function (page) {
+          return _this.fetch.call(_this, page.offset, _this.state.pageSize, stats).then(function () {
+            var records = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+            return _this.observe(_this.state = _this.state.resolve(records, page.offset, stats));
+          })['catch'](function () {
+            var error = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+            return _this.observe(_this.state = _this.state.reject(error, page, stats));
+          });
+        });
+        this.state = this.state.fetch(fetchable);
+      }
+    }, {
+      key: '_unfetchPages',
+      value: function _unfetchPages(unfetchable) {
+        var _this2 = this;
+
+        this.state = this.state.unfetch(unfetchable);
+        unfetchable.forEach(function (page) {
+          _this2.unfetch.call(_this2, page.records, page.offset);
+        });
+      }
+    }]);
+
+    return Dataset;
+  }();
+
+  exports['default'] = Dataset;
+  ;
+  module.exports = exports['default'];
+});

@@ -1,0 +1,6 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  module.exports = {
+    "default": _require(_dependencyMap[0], "core-js/library/fn/object/assign"),
+    __esModule: true
+  };
+});

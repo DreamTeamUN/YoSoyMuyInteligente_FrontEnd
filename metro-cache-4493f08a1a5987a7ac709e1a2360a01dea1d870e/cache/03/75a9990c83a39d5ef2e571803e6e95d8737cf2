@@ -1,0 +1,24 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  'use strict';
+
+  var $at = _require(_dependencyMap[0], './$.string-at')(true);
+
+  _require(_dependencyMap[1], './$.iter-define')(String, 'String', function (iterated) {
+    this._t = String(iterated);
+    this._i = 0;
+  }, function () {
+    var O = this._t,
+        index = this._i,
+        point;
+    if (index >= O.length) return {
+      value: undefined,
+      done: true
+    };
+    point = $at(O, index);
+    this._i += point.length;
+    return {
+      value: point,
+      done: false
+    };
+  });
+});

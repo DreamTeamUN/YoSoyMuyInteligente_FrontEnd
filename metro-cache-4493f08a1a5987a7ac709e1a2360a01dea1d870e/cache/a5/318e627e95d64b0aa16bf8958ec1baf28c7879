@@ -1,0 +1,9 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  module.exports = function (exec) {
+    try {
+      return !!exec();
+    } catch (e) {
+      return true;
+    }
+  };
+});

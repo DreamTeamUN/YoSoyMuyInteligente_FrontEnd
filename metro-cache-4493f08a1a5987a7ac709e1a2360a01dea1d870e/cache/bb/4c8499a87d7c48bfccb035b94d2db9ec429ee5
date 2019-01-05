@@ -1,0 +1,4 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  module.exports.BinarySearchTree = _require(_dependencyMap[0], './lib/bst');
+  module.exports.AVLTree = _require(_dependencyMap[1], './lib/avltree');
+});

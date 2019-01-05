@@ -1,0 +1,89 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  'use strict';
+
+  var LIBRARY = _require(_dependencyMap[0], './$.library'),
+      $export = _require(_dependencyMap[1], './$.export'),
+      redefine = _require(_dependencyMap[2], './$.redefine'),
+      hide = _require(_dependencyMap[3], './$.hide'),
+      has = _require(_dependencyMap[4], './$.has'),
+      Iterators = _require(_dependencyMap[5], './$.iterators'),
+      $iterCreate = _require(_dependencyMap[6], './$.iter-create'),
+      setToStringTag = _require(_dependencyMap[7], './$.set-to-string-tag'),
+      getProto = _require(_dependencyMap[8], './$').getProto,
+      ITERATOR = _require(_dependencyMap[9], './$.wks')('iterator'),
+      BUGGY = !([].keys && 'next' in [].keys()),
+      FF_ITERATOR = '@@iterator',
+      KEYS = 'keys',
+      VALUES = 'values';
+
+  var returnThis = function returnThis() {
+    return this;
+  };
+
+  module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED) {
+    $iterCreate(Constructor, NAME, next);
+
+    var getMethod = function getMethod(kind) {
+      if (!BUGGY && kind in proto) return proto[kind];
+
+      switch (kind) {
+        case KEYS:
+          return function keys() {
+            return new Constructor(this, kind);
+          };
+
+        case VALUES:
+          return function values() {
+            return new Constructor(this, kind);
+          };
+      }
+
+      return function entries() {
+        return new Constructor(this, kind);
+      };
+    };
+
+    var TAG = NAME + ' Iterator',
+        DEF_VALUES = DEFAULT == VALUES,
+        VALUES_BUG = false,
+        proto = Base.prototype,
+        $native = proto[ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT],
+        $default = $native || getMethod(DEFAULT),
+        methods,
+        key;
+
+    if ($native) {
+      var IteratorPrototype = getProto($default.call(new Base()));
+      setToStringTag(IteratorPrototype, TAG, true);
+      if (!LIBRARY && has(proto, FF_ITERATOR)) hide(IteratorPrototype, ITERATOR, returnThis);
+
+      if (DEF_VALUES && $native.name !== VALUES) {
+        VALUES_BUG = true;
+
+        $default = function values() {
+          return $native.call(this);
+        };
+      }
+    }
+
+    if ((!LIBRARY || FORCED) && (BUGGY || VALUES_BUG || !proto[ITERATOR])) {
+      hide(proto, ITERATOR, $default);
+    }
+
+    Iterators[NAME] = $default;
+    Iterators[TAG] = returnThis;
+
+    if (DEFAULT) {
+      methods = {
+        values: DEF_VALUES ? $default : getMethod(VALUES),
+        keys: IS_SET ? $default : getMethod(KEYS),
+        entries: !DEF_VALUES ? $default : getMethod('entries')
+      };
+      if (FORCED) for (key in methods) {
+        if (!(key in proto)) redefine(proto, key, methods[key]);
+      } else $export($export.P + $export.F * (BUGGY || VALUES_BUG), NAME, methods);
+    }
+
+    return methods;
+  };
+});

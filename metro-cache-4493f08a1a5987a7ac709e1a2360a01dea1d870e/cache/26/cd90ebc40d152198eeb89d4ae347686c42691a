@@ -1,0 +1,487 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/SignUpAdult.js";
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+  var _axios = _require(_dependencyMap[4], "axios");
+
+  var _axios2 = _interopRequireDefault(_axios);
+
+  var _const = _require(_dependencyMap[5], "../config/const");
+
+  var _validations = _require(_dependencyMap[6], "../utils/validations");
+
+  var _signUp = _require(_dependencyMap[7], "../utils/signUp");
+
+  var _logIn = _require(_dependencyMap[8], "../utils/logIn");
+
+  var _styles = _require(_dependencyMap[9], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    SignUpAdult: {
+      displayName: "SignUpAdult"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/SignUpAdult.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var SignUpAdult = _wrapComponent("SignUpAdult")((_temp = _class = function (_Component) {
+    _inherits(SignUpAdult, _Component);
+
+    function SignUpAdult(props) {
+      _classCallCheck(this, SignUpAdult);
+
+      var _this = _possibleConstructorReturn(this, (SignUpAdult.__proto__ || Object.getPrototypeOf(SignUpAdult)).call(this, props));
+
+      _this.state = {
+        username: 'AVN',
+        password: '123123',
+        password2: '123123',
+        email: 'AVN@gmail.com',
+        birthdate: '',
+        errors: [],
+        isLoading: false
+      };
+      return _this;
+    }
+
+    _createClass(SignUpAdult, [{
+      key: "_createAdult",
+      value: function _createAdult() {
+        var response, status, resToken, accessToken, res, properties, i;
+        return regeneratorRuntime.async(function _createAdult$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!(0, _validations.validateForm)(this.state.username, this.state.password, this.state.password2, this.state.email)) {
+                  _context.next = 40;
+                  break;
+                }
+
+                _context.prev = 1;
+                this.setState({
+                  isLoading: true
+                });
+                _context.next = 5;
+                return regeneratorRuntime.awrap((0, _signUp.sendDataToSignUp)(_const.API_SIGN_UP_ADULT, this.state.username, this.state.password, this.state.username, this.state.email));
+
+              case 5:
+                response = _context.sent;
+                status = response.status;
+                console.log("res status: " + status);
+                _context.t0 = status;
+                _context.next = _context.t0 === 201 ? 11 : _context.t0 === 422 ? 25 : 33;
+                break;
+
+              case 11:
+                this.setState({
+                  errors: []
+                });
+                console.log("Nuevo usuario!");
+                _context.next = 15;
+                return regeneratorRuntime.awrap((0, _logIn.sendDataToLogIn)(this.state.email, this.state.password));
+
+              case 15:
+                resToken = _context.sent;
+                _context.next = 18;
+                return regeneratorRuntime.awrap(resToken.json());
+
+              case 18:
+                resToken = _context.sent;
+                accessToken = resToken.jwt;
+                (0, _logIn.storeToken)(accessToken);
+                console.log("Access Token: " + accessToken);
+                this.setState({
+                  isLoading: false
+                });
+                this.props.navigation.navigate('HomeAdult');
+                return _context.abrupt("break", 34);
+
+              case 25:
+                _context.next = 27;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 27:
+                res = _context.sent;
+                this.setState({
+                  errors: []
+                });
+                properties = ["user", "email"];
+
+                for (i = 0; i < properties.length; i++) {
+                  if (res[properties[i]] != undefined) {
+                    console.log(res[properties[i]].toString());
+                    this.state.errors.push(res[properties[i]].toString());
+                  }
+                }
+
+                this.setState({
+                  isLoading: false
+                });
+                return _context.abrupt("break", 34);
+
+              case 33:
+                return _context.abrupt("break", 34);
+
+              case 34:
+                _context.next = 40;
+                break;
+
+              case 36:
+                _context.prev = 36;
+                _context.t1 = _context["catch"](1);
+                this.setState({
+                  isLoading: false
+                });
+                console.log("catch errors: " + _context.t1);
+
+              case 40:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this, [[1, 36]]);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        if (this.state.isLoading) {
+          return _react3.default.createElement(
+            _reactNative.View,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 94
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: _styles2.default.home_TextContainer,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 95
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  style: _styles2.default.headling,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 96
+                  }
+                },
+                "Creando usuario"
+              ),
+              _react3.default.createElement(_reactNative.ActivityIndicator, {
+                size: "large",
+                color: "#4267B2",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 97
+                }
+              })
+            )
+          );
+        }
+
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 104
+            }
+          },
+          _react3.default.createElement(
+            _nativeBase.Form,
+            {
+              style: _styles2.default.adult_TextInputContainer,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 106
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Item,
+              {
+                floatingLabel: true,
+                style: _styles2.default.adult_TextInput,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 108
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 109
+                  }
+                },
+                "Nombre de usuario"
+              ),
+              _react3.default.createElement(_nativeBase.Input, {
+                maxLength: 45,
+                onChangeText: function onChangeText(username) {
+                  return _this2.setState({
+                    username: username
+                  });
+                },
+                value: this.state.username,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 111
+                }
+              })
+            ),
+            _react3.default.createElement(
+              _nativeBase.Item,
+              {
+                floatingLabel: true,
+                style: _styles2.default.adult_TextInput,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 121
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 122
+                  }
+                },
+                "Contrase\xF1a"
+              ),
+              _react3.default.createElement(_nativeBase.Input, {
+                secureTextEntry: true,
+                onChangeText: function onChangeText(password) {
+                  return _this2.setState({
+                    password: password
+                  });
+                },
+                value: this.state.password,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 123
+                }
+              })
+            ),
+            _react3.default.createElement(
+              _nativeBase.Item,
+              {
+                floatingLabel: true,
+                style: _styles2.default.adult_TextInput,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 130
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 131
+                  }
+                },
+                "Repita su contrase\xF1a"
+              ),
+              _react3.default.createElement(_nativeBase.Input, {
+                secureTextEntry: true,
+                onChangeText: function onChangeText(password2) {
+                  return _this2.setState({
+                    password2: password2
+                  });
+                },
+                value: this.state.password2,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 132
+                }
+              })
+            ),
+            _react3.default.createElement(
+              _nativeBase.Item,
+              {
+                floatingLabel: true,
+                last: true,
+                style: _styles2.default.adult_TextInput,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 139
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 140
+                  }
+                },
+                "Correo electr\xF3nico"
+              ),
+              _react3.default.createElement(_nativeBase.Input, {
+                onChangeText: function onChangeText(email) {
+                  return _this2.setState({
+                    email: email
+                  });
+                },
+                value: this.state.email,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 141
+                }
+              })
+            )
+          ),
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: _styles2.default.adult_ButtonsContainer,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 149
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: _styles2.default.button,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 150
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  iconLeft: true,
+                  rounded: true,
+                  style: _styles2.default.buttonclear,
+                  onPress: function onPress() {
+                    return _this2.props.navigation.navigate('AddStudent');
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 151
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  name: "person-add",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 153
+                  }
+                }),
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 154
+                    }
+                  },
+                  "A\xF1adir Estudiante"
+                )
+              ),
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  iconLeft: true,
+                  rounded: true,
+                  style: _styles2.default.buttondark,
+                  onPress: this._createAdult.bind(this),
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 159
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  type: "MaterialIcons",
+                  name: "done",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 162
+                  }
+                }),
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 163
+                    }
+                  },
+                  "Finalizar Registro"
+                )
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 166
+                }
+              },
+              this.state.errors.toString()
+            )
+          )
+        );
+      }
+    }]);
+
+    return SignUpAdult;
+  }(_react2.Component), _class.navigationOptions = {
+    title: 'Registro adulto'
+  }, _temp));
+
+  exports.default = SignUpAdult;
+});

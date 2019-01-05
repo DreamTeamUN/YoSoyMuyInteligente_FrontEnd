@@ -1,0 +1,7 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var $export = _require(_dependencyMap[0], './$.export');
+
+  $export($export.S, 'Object', {
+    setPrototypeOf: _require(_dependencyMap[1], './$.set-proto').set
+  });
+});

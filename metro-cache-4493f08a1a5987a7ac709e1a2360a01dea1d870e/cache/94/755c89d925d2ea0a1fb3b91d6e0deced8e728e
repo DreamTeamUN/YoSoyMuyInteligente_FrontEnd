@@ -1,0 +1,232 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/AddStudent.js";
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+  var _expo = _require(_dependencyMap[4], "expo");
+
+  var _styles = _require(_dependencyMap[5], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    AddStudent: {
+      displayName: "AddStudent"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/AddStudent.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var AddStudent = _wrapComponent("AddStudent")((_temp = _class = function (_Component) {
+    _inherits(AddStudent, _Component);
+
+    function AddStudent(props) {
+      _classCallCheck(this, AddStudent);
+
+      var _this = _possibleConstructorReturn(this, (AddStudent.__proto__ || Object.getPrototypeOf(AddStudent)).call(this, props));
+
+      _this.state = {
+        username: ''
+      };
+      return _this;
+    }
+
+    _createClass(AddStudent, [{
+      key: "validate",
+      value: function validate(username) {
+        formatotexto = /^[a-zA-Z0-9]+$/;
+
+        if (formatotexto.test(username)) {
+          _reactNative.Alert.alert('La actualización fue realizada correctamente.');
+        } else {
+          _reactNative.Alert.alert('No se puede realizar la actualización. Por favor revise el nombre ingresado (no puede contener símbolos especiales).');
+        }
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 34
+            }
+          },
+          _react3.default.createElement(
+            _nativeBase.Form,
+            {
+              style: _styles2.default.adult_TextInputContainer,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 35
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Item,
+              {
+                floatingLabel: true,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 36
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 37
+                  }
+                },
+                "Nombre de usuario"
+              ),
+              _react3.default.createElement(_nativeBase.Input, {
+                maxLength: 45,
+                onChangeText: function onChangeText(username) {
+                  return _this2.setState({
+                    username: username
+                  });
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 38
+                }
+              })
+            ),
+            _react3.default.createElement(
+              _nativeBase.Item,
+              {
+                floatingLabel: true,
+                last: true,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 44
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 45
+                  }
+                },
+                "Foto (ac\xE1 se subir\xE1 un archivo)."
+              ),
+              _react3.default.createElement(_nativeBase.Input, {
+                onChangeText: function onChangeText(email) {
+                  return _this2.setState({
+                    email: email
+                  });
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 46
+                }
+              })
+            )
+          ),
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: _styles2.default.buttonsContainer,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 52
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: _styles2.default.button,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 53
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  iconLeft: true,
+                  rounded: true,
+                  style: _styles2.default.buttondark,
+                  onPress: function onPress() {
+                    return _this2.validate(_this2.state.username, _this2.state.password, _this2.state.password2, _this2.state.email);
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 54
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  type: "MaterialIcons",
+                  name: "done",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 56
+                  }
+                }),
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 57
+                    }
+                  },
+                  "Finalizar Registro"
+                )
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return AddStudent;
+  }(_react2.Component), _class.navigationOptions = {
+    title: 'Añadir estudiante'
+  }, _temp));
+
+  exports.default = AddStudent;
+});

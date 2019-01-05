@@ -1,0 +1,9 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var toIObject = _require(_dependencyMap[0], './$.to-iobject');
+
+  _require(_dependencyMap[1], './$.object-sap')('getOwnPropertyDescriptor', function ($getOwnPropertyDescriptor) {
+    return function getOwnPropertyDescriptor(it, key) {
+      return $getOwnPropertyDescriptor(toIObject(it), key);
+    };
+  });
+});

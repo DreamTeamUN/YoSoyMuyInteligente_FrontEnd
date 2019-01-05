@@ -163,7 +163,7 @@ export default class HomeAdult extends Component {
 
             <View style = {styles.viewButtonHome}>
               <Button full iconLeft rounded style={styles.buttonclear}
-                onPress={() => this.props.navigation.navigate('AddStudent')}>
+                onPress={() => this.props.navigation.navigate('AdminStudentsTutor')}>
                 <Icon type="MaterialCommunityIcons" name="settings" />
                 <Text>Estudiantes</Text>
               </Button>

@@ -98,6 +98,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _AddClassRoom2 = _interopRequireDefault(_AddClassRoom);
 
+    var _AdminStudentsTutor = _require(_dependencyMap[24], "./components/AdminStudentsTutor");
+
+    var _AdminStudentsTutor2 = _interopRequireDefault(_AdminStudentsTutor);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -112,6 +116,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         Sentence: _Sentence2.default,
         Games: _Games2.default,
         Practices: _Practices2.default,
+        AdminStudentsTutor: _AdminStudentsTutor2.default,
         AddStudent: _AddStudent2.default,
         EditProfile: _EditProfile2.default,
         ChangeFullname: _ChangeFullname2.default,

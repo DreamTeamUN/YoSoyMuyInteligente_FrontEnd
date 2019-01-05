@@ -747,7 +747,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     rounded: true,
                     style: _styles2.default.buttonclear,
                     onPress: function onPress() {
-                      return _this3.props.navigation.navigate('AddStudent');
+                      return _this3.props.navigation.navigate('AdminStudentsTutor');
                     },
                     __source: {
                       fileName: _jsxFileName,

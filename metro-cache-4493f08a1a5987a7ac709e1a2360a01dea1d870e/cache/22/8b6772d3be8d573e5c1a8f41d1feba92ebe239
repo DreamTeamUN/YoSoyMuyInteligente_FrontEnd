@@ -2,7 +2,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.sendDataToSocials = exports.sendDataToLogIn = exports.removeToken = exports.getToken = exports.storeToken = undefined;
+    exports.sendDataToLogIn = exports.sendDataToSocials = exports.removeToken = exports.getToken = exports.storeToken = undefined;
 
     var _this = this;
 
@@ -100,22 +100,22 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }, null, _this, [[0, 6]]);
     };
 
-    var sendDataToLogIn = exports.sendDataToLogIn = function sendDataToLogIn(email, password) {
-        return regeneratorRuntime.async(function sendDataToLogIn$(_context4) {
+    var sendDataToSocials = exports.sendDataToSocials = function sendDataToSocials(name, email, tipo_usuario, token) {
+        return regeneratorRuntime.async(function sendDataToSocials$(_context4) {
             while (1) {
                 switch (_context4.prev = _context4.next) {
                     case 0:
-                        return _context4.abrupt("return", fetch(_const.API_LOG_IN, {
+                        return _context4.abrupt("return", fetch(_const.API_SOCIALS, {
                             method: 'POST',
                             headers: {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                "auth": {
-                                    "email": email,
-                                    "password": password
-                                }
+                                "name": name,
+                                "email": email,
+                                "tipo_usuario": tipo_usuario,
+                                "token": token
                             })
                         }));
 
@@ -127,22 +127,22 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }, null, _this);
     };
 
-    var sendDataToSocials = exports.sendDataToSocials = function sendDataToSocials(name, email, tipo_usuario, token) {
-        return regeneratorRuntime.async(function sendDataToSocials$(_context5) {
+    var sendDataToLogIn = exports.sendDataToLogIn = function sendDataToLogIn(email, password) {
+        return regeneratorRuntime.async(function sendDataToLogIn$(_context5) {
             while (1) {
                 switch (_context5.prev = _context5.next) {
                     case 0:
-                        return _context5.abrupt("return", fetch(_const.API_SOCIALS, {
+                        return _context5.abrupt("return", fetch(_const.API_LOG_IN, {
                             method: 'POST',
                             headers: {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                "name": name,
-                                "email": email,
-                                "tipo_usuario": tipo_usuario,
-                                "token": token
+                                "auth": {
+                                    "email": email,
+                                    "password": password
+                                }
                             })
                         }));
 

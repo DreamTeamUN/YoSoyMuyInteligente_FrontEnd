@@ -339,6 +339,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       borderColor: "silver",
       borderRadius: 5,
       margin: 10
+    },
+    estudiante_TextInputContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('50%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1.0%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('7%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('80%'),
+      flex: 1
     }
   });
 

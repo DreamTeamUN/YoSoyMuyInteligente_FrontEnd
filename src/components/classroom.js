@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Text, Fab, Icon, View, Container, Content, Header, Title, Button,
    Left, Body, Card, CardItem, Right} from 'native-base';
 import styles from '../styles';
-import {API_CREATE_AULA} from '../config/const'
+import {API_CREATE_AULA} from '../config/const';
 import {getID, getTipoUsuario} from '../utils/home';
 
 
@@ -39,14 +39,14 @@ export default class ClassRoom extends Component {
           .catch((error) => {
               console.error(error);
           });
-      }
+    }
 
   async componentWillMount(){
       this.setState({
         tipo_usuario: await getTipoUsuario(),
         idUsuario: await getID(),
       });
-    }
+  }
 
     componentDidMount() {
       this.getData();

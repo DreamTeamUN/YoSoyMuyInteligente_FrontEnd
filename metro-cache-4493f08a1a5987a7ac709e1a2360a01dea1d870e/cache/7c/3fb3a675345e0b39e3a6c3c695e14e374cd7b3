@@ -131,7 +131,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   active: true,
-                  name: "home",
+                  name: "person",
                   __source: {
                     fileName: _jsxFileName,
                     lineNumber: 53
@@ -213,7 +213,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     lineNumber: 72
                   }
                 },
-                "Aulas"
+                "Panel de estudiantes"
               )
             )
           ),

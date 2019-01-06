@@ -37,7 +37,7 @@ export default class AdminStudentsTutor extends Component {
           .catch((error) => {
               console.error(error);
           });
-      }
+    }
 
     componentDidMount() {
       this.getData();
@@ -50,7 +50,7 @@ export default class AdminStudentsTutor extends Component {
               <View key={NewsData.id}>
                 <Card>
                   <CardItem >
-                    <Icon active name="home" />
+                    <Icon active name="person" />
                     <Text>{NewsData.name}</Text>
                    </CardItem>
                 </Card>
@@ -69,14 +69,14 @@ export default class AdminStudentsTutor extends Component {
             </Left>
 
             <Body>
-              <Title>Aulas</Title>
+              <Title>Panel de estudiantes</Title>
             </Body>
 
           </Header>
 
           <Content style = {styles.maxHeight}>
             {display}
-        </Content>
+          </Content>
 
          <Fab
            active={this.state.active}

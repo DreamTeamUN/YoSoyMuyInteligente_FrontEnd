@@ -8,7 +8,7 @@ import { setUserData, getUsername, getTipoUsuario } from '../utils/home';
 import styles from '../styles';
 
 export default class HomeAdult extends Component {
-
+  
   constructor(props) {
     super(props);
     this.state = {

@@ -30,9 +30,9 @@ export default class ChangeBirthdate extends Component {
             <Container>
                 <Content>
                     <DatePicker
-                        defaultDate={new Date(2018, 4, 4)}
-                        minimumDate={new Date(2018, 1, 1)}
-                        maximumDate={new Date(2018, 12, 31)}
+                        defaultDate={new Date()}
+                        minimumDate={new Date(1930, 1, 1)}
+                        maximumDate={new Date(2030, 12, 31)}
                         locale={"co"}
                         timeZoneOffsetInMinutes={undefined}
                         modalTransparent={false}
@@ -43,9 +43,6 @@ export default class ChangeBirthdate extends Component {
                         placeHolderTextStyle={{ color: "#d3d3d3" }}
                         onDateChange={(newDate) => this.setState({ birthdate: newDate })}
                     />
-                    <Text>
-                        Date: {this.state.birthdate.toString().substr(4, 12)}
-                    </Text>
                     <View>
                         <Button iconLeft rounded
                             style={styles.buttondark}

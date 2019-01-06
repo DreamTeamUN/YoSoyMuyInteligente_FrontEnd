@@ -10,4 +10,5 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   var API_LESSONS = exports.API_LESSONS = 'https://ysmiapi.herokuapp.com/leccions/';
   var API_SOCIALS = exports.API_SOCIALS = API + "/socials";
   var API_CREATE_AULA = exports.API_CREATE_AULA = 'https://ysmiapi.herokuapp.com/docente_programas';
+  var API_TUTORS = exports.API_TUTORS = 'https://ysmiapi.herokuapp.com/tutors';
 });

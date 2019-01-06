@@ -112,9 +112,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             }
                         },
                         _react3.default.createElement(_nativeBase.DatePicker, {
-                            defaultDate: new Date(2018, 4, 4),
-                            minimumDate: new Date(2018, 1, 1),
-                            maximumDate: new Date(2018, 12, 31),
+                            defaultDate: new Date(),
+                            minimumDate: new Date(1930, 1, 1),
+                            maximumDate: new Date(2030, 12, 31),
                             locale: "co",
                             timeZoneOffsetInMinutes: undefined,
                             modalTransparent: false,
@@ -138,22 +138,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             }
                         }),
                         _react3.default.createElement(
-                            _nativeBase.Text,
-                            {
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 46
-                                }
-                            },
-                            "Date: ",
-                            this.state.birthdate.toString().substr(4, 12)
-                        ),
-                        _react3.default.createElement(
                             _reactNative.View,
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 49
+                                    lineNumber: 46
                                 }
                             },
                             _react3.default.createElement(
@@ -165,7 +154,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     onPress: this._sendNewData.bind(this),
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 50
+                                        lineNumber: 47
                                     }
                                 },
                                 _react3.default.createElement(_nativeBase.Icon, {
@@ -173,7 +162,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     name: "done",
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 54
+                                        lineNumber: 51
                                     }
                                 }),
                                 _react3.default.createElement(
@@ -181,7 +170,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 55
+                                            lineNumber: 52
                                         }
                                     },
                                     "Enviar cambios"

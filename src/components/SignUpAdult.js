@@ -79,8 +79,6 @@ export default class SignUpAdult extends Component {
             break;
         }
 
-
-
       } catch (error) {
         this.setState({ isLoading: false })
         console.log("catch errors: " + error)

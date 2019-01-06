@@ -352,6 +352,13 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 10
 
+  },
+  estudiante_TextInputContainer: {
+    height: hp('50%'),
+    marginTop: hp('1.0%'),
+    marginLeft: wp('7%'),
+    width: wp('80%'),
+    flex: 1,
   }
 });
 

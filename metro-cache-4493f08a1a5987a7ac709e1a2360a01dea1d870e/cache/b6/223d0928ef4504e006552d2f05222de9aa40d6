@@ -1,0 +1,22 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  "use strict";
+
+  var _Object$defineProperty = _require(_dependencyMap[0], "babel-runtime/core-js/object/define-property")["default"];
+
+  exports["default"] = function (obj, key, value) {
+    if (key in obj) {
+      _Object$defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  };
+
+  exports.__esModule = true;
+});

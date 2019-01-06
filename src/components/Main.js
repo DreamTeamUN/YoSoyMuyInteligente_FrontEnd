@@ -19,28 +19,18 @@ export default class Main extends Component {
         //iosClientId: YOUR_CLIENT_ID_HERE,  <-- if you use iOS
         scopes: ["profile", "email"]
       })
-      //console.log(result)
-      //if (result.type === "success") {
-        //this.setState({
-          //signedIn: true,
-          //name: result.user.name,
-          //photoUrl: result.user.photoUrl
-        //})
-      //} else {
-        //console.log("Google | Cancelled")
-      //}
       if (result.type === "success"){
-        console.log(result)
+
+        console.log(result);
         let response = await sendDataToSocials(result.user.name, result.user.email, 1, result.accessToken)
         let res = await response.json();
         storeToken(res.jwt);
         this.props.navigation.navigate('HomeAdult')
-
       }else {
         console.log("Google | Cancelled")
       }
     } catch (e) {
-      console.log("error", e)
+      console.log("error con google autenticathor: ", e)
     }
   }
 

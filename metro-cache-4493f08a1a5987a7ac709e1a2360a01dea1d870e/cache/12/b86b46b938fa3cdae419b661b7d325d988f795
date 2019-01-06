@@ -1,0 +1,1044 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/node_modules/react-native-comments/index.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _propTypes = _require(_dependencyMap[3], "prop-types");
+
+  var _propTypes2 = _interopRequireDefault(_propTypes);
+
+  var _FontAwesome = _require(_dependencyMap[4], "@expo/vector-icons/FontAwesome");
+
+  var _FontAwesome2 = _interopRequireDefault(_FontAwesome);
+
+  var _styles = _require(_dependencyMap[5], "./styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  var _reactNativeCollapsible = _require(_dependencyMap[6], "react-native-collapsible");
+
+  var _reactNativeCollapsible2 = _interopRequireDefault(_reactNativeCollapsible);
+
+  var _Comment = _require(_dependencyMap[7], "./Comment");
+
+  var _Comment2 = _interopRequireDefault(_Comment);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    Comments: {
+      displayName: "Comments"
+    }
+  };
+
+  var _reactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/node_modules/react-native-comments/index.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _reactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var screen = _reactNative.Dimensions.get("screen");
+
+  var Comments = _wrapComponent("Comments")(function (_PureComponent) {
+    _inherits(Comments, _PureComponent);
+
+    function Comments(props) {
+      _classCallCheck(this, Comments);
+
+      var _this = _possibleConstructorReturn(this, (Comments.__proto__ || Object.getPrototypeOf(Comments)).call(this, props));
+
+      _this.bookmark = null;
+      _this.props = props;
+      _this.state = {
+        loadingComments: props.data && props.data.length ? false : true,
+        likesModalVisible: false,
+        likesModalData: null,
+        editModalVisible: false,
+        commentsLastUpdated: null,
+        expanded: [],
+        pagination: []
+      };
+      _this.newCommentText = null;
+      _this.replyCommentText = null;
+      _this.editCommentText = null;
+      _this.editingComment = null;
+      _this.textInputs = [];
+      _this.renderComment = _this.renderComment.bind(_this);
+      _this.handleReport = _this.handleReport.bind(_this);
+      _this.handleReply = _this.handleReply.bind(_this);
+      _this.handleLike = _this.handleLike.bind(_this);
+      _this.handleEdit = _this.handleEdit.bind(_this);
+      _this.handleDelete = _this.handleDelete.bind(_this);
+      _this.handleUsernameTap = _this.handleUsernameTap.bind(_this);
+      _this.handleLikesTap = _this.handleLikesTap.bind(_this);
+      _this.handleEditAction = _this.handleEditAction.bind(_this);
+      _this.renderLike = _this.renderLike.bind(_this);
+      return _this;
+    }
+
+    _createClass(Comments, [{
+      key: "setLikesModalVisible",
+      value: function setLikesModalVisible(visible) {
+        this.setState({
+          likesModalVisible: visible
+        });
+      }
+    }, {
+      key: "setEditModalVisible",
+      value: function setEditModalVisible(visible) {
+        this.setState({
+          editModalVisible: visible
+        });
+      }
+    }, {
+      key: "componentWillReceiveProps",
+      value: function componentWillReceiveProps(nextProps) {
+        if (nextProps.data) {
+          this.setState({
+            commentsLastUpdated: new Date().getTime(),
+            loadingComments: false
+          });
+        }
+      }
+    }, {
+      key: "isExpanded",
+      value: function isExpanded(id) {
+        return this.state.expanded.indexOf(id) !== -1;
+      }
+    }, {
+      key: "toggleExpand",
+      value: function toggleExpand(c, focus) {
+        var id = this.props.keyExtractor(c);
+        var expanded = this.state.expanded;
+        var index = expanded.indexOf(id);
+
+        if (index === -1) {
+          expanded.push(id);
+        } else {
+          expanded.splice(index, 1);
+        }
+
+        this.forceUpdate();
+        this.setState({
+          expanded: expanded
+        });
+
+        if (focus && index === -1) {
+          this.focusOnReplyInput(id);
+        }
+      }
+    }, {
+      key: "handleReport",
+      value: function handleReport(c) {
+        this.props.reportAction(c);
+      }
+    }, {
+      key: "focusOnReplyInput",
+      value: function focusOnReplyInput(id) {
+        var _this2 = this;
+
+        console.log(id);
+        var input = this.textInputs["input" + id];
+        input.measure(function (x, y, width, height, pageX, pageY) {
+          console.log(pageY);
+          input.focus();
+
+          _this2.props.replyAction(pageY);
+        });
+      }
+    }, {
+      key: "handleReply",
+      value: function handleReply(c) {
+        if (!this.props.isChild) return;
+
+        if (!this.props.isChild(c)) {
+          this.toggleExpand(c, true);
+        } else {
+          this.focusOnReplyInput(this.props.parentIdExtractor(c));
+        }
+      }
+    }, {
+      key: "handleLike",
+      value: function handleLike(c) {
+        this.props.likeAction(c);
+      }
+    }, {
+      key: "handleDelete",
+      value: function handleDelete(c) {
+        this.props.deleteAction(c);
+      }
+    }, {
+      key: "handleEdit",
+      value: function handleEdit(c) {
+        this.editCommentText = this.props.bodyExtractor(c);
+        this.editingComment = c;
+        this.setEditModalVisible(!this.state.editModalVisible);
+      }
+    }, {
+      key: "handleUsernameTap",
+      value: function handleUsernameTap(username) {
+        if (this.props.usernameTapAction) {
+          this.props.usernameTapAction(username);
+        }
+      }
+    }, {
+      key: "handleLikesTap",
+      value: function handleLikesTap(c) {
+        this.setState({
+          likesModalData: this.props.likesExtractor(c)
+        });
+        this.setLikesModalVisible(!this.state.likesModalVisible);
+      }
+    }, {
+      key: "handleEditAction",
+      value: function handleEditAction(c) {
+        this.props.editAction(this.editCommentText, c);
+      }
+    }, {
+      key: "generateComment",
+      value: function generateComment(c) {
+        return _react3.default.createElement(_Comment2.default, {
+          data: c,
+          id: this.props.keyExtractor(c),
+          usernameTapAction: this.handleUsernameTap,
+          username: this.props.usernameExtractor(c),
+          body: this.props.bodyExtractor(c),
+          likesNr: this.props.likesExtractor(c).length,
+          canEdit: this.canUserEdit(c),
+          updatedAt: this.props.editTimeExtractor(c),
+          replyAction: this.props.replyAction ? this.handleReply : null,
+          image: this.props.imageExtractor(c),
+          child: true,
+          reportAction: this.props.reportAction ? this.handleReport : null,
+          liked: this.props.likeExtractor ? this.props.likeExtractor(c) : null,
+          reported: this.props.reportedExtractor ? this.props.reportedExtractor(c) : null,
+          likeAction: this.props.likeAction ? this.handleLike : null,
+          editAction: this.handleEditAction,
+          deleteAction: this.handleDelete,
+          editComment: this.handleEdit,
+          likesTapAction: this.props.likeAction ? this.handleLikesTap : null,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 156
+          }
+        });
+      }
+    }, {
+      key: "renderChildren",
+      value: function renderChildren(items) {
+        if (!items || !items.length) return;
+        var self = this;
+        return items.map(function (c) {
+          return _react3.default.createElement(
+            _reactNative.View,
+            {
+              key: self.props.keyExtractor(c) + "" + Math.random(),
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 190
+              }
+            },
+            self.generateComment(c)
+          );
+        });
+      }
+    }, {
+      key: "getLastChildCommentId",
+      value: function getLastChildCommentId(item) {
+        if (!item) return;
+        var items = item[this.props.childPropName];
+        return this.props.keyExtractor(items[items.length - 1]);
+      }
+    }, {
+      key: "getFirstChildCommentId",
+      value: function getFirstChildCommentId(item) {
+        if (!item) return;
+        var items = item[this.props.childPropName];
+        return this.props.keyExtractor(items[0]);
+      }
+    }, {
+      key: "paginate",
+      value: function paginate(fromCommentId, direction, parentCommentId) {
+        this.setState({
+          loadingComments: true
+        });
+        this.props.paginateAction(fromCommentId, direction, parentCommentId);
+      }
+    }, {
+      key: "canUserEdit",
+      value: function canUserEdit(item) {
+        if (this.props.viewingUserName == this.props.usernameExtractor(item)) {
+          if (!this.props.editMinuteLimit) return true;
+          var created = new Date(this.props.createdTimeExtractor(item)).getTime() / 1000;
+          return new Date().getTime() / 1000 - created < this.props.editMinuteLimit * 60;
+        }
+
+        return false;
+      }
+    }, {
+      key: "renderLike",
+      value: function renderLike(l) {
+        var _this3 = this;
+
+        var like = l.item;
+        return _react3.default.createElement(
+          _reactNative.TouchableHighlight,
+          {
+            onPress: function onPress() {
+              _this3.setLikesModalVisible(false), like.tap(like.name);
+            },
+            style: _styles2.default.likeButton,
+            key: like.user_id + "",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 242
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: [_styles2.default.likeContainer],
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 249
+              }
+            },
+            _react3.default.createElement(_reactNative.Image, {
+              style: [_styles2.default.likeImage],
+              source: {
+                uri: like.image
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 250
+              }
+            }),
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: [_styles2.default.likeName],
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 251
+                }
+              },
+              like.name
+            )
+          )
+        );
+      }
+    }, {
+      key: "renderComment",
+      value: function renderComment(c) {
+        var _this4 = this;
+
+        var item = c.item;
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 263
+            }
+          },
+          this.generateComment(item),
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: {
+                marginLeft: 40
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 265
+              }
+            },
+            item.childrenCount && this.props.childPropName ? _react3.default.createElement(
+              _reactNative.TouchableHighlight,
+              {
+                onPress: function onPress() {
+                  return _this4.toggleExpand(item);
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 267
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: _styles2.default.repliedSection,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 268
+                  }
+                },
+                _react3.default.createElement(_reactNative.Image, {
+                  style: _styles2.default.repliedImg,
+                  source: {
+                    uri: this.props.imageExtractor(item[this.props.childPropName][0])
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 269
+                  }
+                }),
+                _react3.default.createElement(
+                  _reactNative.Text,
+                  {
+                    style: _styles2.default.repliedUsername,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 277
+                    }
+                  },
+                  " ",
+                  this.props.usernameExtractor(item[this.props.childPropName][0]),
+                  " "
+                ),
+                _react3.default.createElement(
+                  _reactNative.Text,
+                  {
+                    style: _styles2.default.repliedText,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 283
+                    }
+                  },
+                  "replied"
+                ),
+                _react3.default.createElement(
+                  _reactNative.Text,
+                  {
+                    style: _styles2.default.repliedCount,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 284
+                    }
+                  },
+                  " ",
+                  "* ",
+                  this.props.childrenCountExtractor(item),
+                  this.props.childrenCountExtractor(item) > 1 ? " replies" : " reply"
+                )
+              )
+            ) : null,
+            _react3.default.createElement(
+              _reactNativeCollapsible2.default,
+              {
+                easing: "easeOutCubic",
+                duration: 400,
+                collapsed: !this.isExpanded(this.props.keyExtractor(item)),
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 294
+                }
+              },
+              this.props.childrenCountExtractor(item) && this.props.paginateAction ? _react3.default.createElement(
+                _reactNative.View,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 301
+                  }
+                },
+                this.props.childPropName && this.props.childrenCountExtractor(item) > item[this.props.childPropName].length ? _react3.default.createElement(
+                  _reactNative.TouchableHighlight,
+                  {
+                    onPress: function onPress() {
+                      return _this4.paginate(_this4.getFirstChildCommentId(item), "down", _this4.props.keyExtractor(item));
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 305
+                    }
+                  },
+                  _react3.default.createElement(
+                    _reactNative.Text,
+                    {
+                      style: {
+                        textAlign: "center",
+                        paddingTop: 15
+                      },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 314
+                      }
+                    },
+                    "Show previous..."
+                  )
+                ) : null,
+                this.renderChildren(item[this.props.childPropName], this.props.keyExtractor(item)),
+                this.props.childrenCountExtractor(item) > item[this.props.childPropName].length && this.props.paginateAction ? _react3.default.createElement(
+                  _reactNative.TouchableHighlight,
+                  {
+                    onPress: function onPress() {
+                      return _this4.paginate(_this4.getLastChildCommentId(item), "up", _this4.props.keyExtractor(item));
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 328
+                    }
+                  },
+                  _react3.default.createElement(
+                    _reactNative.Text,
+                    {
+                      style: {
+                        textAlign: "center",
+                        paddingTop: 15
+                      },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 337
+                      }
+                    },
+                    "Show more..."
+                  )
+                ) : null
+              ) : null,
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: _styles2.default.inputSection,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 344
+                  }
+                },
+                _react3.default.createElement(_reactNative.TextInput, {
+                  ref: function ref(input) {
+                    return _this4.textInputs["input" + _this4.props.keyExtractor(item)] = input;
+                  },
+                  style: _styles2.default.input,
+                  multiline: true,
+                  onChangeText: function onChangeText(text) {
+                    return _this4.replyCommentText = text;
+                  },
+                  placeholder: "Write comment",
+                  numberOfLines: 3,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 345
+                  }
+                }),
+                _react3.default.createElement(
+                  _reactNative.TouchableHighlight,
+                  {
+                    onPress: function onPress() {
+                      _this4.props.saveAction(_this4.replyCommentText, _this4.props.keyExtractor(item));
+
+                      _this4.replyCommentText = null;
+
+                      _this4.textInputs["input" + _this4.props.keyExtractor(item)].clear();
+
+                      _reactNative.Keyboard.dismiss();
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 357
+                    }
+                  },
+                  _react3.default.createElement(_FontAwesome2.default, {
+                    style: _styles2.default.submit,
+                    name: "caret-right",
+                    size: 40,
+                    color: "#000",
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 370
+                    }
+                  })
+                )
+              )
+            )
+          )
+        );
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this5 = this;
+
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            style: {
+              flex: 1
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 386
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: _styles2.default.inputSection,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 387
+              }
+            },
+            _react3.default.createElement(_reactNative.TextInput, {
+              style: _styles2.default.input,
+              ref: function ref(input) {
+                return _this5.textInputs["inputMain"] = input;
+              },
+              multiline: true,
+              onChangeText: function onChangeText(text) {
+                return _this5.newCommentText = text;
+              },
+              placeholder: "Write comment",
+              numberOfLines: 3,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 388
+              }
+            }),
+            _react3.default.createElement(
+              _reactNative.TouchableHighlight,
+              {
+                onPress: function onPress() {
+                  _this5.props.saveAction(_this5.newCommentText, false);
+
+                  _this5.newCommentText = null;
+
+                  _this5.textInputs["inputMain"].clear();
+
+                  _reactNative.Keyboard.dismiss();
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 396
+                }
+              },
+              _react3.default.createElement(_FontAwesome2.default, {
+                style: _styles2.default.submit,
+                name: "caret-right",
+                size: 40,
+                color: "#000",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 404
+                }
+              })
+            )
+          ),
+          !this.state.loadingComments && !this.props.data ? _react3.default.createElement(
+            _reactNative.Text,
+            {
+              style: {
+                textAlign: "center"
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 413
+              }
+            },
+            "No comments yet"
+          ) : null,
+          !this.state.loadingComments && this.props.data && this.props.paginateAction ? _react3.default.createElement(
+            _reactNative.TouchableHighlight,
+            {
+              onPress: function onPress() {
+                _this5.paginate(_this5.props.keyExtractor(_this5.props.data[0]), "down");
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 419
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 427
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: {
+                    textAlign: "center"
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 428
+                  }
+                },
+                "Show previous"
+              )
+            )
+          ) : null,
+          this.props.data ? _react3.default.createElement(_reactNative.FlatList, {
+            keyboardShouldPersistTaps: "always",
+            style: {
+              backgroundColor: "white"
+            },
+            data: this.props.data,
+            extraData: this.state.commentsLastUpdated,
+            initialNumToRender: this.props.initialDisplayCount || 999,
+            keyExtractor: function keyExtractor(item) {
+              return _this5.props.keyExtractor(item) + "";
+            },
+            renderItem: this.renderComment,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 434
+            }
+          }) : null,
+          this.state.loadingComments ? _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: {
+                position: "absolute",
+                zIndex: 10,
+                bottom: 0,
+                height: 60,
+                backgroundColor: "rgba(255,255,255, 0.9)"
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 446
+              }
+            },
+            _react3.default.createElement(_reactNative.ActivityIndicator, {
+              animating: true,
+              style: {
+                height: 50,
+                width: screen.width,
+                alignItems: "center",
+                justifyContent: "center"
+              },
+              size: "small",
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 455
+              }
+            })
+          ) : null,
+          !this.state.loadingComments && this.props.data && this.props.paginateAction ? _react3.default.createElement(
+            _reactNative.TouchableHighlight,
+            {
+              style: {
+                height: 70
+              },
+              onPress: function onPress() {
+                _this5.paginate(_this5.props.keyExtractor(_this5.props.data[_this5.props.data.length - 1]), "up");
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 471
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: {
+                  textAlign: "center"
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 482
+                }
+              },
+              "Show more"
+            )
+          ) : null,
+          _react3.default.createElement(
+            _reactNative.Modal,
+            {
+              animationType: "slide",
+              transparent: false,
+              visible: this.state.likesModalVisible,
+              onRequestClose: function onRequestClose() {
+                _this5.setLikesModalVisible(false);
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 486
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.TouchableHighlight,
+              {
+                onPress: function onPress() {
+                  return _this5.setLikesModalVisible(false);
+                },
+                style: {
+                  position: "absolute",
+                  width: 100,
+                  zIndex: 9,
+                  alignSelf: "flex-end",
+                  top: 10
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 494
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: {
+                    position: "relative",
+                    left: 50,
+                    top: 5
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 504
+                  }
+                },
+                _react3.default.createElement(_FontAwesome2.default, {
+                  name: "times",
+                  size: 40,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 505
+                  }
+                })
+              )
+            ),
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: _styles2.default.likeHeader,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 508
+                }
+              },
+              "Users that liked the comment"
+            ),
+            this.state.likesModalVisible ? _react3.default.createElement(_reactNative.FlatList, {
+              initialNumToRender: "10",
+              keyExtractor: function keyExtractor(item) {
+                return item.like_id + "";
+              },
+              data: this.state.likesModalData,
+              renderItem: this.renderLike,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 510
+              }
+            }) : null
+          ),
+          _react3.default.createElement(
+            _reactNative.Modal,
+            {
+              animationType: "slide",
+              onShow: function onShow() {
+                _this5.textInputs["editCommentInput"].focus();
+              },
+              transparent: true,
+              visible: this.state.editModalVisible,
+              onRequestClose: function onRequestClose() {
+                _this5.setEditModalVisible(false);
+
+                _this5.setState({
+                  editModalData: null
+                });
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 519
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: _styles2.default.editModalContainer,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 531
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: _styles2.default.editModal,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 532
+                  }
+                },
+                _react3.default.createElement(_reactNative.TextInput, {
+                  ref: function ref(input) {
+                    return _this5.textInputs["editCommentInput"] = input;
+                  },
+                  style: _styles2.default.input,
+                  multiline: true,
+                  defaultValue: this.editCommentText,
+                  onChangeText: function onChangeText(text) {
+                    return _this5.editCommentText = text;
+                  },
+                  placeholder: "Edit comment",
+                  numberOfLines: 3,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 533
+                  }
+                }),
+                _react3.default.createElement(
+                  _reactNative.View,
+                  {
+                    style: {
+                      flexDirection: "row",
+                      justifyContent: "space-around"
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 542
+                    }
+                  },
+                  _react3.default.createElement(
+                    _reactNative.TouchableHighlight,
+                    {
+                      onPress: function onPress() {
+                        return _this5.setEditModalVisible(false);
+                      },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 545
+                      }
+                    },
+                    _react3.default.createElement(
+                      _reactNative.View,
+                      {
+                        style: _styles2.default.editButtons,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 548
+                        }
+                      },
+                      _react3.default.createElement(
+                        _reactNative.Text,
+                        {
+                          __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 549
+                          }
+                        },
+                        "Cancel"
+                      ),
+                      _react3.default.createElement(_FontAwesome2.default, {
+                        name: "times",
+                        size: 20,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 550
+                        }
+                      })
+                    )
+                  ),
+                  _react3.default.createElement(
+                    _reactNative.TouchableHighlight,
+                    {
+                      onPress: function onPress() {
+                        _this5.props.editAction(_this5.editCommentText, _this5.editingComment);
+
+                        _this5.setEditModalVisible(!_this5.state.editModalVisible);
+                      },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 553
+                      }
+                    },
+                    _react3.default.createElement(
+                      _reactNative.View,
+                      {
+                        style: _styles2.default.editButtons,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 562
+                        }
+                      },
+                      _react3.default.createElement(
+                        _reactNative.Text,
+                        {
+                          __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 563
+                          }
+                        },
+                        "Save"
+                      ),
+                      _react3.default.createElement(_FontAwesome2.default, {
+                        name: "send",
+                        size: 20,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 564
+                        }
+                      })
+                    )
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return Comments;
+  }(_react2.PureComponent));
+
+  exports.default = Comments;
+  Comments.propTypes = {
+    data: _propTypes2.default.array.isRequired,
+    viewingUserName: _propTypes2.default.string,
+    initialDisplayCount: _propTypes2.default.number,
+    editMinuteLimit: _propTypes2.default.number,
+    usernameTapAction: _propTypes2.default.func,
+    childPropName: _propTypes2.default.string,
+    isChild: _propTypes2.default.func,
+    keyExtractor: _propTypes2.default.func.isRequired,
+    parentIdExtractor: _propTypes2.default.func,
+    usernameExtractor: _propTypes2.default.func.isRequired,
+    editTimeExtractor: _propTypes2.default.func.isRequired,
+    createdTimeExtractor: _propTypes2.default.func.isRequired,
+    bodyExtractor: _propTypes2.default.func.isRequired,
+    imageExtractor: _propTypes2.default.func.isRequired,
+    likeExtractor: _propTypes2.default.func,
+    reportedExtractor: _propTypes2.default.func,
+    likesExtractor: _propTypes2.default.func,
+    childrenCountExtractor: _propTypes2.default.func,
+    replyAction: _propTypes2.default.func,
+    saveAction: _propTypes2.default.func.isRequired,
+    deleteAction: _propTypes2.default.func,
+    editAction: _propTypes2.default.func.isRequired,
+    reportAction: _propTypes2.default.func,
+    likeAction: _propTypes2.default.func,
+    paginateAction: _propTypes2.default.func
+  };
+});

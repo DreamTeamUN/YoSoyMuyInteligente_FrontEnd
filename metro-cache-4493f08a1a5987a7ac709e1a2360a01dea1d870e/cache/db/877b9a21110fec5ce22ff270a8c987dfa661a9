@@ -1,0 +1,353 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = undefined;
+
+  var _react = _require(_dependencyMap[0], "react");
+
+  var _react2 = _interopRequireDefault(_react);
+
+  var _reactNative = _require(_dependencyMap[1], "react-native");
+
+  var _reactNativeResponsiveScreen = _require(_dependencyMap[2], "react-native-responsive-screen");
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var styles = _reactNative.StyleSheet.create({
+    headerStyle: {
+      backgroundColor: '#5D99C6',
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('12%'),
+      zIndex: 10,
+      paddingTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1.5%')
+    },
+    maxHeight: {
+      flex: 1
+    },
+    marginAddAula: {
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%')
+    },
+    buttonAceptarAula: {
+      backgroundColor: '#5D99C6',
+      margin: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%')
+    },
+    logoinicial: {
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
+      resizeMode: 'contain'
+    },
+    textContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      justifyContent: 'center'
+    },
+    imageContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      justifyContent: 'flex-end'
+    },
+    title: {
+      color: '#1F363D',
+      fontSize: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('8%'),
+      textAlign: 'center',
+      margin: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%')
+    },
+    subtitle: {
+      color: '#1F363D',
+      fontSize: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('4%'),
+      textAlign: 'center',
+      margin: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%')
+    },
+    headling: {
+      color: '#1F363D',
+      fontSize: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('6%'),
+      textAlign: 'center',
+      margin: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%')
+    },
+    buttonsContainer: {
+      height: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('50%'),
+      alignItems: 'center',
+      paddingTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('20%'),
+      justifyContent: 'center'
+    },
+    threebuttonsContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('50%'),
+      flexDirection: 'column',
+      paddingTop: 60,
+      paddingBottom: 10,
+      alignItems: 'center'
+    },
+    buttonclear: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      backgroundColor: '#90CAF9',
+      justifyContent: 'flex-start',
+      flexDirection: 'column',
+      alignItems: 'flex-start'
+    },
+    buttondark: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      backgroundColor: '#5D99C6',
+      justifyContent: 'flex-start',
+      flexDirection: 'column',
+      alignItems: 'flex-start'
+    },
+    buttonclearpra: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('18%'),
+      backgroundColor: '#90CAF9'
+    },
+    buttondarkpra: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('18%'),
+      backgroundColor: '#5D99C6'
+    },
+    buttonred: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      backgroundColor: '#DC143C'
+    },
+    buttonfb: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      backgroundColor: '#4267B2'
+    },
+    adult_TextInputContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('50%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1.0%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('7%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('80%'),
+      alignItems: 'center'
+    },
+    adult_TextInput: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('0.5%'),
+      backgroundColor: '#E9E9EF'
+    },
+    adult_ButtonsContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('20%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%')
+    },
+    login_TextInputContainer: {
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('10%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('10%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('80%'),
+      alignItems: 'center'
+    },
+    login_TextInput: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1.5%'),
+      backgroundColor: '#E9E9EF'
+    },
+    login_Toggle: {
+      flexDirection: 'row'
+    },
+    login_ToggleText: {
+      padding: 10,
+      fontSize: 20
+    },
+    googleIconViewStyle: {
+      height: 21,
+      width: 21,
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%')
+    },
+    fbIconViewStyle: {
+      height: 22,
+      width: 22,
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%')
+    },
+    homeAdult_TextContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('25%'),
+      justifyContent: 'center'
+    },
+    viewButtonHome: {
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('80%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('3%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('3%')
+    },
+    homeAdult_buttonsContainer: {
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%'),
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('70%'),
+      flexDirection: 'column',
+      alignItems: 'center'
+    },
+    login_buttonsContainer: {
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1%'),
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('70%'),
+      flexDirection: 'column',
+      alignItems: 'center'
+    },
+    textopracticas: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
+      fontSize: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('13%'),
+      textAlign: 'center'
+    },
+    menupracticas: {
+      paddingTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      justifyContent: 'space-between'
+    },
+    filapracticas: {
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('90%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('2%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('2%'),
+      marginRight: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('2%'),
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    },
+    numbers: {
+      fontSize: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('8%'),
+      fontWeight: 'bold',
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('18%'),
+      textAlign: 'center'
+    },
+    commentContainer: {
+      padding: 5,
+      flexDirection: 'row'
+    },
+    left: {
+      padding: 5
+    },
+    image: {
+      height: 40,
+      width: 40,
+      borderRadius: 40
+    },
+    right: {
+      flex: 1,
+      padding: 5
+    },
+    rightContent: {
+      borderRadius: 10,
+      padding: 5,
+      backgroundColor: '#f1f3f6'
+    },
+    rightContentTop: {
+      flexDirection: 'row'
+    },
+    name: {
+      fontWeight: 'bold',
+      paddingBottom: 5
+    },
+    editIcon: {
+      flex: 1,
+      alignItems: 'flex-end'
+    },
+    body: {
+      paddingBottom: 10
+    },
+    rightActionBar: {
+      flexDirection: 'row',
+      justifyContent: 'space-between'
+    },
+    time: {
+      fontSize: 12,
+      paddingLeft: 5,
+      color: '#9B9B9B',
+      fontStyle: 'italic'
+    },
+    actionText: {
+      color: '#9B9B9B',
+      fontWeight: 'bold'
+    },
+    repliedSection: {
+      width: 180,
+      justifyContent: 'space-between',
+      flexDirection: 'row'
+    },
+    repliedImg: {
+      height: 20,
+      width: 20,
+      borderRadius: 20
+    },
+    repliedUsername: {
+      color: '#9B9B9B',
+      fontWeight: 'bold'
+    },
+    repliedText: {
+      color: '#9B9B9B'
+    },
+    repliedCount: {
+      color: '#9B9B9B',
+      fontSize: 12
+    },
+    inputSection: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#fff'
+    },
+    submit: {
+      padding: 10
+    },
+    input: {
+      flex: 1,
+      padding: 10,
+      backgroundColor: '#fff',
+      color: '#424242'
+    },
+    likeNr: {
+      fontWeight: 'normal',
+      fontSize: 12
+    },
+    likeHeader: {
+      textAlign: 'center',
+      padding: 10,
+      fontWeight: 'bold'
+    },
+    likeButton: {
+      margin: 10,
+      alignItems: 'center'
+    },
+    likeContainer: {
+      padding: 10,
+      width: 200,
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      flexDirection: 'row'
+    },
+    likeImage: {
+      width: 50,
+      height: 50,
+      borderRadius: 50
+    },
+    likename: {
+      fontWeight: 'bold',
+      fontSize: 14
+    },
+    editModalContainer: {
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    editModal: {
+      backgroundColor: "white",
+      width: 400,
+      height: 300,
+      borderWidth: 2,
+      borderColor: "silver"
+    },
+    editButtons: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      height: 40,
+      width: 80,
+      paddingLeft: 5,
+      paddingRight: 5,
+      alignItems: "center",
+      borderWidth: 1,
+      borderColor: "silver",
+      borderRadius: 5,
+      margin: 10
+    },
+    estudiante_TextInputContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('50%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1.0%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('7%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('80%'),
+      flex: 1
+    }
+  });
+
+  exports.default = styles;
+});

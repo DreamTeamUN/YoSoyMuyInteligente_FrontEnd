@@ -1,0 +1,343 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/LogIn.js";
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+  var _logIn = _require(_dependencyMap[4], "../utils/logIn");
+
+  var _styles = _require(_dependencyMap[5], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  var _expo = _require(_dependencyMap[6], "expo");
+
+  var _expo2 = _interopRequireDefault(_expo);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    LogIn: {
+      displayName: "LogIn"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/LogIn.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var LogIn = _wrapComponent("LogIn")((_temp = _class = function (_Component) {
+    _inherits(LogIn, _Component);
+
+    function LogIn(props) {
+      _classCallCheck(this, LogIn);
+
+      var _this = _possibleConstructorReturn(this, (LogIn.__proto__ || Object.getPrototypeOf(LogIn)).call(this, props));
+
+      _this.toggleSwitch = _this.toggleSwitch.bind(_this);
+      _this.state = {
+        email: 'AVN@gmail.com',
+        password: '123123',
+        rememberMe: false,
+        error: '',
+        signedIn: false,
+        name: '',
+        photoUrl: '',
+        isLoading: false
+      };
+      return _this;
+    }
+
+    _createClass(LogIn, [{
+      key: "toggleSwitch",
+      value: function toggleSwitch() {
+        this.setState({
+          rememberMe: !this.state.rememberMe
+        });
+      }
+    }, {
+      key: "_sendData",
+      value: function _sendData() {
+        var response, res, accessToken;
+        return regeneratorRuntime.async(function _sendData$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return regeneratorRuntime.awrap((0, _logIn.sendDataToLogIn)(this.state.email, this.state.password));
+
+              case 3:
+                response = _context.sent;
+                console.log("login | res status: " + response.status);
+
+                if (!(response.status >= 200 && response.status < 300)) {
+                  _context.next = 16;
+                  break;
+                }
+
+                _context.next = 8;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 8:
+                res = _context.sent;
+                this.setState({
+                  error: ""
+                });
+                accessToken = res.jwt;
+                (0, _logIn.storeToken)(accessToken);
+                console.log("Access Token: " + accessToken);
+                this.props.navigation.navigate('HomeAdult');
+                _context.next = 18;
+                break;
+
+              case 16:
+                (0, _logIn.removeToken)();
+                this.setState({
+                  error: "Algo salio mal"
+                });
+
+              case 18:
+                _context.next = 24;
+                break;
+
+              case 20:
+                _context.prev = 20;
+                _context.t0 = _context["catch"](0);
+                this.setState({
+                  error: _context.t0
+                });
+                console.log("error: " + _context.t0);
+
+              case 24:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this, [[0, 20]]);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        return _react3.default.createElement(
+          _nativeBase.View,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 64
+            }
+          },
+          _react3.default.createElement(
+            _nativeBase.Form,
+            {
+              style: _styles2.default.adult_TextInputContainer,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 65
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Item,
+              {
+                floatingLabel: true,
+                style: _styles2.default.adult_TextInput,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 67
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 68
+                  }
+                },
+                "Correo electronico"
+              ),
+              _react3.default.createElement(_nativeBase.Input, {
+                maxLength: 45,
+                onChangeText: function onChangeText(email) {
+                  return _this2.setState({
+                    email: email
+                  });
+                },
+                value: this.state.email,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 69
+                }
+              })
+            ),
+            _react3.default.createElement(
+              _nativeBase.Item,
+              {
+                floatingLabel: true,
+                style: _styles2.default.adult_TextInput,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 76
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Label,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 77
+                  }
+                },
+                "Contrase\xF1a"
+              ),
+              _react3.default.createElement(_nativeBase.Input, {
+                secureTextEntry: true,
+                onChangeText: function onChangeText(password) {
+                  return _this2.setState({
+                    password: password
+                  });
+                },
+                value: this.state.password,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 78
+                }
+              })
+            ),
+            _react3.default.createElement(
+              _nativeBase.View,
+              {
+                style: _styles2.default.login_Toggle,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 85
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  style: _styles2.default.login_ToggleText,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 86
+                  }
+                },
+                "Recordar usuario"
+              ),
+              _react3.default.createElement(_reactNative.Switch, {
+                onValueChange: this.toggleSwitch,
+                value: this.state.rememberMe,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 89
+                }
+              })
+            )
+          ),
+          _react3.default.createElement(
+            _nativeBase.View,
+            {
+              style: _styles2.default.login_buttonsContainer,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 97
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 98
+                }
+              },
+              this.state.error
+            ),
+            _react3.default.createElement(
+              _nativeBase.View,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 100
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  iconLeft: true,
+                  rounded: true,
+                  style: _styles2.default.buttonclear,
+                  onPress: function onPress() {
+                    return _this2._sendData();
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 101
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  type: "MaterialIcons",
+                  name: "done",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 103
+                  }
+                }),
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 104
+                    }
+                  },
+                  "Enviar"
+                )
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return LogIn;
+  }(_react2.Component), _class.navigationOptions = {
+    title: 'Iniciar sesión'
+  }, _temp));
+
+  exports.default = LogIn;
+});

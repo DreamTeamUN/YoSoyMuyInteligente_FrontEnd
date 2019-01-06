@@ -1,0 +1,19 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  'use strict';
+
+  var $ = _require(_dependencyMap[0], './$'),
+      descriptor = _require(_dependencyMap[1], './$.property-desc'),
+      setToStringTag = _require(_dependencyMap[2], './$.set-to-string-tag'),
+      IteratorPrototype = {};
+
+  _require(_dependencyMap[3], './$.hide')(IteratorPrototype, _require(_dependencyMap[4], './$.wks')('iterator'), function () {
+    return this;
+  });
+
+  module.exports = function (Constructor, NAME, next) {
+    Constructor.prototype = $.create(IteratorPrototype, {
+      next: descriptor(1, next)
+    });
+    setToStringTag(Constructor, NAME + ' Iterator');
+  };
+});

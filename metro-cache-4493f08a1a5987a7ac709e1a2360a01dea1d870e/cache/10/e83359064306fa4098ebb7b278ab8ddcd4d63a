@@ -1,0 +1,9 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var $ = _require(_dependencyMap[0], '../../modules/$');
+
+  _require(_dependencyMap[1], '../../modules/es6.object.get-own-property-descriptor');
+
+  module.exports = function getOwnPropertyDescriptor(it, key) {
+    return $.getDesc(it, key);
+  };
+});

@@ -1,0 +1,8 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var IObject = _require(_dependencyMap[0], './$.iobject'),
+      defined = _require(_dependencyMap[1], './$.defined');
+
+  module.exports = function (it) {
+    return IObject(defined(it));
+  };
+});

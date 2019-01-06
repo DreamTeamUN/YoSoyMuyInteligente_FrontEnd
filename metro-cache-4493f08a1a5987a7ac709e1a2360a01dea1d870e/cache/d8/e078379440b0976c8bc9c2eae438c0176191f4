@@ -1,0 +1,27 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var $ = _require(_dependencyMap[0], './$'),
+      $export = _require(_dependencyMap[1], './$.export'),
+      ownKeys = _require(_dependencyMap[2], './$.own-keys'),
+      toIObject = _require(_dependencyMap[3], './$.to-iobject'),
+      createDesc = _require(_dependencyMap[4], './$.property-desc');
+
+  $export($export.S, 'Object', {
+    getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
+      var O = toIObject(object),
+          setDesc = $.setDesc,
+          getDesc = $.getDesc,
+          keys = ownKeys(O),
+          result = {},
+          i = 0,
+          key,
+          D;
+
+      while (keys.length > i) {
+        D = getDesc(O, key = keys[i++]);
+        if (key in result) setDesc(result, key, createDesc(0, D));else result[key] = D;
+      }
+
+      return result;
+    }
+  });
+});

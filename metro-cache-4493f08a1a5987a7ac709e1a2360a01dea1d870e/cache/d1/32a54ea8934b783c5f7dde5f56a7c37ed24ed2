@@ -1,0 +1,7 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var $export = _require(_dependencyMap[0], './$.export');
+
+  $export($export.S + $export.F, 'Object', {
+    assign: _require(_dependencyMap[1], './$.object-assign')
+  });
+});

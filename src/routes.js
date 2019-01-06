@@ -23,6 +23,7 @@ import ForumScreen from './components/ForumScreen';
 import HomeForum from './components/HomeForum'
 import ClassRoom from './components/classroom'
 import AddClassRoom from './components/AddClassRoom'
+import AdminStudentsTutor from './components/AdminStudentsTutor'
 
 export const AppStack = createStackNavigator(
     {
@@ -35,6 +36,7 @@ export const AppStack = createStackNavigator(
         Sentence: Sentence,
         Games: Games,
         Practices: Practices,
+        AdminStudentsTutor: AdminStudentsTutor,
         AddStudent: AddStudent,
         EditProfile: EditProfile,
         ChangeFullname: ChangeFullname,

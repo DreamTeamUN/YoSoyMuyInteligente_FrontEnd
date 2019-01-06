@@ -6,3 +6,4 @@ export const API_USERS = `${API}/usuarios`;
 export const API_LESSONS = 'https://ysmiapi.herokuapp.com/leccions/';
 export const API_SOCIALS = `${API}/socials`;
 export const API_CREATE_AULA = 'https://ysmiapi.herokuapp.com/docente_programas';
+export const API_TUTORS = 'https://ysmiapi.herokuapp.com/tutors';

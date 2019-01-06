@@ -53,3 +53,12 @@ export const getID = async () => {
         console.log("getID | Something went wrong")
     }
 }
+
+export const getTipoUsuario = async () =>{
+  try {
+    let tipoUsuario = await AsyncStorage.getItem(TIPO_USUARIO)
+    return tipoUsuario
+  }catch (error){
+    console.log("Get tipo user | Something went wrong")
+  }
+}

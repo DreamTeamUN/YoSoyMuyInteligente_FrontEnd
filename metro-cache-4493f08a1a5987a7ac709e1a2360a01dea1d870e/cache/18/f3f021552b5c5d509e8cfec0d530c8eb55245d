@@ -1,0 +1,26 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var sendDataToSignUp = exports.sendDataToSignUp = function sendDataToSignUp(url, username, password, fullName, email) {
+        return fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "usuario": {
+                    "user": username,
+                    "password": password,
+                    "nombre": fullName,
+                    "email": email,
+                    "archivo_id": 0
+                }
+            })
+        }).then(function (res) {
+            return res;
+        });
+    };
+});

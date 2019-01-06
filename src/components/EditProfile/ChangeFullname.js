@@ -21,16 +21,10 @@ export default class ChangeFullname extends Component {
 
     render() {
         return (
-            // <StyleProvider style={getTheme(variables)}>
-            <Container>
-
-                <Content>
-
+            <View>
                     <Form style={styles.adult_TextInputContainer}>
-
-                        <Item floatingLabel style={styles.adult_TextInput}>
+                        <Item floatingLabel style={styles.editprofile_TextInput}>
                             <Label>Nombre completo</Label>
-                            {/* <Label style={{color: --- ,}}>Nombre de usuario</Label> */}
                             <Input
                                 maxLength={45}
                                 onChangeText={(fullname) => this.setState({ fullname })}
@@ -40,18 +34,13 @@ export default class ChangeFullname extends Component {
                         <View>
                             <Button iconLeft rounded
                                 style={styles.buttondark}
-                                onPress={this._sendNewData.bind(this)}
-                            >
+                                onPress={this._sendNewData.bind(this)}>
                                 <Icon type="MaterialIcons" name="done" />
                                 <Text>Enviar cambios</Text>
                             </Button>
                         </View>
                     </Form>
-
-                </Content>
-
-            </Container>
-            // </StyleProvider>
+                </View>
         );
     }
 }

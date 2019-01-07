@@ -27,6 +27,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _home = _require(_dependencyMap[5], "../utils/home");
 
+  var _createStudent = _require(_dependencyMap[6], "../utils/createStudent");
+
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65,52 +67,110 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       _this.state = {
         active: 'true',
         isLoading: false,
-        data: []
+        idUsuario: '',
+        idTutor: '',
+        estudiantes: []
       };
       return _this;
     }
 
     _createClass(AdminStudentsTutor, [{
-      key: "getData",
-      value: function getData() {
-        var _this2 = this;
+      key: "componentWillMount",
+      value: function componentWillMount() {
+        return regeneratorRuntime.async(function componentWillMount$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.t0 = this;
+                _context.next = 3;
+                return regeneratorRuntime.awrap((0, _home.getID)());
 
-        var _state = this.state,
-            page = _state.page,
-            seed = _state.seed;
-        this.setState({
-          isLoading: true
-        });
-        var url = 'https://swapi.co/api/people/?format=json';
-        return fetch(url).then(function (response) {
-          return response.json();
-        }).then(function (responseJson) {
-          _this2.setState({
-            data: responseJson.results,
-            isLoading: false
-          });
-        }).catch(function (error) {
-          console.error(error);
-        });
+              case 3:
+                _context.t1 = _context.sent;
+                _context.t2 = {
+                  idUsuario: _context.t1
+                };
+
+                _context.t0.setState.call(_context.t0, _context.t2);
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "listarEstudiantes",
+      value: function listarEstudiantes() {
+        var id, URL, response, responseJson;
+        return regeneratorRuntime.async(function listarEstudiantes$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.setState({
+                  isLoading: true
+                });
+                _context2.next = 3;
+                return regeneratorRuntime.awrap((0, _createStudent.getID_TUTOR)(this.state.idUsuario));
+
+              case 3:
+                id = _context2.sent;
+                this.setState({
+                  idTutor: id
+                });
+                URL = _const.API_TUTORS.concat("/" + id).concat("/estudiantes");
+                _context2.prev = 6;
+                _context2.next = 9;
+                return regeneratorRuntime.awrap(fetch(URL));
+
+              case 9:
+                response = _context2.sent;
+                _context2.next = 12;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 12:
+                responseJson = _context2.sent;
+                this.setState({
+                  estudiantes: responseJson,
+                  isLoading: false
+                });
+                _context2.next = 20;
+                break;
+
+              case 16:
+                _context2.prev = 16;
+                _context2.t0 = _context2["catch"](6);
+                console.error("Error en la consulta: " + _context2.t0);
+                this.setState({
+                  isLoading: false
+                });
+
+              case 20:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, null, this, [[6, 16]]);
       }
     }, {
       key: "componentDidMount",
       value: function componentDidMount() {
-        this.getData();
+        this.listarEstudiantes();
       }
     }, {
       key: "render",
       value: function render() {
-        var _this3 = this;
+        var _this2 = this;
 
-        var display = this.state.data.map(function (NewsData, index) {
+        var display = this.state.estudiantes.map(function (NewsData, index) {
           return _react3.default.createElement(
             _nativeBase.View,
             {
               key: NewsData.id,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 50
+                lineNumber: 64
               }
             },
             _react3.default.createElement(
@@ -118,7 +178,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 51
+                  lineNumber: 65
                 }
               },
               _react3.default.createElement(
@@ -126,7 +186,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 52
+                    lineNumber: 66
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
@@ -134,7 +194,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   name: "person",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 53
+                    lineNumber: 67
                   }
                 }),
                 _react3.default.createElement(
@@ -142,10 +202,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 54
+                      lineNumber: 68
                     }
                   },
-                  NewsData.name
+                  NewsData.nombre
                 )
               )
             )
@@ -156,7 +216,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 62
+              lineNumber: 76
             }
           },
           _react3.default.createElement(
@@ -165,7 +225,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 63
+                lineNumber: 77
               }
             },
             _react3.default.createElement(
@@ -173,7 +233,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 65
+                  lineNumber: 79
                 }
               },
               _react3.default.createElement(
@@ -181,18 +241,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   transparent: true,
                   onPress: function onPress() {
-                    return _this3.props.navigation.goBack();
+                    return _this2.props.navigation.goBack();
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 66
+                    lineNumber: 80
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 67
+                    lineNumber: 81
                   }
                 })
               )
@@ -202,7 +262,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 71
+                  lineNumber: 85
                 }
               },
               _react3.default.createElement(
@@ -210,7 +270,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 72
+                    lineNumber: 86
                   }
                 },
                 "Panel de estudiantes"
@@ -223,7 +283,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.maxHeight,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 77
+                lineNumber: 91
               }
             },
             display
@@ -239,18 +299,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               },
               position: "bottomRight",
               onPress: function onPress() {
-                return _this3.props.navigation.navigate('AddStudent');
+                return _this2.props.navigation.navigate('AddStudent', {
+                  onNavigateBack: _this2.listarEstudiantes.bind(_this2)
+                });
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 81
+                lineNumber: 95
               }
             },
             _react3.default.createElement(_nativeBase.Icon, {
               name: "add",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 88
+                lineNumber: 103
               }
             })
           )

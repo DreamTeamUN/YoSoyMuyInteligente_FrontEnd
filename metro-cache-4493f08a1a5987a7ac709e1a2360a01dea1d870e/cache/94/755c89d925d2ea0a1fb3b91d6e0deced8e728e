@@ -29,9 +29,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _home = _require(_dependencyMap[6], "../utils/home");
 
-  var _const = _require(_dependencyMap[7], "../config/const");
+  var _createStudent = _require(_dependencyMap[7], "../utils/createStudent");
 
-  var _createStudent = _require(_dependencyMap[8], "../utils/createStudent");
+  var _AdminStudentsTutor = _require(_dependencyMap[8], "./AdminStudentsTutor");
+
+  var _AdminStudentsTutor2 = _interopRequireDefault(_AdminStudentsTutor);
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73,10 +75,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         nameStudent: '',
         chosenDate: new Date(),
         idFoto: '',
-        idUsuario: '',
-        idTutor: '',
-        tutores: [],
-        url: _const.API_TUTORS
+        idUsuario: ''
       };
       _this.setDate = _this.setDate.bind(_this);
       return _this;
@@ -116,58 +115,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }, null, this);
       }
     }, {
-      key: "getTutores",
-      value: function getTutores() {
-        var _this2 = this;
-
-        this.setState({
-          isLoading: true
-        });
-        var _state = this.state,
-            page = _state.page,
-            seed = _state.seed;
-        var url = this.state.url;
-        return fetch(url).then(function (response) {
-          return response.json();
-        }).then(function (responseJson) {
-          _this2.setState({
-            tutores: responseJson,
-            isLoading: false
-          });
-        }).then(function () {
-          for (i = 0; i < _this2.state.tutores.length; i++) {
-            var id = _this2.state.tutores[i].usuario_id;
-
-            if (id == _this2.state.idUsuario) {
-              _this2.setState({
-                idTutor: _this2.state.tutores[i].id,
-                tutores: []
-              });
-
-              return;
-            }
-          }
-        }).catch(function (error) {
-          console.error(error);
-        });
-      }
-    }, {
-      key: "componentDidMount",
-      value: function componentDidMount() {
-        this.getTutores();
-      }
-    }, {
-      key: "validate",
-      value: function validate(nameStudent) {
-        formatotexto = /^[a-zA-Z0-9]+$/;
-
-        if (formatotexto.test(nameStudent)) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }, {
       key: "createStudent",
       value: function createStudent() {
         var response, status;
@@ -175,30 +122,26 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (!this.validate(this.state.nameStudent)) {
-                  _context2.next = 25;
-                  break;
-                }
-
-                _context2.prev = 1;
+                _context2.prev = 0;
                 this.setState({
                   isLoading: true
                 });
-                _context2.next = 5;
-                return regeneratorRuntime.awrap((0, _createStudent.CREATE_STUDENT)(this.state.idTutor, this.state.nameStudent, this.state.chosenDate));
+                _context2.next = 4;
+                return regeneratorRuntime.awrap((0, _createStudent.CREATE_STUDENT)(this.state.idUsuario, this.state.nameStudent, this.state.chosenDate));
 
-              case 5:
+              case 4:
                 response = _context2.sent;
                 status = response.status;
                 _context2.t0 = status;
-                _context2.next = _context2.t0 === 201 ? 10 : 14;
+                _context2.next = _context2.t0 === 201 ? 9 : 14;
                 break;
 
-              case 10:
+              case 9:
                 console.log(status + "Nuevo estudiante creado!!");
                 this.setState({
                   isLoading: false
                 });
+                this.props.navigation.state.params.onNavigateBack();
                 this.props.navigation.goBack();
                 return _context2.abrupt("break", 17);
 
@@ -215,37 +158,30 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
               case 19:
                 _context2.prev = 19;
-                _context2.t1 = _context2["catch"](1);
+                _context2.t1 = _context2["catch"](0);
                 this.setState({
                   isLoading: false
                 });
                 console.log("Error creando estudiante: " + _context2.t1);
 
               case 23:
-                _context2.next = 26;
-                break;
-
-              case 25:
-                console.log("fallo validación nombre");
-
-              case 26:
               case "end":
                 return _context2.stop();
             }
           }
-        }, null, this, [[1, 19]]);
+        }, null, this, [[0, 19]]);
       }
     }, {
       key: "render",
       value: function render() {
-        var _this3 = this;
+        var _this2 = this;
 
         return _react3.default.createElement(
           _nativeBase.Container,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 134
+              lineNumber: 83
             }
           },
           _react3.default.createElement(
@@ -254,7 +190,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 136
+                lineNumber: 85
               }
             },
             _react3.default.createElement(
@@ -262,7 +198,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 138
+                  lineNumber: 87
                 }
               },
               _react3.default.createElement(
@@ -270,18 +206,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   transparent: true,
                   onPress: function onPress() {
-                    return _this3.props.navigation.goBack();
+                    return _this2.props.navigation.goBack();
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 139
+                    lineNumber: 88
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 140
+                    lineNumber: 89
                   }
                 })
               )
@@ -291,7 +227,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 144
+                  lineNumber: 93
                 }
               },
               _react3.default.createElement(
@@ -299,7 +235,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 145
+                    lineNumber: 94
                   }
                 },
                 "Agregar estudiante"
@@ -311,7 +247,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 149
+                lineNumber: 98
               }
             },
             _react3.default.createElement(
@@ -320,7 +256,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.estudiante_TextInputContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 150
+                  lineNumber: 99
                 }
               },
               _react3.default.createElement(
@@ -329,7 +265,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   floatingLabel: true,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 151
+                    lineNumber: 100
                   }
                 },
                 _react3.default.createElement(
@@ -337,7 +273,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 152
+                      lineNumber: 101
                     }
                   },
                   "Nombre de usuario"
@@ -345,13 +281,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _react3.default.createElement(_nativeBase.Input, {
                   maxLength: 45,
                   onChangeText: function onChangeText(nameStudent) {
-                    return _this3.setState({
+                    return _this2.setState({
                       nameStudent: nameStudent
                     });
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 153
+                    lineNumber: 102
                   }
                 })
               ),
@@ -362,7 +298,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   last: true,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 160
+                    lineNumber: 109
                   }
                 },
                 _react3.default.createElement(
@@ -370,20 +306,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 161
+                      lineNumber: 110
                     }
                   },
                   "Foto (ac\xE1 se subir\xE1 un archivo)."
                 ),
                 _react3.default.createElement(_nativeBase.Input, {
                   onChangeText: function onChangeText(idFoto) {
-                    return _this3.setState({
+                    return _this2.setState({
                       idFoto: idFoto
                     });
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 162
+                    lineNumber: 111
                   }
                 })
               ),
@@ -410,7 +346,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 disabled: false,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 167
+                  lineNumber: 116
                 }
               })
             ),
@@ -420,7 +356,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.buttonsContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 184
+                  lineNumber: 133
                 }
               },
               _react3.default.createElement(
@@ -429,7 +365,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.button,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 185
+                    lineNumber: 134
                   }
                 },
                 _react3.default.createElement(
@@ -441,7 +377,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     onPress: this.createStudent.bind(this),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 186
+                      lineNumber: 135
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
@@ -449,7 +385,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     name: "done",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 188
+                      lineNumber: 137
                     }
                   }),
                   _react3.default.createElement(
@@ -457,7 +393,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 189
+                        lineNumber: 138
                       }
                     },
                     "Finalizar Registro"

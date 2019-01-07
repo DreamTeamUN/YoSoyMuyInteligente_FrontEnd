@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import {Text, Fab, Icon, View, Container, Content, Header, Title, Button,
    Left, Body, Card, CardItem, Right} from 'native-base';
 import styles from '../styles';
-import {API_CREATE_AULA} from '../config/const'
-import {getID, getTipoUsuario} from '../utils/home';
+import {API_TUTORS} from '../config/const'
+import {getID} from '../utils/home';
+import {getID_TUTOR} from '../utils/createStudent';
 
 
 export default class AdminStudentsTutor extends Component {
@@ -12,46 +13,59 @@ export default class AdminStudentsTutor extends Component {
         header: null
     }
 
-
     constructor(props) {
       super(props);
       this.state = {
         active: 'true',
         isLoading: false,
-        data: [],
+        idUsuario: '',
+        idTutor: '',
+        estudiantes: [],
       };
     }
 
-    getData() {
-      const {page, seed} = this.state;
+    async componentWillMount(){
+
+      this.setState({
+        idUsuario: await getID(),
+      });
+    }
+
+    async listarEstudiantes() {
+
       this.setState({isLoading: true});
-      const url = 'https://swapi.co/api/people/?format=json';
-      return fetch(url)
-          .then((response) => response.json())
-          .then((responseJson) => {
-              this.setState({
-                  data: responseJson.results,
-                  isLoading: false,
-              });
-          })
-          .catch((error) => {
-              console.error(error);
-          });
+      let id = await getID_TUTOR(this.state.idUsuario);
+      this.setState({idTutor: id });
+      const URL = API_TUTORS.concat("/" + id).concat("/estudiantes");
+
+      try {
+        const response = await fetch(URL);
+        const responseJson = await response.json();
+
+        this.setState({
+          estudiantes: responseJson,
+          isLoading: false,
+        });
+      }
+      catch (error) {
+        console.error("Error en la consulta: " + error);
+        this.setState({isLoading: false});
+      }
     }
 
     componentDidMount() {
-      this.getData();
+      this.listarEstudiantes();
     }
 
     render() {
 
-      let display = this.state.data.map(function (NewsData, index) {
+      let display = this.state.estudiantes.map(function (NewsData, index) {
           return (
               <View key={NewsData.id}>
                 <Card>
                   <CardItem >
                     <Icon active name="person" />
-                    <Text>{NewsData.name}</Text>
+                    <Text>{NewsData.nombre}</Text>
                    </CardItem>
                 </Card>
               </View>
@@ -84,7 +98,8 @@ export default class AdminStudentsTutor extends Component {
            containerStyle={{ }}
            style={{ backgroundColor: '#5067FF' }}
            position="bottomRight"
-           onPress={() => this.props.navigation.navigate('AddStudent')}>
+           onPress={() => this.props.navigation.navigate('AddStudent', 
+           {onNavigateBack: this.listarEstudiantes.bind(this)})}>
            <Icon name="add" />
          </Fab>
 

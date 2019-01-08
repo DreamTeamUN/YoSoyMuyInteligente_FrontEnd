@@ -44,6 +44,9 @@ export default class HomeForum extends Component {
       <Container>
         <Header />
         <Content>
+        <Button full info onPress={() => this.props.navigation.navigate('ForumScreen')}>
+            <Text>Crear entrada</Text>
+          </Button>
           {this.state.datasetState.map(record => {
             if (!record.isSettled) {
               return <Spinner key={Math.random()}/>;

@@ -24,6 +24,7 @@ import HomeForum from './components/HomeForum'
 import ClassRoom from './components/classroom'
 import AddClassRoom from './components/AddClassRoom'
 import AdminStudentsTutor from './components/AdminStudentsTutor'
+import CardForum from './components/CardForum'
 
 export const AppStack = createStackNavigator(
     {
@@ -44,6 +45,7 @@ export const AppStack = createStackNavigator(
         ChangeBirthdate: ChangeBirthdate,
         ForumScreen: ForumScreen,
         HomeForum: HomeForum,
+        CardForum: CardForum,
     },
 
     {

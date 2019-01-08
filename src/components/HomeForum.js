@@ -44,7 +44,7 @@ export default class HomeForum extends Component {
       <Container>
         <Header />
         <Content>
-        <Button full info onPress={() => this.props.navigation.navigate('ForumScreen')}>
+        <Button full info onPress={() => this.props.navigation.navigate('CardForum')}>
             <Text>Crear entrada</Text>
           </Button>
           {this.state.datasetState.map(record => {

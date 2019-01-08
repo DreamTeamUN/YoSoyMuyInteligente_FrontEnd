@@ -5,8 +5,8 @@ import {  View, TextInput, Text, Button, Icon, DatePicker,
 import { DocumentPicker, ImagePicker } from 'expo'; //por usar
 import styles from '../styles';
 import {getID} from '../utils/home';
-import {API_TUTORS} from '../config/const';
 import {CREATE_STUDENT} from '../utils/createStudent'
+import AdminStudentsTutor from './AdminStudentsTutor';
 
 export default class AddStudent extends Component {
 
@@ -22,9 +22,6 @@ export default class AddStudent extends Component {
       chosenDate: new Date(), //Fecha de nacimiento
       idFoto: '', //ID de la foto del estudiante
       idUsuario: '', //ID del usuario tutor
-      idTutor: '', //ID asignado al tutor
-      tutores: [], //Arreglo de todos los tutores
-      url: API_TUTORS,
     };
     this.setDate = this.setDate.bind(this);
   }
@@ -42,89 +39,41 @@ export default class AddStudent extends Component {
     });
   }
 
-  getTutores() {
-    this.setState({isLoading: true});
-    const {page, seed} = this.state;
-    const url = this.state.url;
-    return fetch(url)
-        .then((response) => response.json())
-        .then((responseJson) => {
-            
-            this.setState({
-                tutores: responseJson,
-                isLoading: false,
-            });
-        })
-        .then(() => {
-
-          for (i = 0; i < this.state.tutores.length; i++){
-            var id = this.state.tutores[i].usuario_id;
-            if ( id == this.state.idUsuario){
-              this.setState({
-                idTutor: this.state.tutores[i].id,
-                tutores: [],
-              });
-              return;
-            }
-          }
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-  }
-
-  componentDidMount() {
-    this.getTutores();
-  }
-
-  //Validación
-  validate(nameStudent) {
-    formatotexto = /^[a-zA-Z0-9]+$/;
-
-    if (formatotexto.test(nameStudent)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   async createStudent(){
-    if (this.validate(this.state.nameStudent)){
-      try {
+    try {
 
-        this.setState({
-          isLoading: true,
-        });
+      this.setState({
+        isLoading: true,
+      });
 
-        let response = await CREATE_STUDENT(this.state.idTutor, 
-          this.state.nameStudent, 
-          this.state.chosenDate
-        );
-        
-        let status = response.status;
-        
-        switch (status) {
-          case 201:
-            console.log(status + "Nuevo estudiante creado!!");
-            this.setState({ isLoading: false });
-            this.props.navigation.goBack();
-            break;
-        
-          default:
-            console.log("Error creando estudiante, status code: " + status)
-            Alert.alert("Error!!", 
-              "Lo sentimos, ocurrió un error durante la creación del estudiante, por favor intente de nuevo."
-            );
+      let response = await CREATE_STUDENT(this.state.idUsuario, 
+        this.state.nameStudent, 
+        this.state.chosenDate
+      );
+      
+      let status = response.status;
+      
+      switch (status) {
+        case 201:
+          console.log(status + "Nuevo estudiante creado!!");
+          this.setState({ isLoading: false });
+          this.props.navigation.state.params.onNavigateBack();
+          this.props.navigation.goBack()
+          break;
+      
+        default:
+          console.log("Error creando estudiante, status code: " + status)
+          Alert.alert("Error!!", 
+            "Lo sentimos, ocurrió un error durante la creación del estudiante, por favor intente de nuevo."
+          );
 
-            break;
-        }
-        
-      } catch (error) {
-        this.setState({isLoading: false});
-        console.log("Error creando estudiante: " + error);
+          break;
       }
-    }else{
-      console.log("fallo validación nombre");
+      
+    } catch (error) {
+      this.setState({isLoading: false});
+      console.log("Error creando estudiante: " + error);
     }
   }
 

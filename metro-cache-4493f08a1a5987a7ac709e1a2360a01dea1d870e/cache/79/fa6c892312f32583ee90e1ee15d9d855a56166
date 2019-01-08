@@ -90,102 +90,93 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 var _this2 = this;
 
                 return _react3.default.createElement(
-                    _nativeBase.Container,
+                    _reactNative.View,
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 25
+                            lineNumber: 24
                         }
                     },
                     _react3.default.createElement(
-                        _nativeBase.Content,
+                        _nativeBase.Form,
                         {
+                            style: _styles2.default.adult_TextInputContainer,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 27
+                                lineNumber: 25
                             }
                         },
                         _react3.default.createElement(
-                            _nativeBase.Form,
+                            _nativeBase.Item,
                             {
-                                style: _styles2.default.adult_TextInputContainer,
+                                floatingLabel: true,
+                                style: _styles2.default.editprofile_TextInput,
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 29
+                                    lineNumber: 26
                                 }
                             },
                             _react3.default.createElement(
-                                _nativeBase.Item,
+                                _nativeBase.Label,
                                 {
-                                    floatingLabel: true,
-                                    style: _styles2.default.adult_TextInput,
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 31
+                                        lineNumber: 27
                                     }
                                 },
-                                _react3.default.createElement(
-                                    _nativeBase.Label,
-                                    {
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 32
-                                        }
-                                    },
-                                    "Nombre completo"
-                                ),
-                                _react3.default.createElement(_nativeBase.Input, {
-                                    maxLength: 45,
-                                    onChangeText: function onChangeText(fullname) {
-                                        return _this2.setState({
-                                            fullname: fullname
-                                        });
-                                    },
-                                    value: this.state.fullname,
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 34
-                                    }
-                                })
+                                "Nombre completo"
                             ),
+                            _react3.default.createElement(_nativeBase.Input, {
+                                maxLength: 45,
+                                onChangeText: function onChangeText(fullname) {
+                                    return _this2.setState({
+                                        fullname: fullname
+                                    });
+                                },
+                                value: this.state.fullname,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 28
+                                }
+                            })
+                        ),
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 34
+                                }
+                            },
                             _react3.default.createElement(
-                                _reactNative.View,
+                                _nativeBase.Button,
                                 {
+                                    iconLeft: true,
+                                    rounded: true,
+                                    style: _styles2.default.buttondark,
+                                    onPress: this._sendNewData.bind(this),
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 40
+                                        lineNumber: 35
                                     }
                                 },
+                                _react3.default.createElement(_nativeBase.Icon, {
+                                    type: "MaterialIcons",
+                                    name: "done",
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 38
+                                    }
+                                }),
                                 _react3.default.createElement(
-                                    _nativeBase.Button,
+                                    _nativeBase.Text,
                                     {
-                                        iconLeft: true,
-                                        rounded: true,
-                                        style: _styles2.default.buttondark,
-                                        onPress: this._sendNewData.bind(this),
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 41
+                                            lineNumber: 39
                                         }
                                     },
-                                    _react3.default.createElement(_nativeBase.Icon, {
-                                        type: "MaterialIcons",
-                                        name: "done",
-                                        __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 45
-                                        }
-                                    }),
-                                    _react3.default.createElement(
-                                        _nativeBase.Text,
-                                        {
-                                            __source: {
-                                                fileName: _jsxFileName,
-                                                lineNumber: 46
-                                            }
-                                        },
-                                        "Enviar cambios"
-                                    )
+                                    "Enviar cambios"
                                 )
                             )
                         )

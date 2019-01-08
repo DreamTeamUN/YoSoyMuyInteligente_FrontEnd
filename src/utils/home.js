@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
 import { API_USERS } from '../config/const';
 

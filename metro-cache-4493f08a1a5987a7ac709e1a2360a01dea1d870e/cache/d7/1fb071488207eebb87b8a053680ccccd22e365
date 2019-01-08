@@ -6,15 +6,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _this = this;
 
-    var _react = _require(_dependencyMap[0], "react");
+    var _reactNative = _require(_dependencyMap[0], "react-native");
 
-    var _react2 = _interopRequireDefault(_react);
-
-    var _reactNative = _require(_dependencyMap[1], "react-native");
-
-    var _const = _require(_dependencyMap[2], "../config/const");
-
-    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+    var _const = _require(_dependencyMap[1], "../config/const");
 
     var ID = 'id';
     var USERNAME = 'user';

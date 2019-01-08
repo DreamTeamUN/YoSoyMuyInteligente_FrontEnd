@@ -340,12 +340,25 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       borderRadius: 5,
       margin: 10
     },
+    editprofile_TextInput: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('4%'),
+      backgroundColor: '#E9E9EF'
+    },
     estudiante_TextInputContainer: {
       height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('50%'),
       marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1.0%'),
       marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('7%'),
       width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('80%'),
       flex: 1
+    },
+    editDate: {
+      alignItems: 'center',
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('4%'),
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('4%')
+    },
+    simplecenter: {
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
+      alignItems: 'center'
     }
   });
 

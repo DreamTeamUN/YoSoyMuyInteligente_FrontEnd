@@ -84,7 +84,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 result = _context.sent;
 
                 if (!(result.type === "success")) {
-                  _context.next = 17;
+                  _context.next = 16;
                   break;
                 }
 
@@ -94,35 +94,34 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
               case 8:
                 response = _context.sent;
-                console.log(response.status);
-                _context.next = 12;
+                _context.next = 11;
                 return regeneratorRuntime.awrap(response.json());
 
-              case 12:
+              case 11:
                 res = _context.sent;
                 (0, _logIn2.storeToken)(res.jwt);
                 this.props.navigation.navigate('HomeAdult');
-                _context.next = 18;
+                _context.next = 17;
                 break;
 
-              case 17:
+              case 16:
                 console.log("Google | Cancelled");
 
-              case 18:
-                _context.next = 23;
+              case 17:
+                _context.next = 22;
                 break;
 
-              case 20:
-                _context.prev = 20;
+              case 19:
+                _context.prev = 19;
                 _context.t0 = _context["catch"](0);
                 console.log("error con google autenticathor: ", _context.t0);
 
-              case 23:
+              case 22:
               case "end":
                 return _context.stop();
             }
           }
-        }, null, this, [[0, 20]]);
+        }, null, this, [[0, 19]]);
       }
     }, {
       key: "_logIn",
@@ -247,7 +246,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 97
+              lineNumber: 86
             }
           },
           _react3.default.createElement(
@@ -256,7 +255,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.imageContainer,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 98
+                lineNumber: 87
               }
             },
             _react3.default.createElement(_reactNative.Image, {
@@ -264,7 +263,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               source: _require(_dependencyMap[7], '../assets/logoinicial.png'),
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 99
+                lineNumber: 88
               }
             })
           ),
@@ -274,7 +273,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.buttonsContainer,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 102
+                lineNumber: 91
               }
             },
             _react3.default.createElement(
@@ -282,7 +281,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 103
+                  lineNumber: 92
                 }
               },
               _react3.default.createElement(
@@ -296,14 +295,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 103
+                    lineNumber: 92
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "person-add",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 105
+                    lineNumber: 94
                   }
                 }),
                 _react3.default.createElement(
@@ -311,7 +310,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 106
+                      lineNumber: 95
                     }
                   },
                   "Registrar con correo"
@@ -323,7 +322,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 110
+                  lineNumber: 99
                 }
               },
               _react3.default.createElement(
@@ -337,7 +336,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 111
+                    lineNumber: 100
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
@@ -345,7 +344,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   name: "google",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 113
+                    lineNumber: 102
                   }
                 }),
                 _react3.default.createElement(
@@ -353,7 +352,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 114
+                      lineNumber: 103
                     }
                   },
                   "Iniciar con Google"
@@ -365,47 +364,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 118
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Button,
-                {
-                  iconLeft: true,
-                  rounded: true,
-                  style: _styles2.default.buttonfb,
-                  onPress: this._logIn,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 119
-                  }
-                },
-                _react3.default.createElement(_nativeBase.Icon, {
-                  type: "EvilIcons",
-                  name: "sc-facebook",
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 121
-                  }
-                }),
-                _react3.default.createElement(
-                  _nativeBase.Text,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 122
-                    }
-                  },
-                  "Iniciar con Facebook"
-                )
-              )
-            ),
-            _react3.default.createElement(
-              _reactNative.View,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 127
+                  lineNumber: 107
                 }
               },
               _react3.default.createElement(
@@ -419,14 +378,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 128
+                    lineNumber: 108
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "person",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 130
+                    lineNumber: 110
                   }
                 }),
                 _react3.default.createElement(
@@ -434,10 +393,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 131
+                      lineNumber: 111
                     }
                   },
-                  "Iniciar Sesi\xF3n con correo"
+                  "Iniciar sesi\xF3n con correo"
                 )
               )
             )

@@ -305,7 +305,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     rounded: true,
                     style: _styles2.default.buttondark,
                     onPress: function onPress() {
-                      return _this3.props.navigation.navigate('Practices');
+                      return _this3.props.navigation.navigate('HomeForum');
                     },
                     __source: {
                       fileName: _jsxFileName,
@@ -313,98 +313,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
-                    name: "apps",
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 78
-                    }
-                  }),
-                  _react3.default.createElement(
-                    _nativeBase.Text,
-                    {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 79
-                      }
-                    },
-                    "Progreso Semanas"
-                  )
-                )
-              ),
-              _react3.default.createElement(
-                _reactNative.View,
-                {
-                  style: _styles2.default.viewButtonHome,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 83
-                  }
-                },
-                _react3.default.createElement(
-                  _nativeBase.Button,
-                  {
-                    full: true,
-                    iconLeft: true,
-                    rounded: true,
-                    style: _styles2.default.buttonclear,
-                    onPress: function onPress() {
-                      return _this3.props.navigation.navigate('GameProgress');
-                    },
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 84
-                    }
-                  },
-                  _react3.default.createElement(_nativeBase.Icon, {
-                    type: "MaterialIcons",
-                    name: "videogame-asset",
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 86
-                    }
-                  }),
-                  _react3.default.createElement(
-                    _nativeBase.Text,
-                    {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 87
-                      }
-                    },
-                    "Progreso Juegos"
-                  )
-                )
-              ),
-              _react3.default.createElement(
-                _reactNative.View,
-                {
-                  style: _styles2.default.viewButtonHome,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 91
-                  }
-                },
-                _react3.default.createElement(
-                  _nativeBase.Button,
-                  {
-                    full: true,
-                    iconLeft: true,
-                    rounded: true,
-                    style: _styles2.default.buttondark,
-                    onPress: function onPress() {
-                      return _this3.props.navigation.navigate('HomeForum');
-                    },
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 92
-                    }
-                  },
-                  _react3.default.createElement(_nativeBase.Icon, {
                     type: "MaterialCommunityIcons",
                     name: "forum",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 94
+                      lineNumber: 77
                     }
                   }),
                   _react3.default.createElement(
@@ -412,7 +325,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 95
+                        lineNumber: 78
                       }
                     },
                     "Ingreso al foro"
@@ -425,7 +338,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.viewButtonHome,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 99
+                    lineNumber: 82
                   }
                 },
                 _react3.default.createElement(
@@ -440,7 +353,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 100
+                      lineNumber: 83
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
@@ -448,7 +361,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     name: "settings",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 102
+                      lineNumber: 85
                     }
                   }),
                   _react3.default.createElement(
@@ -456,7 +369,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 103
+                        lineNumber: 86
                       }
                     },
                     "Aulas y estudiantes"
@@ -469,7 +382,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.viewButtonHome,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 107
+                    lineNumber: 90
                   }
                 },
                 _react3.default.createElement(
@@ -481,7 +394,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     onPress: this._signOutAsync,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 108
+                      lineNumber: 91
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
@@ -489,7 +402,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     name: "log-out",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 110
+                      lineNumber: 93
                     }
                   }),
                   _react3.default.createElement(
@@ -497,7 +410,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 111
+                        lineNumber: 94
                       }
                     },
                     "Cerrar sesion"
@@ -508,7 +421,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   barStyle: "light-content",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 113
+                    lineNumber: 96
                   }
                 })
               )
@@ -520,7 +433,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 124
+                lineNumber: 107
               }
             },
             _react3.default.createElement(
@@ -529,7 +442,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.homeAdult_TextContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 125
+                  lineNumber: 108
                 }
               },
               _react3.default.createElement(
@@ -538,7 +451,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.headling,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 126
+                    lineNumber: 109
                   }
                 },
                 "\xA1Bienvenido, ",
@@ -552,9 +465,96 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.homeAdult_buttonsContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 129
+                  lineNumber: 112
                 }
               },
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: _styles2.default.viewButtonHome,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 114
+                  }
+                },
+                _react3.default.createElement(
+                  _nativeBase.Button,
+                  {
+                    full: true,
+                    iconLeft: true,
+                    rounded: true,
+                    style: _styles2.default.buttonclear,
+                    onPress: function onPress() {
+                      return _this3.props.navigation.navigate('EditProfile');
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 115
+                    }
+                  },
+                  _react3.default.createElement(_nativeBase.Icon, {
+                    type: "Feather",
+                    name: "edit",
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 117
+                    }
+                  }),
+                  _react3.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 118
+                      }
+                    },
+                    "Editar perfil"
+                  )
+                )
+              ),
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: _styles2.default.viewButtonHome,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 122
+                  }
+                },
+                _react3.default.createElement(
+                  _nativeBase.Button,
+                  {
+                    full: true,
+                    iconLeft: true,
+                    rounded: true,
+                    style: _styles2.default.buttondark,
+                    onPress: function onPress() {
+                      return _this3.props.navigation.navigate('Practices');
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 123
+                    }
+                  },
+                  _react3.default.createElement(_nativeBase.Icon, {
+                    name: "apps",
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 126
+                    }
+                  }),
+                  _react3.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 127
+                      }
+                    },
+                    "Progreso Semanas"
+                  )
+                )
+              ),
               _react3.default.createElement(
                 _reactNative.View,
                 {
@@ -572,7 +572,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     rounded: true,
                     style: _styles2.default.buttonclear,
                     onPress: function onPress() {
-                      return _this3.props.navigation.navigate('EditProfile');
+                      return _this3.props.navigation.navigate('GameProgress');
                     },
                     __source: {
                       fileName: _jsxFileName,
@@ -580,8 +580,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
-                    type: "Feather",
-                    name: "edit",
+                    type: "MaterialIcons",
+                    name: "videogame-asset",
                     __source: {
                       fileName: _jsxFileName,
                       lineNumber: 134
@@ -595,7 +595,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         lineNumber: 135
                       }
                     },
-                    "Editar perfil"
+                    "Progreso Juegos"
                   )
                 )
               ),
@@ -616,7 +616,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     rounded: true,
                     style: _styles2.default.buttondark,
                     onPress: function onPress() {
-                      return _this3.props.navigation.navigate('Practices');
+                      return _this3.props.navigation.navigate('HomeForum');
                     },
                     __source: {
                       fileName: _jsxFileName,
@@ -624,98 +624,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
-                    name: "apps",
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 143
-                    }
-                  }),
-                  _react3.default.createElement(
-                    _nativeBase.Text,
-                    {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 144
-                      }
-                    },
-                    "Progreso Semanas"
-                  )
-                )
-              ),
-              _react3.default.createElement(
-                _reactNative.View,
-                {
-                  style: _styles2.default.viewButtonHome,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 148
-                  }
-                },
-                _react3.default.createElement(
-                  _nativeBase.Button,
-                  {
-                    full: true,
-                    iconLeft: true,
-                    rounded: true,
-                    style: _styles2.default.buttonclear,
-                    onPress: function onPress() {
-                      return _this3.props.navigation.navigate('GameProgress');
-                    },
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 149
-                    }
-                  },
-                  _react3.default.createElement(_nativeBase.Icon, {
-                    type: "MaterialIcons",
-                    name: "videogame-asset",
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 151
-                    }
-                  }),
-                  _react3.default.createElement(
-                    _nativeBase.Text,
-                    {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 152
-                      }
-                    },
-                    "Progreso Juegos"
-                  )
-                )
-              ),
-              _react3.default.createElement(
-                _reactNative.View,
-                {
-                  style: _styles2.default.viewButtonHome,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 156
-                  }
-                },
-                _react3.default.createElement(
-                  _nativeBase.Button,
-                  {
-                    full: true,
-                    iconLeft: true,
-                    rounded: true,
-                    style: _styles2.default.buttondark,
-                    onPress: function onPress() {
-                      return _this3.props.navigation.navigate('HomeForum');
-                    },
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 157
-                    }
-                  },
-                  _react3.default.createElement(_nativeBase.Icon, {
                     type: "MaterialCommunityIcons",
                     name: "forum",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 159
+                      lineNumber: 142
                     }
                   }),
                   _react3.default.createElement(
@@ -723,7 +636,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 160
+                        lineNumber: 143
                       }
                     },
                     "Ingreso al foro"
@@ -736,7 +649,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.viewButtonHome,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 164
+                    lineNumber: 147
                   }
                 },
                 _react3.default.createElement(
@@ -751,7 +664,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 165
+                      lineNumber: 148
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
@@ -759,7 +672,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     name: "settings",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 167
+                      lineNumber: 150
                     }
                   }),
                   _react3.default.createElement(
@@ -767,7 +680,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 168
+                        lineNumber: 151
                       }
                     },
                     "Estudiantes"
@@ -780,7 +693,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.viewButtonHome,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 172
+                    lineNumber: 155
                   }
                 },
                 _react3.default.createElement(
@@ -792,7 +705,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     onPress: this._signOutAsync,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 173
+                      lineNumber: 156
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
@@ -800,7 +713,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     name: "log-out",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 175
+                      lineNumber: 158
                     }
                   }),
                   _react3.default.createElement(
@@ -808,7 +721,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 176
+                        lineNumber: 159
                       }
                     },
                     "Cerrar sesion"
@@ -819,7 +732,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   barStyle: "light-content",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 178
+                    lineNumber: 161
                   }
                 })
               )

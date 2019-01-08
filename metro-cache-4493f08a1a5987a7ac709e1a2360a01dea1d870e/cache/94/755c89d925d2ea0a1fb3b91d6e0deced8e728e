@@ -31,10 +31,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _createStudent = _require(_dependencyMap[7], "../utils/createStudent");
 
-  var _AdminStudentsTutor = _require(_dependencyMap[8], "./AdminStudentsTutor");
-
-  var _AdminStudentsTutor2 = _interopRequireDefault(_AdminStudentsTutor);
-
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -181,7 +177,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 83
+              lineNumber: 82
             }
           },
           _react3.default.createElement(
@@ -190,7 +186,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 85
+                lineNumber: 84
               }
             },
             _react3.default.createElement(
@@ -198,7 +194,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 87
+                  lineNumber: 86
                 }
               },
               _react3.default.createElement(
@@ -210,14 +206,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 88
+                    lineNumber: 87
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 89
+                    lineNumber: 88
                   }
                 })
               )
@@ -227,7 +223,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 93
+                  lineNumber: 92
                 }
               },
               _react3.default.createElement(
@@ -235,7 +231,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 94
+                    lineNumber: 93
                   }
                 },
                 "Agregar estudiante"
@@ -247,7 +243,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 98
+                lineNumber: 97
               }
             },
             _react3.default.createElement(
@@ -256,7 +252,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.estudiante_TextInputContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 99
+                  lineNumber: 98
                 }
               },
               _react3.default.createElement(
@@ -265,7 +261,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   floatingLabel: true,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 100
+                    lineNumber: 99
                   }
                 },
                 _react3.default.createElement(
@@ -273,7 +269,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 101
+                      lineNumber: 100
                     }
                   },
                   "Nombre de usuario"
@@ -287,7 +283,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 102
+                    lineNumber: 101
                   }
                 })
               ),
@@ -298,7 +294,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   last: true,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 109
+                    lineNumber: 108
                   }
                 },
                 _react3.default.createElement(
@@ -306,7 +302,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 110
+                      lineNumber: 109
                     }
                   },
                   "Foto (ac\xE1 se subir\xE1 un archivo)."
@@ -319,7 +315,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 111
+                    lineNumber: 110
                   }
                 })
               ),
@@ -346,7 +342,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 disabled: false,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 116
+                  lineNumber: 115
                 }
               })
             ),
@@ -356,7 +352,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.buttonsContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 133
+                  lineNumber: 132
                 }
               },
               _react3.default.createElement(
@@ -365,7 +361,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.button,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 134
+                    lineNumber: 133
                   }
                 },
                 _react3.default.createElement(
@@ -377,7 +373,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     onPress: this.createStudent.bind(this),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 135
+                      lineNumber: 134
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
@@ -385,7 +381,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     name: "done",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 137
+                      lineNumber: 136
                     }
                   }),
                   _react3.default.createElement(
@@ -393,7 +389,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 138
+                        lineNumber: 137
                       }
                     },
                     "Finalizar Registro"

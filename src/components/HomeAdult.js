@@ -73,23 +73,6 @@ export default class HomeAdult extends Component {
 
             <View style = {styles.viewButtonHome}>
               <Button full iconLeft rounded style={styles.buttondark}
-                //onPress={() => this.props.navigation.navigate('WeekProgress')}>
-                onPress={() => this.props.navigation.navigate('Practices')}>
-                <Icon name="apps" />
-                <Text>Progreso Semanas</Text>
-              </Button>
-            </View>
-
-            <View style = {styles.viewButtonHome}>
-              <Button full iconLeft rounded style={styles.buttonclear}
-                onPress={() => this.props.navigation.navigate('GameProgress')}>
-                <Icon type="MaterialIcons" name="videogame-asset" />
-                <Text>Progreso Juegos</Text>
-              </Button>
-            </View>
-
-            <View style = {styles.viewButtonHome}>
-              <Button full iconLeft rounded style={styles.buttondark}
                 onPress={() => this.props.navigation.navigate('HomeForum')}>
                 <Icon type="MaterialCommunityIcons" name="forum" />
                 <Text>Ingreso al foro</Text>

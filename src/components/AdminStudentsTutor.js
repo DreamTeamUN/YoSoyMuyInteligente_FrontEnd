@@ -15,7 +15,6 @@ export default class AdminStudentsTutor extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        active: 'true',
         isLoading: false,
         idUsuario: '',
         idTutor: '',
@@ -51,7 +50,7 @@ export default class AdminStudentsTutor extends Component {
       this.setState({isLoading: true});
       
       const URL = API_TUTORS.concat("/" + this.state.idTutor).concat("/estudiantes");
-      
+
       try {
         const response = await fetch(URL);
         const responseJson = await response.json();

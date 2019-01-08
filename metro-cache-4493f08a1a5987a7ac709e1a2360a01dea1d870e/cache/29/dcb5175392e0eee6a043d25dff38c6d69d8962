@@ -372,16 +372,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   iconLeft: true,
                   rounded: true,
-                  style: _styles2.default.buttonfb,
-                  onPress: this._logIn,
+                  style: _styles2.default.buttondark,
+                  onPress: function onPress() {
+                    return _this2.props.navigation.navigate('LogIn');
+                  },
                   __source: {
                     fileName: _jsxFileName,
                     lineNumber: 108
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
-                  type: "EvilIcons",
-                  name: "sc-facebook",
+                  name: "person",
                   __source: {
                     fileName: _jsxFileName,
                     lineNumber: 110
@@ -395,48 +396,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       lineNumber: 111
                     }
                   },
-                  "Iniciar con Facebook"
-                )
-              )
-            ),
-            _react3.default.createElement(
-              _reactNative.View,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 116
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Button,
-                {
-                  iconLeft: true,
-                  rounded: true,
-                  style: _styles2.default.buttondark,
-                  onPress: function onPress() {
-                    return _this2.props.navigation.navigate('LogIn');
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 117
-                  }
-                },
-                _react3.default.createElement(_nativeBase.Icon, {
-                  name: "person",
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 119
-                  }
-                }),
-                _react3.default.createElement(
-                  _nativeBase.Text,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 120
-                    }
-                  },
-                  "Iniciar Sesi\xF3n con correo"
+                  "Iniciar sesi\xF3n con correo"
                 )
               )
             )

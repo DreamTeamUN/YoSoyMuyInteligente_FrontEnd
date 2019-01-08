@@ -42,7 +42,7 @@ export const SAVE_ID_TUTOR = async (id_user) => {
 
         if (id_user == id) {    
             await storeUserData(tutores[i].id);      
-            return responseJson[i].id;
+            return responseJson;
         }
       }
     }
@@ -53,7 +53,7 @@ export const SAVE_ID_TUTOR = async (id_user) => {
 }
 
 export const getID_TUTOR = async (id_user) => {
-    let response = await SAVE_ID_TUTOR(id_user);
+    await SAVE_ID_TUTOR(id_user);
 
     try {
         let id_tutor = await AsyncStorage.getItem(ID_TUTOR);

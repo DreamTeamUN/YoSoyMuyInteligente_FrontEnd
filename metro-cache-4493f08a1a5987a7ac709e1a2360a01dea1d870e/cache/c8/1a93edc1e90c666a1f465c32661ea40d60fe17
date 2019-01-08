@@ -100,7 +100,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         return regeneratorRuntime.awrap(storeUserData(tutores[i].id));
 
                     case 14:
-                        return _context3.abrupt("return", responseJson[i].id);
+                        return _context3.abrupt("return", responseJson);
 
                     case 15:
                         i++;
@@ -126,7 +126,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
 
     var getID_TUTOR = exports.getID_TUTOR = function getID_TUTOR(id_user) {
-        var response, id_tutor;
+        var id_tutor;
         return regeneratorRuntime.async(function getID_TUTOR$(_context4) {
             while (1) {
                 switch (_context4.prev = _context4.next) {
@@ -135,25 +135,24 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         return regeneratorRuntime.awrap(SAVE_ID_TUTOR(id_user));
 
                     case 2:
-                        response = _context4.sent;
-                        _context4.prev = 3;
-                        _context4.next = 6;
+                        _context4.prev = 2;
+                        _context4.next = 5;
                         return regeneratorRuntime.awrap(_reactNative.AsyncStorage.getItem(ID_TUTOR));
 
-                    case 6:
+                    case 5:
                         id_tutor = _context4.sent;
                         return _context4.abrupt("return", id_tutor);
 
-                    case 10:
-                        _context4.prev = 10;
-                        _context4.t0 = _context4["catch"](3);
+                    case 9:
+                        _context4.prev = 9;
+                        _context4.t0 = _context4["catch"](2);
                         console.log("getID_TUTOR | Something went wrong");
 
-                    case 13:
+                    case 12:
                     case "end":
                         return _context4.stop();
                 }
             }
-        }, null, _this, [[3, 10]]);
+        }, null, _this, [[2, 9]]);
     };
 });

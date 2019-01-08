@@ -96,7 +96,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 var _this2 = this;
 
                 return _react3.default.createElement(
-                    _nativeBase.Container,
+                    _reactNative.View,
                     {
                         __source: {
                             fileName: _jsxFileName,
@@ -104,8 +104,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         }
                     },
                     _react3.default.createElement(
-                        _nativeBase.Content,
+                        _reactNative.View,
                         {
+                            style: _styles2.default.editDate,
                             __source: {
                                 fileName: _jsxFileName,
                                 lineNumber: 31
@@ -117,15 +118,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             maximumDate: new Date(2030, 12, 31),
                             locale: "co",
                             timeZoneOffsetInMinutes: undefined,
-                            modalTransparent: false,
+                            modalTransparent: true,
                             animationType: "fade",
                             androidMode: "default",
-                            placeHolderText: "Select date",
+                            placeHolderText: "Presione aqu\xED para seleccionar una fecha",
                             textStyle: {
                                 color: "green"
                             },
                             placeHolderTextStyle: {
-                                color: "#d3d3d3"
+                                color: "#696969"
                             },
                             onDateChange: function onDateChange(newDate) {
                                 return _this2.setState({
@@ -138,11 +139,33 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             }
                         }),
                         _react3.default.createElement(
+                            _nativeBase.Text,
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 47
+                                }
+                            },
+                            "Se ha elegido la siguiente fecha: ",
+                            this.state.birthdate.toString().substr(4, 12),
+                            "."
+                        )
+                    ),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        {
+                            style: _styles2.default.simplecenter,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 51
+                            }
+                        },
+                        _react3.default.createElement(
                             _reactNative.View,
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 46
+                                    lineNumber: 52
                                 }
                             },
                             _react3.default.createElement(
@@ -154,7 +177,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     onPress: this._sendNewData.bind(this),
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 47
+                                        lineNumber: 53
                                     }
                                 },
                                 _react3.default.createElement(_nativeBase.Icon, {
@@ -162,7 +185,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     name: "done",
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 51
+                                        lineNumber: 56
                                     }
                                 }),
                                 _react3.default.createElement(
@@ -170,7 +193,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 52
+                                            lineNumber: 57
                                         }
                                     },
                                     "Enviar cambios"

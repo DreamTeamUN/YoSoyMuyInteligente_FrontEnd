@@ -6,7 +6,6 @@ import {API_TUTORS} from '../config/const'
 import {getID} from '../utils/home';
 import {getID_TUTOR} from '../utils/createStudent';
 
-
 export default class AdminStudentsTutor extends Component {
 
     static navigationOptions = {
@@ -26,18 +25,33 @@ export default class AdminStudentsTutor extends Component {
 
     async componentWillMount(){
 
-      this.setState({
-        idUsuario: await getID(),
-      });
+      getID()
+      
+      .then(id => {
+        this.setState({
+          idUsuario: id,
+        })
+      })
+
+      .then(() => {
+        getID_TUTOR(this.state.idUsuario)
+        
+        .then((idTutor) => {
+          this.setState({idTutor: idTutor})
+        })
+        
+        .then(() => {
+          this.listarEstudiantes();
+        })
+      })
     }
 
     async listarEstudiantes() {
 
       this.setState({isLoading: true});
-      let id = await getID_TUTOR(this.state.idUsuario);
-      this.setState({idTutor: id });
-      const URL = API_TUTORS.concat("/" + id).concat("/estudiantes");
-
+      
+      const URL = API_TUTORS.concat("/" + this.state.idTutor).concat("/estudiantes");
+      
       try {
         const response = await fetch(URL);
         const responseJson = await response.json();
@@ -54,7 +68,7 @@ export default class AdminStudentsTutor extends Component {
     }
 
     componentDidMount() {
-      this.listarEstudiantes();
+
     }
 
     render() {

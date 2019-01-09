@@ -282,19 +282,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 lineNumber: 89
               }
             },
-            _react3.default.createElement(
-              _nativeBase.Text,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 90
-                }
-              },
-              "TIPO_USUARIO: ",
-              this.state.tipo_usuario,
-              "ID: ",
-              this.state.idUsuario
-            ),
             display
           ),
           _react3.default.createElement(
@@ -312,14 +299,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 97
+                lineNumber: 94
               }
             },
             _react3.default.createElement(_nativeBase.Icon, {
               name: "add",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 104
+                lineNumber: 101
               }
             })
           )

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {Alert} from 'react-native';
-import {  View, TextInput, Text, Button, Icon, DatePicker,
+import {  View, Text, Button, Icon, DatePicker,
   Header, Left, Body, Title, Label, Form, Item, Input, Content, Container } from 'native-base';
 import { DocumentPicker, ImagePicker } from 'expo'; //por usar
 import styles from '../styles';
 import {getID} from '../utils/home';
 import {CREATE_STUDENT} from '../utils/createStudent'
-import AdminStudentsTutor from './AdminStudentsTutor';
 
 export default class AddStudent extends Component {
 

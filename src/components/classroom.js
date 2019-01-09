@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Text, Fab, Icon, View, Container, Content, Header, Title, Button,
    Left, Body, Card, CardItem, Right} from 'native-base';
 import styles from '../styles';
-import {API_CREATE_AULA} from '../config/const';
+import {API_LIST_AULAS} from '../config/const';
 import {getID, getTipoUsuario} from '../utils/home';
 
 
@@ -87,10 +87,7 @@ export default class ClassRoom extends Component {
           </Header>
 
           <Content style = {styles.maxHeight}>
-          <Text>
-            TIPO_USUARIO: {this.state.tipo_usuario}
-            ID: {this.state.idUsuario}
-          </Text>
+          
             {display}
         </Content>
 

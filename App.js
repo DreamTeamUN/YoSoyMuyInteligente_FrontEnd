@@ -32,13 +32,6 @@ class LoadingScreen extends Component {
   };
 
   render() {
-    // if (this.state.isLoading) {
-    //   return (
-    //     <StyleProvider style={getTheme(variables)}>
-    //       <Expo.AppLoading />
-    //     </StyleProvider>
-    //   );
-    // }
     return (
       // <StyleProvider style={getTheme(variables)}>
         <View style={styles.textContainer}>

@@ -1,0 +1,9 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var store = _require(_dependencyMap[0], './$.shared')('wks'),
+      uid = _require(_dependencyMap[1], './$.uid'),
+      Symbol = _require(_dependencyMap[2], './$.global').Symbol;
+
+  module.exports = function (name) {
+    return store[name] || (store[name] = Symbol && (typeof Symbol === "function" ? Symbol[name] : "@@name") || (Symbol || uid)('Symbol.' + name));
+  };
+});

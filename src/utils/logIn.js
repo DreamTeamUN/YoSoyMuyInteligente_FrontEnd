@@ -33,6 +33,24 @@ export const removeToken = async () => {
     }
 }
 
+export const sendDataToSocials = async (name, email, tipo_usuario, token) => {
+    // Fetch version:
+    return fetch(API_SOCIALS, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "name": name,
+          "email": email,
+          "tipo_usuario": tipo_usuario,
+          "token": token
+        })
+    })
+
+}
+
 export const sendDataToLogIn = async (email, password) => {
     // Fetch version:
     return fetch(API_LOG_IN, {
@@ -51,19 +69,3 @@ export const sendDataToLogIn = async (email, password) => {
 
 }
 
-export const sendDataToSocials = async (name, email, tipo_usuario) => {
-    // Fetch version:
-    return fetch(API_SOCIALS, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          "name": name,
-          "email": email,
-          "tipo_usuario": tipo_usuario
-        })
-    })
-
-}

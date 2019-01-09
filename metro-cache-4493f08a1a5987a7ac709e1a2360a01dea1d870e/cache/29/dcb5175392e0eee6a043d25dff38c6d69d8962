@@ -1,0 +1,412 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/Main.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _expo = _require(_dependencyMap[3], "expo");
+
+  var _expo2 = _interopRequireDefault(_expo);
+
+  var _nativeBase = _require(_dependencyMap[4], "native-base");
+
+  var _logIn2 = _require(_dependencyMap[5], "../utils/logIn");
+
+  var _styles = _require(_dependencyMap[6], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    Main: {
+      displayName: "Main"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/Main.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Main = _wrapComponent("Main")(function (_Component) {
+    _inherits(Main, _Component);
+
+    function Main(props) {
+      _classCallCheck(this, Main);
+
+      return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+    }
+
+    _createClass(Main, [{
+      key: "_signIn",
+      value: function _signIn() {
+        var result, response, res;
+        return regeneratorRuntime.async(function _signIn$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return regeneratorRuntime.awrap(_expo2.default.Google.logInAsync({
+                  androidClientId: "99894503572-hi17jagkv4uc28222pdl9eki2n2rsovf.apps.googleusercontent.com",
+                  scopes: ["profile", "email"]
+                }));
+
+              case 3:
+                result = _context.sent;
+
+                if (!(result.type === "success")) {
+                  _context.next = 16;
+                  break;
+                }
+
+                console.log(result);
+                _context.next = 8;
+                return regeneratorRuntime.awrap((0, _logIn2.sendDataToSocials)(result.user.name, result.user.email, 1, result.accessToken));
+
+              case 8:
+                response = _context.sent;
+                _context.next = 11;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 11:
+                res = _context.sent;
+                (0, _logIn2.storeToken)(res.jwt);
+                this.props.navigation.navigate('HomeAdult');
+                _context.next = 17;
+                break;
+
+              case 16:
+                console.log("Google | Cancelled");
+
+              case 17:
+                _context.next = 22;
+                break;
+
+              case 19:
+                _context.prev = 19;
+                _context.t0 = _context["catch"](0);
+                console.log("error con google autenticathor: ", _context.t0);
+
+              case 22:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this, [[0, 19]]);
+      }
+    }, {
+      key: "_logIn",
+      value: function _logIn() {
+        var _ref, type, token, response, _ref2, picture, name, birthday, email;
+
+        return regeneratorRuntime.async(function _logIn$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return regeneratorRuntime.awrap(_expo2.default.Facebook.logInWithReadPermissionsAsync("769489916725698", {
+                  permissions: ["public_profile", "email", "user_birthday"]
+                }));
+
+              case 2:
+                _ref = _context2.sent;
+                type = _ref.type;
+                token = _ref.token;
+
+                if (!(type === "success")) {
+                  _context2.next = 19;
+                  break;
+                }
+
+                _context2.next = 8;
+                return regeneratorRuntime.awrap(fetch("https://graph.facebook.com/me?access_token=" + token + "&fields=id,name,birthday,email,picture.type(large)"));
+
+              case 8:
+                response = _context2.sent;
+                _context2.next = 11;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 11:
+                _ref2 = _context2.sent;
+                picture = _ref2.picture;
+                name = _ref2.name;
+                birthday = _ref2.birthday;
+                email = _ref2.email;
+                console.log(name, email, birthday);
+                _context2.next = 20;
+                break;
+
+              case 19:
+                console.log("Facebook | Cancelled");
+
+              case 20:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "_sendData",
+      value: function _sendData() {
+        var response, res, accessToken;
+        return regeneratorRuntime.async(function _sendData$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return regeneratorRuntime.awrap((0, _logIn2.sendDataToLogIn)(this.state.email, this.state.password));
+
+              case 3:
+                response = _context3.sent;
+                console.log("login | res status: " + response.status);
+
+                if (!(response.status >= 200 && response.status < 300)) {
+                  _context3.next = 16;
+                  break;
+                }
+
+                _context3.next = 8;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 8:
+                res = _context3.sent;
+                this.setState({
+                  error: ""
+                });
+                accessToken = res.jwt;
+                (0, _logIn2.storeToken)(accessToken);
+                console.log("Access Token: " + accessToken);
+                this.props.navigation.navigate('HomeAdult');
+                _context3.next = 18;
+                break;
+
+              case 16:
+                (0, _logIn2.removeToken)();
+                this.setState({
+                  error: "Algo salio mal"
+                });
+
+              case 18:
+                _context3.next = 24;
+                break;
+
+              case 20:
+                _context3.prev = 20;
+                _context3.t0 = _context3["catch"](0);
+                this.setState({
+                  error: _context3.t0
+                });
+                console.log("error: " + _context3.t0);
+
+              case 24:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, null, this, [[0, 20]]);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 86
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: _styles2.default.imageContainer,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 87
+              }
+            },
+            _react3.default.createElement(_reactNative.Image, {
+              style: _styles2.default.logoinicial,
+              source: _require(_dependencyMap[7], '../assets/logoinicial.png'),
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 88
+              }
+            })
+          ),
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: _styles2.default.buttonsContainer,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 91
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 92
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  iconLeft: true,
+                  rounded: true,
+                  style: _styles2.default.buttonclear,
+                  onPress: function onPress() {
+                    return _this2.props.navigation.navigate('SignUpMain');
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 92
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  name: "person-add",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 94
+                  }
+                }),
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 95
+                    }
+                  },
+                  "Registrar con correo"
+                )
+              )
+            ),
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 99
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  iconLeft: true,
+                  rounded: true,
+                  style: _styles2.default.buttonred,
+                  onPress: function onPress() {
+                    return _this2._signIn();
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 100
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  type: "FontAwesome",
+                  name: "google",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 102
+                  }
+                }),
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 103
+                    }
+                  },
+                  "Iniciar con Google"
+                )
+              )
+            ),
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 107
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  iconLeft: true,
+                  rounded: true,
+                  style: _styles2.default.buttondark,
+                  onPress: function onPress() {
+                    return _this2.props.navigation.navigate('LogIn');
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 108
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  name: "person",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 110
+                  }
+                }),
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 111
+                    }
+                  },
+                  "Iniciar sesi\xF3n con correo"
+                )
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return Main;
+  }(_react2.Component));
+
+  exports.default = Main;
+});

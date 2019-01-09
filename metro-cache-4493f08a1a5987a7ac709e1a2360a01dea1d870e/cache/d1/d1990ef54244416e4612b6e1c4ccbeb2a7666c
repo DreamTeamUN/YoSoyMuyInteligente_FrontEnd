@@ -1,0 +1,7 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var $ = _require(_dependencyMap[0], '../../modules/$');
+
+  module.exports = function create(P, D) {
+    return $.create(P, D);
+  };
+});

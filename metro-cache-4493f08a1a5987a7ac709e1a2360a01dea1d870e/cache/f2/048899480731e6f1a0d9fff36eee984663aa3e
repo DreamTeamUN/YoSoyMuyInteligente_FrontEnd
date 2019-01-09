@@ -1,0 +1,345 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/ForumScreen.js";
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _styles = _require(_dependencyMap[3], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  var _reactNativeComments = _require(_dependencyMap[4], "react-native-comments");
+
+  var _reactNativeComments2 = _interopRequireDefault(_reactNativeComments);
+
+  var _ExampleActions = _require(_dependencyMap[5], "../utils/ExampleActions");
+
+  var commentActions = _interopRequireWildcard(_ExampleActions);
+
+  var _moment = _require(_dependencyMap[6], "moment");
+
+  var _moment2 = _interopRequireDefault(_moment);
+
+  function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    ForumScreen: {
+      displayName: "ForumScreen"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/ForumScreen.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var ForumScreen = _wrapComponent("ForumScreen")((_temp = _class = function (_Component) {
+    _inherits(ForumScreen, _Component);
+
+    function ForumScreen(props) {
+      _classCallCheck(this, ForumScreen);
+
+      var _this = _possibleConstructorReturn(this, (ForumScreen.__proto__ || Object.getPrototypeOf(ForumScreen)).call(this, props));
+
+      _this.props = props;
+      _this.actions = commentActions;
+      _this.state = {
+        comments: [],
+        loadingComments: true,
+        lastCommentUpdate: null,
+        review: props.review ? props.review : null,
+        login: null,
+        id: props.id
+      };
+      _this.scrollIndex = 0;
+      return _this;
+    }
+
+    _createClass(ForumScreen, [{
+      key: "componentWillMount",
+      value: function componentWillMount() {
+        var c = this.actions.getComments();
+        this.setState({
+          comments: c,
+          loadingComments: false,
+          lastCommentUpdate: new Date().getTime()
+        });
+      }
+    }, {
+      key: "extractUsername",
+      value: function extractUsername(c) {
+        try {
+          return c.email !== "" ? c.email : null;
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }, {
+      key: "extractBody",
+      value: function extractBody(c) {
+        try {
+          return c.body && c.body !== "" ? c.body : null;
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }, {
+      key: "extractImage",
+      value: function extractImage(c) {
+        try {
+          return c.image_id && c.user.image_id !== "" ? c.user.image_id : "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png";
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }, {
+      key: "extractChildrenCount",
+      value: function extractChildrenCount(c) {
+        try {
+          return c.childrenCount || 0;
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }, {
+      key: "extractEditTime",
+      value: function extractEditTime(item) {
+        try {
+          return item.updated_at;
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }, {
+      key: "extractCreatedTime",
+      value: function extractCreatedTime(item) {
+        try {
+          return item.created_at;
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }, {
+      key: "likeExtractor",
+      value: function likeExtractor(item) {
+        return item.liked;
+      }
+    }, {
+      key: "reportedExtractor",
+      value: function reportedExtractor(item) {
+        return item.reported;
+      }
+    }, {
+      key: "likesExtractor",
+      value: function likesExtractor(item) {
+        return item.likes.map(function (like) {
+          return {
+            image: like.image,
+            name: like.username,
+            user_id: like.user_id,
+            tap: function tap(username) {
+              console.log("Taped: " + username);
+            }
+          };
+        });
+      }
+    }, {
+      key: "isCommentChild",
+      value: function isCommentChild(item) {
+        return item.parentId !== null;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        var review = this.state.review;
+        var data = this.state.comments;
+        return _react3.default.createElement(
+          _reactNative.ScrollView,
+          {
+            style: _styles2.default.container,
+            keyboardShouldPersistTaps: "always",
+            onScroll: function onScroll(event) {
+              _this2.scrollIndex = event.nativeEvent.contentOffset.y;
+            },
+            ref: "scrollView",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 122
+            }
+          },
+          _react3.default.createElement(_reactNative.Image, {
+            style: {
+              height: 200
+            },
+            source: {
+              uri: "https://i1.sndcdn.com/artworks-000273861158-p5s2iy-t500x500.jpg"
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 130
+            }
+          }),
+          this.state.comments.length ? _react3.default.createElement(_reactNativeComments2.default, {
+            data: data,
+            viewingUserName: "testUser",
+            initialDisplayCount: 5,
+            editMinuteLimit: 0,
+            usernameTapAction: function usernameTapAction(username) {
+              console.log("Taped user: " + username);
+            },
+            childPropName: "children",
+            isChild: function isChild(item) {
+              return _this2.isCommentChild(item);
+            },
+            keyExtractor: function keyExtractor(item) {
+              return item.commentId;
+            },
+            parentIdExtractor: function parentIdExtractor(item) {
+              return item.parentId;
+            },
+            usernameExtractor: function usernameExtractor(item) {
+              return _this2.extractUsername(item);
+            },
+            editTimeExtractor: function editTimeExtractor(item) {
+              return _this2.extractEditTime(item);
+            },
+            createdTimeExtractor: function createdTimeExtractor(item) {
+              return _this2.extractCreatedTime(item);
+            },
+            bodyExtractor: function bodyExtractor(item) {
+              return _this2.extractBody(item);
+            },
+            imageExtractor: function imageExtractor(item) {
+              return _this2.extractImage(item);
+            },
+            likeExtractor: function likeExtractor(item) {
+              return _this2.likeExtractor(item);
+            },
+            reportedExtractor: function reportedExtractor(item) {
+              return _this2.reportedExtractor(item);
+            },
+            likesExtractor: function likesExtractor(item) {
+              return _this2.likesExtractor(item);
+            },
+            childrenCountExtractor: function childrenCountExtractor(item) {
+              return _this2.extractChildrenCount(item);
+            },
+            replyAction: function replyAction(offset) {
+              _this2.refs.scrollView.scrollTo({
+                x: null,
+                y: _this2.scrollIndex + offset - 300,
+                animated: true
+              });
+            },
+            saveAction: function saveAction(text, parentCommentId) {
+              var date = (0, _moment2.default)().format("YYYY-MM-DD H:mm:ss");
+
+              var comments = _this2.actions.save(_this2.state.comments, text, parentCommentId, date, "testUser");
+
+              _this2.setState({
+                comments: comments
+              });
+
+              if (!parentCommentId) {
+                _this2.refs.scrollView.scrollToEnd();
+              }
+            },
+            editAction: function editAction(text, comment) {
+              var comments = _this2.actions.edit(_this2.state.comments, comment, text);
+
+              _this2.setState({
+                comments: comments
+              });
+            },
+            reportAction: function reportAction(comment) {
+              var comments = _this2.actions.report(_this2.state.comments, comment);
+
+              _this2.setState({
+                comments: comments
+              });
+            },
+            likeAction: function likeAction(comment) {
+              var comments = _this2.actions.like(_this2.state.comments, comment);
+
+              _this2.setState({
+                comments: comments
+              });
+            },
+            deleteAction: function deleteAction(comment) {
+              var comments = _this2.actions.deleteComment(_this2.state.comments, comment);
+
+              _this2.setState({
+                comments: comments
+              });
+            },
+            paginateAction: function paginateAction(from_comment_id, direction, parent_comment_id) {
+              var newComments = _this2.actions.paginateComments(_this2.state.comments, from_comment_id, direction, parent_comment_id);
+
+              _this2.setState({
+                comments: newComments
+              });
+
+              var self = _this2;
+              setTimeout(function () {
+                if (direction == "up") {
+                  self.refs.scrollView.scrollTo({
+                    x: 0,
+                    y: 500,
+                    animated: true
+                  });
+                } else {
+                  self.refs.scrollView.scrollTo({
+                    x: 0,
+                    y: 0,
+                    animated: true
+                  });
+                }
+              }, 3000);
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 139
+            }
+          }) : null
+        );
+      }
+    }]);
+
+    return ForumScreen;
+  }(_react2.Component), _class.navigatorStyle = {}, _temp));
+
+  exports.default = ForumScreen;
+});

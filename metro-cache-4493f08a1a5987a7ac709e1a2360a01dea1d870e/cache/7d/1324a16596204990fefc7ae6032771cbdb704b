@@ -1,0 +1,7 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  _require(_dependencyMap[0], './es6.array.iterator');
+
+  var Iterators = _require(_dependencyMap[1], './$.iterators');
+
+  Iterators.NodeList = Iterators.HTMLCollection = Iterators.Array;
+});

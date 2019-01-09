@@ -1,0 +1,7 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var hasOwnProperty = {}.hasOwnProperty;
+
+  module.exports = function (it, key) {
+    return hasOwnProperty.call(it, key);
+  };
+});

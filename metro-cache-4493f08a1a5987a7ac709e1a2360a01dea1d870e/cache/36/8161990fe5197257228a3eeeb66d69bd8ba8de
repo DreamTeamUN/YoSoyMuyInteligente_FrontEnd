@@ -1,0 +1,5 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  _require(_dependencyMap[0], '../../modules/es6.object.set-prototype-of');
+
+  module.exports = _require(_dependencyMap[1], '../../modules/$.core').Object.setPrototypeOf;
+});

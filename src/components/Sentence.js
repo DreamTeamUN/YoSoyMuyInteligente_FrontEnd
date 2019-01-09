@@ -6,6 +6,7 @@ import { WEEK } from './Practices';
 import { API_LESSONS } from '../config/const';
 
  class LogoTitle extends React.Component {
+
   render() {
     return (
       <View><Text>Cargando...</Text></View>
@@ -14,7 +15,12 @@ import { API_LESSONS } from '../config/const';
 }
 
  export default class WeekProgress extends Component {
-  constructor(props) {
+
+   static navigationOptions = {
+       header: null
+   }
+
+   constructor(props) {
     super(props);
     console.log(WEEK);
     this.state = {
@@ -25,11 +31,12 @@ import { API_LESSONS } from '../config/const';
     };
   }
 
-
   componentDidMount() {
+
+    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
+
     this.getLessons();
 
-    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
     if (!this.state.isLoading){
 
       var i = 0
@@ -48,11 +55,7 @@ import { API_LESSONS } from '../config/const';
         }
       }, 1000);
     }
-    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
-  }
 
-  componentWillMount() {
-    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
   }
 
   getLessons = () => {
@@ -86,5 +89,12 @@ import { API_LESSONS } from '../config/const';
         </Text>
       </View>
     );
+  }
+
+  componentWillUnmount(){
+      if (!this.state.isLoading) {
+        Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAID);
+      }
+
   }
 }

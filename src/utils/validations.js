@@ -12,12 +12,12 @@ function validateUsername(username) {
     return true
 }
 
-function validatePassword(password, password2) {
-    if (!password == password2) {
+export function validatePassword(password, password2) {
+    if (password != password2) {
         Alert.alert("Las contraseñas ingresadas no coinciden.");
         return false
     }
-    if (!password.length >= 6) {
+    if (password.length < 6) {
         Alert.alert("La longitud de su contraseña debe ser de al menos 6 caracteres.");
         return false
     }

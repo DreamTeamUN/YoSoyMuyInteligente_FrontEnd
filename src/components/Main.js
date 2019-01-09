@@ -14,32 +14,24 @@ export default class Main extends Component {
   async _signIn() {
     try {
       const result = await Expo.Google.logInAsync({
-        androidClientId:
-          "99894503572-hi17jagkv4uc28222pdl9eki2n2rsovf.apps.googleusercontent.com",
-        //iosClientId: YOUR_CLIENT_ID_HERE,  <-- if you use iOS
-        scopes: ["profile", "email"]
+        behavior: "web",
+        scopes: ["profile", "email"],
+        androidClientId: "99894503572-icicblji5ltq53l8acdcpfs78hkgg4t9.apps.googleusercontent.com",
+        androidStandaloneAppClientId: "99894503572-68s54laf0toc0c2orjdjt6u2cablrfvr.apps.googleusercontent.com",
+        webClientId: "99894503572-icicblji5ltq53l8acdcpfs78hkgg4t9.apps.googleusercontent.com",
       })
-      //console.log(result)
-      //if (result.type === "success") {
-        //this.setState({
-          //signedIn: true,
-          //name: result.user.name,
-          //photoUrl: result.user.photoUrl
-        //})
-      //} else {
-        //console.log("Google | Cancelled")
-      //}
       if (result.type === "success"){
-        let response = await sendDataToSocials(result.user.name, result.user.email, 1)
+
+        console.log(result);
+        let response = await sendDataToSocials(result.user.name, result.user.email, 1, result.accessToken)
         let res = await response.json();
         storeToken(res.jwt);
         this.props.navigation.navigate('HomeAdult')
-
       }else {
         console.log("Google | Cancelled")
       }
     } catch (e) {
-      console.log("error", e)
+      console.log("error con google autenticathor: ", e)
     }
   }
 
@@ -111,22 +103,13 @@ export default class Main extends Component {
               <Icon type="FontAwesome" name="google" />
               <Text >Iniciar con Google</Text>
             </Button>
-          </View>
-
-          <View>
-            <Button iconLeft rounded style={styles.buttonfb}
-              onPress={this._logIn}>
-              <Icon type="EvilIcons" name="sc-facebook" />
-              <Text >Iniciar con Facebook</Text>
-            </Button>
-          </View>
-
+            </View>
 
           <View>
             <Button iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('LogIn')}>
               <Icon name="person" />
-              <Text>Iniciar Sesión con correo</Text>
+              <Text>Iniciar sesión con correo</Text>
             </Button>
           </View>
         </View>

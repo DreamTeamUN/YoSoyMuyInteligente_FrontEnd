@@ -1,0 +1,426 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var BinarySearchTree = _require(_dependencyMap[0], './bst'),
+      customUtils = _require(_dependencyMap[1], './customUtils'),
+      util = _require(_dependencyMap[2], "util"),
+      _ = _require(_dependencyMap[3], "underscore");
+
+  function AVLTree(options) {
+    this.tree = new _AVLTree(options);
+  }
+
+  function _AVLTree(options) {
+    options = options || {};
+    this.left = null;
+    this.right = null;
+    this.parent = options.parent !== undefined ? options.parent : null;
+
+    if (options.hasOwnProperty('key')) {
+      this.key = options.key;
+    }
+
+    this.data = options.hasOwnProperty('value') ? [options.value] : [];
+    this.unique = options.unique || false;
+    this.compareKeys = options.compareKeys || customUtils.defaultCompareKeysFunction;
+    this.checkValueEquality = options.checkValueEquality || customUtils.defaultCheckValueEquality;
+  }
+
+  util.inherits(_AVLTree, BinarySearchTree);
+  AVLTree._AVLTree = _AVLTree;
+
+  _AVLTree.prototype.checkHeightCorrect = function () {
+    var leftH, rightH;
+
+    if (!this.hasOwnProperty('key')) {
+      return;
+    }
+
+    if (this.left && this.left.height === undefined) {
+      throw new Error("Undefined height for node " + this.left.key);
+    }
+
+    if (this.right && this.right.height === undefined) {
+      throw new Error("Undefined height for node " + this.right.key);
+    }
+
+    if (this.height === undefined) {
+      throw new Error("Undefined height for node " + this.key);
+    }
+
+    leftH = this.left ? this.left.height : 0;
+    rightH = this.right ? this.right.height : 0;
+
+    if (this.height !== 1 + Math.max(leftH, rightH)) {
+      throw new Error("Height constraint failed for node " + this.key);
+    }
+
+    if (this.left) {
+      this.left.checkHeightCorrect();
+    }
+
+    if (this.right) {
+      this.right.checkHeightCorrect();
+    }
+  };
+
+  _AVLTree.prototype.balanceFactor = function () {
+    var leftH = this.left ? this.left.height : 0,
+        rightH = this.right ? this.right.height : 0;
+    return leftH - rightH;
+  };
+
+  _AVLTree.prototype.checkBalanceFactors = function () {
+    if (Math.abs(this.balanceFactor()) > 1) {
+      throw new Error('Tree is unbalanced at node ' + this.key);
+    }
+
+    if (this.left) {
+      this.left.checkBalanceFactors();
+    }
+
+    if (this.right) {
+      this.right.checkBalanceFactors();
+    }
+  };
+
+  _AVLTree.prototype.checkIsAVLT = function () {
+    _AVLTree.super_.prototype.checkIsBST.call(this);
+
+    this.checkHeightCorrect();
+    this.checkBalanceFactors();
+  };
+
+  AVLTree.prototype.checkIsAVLT = function () {
+    this.tree.checkIsAVLT();
+  };
+
+  _AVLTree.prototype.rightRotation = function () {
+    var q = this,
+        p = this.left,
+        b,
+        ah,
+        bh,
+        ch;
+
+    if (!p) {
+      return this;
+    }
+
+    b = p.right;
+
+    if (q.parent) {
+      p.parent = q.parent;
+
+      if (q.parent.left === q) {
+        q.parent.left = p;
+      } else {
+        q.parent.right = p;
+      }
+    } else {
+      p.parent = null;
+    }
+
+    p.right = q;
+    q.parent = p;
+    q.left = b;
+
+    if (b) {
+      b.parent = q;
+    }
+
+    ah = p.left ? p.left.height : 0;
+    bh = b ? b.height : 0;
+    ch = q.right ? q.right.height : 0;
+    q.height = Math.max(bh, ch) + 1;
+    p.height = Math.max(ah, q.height) + 1;
+    return p;
+  };
+
+  _AVLTree.prototype.leftRotation = function () {
+    var p = this,
+        q = this.right,
+        b,
+        ah,
+        bh,
+        ch;
+
+    if (!q) {
+      return this;
+    }
+
+    b = q.left;
+
+    if (p.parent) {
+      q.parent = p.parent;
+
+      if (p.parent.left === p) {
+        p.parent.left = q;
+      } else {
+        p.parent.right = q;
+      }
+    } else {
+      q.parent = null;
+    }
+
+    q.left = p;
+    p.parent = q;
+    p.right = b;
+
+    if (b) {
+      b.parent = p;
+    }
+
+    ah = p.left ? p.left.height : 0;
+    bh = b ? b.height : 0;
+    ch = q.right ? q.right.height : 0;
+    p.height = Math.max(ah, bh) + 1;
+    q.height = Math.max(ch, p.height) + 1;
+    return q;
+  };
+
+  _AVLTree.prototype.rightTooSmall = function () {
+    if (this.balanceFactor() <= 1) {
+      return this;
+    }
+
+    if (this.left.balanceFactor() < 0) {
+      this.left.leftRotation();
+    }
+
+    return this.rightRotation();
+  };
+
+  _AVLTree.prototype.leftTooSmall = function () {
+    if (this.balanceFactor() >= -1) {
+      return this;
+    }
+
+    if (this.right.balanceFactor() > 0) {
+      this.right.rightRotation();
+    }
+
+    return this.leftRotation();
+  };
+
+  _AVLTree.prototype.rebalanceAlongPath = function (path) {
+    var newRoot = this,
+        rotated,
+        i;
+
+    if (!this.hasOwnProperty('key')) {
+      delete this.height;
+      return this;
+    }
+
+    for (i = path.length - 1; i >= 0; i -= 1) {
+      path[i].height = 1 + Math.max(path[i].left ? path[i].left.height : 0, path[i].right ? path[i].right.height : 0);
+
+      if (path[i].balanceFactor() > 1) {
+        rotated = path[i].rightTooSmall();
+
+        if (i === 0) {
+          newRoot = rotated;
+        }
+      }
+
+      if (path[i].balanceFactor() < -1) {
+        rotated = path[i].leftTooSmall();
+
+        if (i === 0) {
+          newRoot = rotated;
+        }
+      }
+    }
+
+    return newRoot;
+  };
+
+  _AVLTree.prototype.insert = function (key, value) {
+    var insertPath = [],
+        currentNode = this;
+
+    if (!this.hasOwnProperty('key')) {
+      this.key = key;
+      this.data.push(value);
+      this.height = 1;
+      return this;
+    }
+
+    while (true) {
+      if (currentNode.compareKeys(currentNode.key, key) === 0) {
+        if (currentNode.unique) {
+          var err = new Error("Can't insert key " + key + ", it violates the unique constraint");
+          err.key = key;
+          err.errorType = 'uniqueViolated';
+          throw err;
+        } else {
+          currentNode.data.push(value);
+        }
+
+        return this;
+      }
+
+      insertPath.push(currentNode);
+
+      if (currentNode.compareKeys(key, currentNode.key) < 0) {
+        if (!currentNode.left) {
+          insertPath.push(currentNode.createLeftChild({
+            key: key,
+            value: value
+          }));
+          break;
+        } else {
+          currentNode = currentNode.left;
+        }
+      } else {
+        if (!currentNode.right) {
+          insertPath.push(currentNode.createRightChild({
+            key: key,
+            value: value
+          }));
+          break;
+        } else {
+          currentNode = currentNode.right;
+        }
+      }
+    }
+
+    return this.rebalanceAlongPath(insertPath);
+  };
+
+  AVLTree.prototype.insert = function (key, value) {
+    var newTree = this.tree.insert(key, value);
+
+    if (newTree) {
+      this.tree = newTree;
+    }
+  };
+
+  _AVLTree.prototype.delete = function (key, value) {
+    var newData = [],
+        replaceWith,
+        self = this,
+        currentNode = this,
+        deletePath = [];
+
+    if (!this.hasOwnProperty('key')) {
+      return this;
+    }
+
+    while (true) {
+      if (currentNode.compareKeys(key, currentNode.key) === 0) {
+        break;
+      }
+
+      deletePath.push(currentNode);
+
+      if (currentNode.compareKeys(key, currentNode.key) < 0) {
+        if (currentNode.left) {
+          currentNode = currentNode.left;
+        } else {
+          return this;
+        }
+      } else {
+        if (currentNode.right) {
+          currentNode = currentNode.right;
+        } else {
+          return this;
+        }
+      }
+    }
+
+    if (currentNode.data.length > 1 && value !== undefined) {
+      currentNode.data.forEach(function (d) {
+        if (!currentNode.checkValueEquality(d, value)) {
+          newData.push(d);
+        }
+      });
+      currentNode.data = newData;
+      return this;
+    }
+
+    if (!currentNode.left && !currentNode.right) {
+      if (currentNode === this) {
+        delete currentNode.key;
+        currentNode.data = [];
+        delete currentNode.height;
+        return this;
+      } else {
+        if (currentNode.parent.left === currentNode) {
+          currentNode.parent.left = null;
+        } else {
+          currentNode.parent.right = null;
+        }
+
+        return this.rebalanceAlongPath(deletePath);
+      }
+    }
+
+    if (!currentNode.left || !currentNode.right) {
+      replaceWith = currentNode.left ? currentNode.left : currentNode.right;
+
+      if (currentNode === this) {
+        replaceWith.parent = null;
+        return replaceWith;
+      } else {
+        if (currentNode.parent.left === currentNode) {
+          currentNode.parent.left = replaceWith;
+          replaceWith.parent = currentNode.parent;
+        } else {
+          currentNode.parent.right = replaceWith;
+          replaceWith.parent = currentNode.parent;
+        }
+
+        return this.rebalanceAlongPath(deletePath);
+      }
+    }
+
+    deletePath.push(currentNode);
+    replaceWith = currentNode.left;
+
+    if (!replaceWith.right) {
+      currentNode.key = replaceWith.key;
+      currentNode.data = replaceWith.data;
+      currentNode.left = replaceWith.left;
+
+      if (replaceWith.left) {
+        replaceWith.left.parent = currentNode;
+      }
+
+      return this.rebalanceAlongPath(deletePath);
+    }
+
+    while (true) {
+      if (replaceWith.right) {
+        deletePath.push(replaceWith);
+        replaceWith = replaceWith.right;
+      } else {
+        break;
+      }
+    }
+
+    currentNode.key = replaceWith.key;
+    currentNode.data = replaceWith.data;
+    replaceWith.parent.right = replaceWith.left;
+
+    if (replaceWith.left) {
+      replaceWith.left.parent = replaceWith.parent;
+    }
+
+    return this.rebalanceAlongPath(deletePath);
+  };
+
+  AVLTree.prototype.delete = function (key, value) {
+    var newTree = this.tree.delete(key, value);
+
+    if (newTree) {
+      this.tree = newTree;
+    }
+  };
+
+  ['getNumberOfKeys', 'search', 'betweenBounds', 'prettyPrint', 'executeOnEveryNode'].forEach(function (fn) {
+    AVLTree.prototype[fn] = function () {
+      return this.tree[fn].apply(this.tree, arguments);
+    };
+  });
+  module.exports = AVLTree;
+});

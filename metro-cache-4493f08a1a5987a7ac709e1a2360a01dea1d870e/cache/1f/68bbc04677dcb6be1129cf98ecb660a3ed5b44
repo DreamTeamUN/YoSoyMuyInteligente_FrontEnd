@@ -1,0 +1,10 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  'use strict';
+
+  var React = _require(_dependencyMap[0], "react");
+
+  var factory = _require(_dependencyMap[1], './factory');
+
+  var ReactNoopUpdateQueue = new React.Component().updater;
+  module.exports = factory(React.Component, React.isValidElement, ReactNoopUpdateQueue);
+});

@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
 import { API_USERS } from '../config/const';
 
@@ -16,7 +15,7 @@ const storeUserData = async (id, username, tipo_usuario_id) => {
     }
 }
 
-export const getUserData = async (token) => {
+export const setUserData = async (token) => {
     try {
         let response = await fetch(API_USERS, {
             method: 'GET',
@@ -28,7 +27,7 @@ export const getUserData = async (token) => {
         storeUserData(res.id, res.user, res.tipo_usuario_id);
         return response
     } catch (error) {
-        console.log("getUserData | Something went wrong")
+        console.log("setUserData | Something went wrong")
     }
 }
 
@@ -42,4 +41,23 @@ export const getUsername = async () => {
     } catch (error) {
         console.log("getUsername | Something went wrong")
     }
+}
+
+export const getID = async () => {
+    try {
+        let id = await AsyncStorage.getItem(ID);
+        console.log("getID | ID is: " + id)
+        return id
+    } catch (error) {
+        console.log("getID | Something went wrong")
+    }
+}
+
+export const getTipoUsuario = async () =>{
+  try {
+    let tipoUsuario = await AsyncStorage.getItem(TIPO_USUARIO)
+    return tipoUsuario
+  }catch (error){
+    console.log("Get tipo user | Something went wrong")
+  }
 }

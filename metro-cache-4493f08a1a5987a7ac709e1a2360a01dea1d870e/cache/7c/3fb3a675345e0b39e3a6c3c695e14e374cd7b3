@@ -1,0 +1,322 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/AdminStudentsTutor.js";
+
+  var _nativeBase = _require(_dependencyMap[2], "native-base");
+
+  var _styles = _require(_dependencyMap[3], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  var _const = _require(_dependencyMap[4], "../config/const");
+
+  var _home = _require(_dependencyMap[5], "../utils/home");
+
+  var _createStudent = _require(_dependencyMap[6], "../utils/createStudent");
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    AdminStudentsTutor: {
+      displayName: "AdminStudentsTutor"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/AdminStudentsTutor.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var AdminStudentsTutor = _wrapComponent("AdminStudentsTutor")((_temp = _class = function (_Component) {
+    _inherits(AdminStudentsTutor, _Component);
+
+    function AdminStudentsTutor(props) {
+      _classCallCheck(this, AdminStudentsTutor);
+
+      var _this = _possibleConstructorReturn(this, (AdminStudentsTutor.__proto__ || Object.getPrototypeOf(AdminStudentsTutor)).call(this, props));
+
+      _this.state = {
+        isLoading: false,
+        idUsuario: '',
+        idTutor: '',
+        estudiantes: []
+      };
+      return _this;
+    }
+
+    _createClass(AdminStudentsTutor, [{
+      key: "componentWillMount",
+      value: function componentWillMount() {
+        var _this2 = this;
+
+        return regeneratorRuntime.async(function componentWillMount$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                (0, _home.getID)().then(function (id) {
+                  _this2.setState({
+                    idUsuario: id
+                  });
+                }).then(function () {
+                  (0, _createStudent.getID_TUTOR)(_this2.state.idUsuario).then(function (idTutor) {
+                    _this2.setState({
+                      idTutor: idTutor
+                    });
+                  }).then(function () {
+                    _this2.listarEstudiantes();
+                  });
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "listarEstudiantes",
+      value: function listarEstudiantes() {
+        var URL, response, responseJson;
+        return regeneratorRuntime.async(function listarEstudiantes$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.setState({
+                  isLoading: true
+                });
+                URL = _const.API_TUTORS.concat("/" + this.state.idTutor).concat("/estudiantes");
+                _context2.prev = 2;
+                _context2.next = 5;
+                return regeneratorRuntime.awrap(fetch(URL));
+
+              case 5:
+                response = _context2.sent;
+                _context2.next = 8;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 8:
+                responseJson = _context2.sent;
+                this.setState({
+                  estudiantes: responseJson,
+                  isLoading: false
+                });
+                _context2.next = 16;
+                break;
+
+              case 12:
+                _context2.prev = 12;
+                _context2.t0 = _context2["catch"](2);
+                console.error("Error en la consulta: " + _context2.t0);
+                this.setState({
+                  isLoading: false
+                });
+
+              case 16:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, null, this, [[2, 12]]);
+      }
+    }, {
+      key: "componentDidMount",
+      value: function componentDidMount() {}
+    }, {
+      key: "render",
+      value: function render() {
+        var _this3 = this;
+
+        var display = this.state.estudiantes.map(function (NewsData, index) {
+          return _react3.default.createElement(
+            _nativeBase.View,
+            {
+              key: NewsData.id,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 77
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Card,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 78
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.CardItem,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 79
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  active: true,
+                  name: "person",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 80
+                  }
+                }),
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 81
+                    }
+                  },
+                  NewsData.nombre
+                )
+              )
+            )
+          );
+        });
+        return _react3.default.createElement(
+          _nativeBase.Container,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 89
+            }
+          },
+          _react3.default.createElement(
+            _nativeBase.Header,
+            {
+              style: _styles2.default.headerStyle,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 90
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Left,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 92
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  transparent: true,
+                  onPress: function onPress() {
+                    return _this3.props.navigation.goBack();
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 93
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  name: "arrow-back",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 94
+                  }
+                })
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.Body,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 98
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Title,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 99
+                  }
+                },
+                "Panel de estudiantes"
+              )
+            )
+          ),
+          _react3.default.createElement(
+            _nativeBase.Content,
+            {
+              style: _styles2.default.maxHeight,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 104
+              }
+            },
+            display
+          ),
+          _react3.default.createElement(
+            _nativeBase.Fab,
+            {
+              active: this.state.active,
+              direction: "up",
+              containerStyle: {},
+              style: {
+                backgroundColor: '#5067FF'
+              },
+              position: "bottomRight",
+              onPress: function onPress() {
+                return _this3.props.navigation.navigate('AddStudent', {
+                  onNavigateBack: _this3.listarEstudiantes.bind(_this3)
+                });
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 108
+              }
+            },
+            _react3.default.createElement(_nativeBase.Icon, {
+              name: "add",
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 116
+              }
+            })
+          )
+        );
+      }
+    }]);
+
+    return AdminStudentsTutor;
+  }(_react2.Component), _class.navigationOptions = {
+    header: null
+  }, _temp));
+
+  exports.default = AdminStudentsTutor;
+});

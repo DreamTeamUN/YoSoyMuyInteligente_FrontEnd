@@ -1,0 +1,11 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var $ = _require(_dependencyMap[0], './$'),
+      anObject = _require(_dependencyMap[1], './$.an-object'),
+      Reflect = _require(_dependencyMap[2], './$.global').Reflect;
+
+  module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
+    var keys = $.getNames(anObject(it)),
+        getSymbols = $.getSymbols;
+    return getSymbols ? keys.concat(getSymbols(it)) : keys;
+  };
+});

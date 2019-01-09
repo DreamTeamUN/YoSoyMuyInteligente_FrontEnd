@@ -1,0 +1,5 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  _require(_dependencyMap[0], '../../modules/es7.object.get-own-property-descriptors');
+
+  module.exports = _require(_dependencyMap[1], '../../modules/$.core').Object.getOwnPropertyDescriptors;
+});

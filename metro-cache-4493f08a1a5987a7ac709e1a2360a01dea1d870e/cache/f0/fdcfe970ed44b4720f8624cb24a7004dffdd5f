@@ -1,0 +1,9 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var global = _require(_dependencyMap[0], './$.global'),
+      SHARED = '__core-js_shared__',
+      store = global[SHARED] || (global[SHARED] = {});
+
+  module.exports = function (key) {
+    return store[key] || (store[key] = {});
+  };
+});

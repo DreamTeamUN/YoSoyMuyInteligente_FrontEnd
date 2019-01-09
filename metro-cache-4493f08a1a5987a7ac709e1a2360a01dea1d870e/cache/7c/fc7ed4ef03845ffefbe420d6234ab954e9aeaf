@@ -1,0 +1,160 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.AuthStack = exports.AppStack = undefined;
+
+    var _react = _require(_dependencyMap[0], "react");
+
+    var React = _interopRequireWildcard(_react);
+
+    var _reactNavigation = _require(_dependencyMap[1], "react-navigation");
+
+    var _Main = _require(_dependencyMap[2], "./components/Main");
+
+    var _Main2 = _interopRequireDefault(_Main);
+
+    var _SignUpMain = _require(_dependencyMap[3], "./components/SignUpMain");
+
+    var _SignUpMain2 = _interopRequireDefault(_SignUpMain);
+
+    var _SignUpAdult = _require(_dependencyMap[4], "./components/SignUpAdult");
+
+    var _SignUpAdult2 = _interopRequireDefault(_SignUpAdult);
+
+    var _SignUpTeacher = _require(_dependencyMap[5], "./components/SignUpTeacher");
+
+    var _SignUpTeacher2 = _interopRequireDefault(_SignUpTeacher);
+
+    var _LogInTypeUser = _require(_dependencyMap[6], "./components/LogInTypeUser");
+
+    var _LogInTypeUser2 = _interopRequireDefault(_LogInTypeUser);
+
+    var _LogIn = _require(_dependencyMap[7], "./components/LogIn");
+
+    var _LogIn2 = _interopRequireDefault(_LogIn);
+
+    var _HomeAdult = _require(_dependencyMap[8], "./components/HomeAdult");
+
+    var _HomeAdult2 = _interopRequireDefault(_HomeAdult);
+
+    var _WeekProgress = _require(_dependencyMap[9], "./components/WeekProgress");
+
+    var _WeekProgress2 = _interopRequireDefault(_WeekProgress);
+
+    var _Sentence = _require(_dependencyMap[10], "./components/Sentence");
+
+    var _Sentence2 = _interopRequireDefault(_Sentence);
+
+    var _Games = _require(_dependencyMap[11], "./components/Games");
+
+    var _Games2 = _interopRequireDefault(_Games);
+
+    var _HomeStudent = _require(_dependencyMap[12], "./components/HomeStudent");
+
+    var _HomeStudent2 = _interopRequireDefault(_HomeStudent);
+
+    var _Practices = _require(_dependencyMap[13], "./components/Practices");
+
+    var _Practices2 = _interopRequireDefault(_Practices);
+
+    var _GameProgress = _require(_dependencyMap[14], "./components/GameProgress");
+
+    var _GameProgress2 = _interopRequireDefault(_GameProgress);
+
+    var _AddStudent = _require(_dependencyMap[15], "./components/AddStudent");
+
+    var _AddStudent2 = _interopRequireDefault(_AddStudent);
+
+    var _EditProfile = _require(_dependencyMap[16], "./components/EditProfile/EditProfile");
+
+    var _EditProfile2 = _interopRequireDefault(_EditProfile);
+
+    var _ChangeFullname = _require(_dependencyMap[17], "./components/EditProfile/ChangeFullname");
+
+    var _ChangeFullname2 = _interopRequireDefault(_ChangeFullname);
+
+    var _ChangePassword = _require(_dependencyMap[18], "./components/EditProfile/ChangePassword");
+
+    var _ChangePassword2 = _interopRequireDefault(_ChangePassword);
+
+    var _ChangeBirthdate = _require(_dependencyMap[19], "./components/EditProfile/ChangeBirthdate");
+
+    var _ChangeBirthdate2 = _interopRequireDefault(_ChangeBirthdate);
+
+    var _ForumScreen = _require(_dependencyMap[20], "./components/ForumScreen");
+
+    var _ForumScreen2 = _interopRequireDefault(_ForumScreen);
+
+    var _HomeForum = _require(_dependencyMap[21], "./components/HomeForum");
+
+    var _HomeForum2 = _interopRequireDefault(_HomeForum);
+
+    var _classroom = _require(_dependencyMap[22], "./components/classroom");
+
+    var _classroom2 = _interopRequireDefault(_classroom);
+
+    var _AddClassRoom = _require(_dependencyMap[23], "./components/AddClassRoom");
+
+    var _AddClassRoom2 = _interopRequireDefault(_AddClassRoom);
+
+    var _AdminStudentsTutor = _require(_dependencyMap[24], "./components/AdminStudentsTutor");
+
+    var _AdminStudentsTutor2 = _interopRequireDefault(_AdminStudentsTutor);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+    var AppStack = exports.AppStack = (0, _reactNavigation.createStackNavigator)({
+        HomeAdult: _HomeAdult2.default,
+        AddClassRoom: _AddClassRoom2.default,
+        HomeStudent: _HomeStudent2.default,
+        WeekProgress: _WeekProgress2.default,
+        GameProgress: _GameProgress2.default,
+        ClassRoom: _classroom2.default,
+        Sentence: _Sentence2.default,
+        Games: _Games2.default,
+        Practices: _Practices2.default,
+        AdminStudentsTutor: _AdminStudentsTutor2.default,
+        AddStudent: _AddStudent2.default,
+        EditProfile: _EditProfile2.default,
+        ChangeFullname: _ChangeFullname2.default,
+        ChangePassword: _ChangePassword2.default,
+        ChangeBirthdate: _ChangeBirthdate2.default,
+        ForumScreen: _ForumScreen2.default,
+        HomeForum: _HomeForum2.default
+    }, {
+        initialRouteName: 'HomeAdult',
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5D99C6',
+                height: 50
+            },
+            headerTintColor: '#E9E9EF',
+            headerTitleStyle: {
+                fontWeight: 'bold'
+            }
+        }
+    });
+    var AuthStack = exports.AuthStack = (0, _reactNavigation.createStackNavigator)({
+        Main: _Main2.default,
+        SignUpMain: _SignUpMain2.default,
+        SignUpAdult: _SignUpAdult2.default,
+        SignUpTeacher: _SignUpTeacher2.default,
+        LogInTypeUser: _LogInTypeUser2.default,
+        LogIn: _LogIn2.default
+    }, {
+        initialRouteName: 'Main',
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5D99C6',
+                height: 50
+            },
+            headerTintColor: '#E9E9EF',
+            headerTitleStyle: {
+                fontWeight: 'bold'
+            }
+        }
+    });
+});

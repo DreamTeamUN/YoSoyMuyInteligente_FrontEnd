@@ -1,0 +1,14 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  var $export = _require(_dependencyMap[0], './$.export'),
+      core = _require(_dependencyMap[1], './$.core'),
+      fails = _require(_dependencyMap[2], './$.fails');
+
+  module.exports = function (KEY, exec) {
+    var fn = (core.Object || {})[KEY] || Object[KEY],
+        exp = {};
+    exp[KEY] = exec(fn);
+    $export($export.S + $export.F * fails(function () {
+      fn(1);
+    }), 'Object', exp);
+  };
+});

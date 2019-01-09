@@ -1,0 +1,192 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _react2 = _require(_dependencyMap[0], "react");
+
+    var _react3 = _interopRequireDefault(_react2);
+
+    var _index = _require(_dependencyMap[1], "./../../../node_modules/react-transform-hmr/lib/index.js");
+
+    var _index2 = _interopRequireDefault(_index);
+
+    var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/EditProfile/ChangeFullname.js";
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _reactNative = _require(_dependencyMap[2], "react-native");
+
+    var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+    var _styles = _require(_dependencyMap[4], "../../styles");
+
+    var _styles2 = _interopRequireDefault(_styles);
+
+    var _editProfile = _require(_dependencyMap[5], "../../utils/editProfile");
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    var _components = {
+        ChangeFullname: {
+            displayName: "ChangeFullname"
+        }
+    };
+
+    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+        filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/EditProfile/ChangeFullname.js",
+        components: _components,
+        locals: [module],
+        imports: [_react3.default]
+    });
+
+    function _wrapComponent(id) {
+        return function (Component) {
+            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+        };
+    }
+
+    var ChangeFullname = _wrapComponent("ChangeFullname")(function (_Component) {
+        _inherits(ChangeFullname, _Component);
+
+        function ChangeFullname(props) {
+            _classCallCheck(this, ChangeFullname);
+
+            var _this = _possibleConstructorReturn(this, (ChangeFullname.__proto__ || Object.getPrototypeOf(ChangeFullname)).call(this, props));
+
+            _this.state = {
+                fullname: ''
+            };
+            return _this;
+        }
+
+        _createClass(ChangeFullname, [{
+            key: "_sendNewData",
+            value: function _sendNewData() {
+                return regeneratorRuntime.async(function _sendNewData$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                (0, _editProfile.editFullname)(this.state.fullname);
+                                console.log("editFullname Done");
+                                this.props.navigation.goBack();
+
+                            case 3:
+                            case "end":
+                                return _context.stop();
+                        }
+                    }
+                }, null, this);
+            }
+        }, {
+            key: "render",
+            value: function render() {
+                var _this2 = this;
+
+                return _react3.default.createElement(
+                    _reactNative.View,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 24
+                        }
+                    },
+                    _react3.default.createElement(
+                        _nativeBase.Form,
+                        {
+                            style: _styles2.default.adult_TextInputContainer,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 25
+                            }
+                        },
+                        _react3.default.createElement(
+                            _nativeBase.Item,
+                            {
+                                floatingLabel: true,
+                                style: _styles2.default.editprofile_TextInput,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 26
+                                }
+                            },
+                            _react3.default.createElement(
+                                _nativeBase.Label,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 27
+                                    }
+                                },
+                                "Nombre completo"
+                            ),
+                            _react3.default.createElement(_nativeBase.Input, {
+                                maxLength: 45,
+                                onChangeText: function onChangeText(fullname) {
+                                    return _this2.setState({
+                                        fullname: fullname
+                                    });
+                                },
+                                value: this.state.fullname,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 28
+                                }
+                            })
+                        ),
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 34
+                                }
+                            },
+                            _react3.default.createElement(
+                                _nativeBase.Button,
+                                {
+                                    iconLeft: true,
+                                    rounded: true,
+                                    style: _styles2.default.buttondark,
+                                    onPress: this._sendNewData.bind(this),
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 35
+                                    }
+                                },
+                                _react3.default.createElement(_nativeBase.Icon, {
+                                    type: "MaterialIcons",
+                                    name: "done",
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 38
+                                    }
+                                }),
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 39
+                                        }
+                                    },
+                                    "Enviar cambios"
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+        }]);
+
+        return ChangeFullname;
+    }(_react2.Component));
+
+    exports.default = ChangeFullname;
+});

@@ -1,0 +1,525 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/node_modules/react-native-comments/Comment.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _propTypes = _require(_dependencyMap[3], "prop-types");
+
+  var _propTypes2 = _interopRequireDefault(_propTypes);
+
+  var _reactNativeTimeago = _require(_dependencyMap[4], "react-native-timeago");
+
+  var _reactNativeTimeago2 = _interopRequireDefault(_reactNativeTimeago);
+
+  var _FontAwesome = _require(_dependencyMap[5], "@expo/vector-icons/FontAwesome");
+
+  var _FontAwesome2 = _interopRequireDefault(_FontAwesome);
+
+  var _styles = _require(_dependencyMap[6], "./styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  var _reactNativeCollapsible = _require(_dependencyMap[7], "react-native-collapsible");
+
+  var _reactNativeCollapsible2 = _interopRequireDefault(_reactNativeCollapsible);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    Comment: {
+      displayName: "Comment"
+    }
+  };
+
+  var _reactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/node_modules/react-native-comments/Comment.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _reactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Comment = _wrapComponent("Comment")(function (_PureComponent) {
+    _inherits(Comment, _PureComponent);
+
+    function Comment(props) {
+      _classCallCheck(this, Comment);
+
+      var _this = _possibleConstructorReturn(this, (Comment.__proto__ || Object.getPrototypeOf(Comment)).call(this, props));
+
+      _this.state = {
+        menuVisible: false
+      };
+      _this.handleReport = _this.handleReport.bind(_this);
+      _this.handleReply = _this.handleReply.bind(_this);
+      _this.handleLike = _this.handleLike.bind(_this);
+      _this.handleEdit = _this.handleEdit.bind(_this);
+      _this.handleDelete = _this.handleDelete.bind(_this);
+      _this.handleUsernameTap = _this.handleUsernameTap.bind(_this);
+      _this.handleLikesTap = _this.handleLikesTap.bind(_this);
+      return _this;
+    }
+
+    _createClass(Comment, [{
+      key: "handleReport",
+      value: function handleReport() {
+        var _this2 = this;
+
+        _reactNative.Alert.alert("Confirm report", "Are you sure you want to report?", [{
+          text: "Yes",
+          onPress: function onPress() {
+            return _this2.props.reportAction(_this2.props.data);
+          }
+        }, {
+          text: "No",
+          onPress: function onPress() {
+            return null;
+          }
+        }], true);
+      }
+    }, {
+      key: "handleReply",
+      value: function handleReply() {
+        this.props.replyAction(this.props.data);
+      }
+    }, {
+      key: "handleLike",
+      value: function handleLike() {
+        this.props.likeAction(this.props.data);
+      }
+    }, {
+      key: "handleEdit",
+      value: function handleEdit() {
+        this.props.editComment(this.props.data);
+      }
+    }, {
+      key: "handleDelete",
+      value: function handleDelete() {
+        var _this3 = this;
+
+        _reactNative.Alert.alert("Confirm delete", "Are you sure you want to delete?", [{
+          text: "Yes",
+          onPress: function onPress() {
+            return _this3.props.deleteAction(_this3.props.data);
+          }
+        }, {
+          text: "No",
+          onPress: function onPress() {
+            return null;
+          }
+        }], true);
+      }
+    }, {
+      key: "handleUsernameTap",
+      value: function handleUsernameTap() {
+        if (this.props.usernameTapAction) {
+          this.props.usernameTapAction(this.props.username);
+        }
+      }
+    }, {
+      key: "handleLikesTap",
+      value: function handleLikesTap() {
+        this.props.likesTapAction(this.props.data);
+      }
+    }, {
+      key: "setModalVisible",
+      value: function setModalVisible() {
+        this.setState({
+          menuVisible: !this.state.menuVisible
+        });
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this4 = this;
+
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            style: _styles2.default.commentContainer,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 93
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: _styles2.default.left,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 94
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.TouchableHighlight,
+              {
+                onPress: this.handleUsernameTap,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 95
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: {
+                    alignItems: "center"
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 96
+                  }
+                },
+                _react3.default.createElement(_reactNative.Image, {
+                  style: [_styles2.default.image, {
+                    width: 30,
+                    height: 30,
+                    borderRadius: 15
+                  }],
+                  source: typeof this.props.image === "string" ? {
+                    uri: this.props.image
+                  } : this.props.image,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 97
+                  }
+                }),
+                this.props.likesNr && this.props.likeAction ? _react3.default.createElement(
+                  _reactNative.TouchableHighlight,
+                  {
+                    style: [_styles2.default.actionButton, {
+                      paddingTop: 5
+                    }],
+                    onPress: this.handleLikesTap,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 109
+                    }
+                  },
+                  _react3.default.createElement(
+                    _reactNative.View,
+                    {
+                      style: {
+                        flexDirection: "row"
+                      },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 113
+                      }
+                    },
+                    _react3.default.createElement(_FontAwesome2.default, {
+                      name: "heart",
+                      color: "#df1740",
+                      size: 15,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 114
+                      }
+                    }),
+                    _react3.default.createElement(
+                      _reactNative.Text,
+                      {
+                        style: _styles2.default.likeNr,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 115
+                        }
+                      },
+                      " ",
+                      this.props.likesNr
+                    )
+                  )
+                ) : null
+              )
+            )
+          ),
+          _react3.default.createElement(
+            _reactNative.TouchableOpacity,
+            {
+              onPress: function onPress() {
+                return _this4.setState({
+                  menuVisible: false
+                });
+              },
+              onLongPress: function onLongPress() {
+                return _this4.setModalVisible();
+              },
+              style: _styles2.default.right,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 122
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: _styles2.default.rightContent,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 127
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: _styles2.default.rightContentTop,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 128
+                  }
+                },
+                _react3.default.createElement(
+                  _reactNative.TouchableHighlight,
+                  {
+                    onPress: this.handleUsernameTap,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 129
+                    }
+                  },
+                  _react3.default.createElement(
+                    _reactNative.Text,
+                    {
+                      style: _styles2.default.name,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 130
+                      }
+                    },
+                    this.props.username
+                  )
+                )
+              ),
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: _styles2.default.body,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 133
+                  }
+                },
+                this.props.body
+              )
+            ),
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: _styles2.default.rightActionBar,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 135
+                }
+              },
+              _react3.default.createElement(_reactNativeTimeago2.default, {
+                style: _styles2.default.time,
+                time: this.props.updatedAt,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 136
+                }
+              }),
+              this.props.likeAction ? _react3.default.createElement(
+                _reactNative.TouchableHighlight,
+                {
+                  style: _styles2.default.actionButton,
+                  onPress: this.handleLike,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 138
+                  }
+                },
+                _react3.default.createElement(
+                  _reactNative.View,
+                  {
+                    style: {
+                      flexDirection: "row"
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 142
+                    }
+                  },
+                  _react3.default.createElement(
+                    _reactNative.Text,
+                    {
+                      style: [_styles2.default.actionText, {
+                        color: this.props.liked ? "#4DB2DF" : null
+                      }],
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 143
+                      }
+                    },
+                    "Like",
+                    " "
+                  )
+                )
+              ) : null,
+              this.props.replyAction ? _react3.default.createElement(
+                _reactNative.TouchableHighlight,
+                {
+                  style: _styles2.default.actionButton,
+                  onPress: this.handleReply,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 155
+                  }
+                },
+                _react3.default.createElement(
+                  _reactNative.Text,
+                  {
+                    style: _styles2.default.actionText,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 159
+                    }
+                  },
+                  "Reply"
+                )
+              ) : null
+            )
+          ),
+          this.state.menuVisible ? _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: _styles2.default.menu,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 165
+              }
+            },
+            this.props.canEdit ? _react3.default.createElement(
+              _reactNative.TouchableOpacity,
+              {
+                style: _styles2.default.menuItem,
+                onPress: this.handleEdit,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 167
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: _styles2.default.menuText,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 171
+                  }
+                },
+                "Edit"
+              )
+            ) : null,
+            this.props.reportAction ? _react3.default.createElement(
+              _reactNative.TouchableOpacity,
+              {
+                style: _styles2.default.menuItem,
+                onPress: this.handleReport,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 175
+                }
+              },
+              this.props.reported ? _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: [_styles2.default.menuText, {
+                    fontStyle: "italic",
+                    fontSize: 11
+                  }],
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 180
+                  }
+                },
+                "Reported"
+              ) : _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: _styles2.default.menuText,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 189
+                  }
+                },
+                "Report"
+              )
+            ) : null,
+            this.props.canEdit ? _react3.default.createElement(
+              _reactNative.TouchableOpacity,
+              {
+                style: _styles2.default.menuItem,
+                onPress: this.handleDelete,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 194
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: _styles2.default.menuText,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 198
+                  }
+                },
+                "Delete"
+              )
+            ) : null
+          ) : null
+        );
+      }
+    }]);
+
+    return Comment;
+  }(_react2.PureComponent));
+
+  exports.default = Comment;
+  Comment.propTypes = {
+    data: _propTypes2.default.object,
+    body: _propTypes2.default.string,
+    canEdit: _propTypes2.default.bool,
+    child: _propTypes2.default.bool,
+    editComment: _propTypes2.default.func,
+    image: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+    likeAction: _propTypes2.default.func,
+    liked: _propTypes2.default.bool,
+    likesNr: _propTypes2.default.number,
+    likesTapAction: _propTypes2.default.func,
+    replyAction: _propTypes2.default.func,
+    deleteAction: _propTypes2.default.func,
+    reportAction: _propTypes2.default.func,
+    reported: _propTypes2.default.bool,
+    updatedAt: _propTypes2.default.string,
+    username: _propTypes2.default.string,
+    usernameTapAction: _propTypes2.default.func
+  };
+});

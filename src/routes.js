@@ -14,19 +14,38 @@ import HomeStudent from './components/HomeStudent';
 import Practices from './components/Practices';
 import GameProgress from './components/GameProgress';
 import AddStudent from './components/AddStudent';
-import EditProfile from './components/EditProfile';
+
+import EditProfile from './components/EditProfile/EditProfile';
+import ChangeFullname from './components/EditProfile/ChangeFullname';
+import ChangePassword from './components/EditProfile/ChangePassword';
+import ChangeBirthdate from './components/EditProfile/ChangeBirthdate';
+import ForumScreen from './components/ForumScreen';
+import HomeForum from './components/HomeForum'
+import ClassRoom from './components/classroom'
+import AddClassRoom from './components/AddClassRoom'
+import AdminStudentsTutor from './components/AdminStudentsTutor'
+import CardForum from './components/CardForum'
 
 export const AppStack = createStackNavigator(
     {
         HomeAdult: HomeAdult,
+        AddClassRoom: AddClassRoom,
         HomeStudent: HomeStudent,
         WeekProgress: WeekProgress,
         GameProgress: GameProgress,
+        ClassRoom: ClassRoom,
         Sentence: Sentence,
         Games: Games,
         Practices: Practices,
+        AdminStudentsTutor: AdminStudentsTutor,
         AddStudent: AddStudent,
         EditProfile: EditProfile,
+        ChangeFullname: ChangeFullname,
+        ChangePassword: ChangePassword,
+        ChangeBirthdate: ChangeBirthdate,
+        ForumScreen: ForumScreen,
+        HomeForum: HomeForum,
+        CardForum: CardForum,
     },
 
     {

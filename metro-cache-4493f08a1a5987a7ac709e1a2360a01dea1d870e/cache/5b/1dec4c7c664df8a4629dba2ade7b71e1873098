@@ -1,0 +1,41 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.removeOrientationListener = exports.listenOrientationChange = exports.heightPercentageToDP = exports.widthPercentageToDP = undefined;
+
+  var _reactNative = _require(_dependencyMap[0], "react-native");
+
+  var screenWidth = _reactNative.Dimensions.get('window').width;
+
+  var screenHeight = _reactNative.Dimensions.get('window').height;
+
+  var widthPercentageToDP = function widthPercentageToDP(widthPercent) {
+    var elemWidth = parseFloat(widthPercent);
+    return _reactNative.PixelRatio.roundToNearestPixel(screenWidth * elemWidth / 100);
+  };
+
+  var heightPercentageToDP = function heightPercentageToDP(heightPercent) {
+    var elemHeight = parseFloat(heightPercent);
+    return _reactNative.PixelRatio.roundToNearestPixel(screenHeight * elemHeight / 100);
+  };
+
+  var listenOrientationChange = function listenOrientationChange(that) {
+    _reactNative.Dimensions.addEventListener('change', function (newDimensions) {
+      screenWidth = newDimensions.window.width;
+      screenHeight = newDimensions.window.height;
+      that.setState({
+        orientation: screenWidth < screenHeight ? 'portrait' : 'landscape'
+      });
+    });
+  };
+
+  var removeOrientationListener = function removeOrientationListener() {
+    _reactNative.Dimensions.removeEventListener('change', function () {});
+  };
+
+  exports.widthPercentageToDP = widthPercentageToDP;
+  exports.heightPercentageToDP = heightPercentageToDP;
+  exports.listenOrientationChange = listenOrientationChange;
+  exports.removeOrientationListener = removeOrientationListener;
+});

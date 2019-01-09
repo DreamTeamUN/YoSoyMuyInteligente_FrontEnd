@@ -32,23 +32,23 @@ export const CREATE_STUDENT = async (idUser, nombre, fechaNacimiento) => {
 export const SAVE_ID_TUTOR = async (id_user) => {
     
     try {
-      const response = await fetch(API_TUTORS);
-      const responseJson = await response.json();
-      
-      let tutores = responseJson;
+    const response = await fetch(API_TUTORS);
+    const responseJson = await response.json();
+    
+    let tutores = responseJson;
 
-      for (i = 0; i < tutores.length; i++) {
+    for (i = 0; i < tutores.length; i++) {
         var id = tutores[i].usuario_id;
 
         if (id_user == id) {    
             await storeUserData(tutores[i].id);      
             return responseJson;
         }
-      }
+    }
     }
     catch (error) {
-      console.error(error);
-      return -1;
+    console.error(error);
+    return -1;
     }
 }
 

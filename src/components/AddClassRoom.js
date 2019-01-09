@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import {Alert} from 'react-native';
 import {Text, Picker, Icon, Container, Header, Body, Title,
   Content, Left, Button, Item, Form, Label, Input} from 'native-base';
 import styles from '../styles';
 import {getID} from '../utils/home';
+import { CREATE_DOCENTE_PROGRAMA } from '../utils/aulas';
 
 
 export default class AddClassRoom extends Component {
@@ -19,7 +21,7 @@ export default class AddClassRoom extends Component {
         idDocentePrograma: '',
         idDocente: '',
         nombreAula: '',
-        programa: undefined,
+        programa: '1',
         descripcion: ''
       }
     }
@@ -35,6 +37,40 @@ export default class AddClassRoom extends Component {
       this.setState({
         idUsuario: await getID(),
       });
+    }
+
+    async createDocentePrograma(){
+      try {
+        this.setState({
+          isLoading: true,
+        });
+
+        let response = await CREATE_DOCENTE_PROGRAMA(this.state.idUsuario, 
+          this.state.programa
+        );
+
+        let status = response.status;
+      
+        switch (status) {
+          case 201:
+            console.log(status + "Nuevo docente_programa creado!!");
+            await this.createAula.bind(this);
+            break;
+        
+          default:
+            console.log("Error creando docente_programa, status code: " + status)
+            Alert.alert("Error!!", 
+              "Lo sentimos, ocurrió un error durante la creación del aula, por favor intente de nuevo."
+            );  
+            break;
+        }
+      } catch (error) {
+        console.log("Error creando el docente_programa: " + error)
+      }
+    } 
+
+    async createAula(){
+
     }
 
     render() {
@@ -89,7 +125,8 @@ export default class AddClassRoom extends Component {
 
             </Form>
 
-            <Button full rounded style = {styles.buttonAceptarAula}>
+            <Button full rounded style = {styles.buttonAceptarAula} 
+              onPress={this.createDocentePrograma.bind(this)}>
               <Text>Aceptar</Text>
             </Button>
 

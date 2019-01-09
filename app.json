@@ -13,10 +13,12 @@
     },
     "android": {
       "package": "com.dreamteam.yosoymuyinteligente",
-      "googleSignIn": {
-        "apiKey": "AIzaSyD5bzNnk-QXg1yvUmaVq10kB-5eh0wUFYU",
-        "certificateHash": "038E500A47F3AFBFA1092DD671BB36AB0CE46486B14FCB989E6A696690F2E840",
+      "config" : {
+        "googleSignIn": {
+          "apiKey": "AIzaSyD5bzNnk-QXg1yvUmaVq10kB-5eh0wUFYU",
+          "certificateHash": "038E500A47F3AFBFA1092DD671BB36AB0CE46486B14FCB989E6A696690F2E840",
           }
+        }
     },
     "githubUrl": "https://github.com/DreamTeamUN/YoSoyMuyInteligente_FrontEnd"
   }

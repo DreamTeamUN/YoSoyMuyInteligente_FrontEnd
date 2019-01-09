@@ -14,10 +14,11 @@ export default class Main extends Component {
   async _signIn() {
     try {
       const result = await Expo.Google.logInAsync({
-        androidClientId:
-          "99894503572-hi17jagkv4uc28222pdl9eki2n2rsovf.apps.googleusercontent.com",
-        behavior: "web",
+        //behavior: "web",
         scopes: ["profile", "email"],
+        androidClientId: "99894503572-icicblji5ltq53l8acdcpfs78hkgg4t9.apps.googleusercontent.com",
+        androidStandaloneAppClientId: "99894503572-68s54laf0toc0c2orjdjt6u2cablrfvr.apps.googleusercontent.com",
+        webClientId: "99894503572-icicblji5ltq53l8acdcpfs78hkgg4t9.apps.googleusercontent.com",
       })
       if (result.type === "success"){
 

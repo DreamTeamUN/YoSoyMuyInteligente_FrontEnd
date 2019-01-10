@@ -38,12 +38,19 @@ export default class HomeForum extends Component {
       this.setupImpagination();
     }
 
+  setCurrentReadOffset = (event) => {
+    let itemHeight = 402;
+    let currentOffset = Math.floor(event.nativeEvent.contentOffset.y);
+    let currentItemIndex = Math.ceil(currentOffset / itemHeight);
+
+    this.state.dataset.setReadOffset(currentItemIndex);
+    }
 
   render() {
     return (
       <Container>
         <Header />
-        <Content>
+        <Content onScroll={this.setCurrentReadOffset}>
         <Button full info onPress={() => this.props.navigation.navigate('CardForum')}>
             <Text>Crear entrada</Text>
           </Button>

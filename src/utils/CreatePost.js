@@ -3,11 +3,11 @@ import { AsyncStorage } from 'react-native';
 import { API_USERS } from '../config/const';
 import { getID } from './home';
 
-export const createPost = async (titulo,texto) => {
+export const createPost = async (titulo,texto,resumen) => {
     try {
         let ID = await getID();
         const API_ENTRADA_POST = `${API_USERS}/${ID}/entradas/0/entradas`;
-        let response = await fetch(API_ENTRADA_POST, {
+        return await fetch(API_ENTRADA_POST, {
             method: 'POST',
             headers: new Headers({
               'Accept': 'application/json',
@@ -17,7 +17,7 @@ export const createPost = async (titulo,texto) => {
               "entrada": {
 	                         "nivel_acceso_id": 0,
                             "titulo": titulo,
-                            "resumen": "resumen de entrada",
+                            "resumen": resumen,
                             "texto": texto
                           }
             })

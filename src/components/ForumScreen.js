@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ScrollView, Image } from 'react-native';
-
+import { ScrollView, Image, AsyncStorage } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Text, Body } from "native-base";
+import { getForID, getForTITLE, getForTEXT, getForUSER, getForEMAIL } from '../utils/CreatePost';
 import styles from '../styles';
 import Comments from 'react-native-comments';
 import * as commentActions from '../utils/ExampleActions';
@@ -17,7 +18,11 @@ export default class ForumScreen extends Component {
       lastCommentUpdate: null,
       review: props.review ? props.review : null,
       login: null,
-      id: props.id
+      id: props.id,
+      titulo: '',
+      texto: '',
+      usuario: '',
+
     };
 
     this.scrollIndex = 0;
@@ -25,12 +30,17 @@ export default class ForumScreen extends Component {
 
   static navigatorStyle = {};
 
-  componentWillMount() {
+  async componentWillMount() {
     const c = this.actions.getComments();
     this.setState({
       comments: c,
       loadingComments: false,
-      lastCommentUpdate: new Date().getTime()
+      lastCommentUpdate: new Date().getTime(),
+      titulo: await  getForTITLE(),
+      texto: await getForTEXT(),
+      usuario: await getForUSER(),
+
+
     });
   }
 
@@ -127,13 +137,21 @@ export default class ForumScreen extends Component {
         }}
         ref={"scrollView"}
       >
-        <Image
-          style={{ height: 200 }}
-          source={{
-            uri:
-              "https://i1.sndcdn.com/artworks-000273861158-p5s2iy-t500x500.jpg"
-          }}
-        />
+      <Card>
+          <CardItem header bordered>
+            <Text>{this.state.titulo}</Text>
+          </CardItem>
+          <CardItem bordered>
+            <Body>
+              <Text>
+                {this.state.texto}
+              </Text>
+            </Body>
+          </CardItem>
+          <CardItem footer bordered>
+            <Text>{this.state.usuario}</Text>
+          </CardItem>
+        </Card>
 
         {this.state.comments.length ? (
           <Comments

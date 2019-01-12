@@ -366,17 +366,57 @@ const styles = StyleSheet.create({
     width: wp('80%'),
     flex: 1,
   },
-  
+
   editDate: {
     alignItems: 'center',
       marginTop: hp('4%'),
       marginBottom: hp('4%'),
   },
-  
+
   simplecenter: {
     width: wp('100%'),
     alignItems: 'center',
   },
+
+  rootf: {
+    backgroundColor: "#ffffff",
+    marginTop:10,
+  },
+  containerf: {
+    paddingLeft: 19,
+    paddingRight: 16,
+    paddingVertical: 12,
+    flexDirection: 'row',
+    alignItems: 'flex-start'
+  },
+  contentf: {
+    marginLeft: 16,
+    flex: 1,
+  },
+  contentHeaderf: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 6
+  },
+  separatorf: {
+    height: 1,
+    backgroundColor: "#CCCCCC"
+  },
+  imagef:{
+    width:45,
+    height:45,
+    borderRadius:20,
+    marginLeft:20
+  },
+  timef:{
+    fontSize:11,
+    color:"#808080",
+  },
+  namef:{
+    fontSize:16,
+    fontWeight:"bold",
+  },
+
 });
 
 export { styles as default };

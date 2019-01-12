@@ -91,3 +91,19 @@ export const getForEMAIL = async () => {
         console.log("Something went wrong")
     }
 }
+
+export const getcomments= async () => {
+
+    let ID = await getForID();
+
+    let response = await fetch(`https://ysmiapi.herokuapp.com/entradas/3/${ID}/1`, {
+        method: 'GET',
+        headers: new Headers({
+        }),
+    });
+    let res = await response.json();
+    console.log(res);
+    return res
+
+
+}

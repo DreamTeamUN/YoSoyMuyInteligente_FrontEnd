@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
+import { storeForDATA, getForEMAIL } from '../utils/CreatePost';
 import Dataset from 'impagination';
 export default class HomeForum extends Component {
 
@@ -13,6 +14,14 @@ export default class HomeForum extends Component {
     };
   }
 
+  async _storeforid(id, title, text, user, email){
+
+      await storeForDATA(id, title, text, user, email)
+      let response = await getForEMAIL()
+      console.log("id store | res: " + response)
+      this.props.navigation.navigate('ForumScreen')
+
+  }
 
   setupImpagination() {
     let dataset = new Dataset({
@@ -38,12 +47,19 @@ export default class HomeForum extends Component {
       this.setupImpagination();
     }
 
+  setCurrentReadOffset = (event) => {
+    let itemHeight = 402;
+    let currentOffset = Math.floor(event.nativeEvent.contentOffset.y);
+    let currentItemIndex = Math.ceil(currentOffset / itemHeight);
+
+    this.state.dataset.setReadOffset(currentItemIndex);
+    }
 
   render() {
     return (
       <Container>
         <Header />
-        <Content>
+        <Content onScroll={this.setCurrentReadOffset}>
         <Button full info onPress={() => this.props.navigation.navigate('CardForum')}>
             <Text>Crear entrada</Text>
           </Button>
@@ -62,7 +78,7 @@ export default class HomeForum extends Component {
                 </Body>
               </Left>
             </CardItem>
-            <CardItem cardBody button onPress={() => this.props.navigation.navigate('ForumScreen')}>
+            <CardItem cardBody button onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
               <Text>{record.content.resumen}</Text>
             </CardItem>
             <CardItem>

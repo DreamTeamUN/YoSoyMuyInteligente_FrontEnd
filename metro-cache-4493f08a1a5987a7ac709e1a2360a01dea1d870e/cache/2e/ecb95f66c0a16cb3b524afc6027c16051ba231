@@ -2,7 +2,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.getID_Docente = exports.SAVE_ID_DOCENTE = exports.CREATE_DOCENTE_PROGRAMA = undefined;
+    exports.SAVE_ID_DOCENTE = exports.CREATE_AULA = exports.CREATE_DOCENTE_PROGRAMA = exports.getID_Docente_Programa = exports.storeIdDocentePrograma = exports.getID_Docente = undefined;
 
     var _this = this;
 
@@ -11,6 +11,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     var _reactNative = _require(_dependencyMap[1], "react-native");
 
     var ID_DOCENTE = 'id_docente';
+    var ID_DOCENTE_PROGRAMA = 'id_docente_programa';
 
     var storeUserData = function storeUserData(id_Docente) {
         return regeneratorRuntime.async(function storeUserData$(_context) {
@@ -31,20 +32,98 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }, null, _this);
     };
 
-    var CREATE_DOCENTE_PROGRAMA = exports.CREATE_DOCENTE_PROGRAMA = function CREATE_DOCENTE_PROGRAMA(idUser, idPrograma) {
-        var idDocente, URL;
-        return regeneratorRuntime.async(function CREATE_DOCENTE_PROGRAMA$(_context2) {
+    var getID_Docente = exports.getID_Docente = function getID_Docente(id_user) {
+        var idDocente;
+        return regeneratorRuntime.async(function getID_Docente$(_context2) {
             while (1) {
                 switch (_context2.prev = _context2.next) {
                     case 0:
                         _context2.next = 2;
+                        return regeneratorRuntime.awrap(SAVE_ID_DOCENTE(id_user));
+
+                    case 2:
+                        _context2.prev = 2;
+                        _context2.next = 5;
+                        return regeneratorRuntime.awrap(_reactNative.AsyncStorage.getItem(ID_DOCENTE));
+
+                    case 5:
+                        idDocente = _context2.sent;
+                        return _context2.abrupt("return", idDocente);
+
+                    case 9:
+                        _context2.prev = 9;
+                        _context2.t0 = _context2["catch"](2);
+                        console.error("get ID_Docente | Something went wrong" + _context2.t0);
+
+                    case 12:
+                    case "end":
+                        return _context2.stop();
+                }
+            }
+        }, null, _this, [[2, 9]]);
+    };
+
+    var storeIdDocentePrograma = exports.storeIdDocentePrograma = function storeIdDocentePrograma(id_docente_programa) {
+        return regeneratorRuntime.async(function storeIdDocentePrograma$(_context3) {
+            while (1) {
+                switch (_context3.prev = _context3.next) {
+                    case 0:
+                        try {
+                            console.log(id_docente_programa);
+
+                            _reactNative.AsyncStorage.setItem(ID_DOCENTE_PROGRAMA, id_docente_programa.toString());
+                        } catch (error) {
+                            console.log("storeIdDocentePrograma | Something went wrong: ");
+                        }
+
+                    case 1:
+                    case "end":
+                        return _context3.stop();
+                }
+            }
+        }, null, _this);
+    };
+
+    var getID_Docente_Programa = exports.getID_Docente_Programa = function getID_Docente_Programa() {
+        var idDocentePrograma;
+        return regeneratorRuntime.async(function getID_Docente_Programa$(_context4) {
+            while (1) {
+                switch (_context4.prev = _context4.next) {
+                    case 0:
+                        _context4.prev = 0;
+                        _context4.next = 3;
+                        return regeneratorRuntime.awrap(_reactNative.AsyncStorage.getItem(ID_DOCENTE_PROGRAMA));
+
+                    case 3:
+                        idDocentePrograma = _context4.sent;
+                        return _context4.abrupt("return", idDocentePrograma);
+
+                    case 7:
+                        _context4.prev = 7;
+                        _context4.t0 = _context4["catch"](0);
+                        console.error("get ID_Docente_programa | Something went wrong: " + _context4.t0);
+
+                    case 10:
+                    case "end":
+                        return _context4.stop();
+                }
+            }
+        }, null, _this, [[0, 7]]);
+    };
+
+    var CREATE_DOCENTE_PROGRAMA = exports.CREATE_DOCENTE_PROGRAMA = function CREATE_DOCENTE_PROGRAMA(idUser, idPrograma) {
+        var idDocente, URL;
+        return regeneratorRuntime.async(function CREATE_DOCENTE_PROGRAMA$(_context5) {
+            while (1) {
+                switch (_context5.prev = _context5.next) {
+                    case 0:
+                        _context5.next = 2;
                         return regeneratorRuntime.awrap(getID_Docente(idUser));
 
                     case 2:
-                        idDocente = _context2.sent;
+                        idDocente = _context5.sent;
                         URL = _const.API_CREATE_DOCENTE_PROGRAMA.concat("/" + idPrograma).concat("/docentes/" + idDocente).concat("/docente_programas");
-                        console.log(URL);
-                        return _context2.abrupt("return", fetch(URL, {
+                        return _context5.abrupt("return", fetch(URL, {
                             method: 'POST',
                             headers: {
                                 'Accept': 'application/json',
@@ -53,118 +132,124 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             body: JSON.stringify({})
                         }));
 
-                    case 6:
+                    case 5:
                     case "end":
-                        return _context2.stop();
+                        return _context5.stop();
+                }
+            }
+        }, null, _this);
+    };
+
+    var CREATE_AULA = exports.CREATE_AULA = function CREATE_AULA(nombreAula, descripcion) {
+        var idDocentePrograma, URL;
+        return regeneratorRuntime.async(function CREATE_AULA$(_context6) {
+            while (1) {
+                switch (_context6.prev = _context6.next) {
+                    case 0:
+                        _context6.next = 2;
+                        return regeneratorRuntime.awrap(getID_Docente_Programa());
+
+                    case 2:
+                        idDocentePrograma = _context6.sent;
+                        console.log("Nombre: " + nombreAula + " Decripcion: " + descripcion);
+                        ;
+                        URL = _const.API_CREATE_AULA.concat('/' + idDocentePrograma).concat('/aulas');
+                        console.log(URL);
+                        return _context6.abrupt("return", fetch(URL, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                "aula": {
+                                    "nombre": nombreAula,
+                                    "descripcion": descripcion
+                                }
+                            })
+                        }));
+
+                    case 8:
+                    case "end":
+                        return _context6.stop();
                 }
             }
         }, null, _this);
     };
 
     var SAVE_ID_DOCENTE = exports.SAVE_ID_DOCENTE = function SAVE_ID_DOCENTE(idUser) {
-        var i, URL, response, responseJson, _docentes, j, id;
-
-        return regeneratorRuntime.async(function SAVE_ID_DOCENTE$(_context3) {
+        var i, docentes, URL, response, responseJson, j, id;
+        return regeneratorRuntime.async(function SAVE_ID_DOCENTE$(_context7) {
             while (1) {
-                switch (_context3.prev = _context3.next) {
+                switch (_context7.prev = _context7.next) {
                     case 0:
-                        _context3.prev = 0;
+                        _context7.prev = 0;
                         i = 1;
+                        docentes = void 0;
 
-                    case 2:
+                    case 3:
                         URL = _const.API_LIST_DOCENTES.concat("/" + i);
-                        _context3.next = 5;
+                        _context7.next = 6;
                         return regeneratorRuntime.awrap(fetch(URL));
 
-                    case 5:
-                        response = _context3.sent;
-                        _context3.next = 8;
+                    case 6:
+                        response = _context7.sent;
+                        _context7.next = 9;
                         return regeneratorRuntime.awrap(response.json());
 
-                    case 8:
-                        responseJson = _context3.sent;
-                        _docentes = responseJson;
+                    case 9:
+                        responseJson = _context7.sent;
+                        docentes = responseJson;
                         j = 0;
 
-                    case 11:
-                        if (!(j < _docentes.length)) {
-                            _context3.next = 20;
+                    case 12:
+                        if (!(j < docentes.length)) {
+                            _context7.next = 21;
                             break;
                         }
 
-                        id = _docentes[j].usuario_id;
+                        id = docentes[j].usuario_id;
 
                         if (!(idUser == id)) {
-                            _context3.next = 17;
+                            _context7.next = 18;
                             break;
                         }
 
-                        _context3.next = 16;
-                        return regeneratorRuntime.awrap(storeUserData(_docentes[j].id));
-
-                    case 16:
-                        return _context3.abrupt("return", responseJson);
+                        _context7.next = 17;
+                        return regeneratorRuntime.awrap(storeUserData(docentes[j].id));
 
                     case 17:
+                        return _context7.abrupt("return", responseJson);
+
+                    case 18:
                         j++;
-                        _context3.next = 11;
+                        _context7.next = 12;
                         break;
 
-                    case 20:
+                    case 21:
                         i++;
 
-                    case 21:
+                    case 22:
                         if (docentes.length != 0) {
-                            _context3.next = 2;
+                            _context7.next = 3;
                             break;
                         }
 
-                    case 22:
-                        _context3.next = 28;
+                    case 23:
+                        _context7.next = 29;
                         break;
 
-                    case 24:
-                        _context3.prev = 24;
-                        _context3.t0 = _context3["catch"](0);
-                        console.error(_context3.t0);
-                        return _context3.abrupt("return", -1);
+                    case 25:
+                        _context7.prev = 25;
+                        _context7.t0 = _context7["catch"](0);
+                        console.error(_context7.t0);
+                        return _context7.abrupt("return", -1);
 
-                    case 28:
+                    case 29:
                     case "end":
-                        return _context3.stop();
+                        return _context7.stop();
                 }
             }
-        }, null, _this, [[0, 24]]);
-    };
-
-    var getID_Docente = exports.getID_Docente = function getID_Docente(id_user) {
-        var idDocente;
-        return regeneratorRuntime.async(function getID_Docente$(_context4) {
-            while (1) {
-                switch (_context4.prev = _context4.next) {
-                    case 0:
-                        _context4.next = 2;
-                        return regeneratorRuntime.awrap(SAVE_ID_DOCENTE(id_user));
-
-                    case 2:
-                        _context4.prev = 2;
-                        _context4.next = 5;
-                        return regeneratorRuntime.awrap(_reactNative.AsyncStorage.getItem(ID_DOCENTE));
-
-                    case 5:
-                        idDocente = _context4.sent;
-                        return _context4.abrupt("return", idDocente);
-
-                    case 9:
-                        _context4.prev = 9;
-                        _context4.t0 = _context4["catch"](2);
-                        console.error("get ID_Docente | Something went wrong" + _context4.t0);
-
-                    case 12:
-                    case "end":
-                        return _context4.stop();
-                }
-            }
-        }, null, _this, [[2, 9]]);
+        }, null, _this, [[0, 25]]);
     };
 });

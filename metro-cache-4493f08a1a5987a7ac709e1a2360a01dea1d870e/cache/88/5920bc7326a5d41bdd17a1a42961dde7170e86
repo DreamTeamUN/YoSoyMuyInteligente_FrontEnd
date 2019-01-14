@@ -67,8 +67,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       _this.state = {
         isLoading: false,
         idUsuario: '',
-        idDocentePrograma: '',
-        idDocente: '',
         nombreAula: '',
         programa: '1',
         descripcion: ''
@@ -112,7 +110,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     }, {
       key: "createDocentePrograma",
       value: function createDocentePrograma() {
-        var response, status;
+        var response, responseJson, status;
         return regeneratorRuntime.async(function createDocentePrograma$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -126,54 +124,111 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
               case 4:
                 response = _context2.sent;
+                _context2.next = 7;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 7:
+                responseJson = _context2.sent;
                 status = response.status;
                 _context2.t0 = status;
-                _context2.next = _context2.t0 === 201 ? 9 : 13;
+                _context2.next = _context2.t0 === 201 ? 12 : _context2.t0 === 226 ? 16 : 18;
                 break;
 
-              case 9:
-                console.log(status + "Nuevo docente_programa creado!!");
-                _context2.next = 12;
-                return regeneratorRuntime.awrap(this.createAula.bind(this));
-
               case 12:
-                return _context2.abrupt("break", 16);
+                console.log(status + " Nuevo docente_programa creado!!");
+                _context2.next = 15;
+                return regeneratorRuntime.awrap((0, _aulas.storeIdDocentePrograma)(responseJson.id));
 
-              case 13:
+              case 15:
+                return _context2.abrupt("break", 21);
+
+              case 16:
+                console.log(status + " El docente_programa ya existe.");
+                return _context2.abrupt("break", 21);
+
+              case 18:
                 console.log("Error creando docente_programa, status code: " + status);
 
                 _reactNative.Alert.alert("Error!!", "Lo sentimos, ocurrió un error durante la creación del aula, por favor intente de nuevo.");
 
-                return _context2.abrupt("break", 16);
+                return _context2.abrupt("break", 21);
 
-              case 16:
-                _context2.next = 21;
+              case 21:
+                _context2.next = 26;
                 break;
 
-              case 18:
-                _context2.prev = 18;
+              case 23:
+                _context2.prev = 23;
                 _context2.t1 = _context2["catch"](0);
                 console.log("Error creando el docente_programa: " + _context2.t1);
 
-              case 21:
+              case 26:
               case "end":
                 return _context2.stop();
             }
           }
-        }, null, this, [[0, 18]]);
+        }, null, this, [[0, 23]]);
       }
     }, {
       key: "createAula",
       value: function createAula() {
+        var response, status;
         return regeneratorRuntime.async(function createAula$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
+                this.setState({
+                  isLoading: true
+                });
+                _context3.prev = 1;
+                _context3.next = 4;
+                return regeneratorRuntime.awrap(this.createDocentePrograma());
+
+              case 4:
+                _context3.next = 6;
+                return regeneratorRuntime.awrap((0, _aulas.CREATE_AULA)(this.state.nombreAula, this.state.descripcion));
+
+              case 6:
+                response = _context3.sent;
+                status = response.status;
+                _context3.t0 = status;
+                _context3.next = _context3.t0 === 201 ? 11 : 16;
+                break;
+
+              case 11:
+                this.setState({
+                  isLoading: false
+                });
+                console.log(status + "Nueva aula creada!!");
+                this.props.navigation.state.params.onNavigateBack();
+                this.props.navigation.goBack();
+                return _context3.abrupt("break", 19);
+
+              case 16:
+                console.log("Error creando la aula, status code: " + status);
+
+                _reactNative.Alert.alert("Error!!", "Lo sentimos, ocurrió un error durante la creación del aula, por favor intente de nuevo.");
+
+                return _context3.abrupt("break", 19);
+
+              case 19:
+                _context3.next = 25;
+                break;
+
+              case 21:
+                _context3.prev = 21;
+                _context3.t1 = _context3["catch"](1);
+                this.setState({
+                  isLoading: false
+                });
+                console.log("Error creando el aula: " + _context3.t1);
+
+              case 25:
               case "end":
                 return _context3.stop();
             }
           }
-        }, null, this);
+        }, null, this, [[1, 21]]);
       }
     }, {
       key: "render",
@@ -185,7 +240,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 79
+              lineNumber: 117
             }
           },
           _react3.default.createElement(
@@ -194,7 +249,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 81
+                lineNumber: 119
               }
             },
             _react3.default.createElement(
@@ -202,7 +257,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 82
+                  lineNumber: 120
                 }
               },
               _react3.default.createElement(
@@ -214,14 +269,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 83
+                    lineNumber: 121
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 84
+                    lineNumber: 122
                   }
                 })
               )
@@ -231,7 +286,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 87
+                  lineNumber: 125
                 }
               },
               _react3.default.createElement(
@@ -239,7 +294,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 88
+                    lineNumber: 126
                   }
                 },
                 "Crear Aula"
@@ -251,7 +306,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 92
+                lineNumber: 130
               }
             },
             _react3.default.createElement(
@@ -260,7 +315,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.subtitle,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 93
+                  lineNumber: 131
                 }
               },
               "Por favor ingrese los siguientes datos para crear la nueva aula"
@@ -270,7 +325,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 97
+                  lineNumber: 135
                 }
               },
               _react3.default.createElement(
@@ -280,7 +335,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.marginAddAula,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 99
+                    lineNumber: 137
                   }
                 },
                 _react3.default.createElement(
@@ -291,7 +346,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       name: "ios-arrow-down-outline",
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 102
+                        lineNumber: 140
                       }
                     }),
                     style: {
@@ -306,7 +361,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     onValueChange: this.onValueChange.bind(this),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 100
+                      lineNumber: 138
                     }
                   },
                   _react3.default.createElement(_nativeBase.Picker.Item, {
@@ -314,7 +369,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     value: "1",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 111
+                      lineNumber: 149
                     }
                   }),
                   _react3.default.createElement(_nativeBase.Picker.Item, {
@@ -322,7 +377,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     value: "2",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 112
+                      lineNumber: 150
                     }
                   }),
                   _react3.default.createElement(_nativeBase.Picker.Item, {
@@ -330,7 +385,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     value: "3",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 113
+                      lineNumber: 151
                     }
                   })
                 )
@@ -342,7 +397,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.marginAddAula,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 117
+                    lineNumber: 155
                   }
                 },
                 _react3.default.createElement(
@@ -350,15 +405,21 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 118
+                      lineNumber: 156
                     }
                   },
                   " Nombre del Aula"
                 ),
                 _react3.default.createElement(_nativeBase.Input, {
+                  maxLength: 45,
+                  onChangeText: function onChangeText(nombreAula) {
+                    return _this2.setState({
+                      nombreAula: nombreAula
+                    });
+                  },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 119
+                    lineNumber: 157
                   }
                 })
               ),
@@ -369,7 +430,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.marginAddAula,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 122
+                    lineNumber: 164
                   }
                 },
                 _react3.default.createElement(
@@ -377,28 +438,23 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 123
+                      lineNumber: 165
                     }
                   },
                   "Descripci\xF3n"
                 ),
                 _react3.default.createElement(_nativeBase.Input, {
+                  onChangeText: function onChangeText(descripcion) {
+                    return _this2.setState({
+                      descripcion: descripcion
+                    });
+                  },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 124
+                    lineNumber: 166
                   }
                 })
               )
-            ),
-            _react3.default.createElement(
-              _nativeBase.Text,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 129
-                }
-              },
-              this.state.programa
             ),
             _react3.default.createElement(
               _nativeBase.Button,
@@ -406,10 +462,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 full: true,
                 rounded: true,
                 style: _styles2.default.buttonAceptarAula,
-                onPress: this.createDocentePrograma.bind(this),
+                onPress: this.createAula.bind(this),
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 131
+                  lineNumber: 174
                 }
               },
               _react3.default.createElement(
@@ -417,7 +473,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 133
+                    lineNumber: 176
                   }
                 },
                 "Aceptar"

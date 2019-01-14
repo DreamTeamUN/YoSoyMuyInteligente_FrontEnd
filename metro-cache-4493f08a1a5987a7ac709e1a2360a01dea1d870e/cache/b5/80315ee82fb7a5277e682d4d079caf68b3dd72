@@ -305,14 +305,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 110
+                lineNumber: 109
               }
             },
             _react3.default.createElement(_nativeBase.Icon, {
               name: "add",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 119
+                lineNumber: 118
               }
             })
           )

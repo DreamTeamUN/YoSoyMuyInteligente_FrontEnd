@@ -132,13 +132,37 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 lineNumber: 46
               }
             },
+            _react3.default.createElement(
+              _nativeBase.Button,
+              {
+                full: true,
+                info: true,
+                onPress: function onPress() {
+                  return _this3.props.navigation.navigate('CardForum');
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 47
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 48
+                  }
+                },
+                "Crear entrada"
+              )
+            ),
             this.state.datasetState.map(function (record) {
               if (!record.isSettled) {
                 return _react3.default.createElement(_nativeBase.Spinner, {
                   key: Math.random(),
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 49
+                    lineNumber: 52
                   }
                 });
               }
@@ -148,7 +172,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 52
+                    lineNumber: 55
                   }
                 },
                 _react3.default.createElement(
@@ -156,7 +180,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 53
+                      lineNumber: 56
                     }
                   },
                   _react3.default.createElement(
@@ -164,7 +188,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 54
+                        lineNumber: 57
                       }
                     },
                     _react3.default.createElement(_nativeBase.Thumbnail, {
@@ -173,7 +197,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       },
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 55
+                        lineNumber: 58
                       }
                     }),
                     _react3.default.createElement(
@@ -181,7 +205,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       {
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 56
+                          lineNumber: 59
                         }
                       },
                       _react3.default.createElement(
@@ -189,7 +213,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         {
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 57
+                            lineNumber: 60
                           }
                         },
                         record.content.titulo
@@ -200,7 +224,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                           note: true,
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 58
+                            lineNumber: 61
                           }
                         },
                         record.content.usuario.user
@@ -218,7 +242,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 62
+                      lineNumber: 65
                     }
                   },
                   _react3.default.createElement(
@@ -226,7 +250,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 63
+                        lineNumber: 66
                       }
                     },
                     record.content.resumen
@@ -237,7 +261,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 65
+                      lineNumber: 68
                     }
                   },
                   _react3.default.createElement(
@@ -245,7 +269,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 66
+                        lineNumber: 69
                       }
                     },
                     _react3.default.createElement(
@@ -254,7 +278,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         transparent: true,
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 67
+                          lineNumber: 70
                         }
                       },
                       _react3.default.createElement(_nativeBase.Icon, {
@@ -262,7 +286,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         name: "thumbs-up",
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 68
+                          lineNumber: 71
                         }
                       }),
                       _react3.default.createElement(
@@ -270,7 +294,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         {
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 69
+                            lineNumber: 72
                           }
                         },
                         "12 Likes"
@@ -282,7 +306,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 72
+                        lineNumber: 75
                       }
                     },
                     _react3.default.createElement(
@@ -291,7 +315,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         transparent: true,
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 73
+                          lineNumber: 76
                         }
                       },
                       _react3.default.createElement(_nativeBase.Icon, {
@@ -299,7 +323,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         name: "chatbubbles",
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 74
+                          lineNumber: 77
                         }
                       }),
                       _react3.default.createElement(
@@ -307,7 +331,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         {
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 75
+                            lineNumber: 78
                           }
                         },
                         record.content.ramificacion - 1
@@ -319,7 +343,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 78
+                        lineNumber: 81
                       }
                     },
                     _react3.default.createElement(
@@ -327,7 +351,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       {
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 79
+                          lineNumber: 82
                         }
                       },
                       record.content.created_at

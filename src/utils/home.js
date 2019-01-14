@@ -24,7 +24,7 @@ export const setUserData = async (token) => {
             }),
         });
         let res = await response.json();
-        storeUserData(res.id, res.user, res.tipo_usuario_id);
+        storeUserData(res.id, res.user, res.tipo_usuario.id);
         return response
     } catch (error) {
         console.log("setUserData | Something went wrong")

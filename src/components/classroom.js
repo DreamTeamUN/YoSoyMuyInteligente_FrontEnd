@@ -103,7 +103,6 @@ export default class ClassRoom extends Component {
         </Header>
 
         <Content style = {styles.maxHeight}>
-        
           {display}
         </Content>
 

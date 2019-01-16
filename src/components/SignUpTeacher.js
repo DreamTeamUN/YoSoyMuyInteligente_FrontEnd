@@ -47,7 +47,6 @@ export default class SignUpTeacher extends Component {
             <Label>Nombre de usuario</Label>
             <Input
               maxLength={45}
-              // onChangeText={(username) => this._validateUsername(username)}
               onChangeText={(username) => this.setState({ username })}
               value={this.state.username}
             />
@@ -81,16 +80,9 @@ export default class SignUpTeacher extends Component {
 
         </Form>
 
-        <View style={styles.adult_ButtonsContainer}>
-          <View>
-            <Button iconLeft rounded style={styles.buttonclear}
-              onPress={() => Alert.alert('Pantalla faltante')}>
-              <Icon type="MaterialIcons" name="group-add" />
-              <Text>Crear Aula (PF)</Text>
-            </Button>
-          </View>
-          <View>
-            <Button iconLeft rounded style={styles.buttondark}
+        <View style={styles.homeAdult_buttonsContainer}>
+          <View style={styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttondark}
               onPress={this._createTeacher.bind(this)} >
               <Icon type="MaterialIcons" name="done" />
               <Text>Finalizar Registro</Text>

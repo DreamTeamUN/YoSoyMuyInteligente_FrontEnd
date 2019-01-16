@@ -50,7 +50,7 @@ export const AppStack = createStackNavigator(
     },
 
     {
-        initialRouteName: 'Games',
+        initialRouteName: 'HomeAdult',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',

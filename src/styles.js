@@ -99,6 +99,9 @@ const styles = StyleSheet.create({
     buttonred: {
         marginBottom: hp('3%'),
         backgroundColor: '#DC143C',
+        justifyContent: 'flex-start',
+        flexDirection:'column',
+        alignItems: 'flex-start',
     },
     buttonfb: {
         marginBottom: hp('3%'),
@@ -116,14 +119,6 @@ const styles = StyleSheet.create({
     adult_TextInput: {
         marginBottom: hp('0.5%'),
         backgroundColor: '#E9E9EF',
-    },
-    adult_ButtonsContainer: {
-        height: hp('20%'),
-        width: wp('100%'),
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: hp('5%'),
     },
 
     // Adult login

@@ -90,23 +90,25 @@ export default class Main extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <View><Button iconLeft rounded style={styles.buttonclear}
-            onPress={() => this.props.navigation.navigate('SignUpMain')}>
-            <Icon name="person-add" />
-            <Text>Registrar con correo</Text>
-          </Button>
+
+          <View style={styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttonclear}
+              onPress={() => this.props.navigation.navigate('SignUpMain')}>
+              <Icon name="person-add" />
+              <Text>Registrar con correo</Text>
+            </Button>
           </View>
 
-          <View>
-            <Button iconLeft rounded style={styles.buttonred}
+          <View style={styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttonred}
               onPress={() => this._signIn()}>
               <Icon type="FontAwesome" name="google" />
               <Text >Iniciar con Google</Text>
             </Button>
             </View>
 
-          <View>
-            <Button iconLeft rounded style={styles.buttondark}
+          <View style={styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('LogIn')}>
               <Icon name="person" />
               <Text>Iniciar sesión con correo</Text>

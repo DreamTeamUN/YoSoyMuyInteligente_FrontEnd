@@ -14,8 +14,45 @@ export default class PalabraImagen extends Component {
     super(props);
     this.state = {
       isLoading: false,
+      boton1: styles.buttonjuego,
+      boton2: styles.buttonjuego,
+      boton3: styles.buttonjuego,
     };
+    this.selectionOnPress = this.selectionOnPress.bind(this);
   }
+
+  selectionOnPress(seleccion) {
+ 
+    switch (seleccion) {
+      case "uno":
+        this.setState({ 
+          boton1: styles.buttonjuegowin,
+          boton2: styles.buttonjuegofail,
+          boton3: styles.buttonjuegofail
+        });
+        break;
+      case "dos":
+        this.setState({ 
+          boton1: styles.buttonjuegofail,
+          boton2: styles.buttonjuegowin,
+          boton3: styles.buttonjuegofail
+        });
+        break;
+
+      case "tres":
+        this.setState({ 
+          boton1: styles.buttonjuegofail,
+          boton2: styles.buttonjuegofail,
+          boton3: styles.buttonjuegowin
+        });
+        break;
+
+      default:
+        break;
+    }
+  }
+
+
 
   render() {
     return (
@@ -42,20 +79,20 @@ export default class PalabraImagen extends Component {
           source={{uri: 'https://www.himgs.com/imagenes/hola/comunes/hola-2017.gif'}}
         />
 
-        <Button block rounded style={styles.buttonjuego}
-          onPress={() => Alert.alert("Holi")}>
-          <Text style={styles.textoOpcion}>Opción #1</Text>
+        <Button block rounded style = {this.state.boton1}
+          onPress={() => this.selectionOnPress("uno")}>
+          <Text style={styles.textoOpcion}>Opción #1</Text>          
         </Button>
 
-          <Button block rounded style={styles.buttonjuegowin}
-            onPress={() => Alert.alert("Holi")}>
-            <Text style={styles.textoOpcion}>Opción #2</Text>
-          </Button>
+        <Button block rounded style={this.state.boton2}
+          onPress={() => this.selectionOnPress("dos")}>
+          <Text style={styles.textoOpcion}>Opción #2</Text>
+        </Button>
 
-          <Button block rounded style={styles.buttonjuegofail}
-            onPress={() => Alert.alert("Holi")}>
-            <Text style={styles.textoOpcion}>Opción #3</Text>
-          </Button>
+        <Button block rounded style={this.state.boton3}
+          onPress={() => this.selectionOnPress("tres")}>
+          <Text style={styles.textoOpcion}>Opción #3</Text>
+        </Button>
 
         </Content>
       </Container>

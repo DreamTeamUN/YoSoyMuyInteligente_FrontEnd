@@ -397,6 +397,45 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     namef: {
       fontSize: 16,
       fontWeight: "bold"
+    },
+    imagenCardview: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('50%'),
+      width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('50%')
+    },
+    centerImage: {
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    imagenJuego: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('6%'),
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('6%')
+    },
+    buttonjuego: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('92%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      backgroundColor: '#909497'
+    },
+    buttonjuegowin: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('92%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      backgroundColor: '#58D68D'
+    },
+    buttonjuegofail: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('92%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      backgroundColor: '#EC7063'
+    },
+    textoOpcion: {
+      fontSize: 30,
+      fontWeight: 'bold'
     }
   });
 

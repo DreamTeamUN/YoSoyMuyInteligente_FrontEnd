@@ -418,8 +418,27 @@ const styles = StyleSheet.create({
   },
 
   //Juegos
-  
+  imagenCardview:{
+    height: hp('50%'),
+    width: hp('50%'),
+  },
 
+  centerImage:{
+
+  }
+
+  imagenJuego:{
+    height: hp('50%'),
+    width: hp('50%'),
+  },
+
+  buttonjuego: {
+      marginBottom: hp('3%'),
+      backgroundColor: '#D3D3D3',
+      justifyContent: 'flex-start',
+      flexDirection:'column',
+      alignItems: 'flex-start',
+  },
 
 });
 

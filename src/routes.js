@@ -24,6 +24,7 @@ import ClassRoom from './components/classroom'
 import AddClassRoom from './components/AddClassRoom'
 import AdminStudentsTutor from './components/AdminStudentsTutor'
 import CardForum from './components/CardForum'
+import PalabraImagen from './components/PalabraImagen'
 
 export const AppStack = createStackNavigator(
     {
@@ -35,6 +36,7 @@ export const AppStack = createStackNavigator(
         ClassRoom: ClassRoom,
         Sentence: Sentence,
         Games: Games,
+        PalabraImagen: PalabraImagen,
         Practices: Practices,
         AdminStudentsTutor: AdminStudentsTutor,
         AddStudent: AddStudent,
@@ -48,7 +50,12 @@ export const AppStack = createStackNavigator(
     },
 
     {
+<<<<<<< Updated upstream
         initialRouteName: 'HomeAdult',
+=======
+        //initialRouteName: 'HomeAdult',
+        initialRouteName: 'Games',
+>>>>>>> Stashed changes
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',

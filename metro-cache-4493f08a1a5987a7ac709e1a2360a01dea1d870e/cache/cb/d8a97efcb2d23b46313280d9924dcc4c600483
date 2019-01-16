@@ -4,11 +4,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   });
   exports.getComments = getComments;
   exports.paginateComments = paginateComments;
-  exports.like = like;
-  exports.edit = edit;
-  exports.deleteComment = deleteComment;
   exports.save = save;
-  exports.report = report;
 
   var _moment = _require(_dependencyMap[0], "moment");
 
@@ -74,93 +70,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     return comments;
   }
 
-  function like(comments, cmnt) {
-    if (!cmnt.parentId) {
-      if (comments) {
-        comments.find(function (c) {
-          if (c.commentId === cmnt.commentId) {
-            c.liked = !c.liked;
-            return true;
-          }
-        });
-      }
-    } else {
-      comments.find(function (c) {
-        if (c.children) {
-          var isItFound = false;
-          c.children.find(function (child) {
-            if (child.commentId === cmnt.commentId) {
-              child.liked = !child.liked;
-              isItFound = true;
-            }
-          });
-          return isItFound;
-        }
-      });
-    }
-
-    return comments;
-  }
-
-  function edit(comments, cmnt, text) {
-    if (!cmnt.parentId) {
-      if (comments) {
-        comments.find(function (c) {
-          if (c.commentId === cmnt.commentId) {
-            c.body = text;
-            return true;
-          }
-        });
-      }
-    } else {
-      comments.find(function (c) {
-        if (c.children) {
-          var isItFound = false;
-          c.children.find(function (child) {
-            if (child.commentId === cmnt.commentId) {
-              child.body = text;
-              isItFound = true;
-            }
-          });
-          return isItFound;
-        }
-      });
-    }
-
-    return comments;
-  }
-
-  function deleteComment(comments, cmnt) {
-    if (!cmnt.parentId) {
-      if (comments) {
-        var index = comments.findIndex(function (c) {
-          return c.commentId === cmnt.commentId;
-        });
-        comments.splice(index, 1);
-      }
-    } else {
-      comments.find(function (c) {
-        if (c.children) {
-          var isItFound = false;
-
-          var _index = c.children.findIndex(function (child) {
-            if (child.commentId === cmnt.commentId) {
-              isItFound = true;
-            }
-          });
-
-          if (_index) {
-            c.children.splice(_index, 1);
-          }
-
-          return isItFound;
-        }
-      });
-    }
-
-    return comments;
-  }
-
   function save(comments, text, parentCommentId, date, username) {
     var lastCommentId = 0;
     sampleComments.forEach(function (c) {
@@ -209,32 +118,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     }
 
     console.log(3, comments);
-    return comments;
-  }
-
-  function report(comments, cmnt) {
-    if (!cmnt.parentId) {
-      comments.find(function (c) {
-        if (c.commentId === cmnt.commentId) {
-          c.reported = true;
-          return true;
-        }
-      });
-    } else {
-      comments.find(function (c) {
-        if (c.children) {
-          var isItFound = false;
-          c.children.find(function (child) {
-            if (child.commentId === cmnt.commentId) {
-              child.reported = true;
-              isItFound = true;
-            }
-          });
-          return isItFound;
-        }
-      });
-    }
-
     return comments;
   }
 });

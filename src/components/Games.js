@@ -15,13 +15,13 @@ export default class Games extends Component {
             <CardItem>
               <Body>
                 <Image
-                  style={{height: 200, width: 200}}
-                  source={{uri: 'https://st2.depositphotos.com/1742172/5445/v/950/depositphotos_54453599-stock-illustration-cartoon-ostrich.jpg'}}
+                  style={styles.imagenCardview}
+                  source={{uri: 'https://images.vexels.com/media/users/17482/105815/preview2/3732f81f4bc3d33fdbf1a8e3c180c70d-animal-lindo-del-dibujo-animado.png'}}
                 />
               </Body>
             </CardItem>
             <CardItem footer>
-              <Button transparent info  onPress={() => Alert.alert('DisplayGame3')}>
+              <Button transparent info  onPress={() => this.props.navigation.navigate('PalabraImagen')}>
             <Text>¡Quiero jugar!</Text>
           </Button>
             </CardItem>

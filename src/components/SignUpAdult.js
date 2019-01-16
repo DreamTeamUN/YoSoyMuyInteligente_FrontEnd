@@ -20,11 +20,6 @@ export default class SignUpAdult extends Component {
       password: '123123',
       password2: '123123',
       email: 'AVN@gmail.com',
-      // username: '',
-      // password: '',
-      // password2: '',
-      // fullname: '',
-      // email: '',
       birthdate: '',
       errors: [],
       isLoading: false,
@@ -39,7 +34,7 @@ export default class SignUpAdult extends Component {
         let response = await sendDataToSignUp(API_SIGN_UP_ADULT,
           this.state.username,
           this.state.password,
-          this.state.username, // aca va fullname
+          this.state.username,
           this.state.email
         )
 
@@ -98,22 +93,17 @@ export default class SignUpAdult extends Component {
       );
     }
     return (
-      // <Container>
       <View>
 
         <Form style={styles.adult_TextInputContainer}>
 
           <Item floatingLabel style={styles.adult_TextInput}>
             <Label>Nombre de usuario</Label>
-            {/* <Label style={{color: --- ,}}>Nombre de usuario</Label> */}
             <Input
-              // <Input success
               maxLength={45}
-              // onChangeText={(username) => this._validateUsername(username)}
               onChangeText={(username) => this.setState({ username })}
               value={this.state.username}
             />
-            {/* <Icon name='checkmark-circle' /> */}
           </Item>
 
           <Item floatingLabel style={styles.adult_TextInput}>
@@ -143,29 +133,18 @@ export default class SignUpAdult extends Component {
           </Item>
 
         </Form>
-
-        <View style={styles.adult_ButtonsContainer}>
-          <View style={styles.button}>
-            <Button iconLeft rounded style={styles.buttonclear}
-              onPress={() => this.props.navigation.navigate('AddStudent')}>
-              <Icon name="person-add" />
-              <Text>Añadir Estudiante</Text>
-            </Button>
-            {/* </View> */}
-
-            {/* <View style={styles.button}> */}
-            <Button iconLeft rounded
+        <View style={styles.homeAdult_buttonsContainer}>
+        <View style={styles.viewButtonHome}>
+            <Button full iconLeft rounded
               style={styles.buttondark}
               onPress={this._createAdult.bind(this)} >
               <Icon type="MaterialIcons" name="done" />
               <Text>Finalizar Registro</Text>
             </Button>
           </View>
+          </View>
           <Text>{this.state.errors.toString()}</Text>
-        </View>
-
       </View>
-      // </Container>
     );
   }
 }

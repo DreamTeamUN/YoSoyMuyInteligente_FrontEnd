@@ -359,6 +359,83 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     simplecenter: {
       width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
       alignItems: 'center'
+    },
+    rootf: {
+      backgroundColor: "#ffffff",
+      marginTop: 10
+    },
+    containerf: {
+      paddingLeft: 19,
+      paddingRight: 16,
+      paddingVertical: 12,
+      flexDirection: 'row',
+      alignItems: 'flex-start'
+    },
+    contentf: {
+      marginLeft: 16,
+      flex: 1
+    },
+    contentHeaderf: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 6
+    },
+    separatorf: {
+      height: 1,
+      backgroundColor: "#CCCCCC"
+    },
+    imagef: {
+      width: 45,
+      height: 45,
+      borderRadius: 20,
+      marginLeft: 20
+    },
+    timef: {
+      fontSize: 11,
+      color: "#808080"
+    },
+    namef: {
+      fontSize: 16,
+      fontWeight: "bold"
+    },
+    imagenCardview: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('50%'),
+      width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('50%')
+    },
+    centerImage: {
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    imagenJuego: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('6%'),
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('6%')
+    },
+    buttonjuego: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('92%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      backgroundColor: '#909497'
+    },
+    buttonjuegowin: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('92%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      backgroundColor: '#58D68D'
+    },
+    buttonjuegofail: {
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('92%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      backgroundColor: '#EC7063'
+    },
+    textoOpcion: {
+      fontSize: 30,
+      fontWeight: 'bold'
     }
   });
 

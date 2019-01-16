@@ -106,6 +106,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _CardForum2 = _interopRequireDefault(_CardForum);
 
+    var _PalabraImagen = _require(_dependencyMap[26], "./components/PalabraImagen");
+
+    var _PalabraImagen2 = _interopRequireDefault(_PalabraImagen);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -119,6 +123,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         ClassRoom: _classroom2.default,
         Sentence: _Sentence2.default,
         Games: _Games2.default,
+        PalabraImagen: _PalabraImagen2.default,
         Practices: _Practices2.default,
         AdminStudentsTutor: _AdminStudentsTutor2.default,
         AddStudent: _AddStudent2.default,
@@ -130,7 +135,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         HomeForum: _HomeForum2.default,
         CardForum: _CardForum2.default
     }, {
-        initialRouteName: 'HomeStudent',
+        initialRouteName: 'Games',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',

@@ -99,6 +99,9 @@ const styles = StyleSheet.create({
     buttonred: {
         marginBottom: hp('3%'),
         backgroundColor: '#DC143C',
+        justifyContent: 'flex-start',
+        flexDirection:'column',
+        alignItems: 'flex-start',
     },
     buttonfb: {
         marginBottom: hp('3%'),
@@ -116,14 +119,6 @@ const styles = StyleSheet.create({
     adult_TextInput: {
         marginBottom: hp('0.5%'),
         backgroundColor: '#E9E9EF',
-    },
-    adult_ButtonsContainer: {
-        height: hp('20%'),
-        width: wp('100%'),
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: hp('5%'),
     },
 
     // Adult login
@@ -415,6 +410,53 @@ const styles = StyleSheet.create({
   namef:{
     fontSize:16,
     fontWeight:"bold",
+  },
+
+  //Juegos
+  imagenCardview:{
+    height: hp('50%'),
+    width: hp('50%'),
+  },
+
+  centerImage:{
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  imagenJuego:{
+    height: hp('40%'),
+    width: hp('40%'),
+    marginTop: hp('6%'),
+    marginBottom: hp('6%'),
+  },
+
+  buttonjuego: {
+      marginBottom: hp('3%'),
+      width: wp('92%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
+      backgroundColor: '#909497',
+  },
+
+  buttonjuegowin: {
+      marginBottom: hp('3%'),
+      width: wp('92%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
+      backgroundColor: '#58D68D',
+  },
+
+  buttonjuegofail: {
+      marginBottom: hp('3%'),
+      width: wp('92%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
+      backgroundColor: '#EC7063',
+  },
+
+  textoOpcion: {
+    fontSize: 30,
+    fontWeight: 'bold',
   },
 
 });

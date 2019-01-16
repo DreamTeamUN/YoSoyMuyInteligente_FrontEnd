@@ -77,19 +77,6 @@ export default class AdminStudentsTutor extends Component {
 
   render() {
 
-    let display = this.state.estudiantes.map(function (NewsData) {
-      return (
-        <View key={NewsData.id}>
-          <Card>
-            <CardItem button onPress = {() => navegarHomeStudent()}>
-                <Icon active name="person" />
-                <Text>{NewsData.nombre}</Text>
-            </CardItem>
-          </Card>
-        </View>
-      )
-    });
-
     return (
       <Container>
         <Header style = {styles.headerStyle}>
@@ -107,7 +94,19 @@ export default class AdminStudentsTutor extends Component {
         </Header>
 
         <Content style = {styles.maxHeight}>
-          {display}
+          {this.state.estudiantes.map(NewsData => {
+              return (
+                <View key={NewsData.id} style = {styles.marginAddAula}>
+                  <Card>
+                    <CardItem button onPress = {() => this.navegarHomeStudent()}>
+                        <Icon active name="person" />
+                        <Text>{NewsData.nombre}</Text>
+                    </CardItem>
+                  </Card>
+                </View>
+              )
+            })
+          }
         </Content>
 
         <Fab

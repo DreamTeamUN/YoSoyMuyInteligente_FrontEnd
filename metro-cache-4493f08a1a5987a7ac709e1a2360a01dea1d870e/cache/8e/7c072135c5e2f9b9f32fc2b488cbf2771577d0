@@ -145,16 +145,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               }
             },
             _react3.default.createElement(
-              _nativeBase.Text,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 39
-                }
-              },
-              "HOLA  :D"
-            ),
-            _react3.default.createElement(
               _nativeBase.Button,
               {
                 full: true,
@@ -166,14 +156,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 43
+                  lineNumber: 39
                 }
               },
               _react3.default.createElement(_nativeBase.Icon, {
                 name: "apps",
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 45
+                  lineNumber: 41
                 }
               }),
               _react3.default.createElement(
@@ -181,7 +171,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 46
+                    lineNumber: 42
                   }
                 },
                 "Progreso Semanas"
@@ -199,7 +189,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 49
+                  lineNumber: 45
                 }
               },
               _react3.default.createElement(_nativeBase.Icon, {
@@ -207,7 +197,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 name: "videogame-asset",
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 51
+                  lineNumber: 47
                 }
               }),
               _react3.default.createElement(
@@ -215,7 +205,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 52
+                    lineNumber: 48
                   }
                 },
                 "Juegos"

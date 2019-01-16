@@ -48,7 +48,7 @@ export const AppStack = createStackNavigator(
     },
 
     {
-        initialRouteName: 'HomeStudent',
+        initialRouteName: 'HomeAdult',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',

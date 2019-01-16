@@ -19,7 +19,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _nativeBase = _require(_dependencyMap[3], "native-base");
 
-  var _impagination = _require(_dependencyMap[4], "impagination");
+  var _CreatePost = _require(_dependencyMap[4], "../utils/CreatePost");
+
+  var _impagination = _require(_dependencyMap[5], "impagination");
 
   var _impagination2 = _interopRequireDefault(_impagination);
 
@@ -58,6 +60,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
       var _this = _possibleConstructorReturn(this, (HomeForum.__proto__ || Object.getPrototypeOf(HomeForum)).call(this, props));
 
+      _this.setCurrentReadOffset = function (event) {
+        var itemHeight = 402;
+        var currentOffset = Math.floor(event.nativeEvent.contentOffset.y);
+        var currentItemIndex = Math.ceil(currentOffset / itemHeight);
+
+        _this.state.dataset.setReadOffset(currentItemIndex);
+      };
+
       _this.state = {
         dataset: null,
         datasetState: null
@@ -66,6 +76,33 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     }
 
     _createClass(HomeForum, [{
+      key: "_storeforid",
+      value: function _storeforid(id, title, text, user, email) {
+        var response;
+        return regeneratorRuntime.async(function _storeforid$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return regeneratorRuntime.awrap((0, _CreatePost.storeForDATA)(id, title, text, user, email));
+
+              case 2:
+                _context.next = 4;
+                return regeneratorRuntime.awrap((0, _CreatePost.getForEMAIL)());
+
+              case 4:
+                response = _context.sent;
+                console.log("id store | res: " + response);
+                this.props.navigation.navigate('ForumScreen');
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
       key: "setupImpagination",
       value: function setupImpagination() {
         var _this2 = this;
@@ -115,21 +152,22 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 44
+              lineNumber: 60
             }
           },
           _react3.default.createElement(_nativeBase.Header, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 45
+              lineNumber: 61
             }
           }),
           _react3.default.createElement(
             _nativeBase.Content,
             {
+              onScroll: this.setCurrentReadOffset,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 46
+                lineNumber: 62
               }
             },
             _react3.default.createElement(
@@ -142,7 +180,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 47
+                  lineNumber: 63
                 }
               },
               _react3.default.createElement(
@@ -150,7 +188,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 48
+                    lineNumber: 64
                   }
                 },
                 "Crear entrada"
@@ -162,7 +200,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   key: Math.random(),
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 52
+                    lineNumber: 68
                   }
                 });
               }
@@ -172,7 +210,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 55
+                    lineNumber: 71
                   }
                 },
                 _react3.default.createElement(
@@ -180,7 +218,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 56
+                      lineNumber: 72
                     }
                   },
                   _react3.default.createElement(
@@ -188,7 +226,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 57
+                        lineNumber: 73
                       }
                     },
                     _react3.default.createElement(_nativeBase.Thumbnail, {
@@ -197,7 +235,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       },
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 58
+                        lineNumber: 74
                       }
                     }),
                     _react3.default.createElement(
@@ -205,7 +243,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       {
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 59
+                          lineNumber: 75
                         }
                       },
                       _react3.default.createElement(
@@ -213,7 +251,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         {
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 60
+                            lineNumber: 76
                           }
                         },
                         record.content.titulo
@@ -224,7 +262,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                           note: true,
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 61
+                            lineNumber: 77
                           }
                         },
                         record.content.usuario.user
@@ -238,11 +276,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     cardBody: true,
                     button: true,
                     onPress: function onPress() {
-                      return _this3.props.navigation.navigate('ForumScreen');
+                      return _this3._storeforid(record.content.id, record.content.titulo, record.content.texto, record.content.usuario.user, record.content.usuario.email);
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 65
+                      lineNumber: 81
                     }
                   },
                   _react3.default.createElement(
@@ -250,7 +288,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 66
+                        lineNumber: 82
                       }
                     },
                     record.content.resumen
@@ -261,7 +299,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 68
+                      lineNumber: 84
                     }
                   },
                   _react3.default.createElement(
@@ -269,7 +307,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 69
+                        lineNumber: 85
                       }
                     },
                     _react3.default.createElement(
@@ -278,7 +316,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         transparent: true,
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 70
+                          lineNumber: 86
                         }
                       },
                       _react3.default.createElement(_nativeBase.Icon, {
@@ -286,7 +324,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         name: "thumbs-up",
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 71
+                          lineNumber: 87
                         }
                       }),
                       _react3.default.createElement(
@@ -294,7 +332,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         {
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 72
+                            lineNumber: 88
                           }
                         },
                         "12 Likes"
@@ -306,7 +344,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 75
+                        lineNumber: 91
                       }
                     },
                     _react3.default.createElement(
@@ -315,7 +353,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         transparent: true,
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 76
+                          lineNumber: 92
                         }
                       },
                       _react3.default.createElement(_nativeBase.Icon, {
@@ -323,7 +361,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         name: "chatbubbles",
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 77
+                          lineNumber: 93
                         }
                       }),
                       _react3.default.createElement(
@@ -331,7 +369,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         {
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 78
+                            lineNumber: 94
                           }
                         },
                         record.content.ramificacion - 1
@@ -343,7 +381,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 81
+                        lineNumber: 97
                       }
                     },
                     _react3.default.createElement(
@@ -351,7 +389,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       {
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 82
+                          lineNumber: 98
                         }
                       },
                       record.content.created_at

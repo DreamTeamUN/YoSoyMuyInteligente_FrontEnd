@@ -163,64 +163,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       value: function render() {
         var _this3 = this;
 
-        var display = this.state.estudiantes.map(function (NewsData) {
-          return _react3.default.createElement(
-            _nativeBase.View,
-            {
-              key: NewsData.id,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 82
-              }
-            },
-            _react3.default.createElement(
-              _nativeBase.Card,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 83
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.CardItem,
-                {
-                  button: true,
-                  onPress: function onPress() {
-                    return alert("alerta");
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 84
-                  }
-                },
-                _react3.default.createElement(_nativeBase.Icon, {
-                  active: true,
-                  name: "person",
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 85
-                  }
-                }),
-                _react3.default.createElement(
-                  _nativeBase.Text,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 86
-                    }
-                  },
-                  NewsData.nombre
-                )
-              )
-            )
-          );
-        });
         return _react3.default.createElement(
           _nativeBase.Container,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 94
+              lineNumber: 81
             }
           },
           _react3.default.createElement(
@@ -229,7 +177,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 95
+                lineNumber: 82
               }
             },
             _react3.default.createElement(
@@ -237,7 +185,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 97
+                  lineNumber: 84
                 }
               },
               _react3.default.createElement(
@@ -249,14 +197,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 98
+                    lineNumber: 85
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 99
+                    lineNumber: 86
                   }
                 })
               )
@@ -266,7 +214,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 103
+                  lineNumber: 90
                 }
               },
               _react3.default.createElement(
@@ -274,7 +222,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 104
+                    lineNumber: 91
                   }
                 },
                 "Panel de estudiantes"
@@ -287,10 +235,62 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.maxHeight,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 109
+                lineNumber: 96
               }
             },
-            display
+            this.state.estudiantes.map(function (NewsData) {
+              return _react3.default.createElement(
+                _nativeBase.View,
+                {
+                  key: NewsData.id,
+                  style: _styles2.default.marginAddAula,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 99
+                  }
+                },
+                _react3.default.createElement(
+                  _nativeBase.Card,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 100
+                    }
+                  },
+                  _react3.default.createElement(
+                    _nativeBase.CardItem,
+                    {
+                      button: true,
+                      onPress: function onPress() {
+                        return _this3.navegarHomeStudent();
+                      },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 101
+                      }
+                    },
+                    _react3.default.createElement(_nativeBase.Icon, {
+                      active: true,
+                      name: "person",
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 102
+                      }
+                    }),
+                    _react3.default.createElement(
+                      _nativeBase.Text,
+                      {
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 103
+                        }
+                      },
+                      NewsData.nombre
+                    )
+                  )
+                )
+              );
+            })
           ),
           _react3.default.createElement(
             _nativeBase.Fab,
@@ -309,14 +309,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 113
+                lineNumber: 112
               }
             },
             _react3.default.createElement(_nativeBase.Icon, {
               name: "add",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 121
+                lineNumber: 120
               }
             })
           )

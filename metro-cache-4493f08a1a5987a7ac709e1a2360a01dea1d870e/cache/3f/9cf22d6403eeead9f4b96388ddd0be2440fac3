@@ -98,15 +98,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     lineNumber: 13
                   }
                 },
-                "Encontrar parejas (palabra/sonido)"
+                "Enlazar Palabras con su Imagen"
               )
             ),
             _react3.default.createElement(
               _nativeBase.CardItem,
               {
-                style: {
-                  flex: 1
-                },
                 __source: {
                   fileName: _jsxFileName,
                   lineNumber: 15
@@ -121,12 +118,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   }
                 },
                 _react3.default.createElement(_reactNative.Image, {
-                  source: {
-                    uri: 'https://www.frikids.com/wp-content/uploads/2015/04/parejaslearn2.jpeg'
-                  },
                   style: {
                     height: 200,
-                    width: 400
+                    width: 200
+                  },
+                  source: {
+                    uri: 'https://st2.depositphotos.com/1742172/5445/v/950/depositphotos_54453599-stock-illustration-cartoon-ostrich.jpg'
                   },
                   __source: {
                     fileName: _jsxFileName,
@@ -150,7 +147,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   transparent: true,
                   info: true,
                   onPress: function onPress() {
-                    return _reactNative.Alert.alert('DisplayGame1');
+                    return _reactNative.Alert.alert('DisplayGame3');
                   },
                   __source: {
                     fileName: _jsxFileName,
@@ -163,194 +160,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     __source: {
                       fileName: _jsxFileName,
                       lineNumber: 25
-                    }
-                  },
-                  "\xA1Quiero jugar!"
-                )
-              )
-            )
-          ),
-          _react3.default.createElement(
-            _nativeBase.Card,
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 30
-              }
-            },
-            _react3.default.createElement(
-              _nativeBase.CardItem,
-              {
-                header: true,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 31
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Text,
-                {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 32
-                  }
-                },
-                "Encontrar parejas (palabra/imagen)"
-              )
-            ),
-            _react3.default.createElement(
-              _nativeBase.CardItem,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 34
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Body,
-                {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 35
-                  }
-                },
-                _react3.default.createElement(_reactNative.Image, {
-                  style: {
-                    height: 200,
-                    width: 400
-                  },
-                  source: {
-                    uri: 'http://jonsegador.com/wp-content/uploads/2014/07/parejas-3.png'
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 36
-                  }
-                })
-              )
-            ),
-            _react3.default.createElement(
-              _nativeBase.CardItem,
-              {
-                footer: true,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 42
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Button,
-                {
-                  transparent: true,
-                  info: true,
-                  onPress: function onPress() {
-                    return _reactNative.Alert.alert('DisplayGame2');
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 43
-                  }
-                },
-                _react3.default.createElement(
-                  _nativeBase.Text,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 44
-                    }
-                  },
-                  "\xA1Quiero jugar!"
-                )
-              )
-            )
-          ),
-          _react3.default.createElement(
-            _nativeBase.Card,
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 50
-              }
-            },
-            _react3.default.createElement(
-              _nativeBase.CardItem,
-              {
-                header: true,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 51
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Text,
-                {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 52
-                  }
-                },
-                "Enlazar Palabras con su Imagen"
-              )
-            ),
-            _react3.default.createElement(
-              _nativeBase.CardItem,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 54
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Body,
-                {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 55
-                  }
-                },
-                _react3.default.createElement(_reactNative.Image, {
-                  style: {
-                    height: 200,
-                    width: 200
-                  },
-                  source: {
-                    uri: 'https://st2.depositphotos.com/1742172/5445/v/950/depositphotos_54453599-stock-illustration-cartoon-ostrich.jpg'
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 56
-                  }
-                })
-              )
-            ),
-            _react3.default.createElement(
-              _nativeBase.CardItem,
-              {
-                footer: true,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 62
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Button,
-                {
-                  transparent: true,
-                  info: true,
-                  onPress: function onPress() {
-                    return _reactNative.Alert.alert('DisplayGame3');
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 63
-                  }
-                },
-                _react3.default.createElement(
-                  _nativeBase.Text,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 64
                     }
                   },
                   "\xA1Quiero jugar!"

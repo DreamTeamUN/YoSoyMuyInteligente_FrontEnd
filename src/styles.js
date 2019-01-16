@@ -424,8 +424,9 @@ const styles = StyleSheet.create({
   },
 
   centerImage:{
-
-  }
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
   imagenJuego:{
     height: hp('50%'),

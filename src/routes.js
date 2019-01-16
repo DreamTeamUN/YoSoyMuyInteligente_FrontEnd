@@ -50,12 +50,7 @@ export const AppStack = createStackNavigator(
     },
 
     {
-<<<<<<< Updated upstream
-        initialRouteName: 'HomeAdult',
-=======
-        //initialRouteName: 'HomeAdult',
         initialRouteName: 'Games',
->>>>>>> Stashed changes
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',

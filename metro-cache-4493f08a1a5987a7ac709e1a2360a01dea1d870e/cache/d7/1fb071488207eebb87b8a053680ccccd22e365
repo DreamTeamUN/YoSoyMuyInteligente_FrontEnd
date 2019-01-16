@@ -59,7 +59,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
                     case 6:
                         res = _context2.sent;
-                        storeUserData(res.id, res.user, res.tipo_usuario_id);
+                        storeUserData(res.id, res.user, res.tipo_usuario.id);
                         return _context2.abrupt("return", response);
 
                     case 11:

@@ -11,15 +11,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _index2 = _interopRequireDefault(_index);
 
-  var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/HomeStudent.js";
-
   var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-  var _reactNative = _require(_dependencyMap[2], "react-native");
+  var _class,
+      _temp,
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/HomeStudent.js";
 
-  var _nativeBase = _require(_dependencyMap[3], "native-base");
+  var _nativeBase = _require(_dependencyMap[2], "native-base");
 
-  var _styles = _require(_dependencyMap[4], "../styles");
+  var _styles = _require(_dependencyMap[3], "../styles");
 
   var _styles2 = _interopRequireDefault(_styles);
 
@@ -50,13 +50,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
   }
 
-  var HomeStudent = _wrapComponent("HomeStudent")(function (_Component) {
+  var HomeStudent = _wrapComponent("HomeStudent")((_temp = _class = function (_Component) {
     _inherits(HomeStudent, _Component);
 
-    function HomeStudent() {
+    function HomeStudent(props) {
       _classCallCheck(this, HomeStudent);
 
-      return _possibleConstructorReturn(this, (HomeStudent.__proto__ || Object.getPrototypeOf(HomeStudent)).apply(this, arguments));
+      var _this = _possibleConstructorReturn(this, (HomeStudent.__proto__ || Object.getPrototypeOf(HomeStudent)).call(this, props));
+
+      _this.state = {
+        isLoading: false
+      };
+      return _this;
     }
 
     _createClass(HomeStudent, [{
@@ -65,87 +70,24 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         var _this2 = this;
 
         return _react3.default.createElement(
-          _reactNative.View,
+          _nativeBase.Container,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 10
+              lineNumber: 22
             }
           },
           _react3.default.createElement(
-            _reactNative.View,
+            _nativeBase.Header,
             {
-              style: _styles2.default.textContainer,
+              style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 11
+                lineNumber: 23
               }
             },
             _react3.default.createElement(
-              _nativeBase.Text,
-              {
-                style: _styles2.default.headling,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 12
-                }
-              },
-              "\xA1Bienvenido!"
-            )
-          ),
-          _react3.default.createElement(
-            _reactNative.View,
-            {
-              style: _styles2.default.buttonsContainer,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 15
-              }
-            },
-            _react3.default.createElement(
-              _reactNative.View,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 17
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Button,
-                {
-                  iconLeft: true,
-                  rounded: true,
-                  style: _styles2.default.buttondark,
-                  onPress: function onPress() {
-                    return _this2.props.navigation.navigate('Practices');
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 18
-                  }
-                },
-                _react3.default.createElement(_nativeBase.Icon, {
-                  type: "MaterialIcons",
-                  name: "videogame-asset",
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 20
-                  }
-                }),
-                _react3.default.createElement(
-                  _nativeBase.Text,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 21
-                    }
-                  },
-                  "Practicas"
-                )
-              )
-            ),
-            _react3.default.createElement(
-              _reactNative.View,
+              _nativeBase.Left,
               {
                 __source: {
                   fileName: _jsxFileName,
@@ -155,11 +97,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               _react3.default.createElement(
                 _nativeBase.Button,
                 {
-                  iconLeft: true,
-                  rounded: true,
-                  style: _styles2.default.buttonclear,
+                  transparent: true,
                   onPress: function onPress() {
-                    return _this2.props.navigation.navigate('Games');
+                    return _this2.props.navigation.goBack();
                   },
                   __source: {
                     fileName: _jsxFileName,
@@ -167,23 +107,118 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
-                  type: "MaterialCommunityIcons",
-                  name: "forum",
+                  name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 28
+                    lineNumber: 27
                   }
-                }),
-                _react3.default.createElement(
-                  _nativeBase.Text,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 29
-                    }
-                  },
-                  "Juegos"
-                )
+                })
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.Body,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 31
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Title,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 32
+                  }
+                },
+                "Estudiantes Home"
+              )
+            )
+          ),
+          _react3.default.createElement(
+            _nativeBase.Content,
+            {
+              style: _styles2.default.maxHeight,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 37
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 39
+                }
+              },
+              "HOLA  :D"
+            ),
+            _react3.default.createElement(
+              _nativeBase.Button,
+              {
+                full: true,
+                iconLeft: true,
+                rounded: true,
+                style: _styles2.default.buttondark,
+                onPress: function onPress() {
+                  return _this2.props.navigation.navigate('Practices');
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 43
+                }
+              },
+              _react3.default.createElement(_nativeBase.Icon, {
+                name: "apps",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 45
+                }
+              }),
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 46
+                  }
+                },
+                "Progreso Semanas"
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.Button,
+              {
+                full: true,
+                iconLeft: true,
+                rounded: true,
+                style: _styles2.default.buttonclear,
+                onPress: function onPress() {
+                  return _this2.props.navigation.navigate('Games');
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 49
+                }
+              },
+              _react3.default.createElement(_nativeBase.Icon, {
+                type: "MaterialIcons",
+                name: "videogame-asset",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 51
+                }
+              }),
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 52
+                  }
+                },
+                "Juegos"
               )
             )
           )
@@ -192,7 +227,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     }]);
 
     return HomeStudent;
-  }(_react2.Component));
+  }(_react2.Component), _class.navigationOptions = {
+    header: null
+  }, _temp));
 
   exports.default = HomeStudent;
 });

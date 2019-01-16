@@ -15,6 +15,7 @@ export const CREATE_STUDENT = async (idUser, nombre, fechaNacimiento) => {
     
     let idTutor = await getID_TUTOR(idUser);
     const URL = API_TUTORS.concat('/' + idTutor).concat("/estudiantes");
+    console.log("Feacha: " + fechaNacimiento);
 
     return fetch (URL, {
         method: 'POST',
@@ -30,26 +31,33 @@ export const CREATE_STUDENT = async (idUser, nombre, fechaNacimiento) => {
 }
 
 export const SAVE_ID_TUTOR = async (id_user) => {
+
+    var i = 1;
+    let tutores;
+
+    do {
+        try {
+            const response = await fetch(API_TUTORS.concat("/" + i));
+            const responseJson = await response.json();
+            
+            tutores = responseJson;
     
-    try {
-      const response = await fetch(API_TUTORS);
-      const responseJson = await response.json();
-      
-      let tutores = responseJson;
-
-      for (i = 0; i < tutores.length; i++) {
-        var id = tutores[i].usuario_id;
-
-        if (id_user == id) {    
-            await storeUserData(tutores[i].id);      
-            return responseJson;
+            for (var j = 0; j < tutores.length; j++) {
+                
+                var id = tutores[j].usuario_id;
+                if (id_user == id) {    
+                    await storeUserData(tutores[j].id);      
+                    return responseJson;
+                }
+            }
+            }
+            catch (error) {
+            console.error(error);
+            return -1;
         }
-      }
-    }
-    catch (error) {
-      console.error(error);
-      return -1;
-    }
+        i++;
+    } while (tutores.length != 0);
+        
 }
 
 export const getID_TUTOR = async (id_user) => {

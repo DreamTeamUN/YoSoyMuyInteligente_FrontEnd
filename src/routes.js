@@ -14,7 +14,6 @@ import HomeStudent from './components/HomeStudent';
 import Practices from './components/Practices';
 import GameProgress from './components/GameProgress';
 import AddStudent from './components/AddStudent';
-
 import EditProfile from './components/EditProfile/EditProfile';
 import ChangeFullname from './components/EditProfile/ChangeFullname';
 import ChangePassword from './components/EditProfile/ChangePassword';
@@ -49,7 +48,7 @@ export const AppStack = createStackNavigator(
     },
 
     {
-        initialRouteName: 'HomeAdult',
+        initialRouteName: 'HomeStudent',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',

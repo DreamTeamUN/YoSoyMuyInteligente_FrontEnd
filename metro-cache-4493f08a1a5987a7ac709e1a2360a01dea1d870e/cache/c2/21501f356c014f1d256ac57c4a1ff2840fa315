@@ -1,0 +1,68 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.createPost = undefined;
+
+    var _this = this;
+
+    var _react = _require(_dependencyMap[0], "react");
+
+    var _react2 = _interopRequireDefault(_react);
+
+    var _reactNative = _require(_dependencyMap[1], "react-native");
+
+    var _const = _require(_dependencyMap[2], "../config/const");
+
+    var _home = _require(_dependencyMap[3], "./home");
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    var createPost = exports.createPost = function createPost(titulo, texto) {
+        var ID, API_ENTRADA_POST, response;
+        return regeneratorRuntime.async(function createPost$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        _context.prev = 0;
+                        _context.next = 3;
+                        return regeneratorRuntime.awrap((0, _home.getID)());
+
+                    case 3:
+                        ID = _context.sent;
+                        API_ENTRADA_POST = _const.API_USERS + "/" + ID + "/entradas/0/entradas";
+                        _context.next = 7;
+                        return regeneratorRuntime.awrap(fetch(API_ENTRADA_POST, {
+                            method: 'POST',
+                            headers: new Headers({
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            }),
+                            body: JSON.stringify({
+                                "entrada": {
+                                    "nivel_acceso_id": 0,
+                                    "titulo": titulo,
+                                    "resumen": "resumen de entrada",
+                                    "texto": texto
+                                }
+                            })
+                        }));
+
+                    case 7:
+                        response = _context.sent;
+                        _context.next = 13;
+                        break;
+
+                    case 10:
+                        _context.prev = 10;
+                        _context.t0 = _context["catch"](0);
+                        console.log("cratePOst | Something went wrong");
+
+                    case 13:
+                    case "end":
+                        return _context.stop();
+                }
+            }
+        }, null, _this, [[0, 10]]);
+    };
+});

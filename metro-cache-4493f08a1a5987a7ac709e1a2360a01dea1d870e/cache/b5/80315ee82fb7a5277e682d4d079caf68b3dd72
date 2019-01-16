@@ -27,6 +27,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _home = _require(_dependencyMap[5], "../utils/home");
 
+  var _aulas = _require(_dependencyMap[6], "../utils/aulas");
+
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65,62 +67,37 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       _this.state = {
         active: 'true',
         isLoading: false,
-        data: [],
-        tipo_usuario: '-1',
-        idUsuario: ''
+        aulas: [],
+        idUsuario: '',
+        idDocente: ''
       };
       return _this;
     }
 
     _createClass(ClassRoom, [{
-      key: "getData",
-      value: function getData() {
-        var _this2 = this;
-
-        var _state = this.state,
-            page = _state.page,
-            seed = _state.seed;
-        this.setState({
-          isLoading: true
-        });
-        var url = 'https://swapi.co/api/people/?format=json';
-        return fetch(url).then(function (response) {
-          return response.json();
-        }).then(function (responseJson) {
-          _this2.setState({
-            data: responseJson.results,
-            isLoading: false
-          });
-        }).catch(function (error) {
-          console.error(error);
-        });
-      }
-    }, {
       key: "componentWillMount",
       value: function componentWillMount() {
+        var _this2 = this;
+
         return regeneratorRuntime.async(function componentWillMount$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.t0 = this;
-                _context.next = 3;
-                return regeneratorRuntime.awrap((0, _home.getTipoUsuario)());
+                (0, _home.getID)().then(function (id) {
+                  _this2.setState({
+                    idUsuario: id
+                  });
+                }).then(function () {
+                  (0, _aulas.getID_Docente)(_this2.state.idUsuario).then(function (idDocente) {
+                    _this2.setState({
+                      idDocente: idDocente
+                    });
+                  }).then(function () {
+                    _this2.listarAulas();
+                  });
+                });
 
-              case 3:
-                _context.t1 = _context.sent;
-                _context.next = 6;
-                return regeneratorRuntime.awrap((0, _home.getID)());
-
-              case 6:
-                _context.t2 = _context.sent;
-                _context.t3 = {
-                  tipo_usuario: _context.t1,
-                  idUsuario: _context.t2
-                };
-
-                _context.t0.setState.call(_context.t0, _context.t3);
-
-              case 9:
+              case 1:
               case "end":
                 return _context.stop();
             }
@@ -128,16 +105,59 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }, null, this);
       }
     }, {
-      key: "componentDidMount",
-      value: function componentDidMount() {
-        this.getData();
+      key: "listarAulas",
+      value: function listarAulas() {
+        var URL, response, responseJson;
+        return regeneratorRuntime.async(function listarAulas$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.setState({
+                  isLoading: true
+                });
+                URL = _const.API_LIST_AULAS.concat("/" + this.state.idDocente).concat("/1");
+                _context2.prev = 2;
+                _context2.next = 5;
+                return regeneratorRuntime.awrap(fetch(URL));
+
+              case 5:
+                response = _context2.sent;
+                _context2.next = 8;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 8:
+                responseJson = _context2.sent;
+                this.setState({
+                  aulas: responseJson,
+                  isLoading: false
+                });
+                _context2.next = 16;
+                break;
+
+              case 12:
+                _context2.prev = 12;
+                _context2.t0 = _context2["catch"](2);
+                console.error("Error en la consulta: " + _context2.t0);
+                this.setState({
+                  isLoading: false
+                });
+
+              case 16:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, null, this, [[2, 12]]);
       }
+    }, {
+      key: "componentDidMount",
+      value: function componentDidMount() {}
     }, {
       key: "render",
       value: function render() {
         var _this4 = this;
 
-        var display = this.state.data.map(function (NewsData, index) {
+        var display = this.state.aulas.map(function (NewsData, index) {
           var _this3 = this;
 
           return _react3.default.createElement(
@@ -146,7 +166,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               key: NewsData.id,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 59
+                lineNumber: 78
               }
             },
             _react3.default.createElement(
@@ -154,7 +174,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 60
+                  lineNumber: 79
                 }
               },
               _react3.default.createElement(
@@ -166,7 +186,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 61
+                    lineNumber: 80
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
@@ -174,7 +194,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   name: "home",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 62
+                    lineNumber: 81
                   }
                 }),
                 _react3.default.createElement(
@@ -182,26 +202,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 63
+                      lineNumber: 82
                     }
                   },
-                  NewsData.name
-                ),
-                _react3.default.createElement(
-                  _nativeBase.Right,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 64
-                    }
-                  },
-                  _react3.default.createElement(_nativeBase.Icon, {
-                    name: "arrow-forward",
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 65
-                    }
-                  })
+                  NewsData.nombre
                 )
               )
             )
@@ -212,7 +216,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 74
+              lineNumber: 90
             }
           },
           _react3.default.createElement(
@@ -221,7 +225,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 75
+                lineNumber: 91
               }
             },
             _react3.default.createElement(
@@ -229,7 +233,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 77
+                  lineNumber: 93
                 }
               },
               _react3.default.createElement(
@@ -241,14 +245,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 78
+                    lineNumber: 94
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 79
+                    lineNumber: 95
                   }
                 })
               )
@@ -258,7 +262,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 83
+                  lineNumber: 99
                 }
               },
               _react3.default.createElement(
@@ -266,7 +270,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 84
+                    lineNumber: 100
                   }
                 },
                 "Aulas"
@@ -279,7 +283,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.maxHeight,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 89
+                lineNumber: 105
               }
             },
             display
@@ -295,18 +299,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               },
               position: "bottomRight",
               onPress: function onPress() {
-                return _this4.props.navigation.navigate('AddClassRoom');
+                return _this4.props.navigation.navigate('AddClassRoom', {
+                  onNavigateBack: _this4.listarAulas.bind(_this4)
+                });
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 94
+                lineNumber: 109
               }
             },
             _react3.default.createElement(_nativeBase.Icon, {
               name: "add",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 118
               }
             })
           )

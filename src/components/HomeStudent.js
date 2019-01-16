@@ -1,36 +1,55 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-import {Text, Button, Icon} from 'native-base';
+import {Text, Button, Container, Content, Header, 
+  Icon, Body, Title, Left} from 'native-base';
 import styles from '../styles';
 
 export default class HomeStudent extends Component {
 
+  static navigationOptions = {
+    header: null
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false,
+    };
+  }
+
   render() {
     return (
-      <View>
-        <View style={styles.textContainer}>
-          <Text style={styles.headling}>¡Bienvenido!</Text>
-        </View>
 
-        <View style={styles.buttonsContainer}>
+      <Container>
+        <Header style = {styles.headerStyle}>
 
-          <View>
-            <Button iconLeft rounded style = {styles.buttondark}
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+
+          <Body>
+            <Title>Estudiantes Home</Title>
+          </Body>
+
+        </Header>
+
+        <Content style = {styles.maxHeight}>
+
+          <Button full iconLeft rounded style={styles.buttondark}
             onPress={() => this.props.navigation.navigate('Practices')}>
-                <Icon type="MaterialIcons" name="videogame-asset" />
-                <Text>Practicas</Text>
-            </Button>
-          </View>
+            <Icon name="apps" />
+            <Text>Progreso Semanas</Text>
+          </Button>
 
-          <View>
-            <Button iconLeft rounded style = {styles.buttonclear}
-              onPress={() => this.props.navigation.navigate('Games')}>
-                <Icon type="MaterialCommunityIcons" name="forum" />
-                <Text>Juegos</Text>
-            </Button>
-          </View>
-        </View>
-      </View>
+          <Button full iconLeft rounded style={styles.buttonclear}
+            onPress={() => this.props.navigation.navigate('Games')}>
+            <Icon type="MaterialIcons" name="videogame-asset" />
+            <Text>Juegos</Text>
+          </Button>
+
+        </Content>
+      </Container>
     );
   }
 }

@@ -130,7 +130,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         HomeForum: _HomeForum2.default,
         CardForum: _CardForum2.default
     }, {
-        initialRouteName: 'HomeAdult',
+        initialRouteName: 'HomeStudent',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',

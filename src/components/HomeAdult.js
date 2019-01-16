@@ -8,6 +8,11 @@ import { setUserData, getUsername, getTipoUsuario } from '../utils/home';
 import styles from '../styles';
 
 export default class HomeAdult extends Component {
+
+  static navigationOptions = {
+    title: 'Bienvenido',
+    headerTitleStyle :{textAlign: 'center',alignSelf:'center'},
+  };
   
   constructor(props) {
     super(props);
@@ -83,7 +88,7 @@ export default class HomeAdult extends Component {
               <Button full iconLeft rounded style={styles.buttonclear}
                 onPress={() => this.props.navigation.navigate('ClassRoom')}>
                 <Icon type="MaterialCommunityIcons" name="settings" />
-                <Text>Aulas y estudiantes</Text>
+                <Text>Aulas</Text>
               </Button>
             </View>
 
@@ -116,23 +121,6 @@ export default class HomeAdult extends Component {
                 onPress={() => this.props.navigation.navigate('EditProfile')}>
                 <Icon type="Feather" name="edit" />
                 <Text>Editar perfil</Text>
-              </Button>
-            </View>
-
-            <View style = {styles.viewButtonHome}>
-              <Button full iconLeft rounded style={styles.buttondark}
-                //onPress={() => this.props.navigation.navigate('WeekProgress')}>
-                onPress={() => this.props.navigation.navigate('Practices')}>
-                <Icon name="apps" />
-                <Text>Progreso Semanas</Text>
-              </Button>
-            </View>
-
-            <View style = {styles.viewButtonHome}>
-              <Button full iconLeft rounded style={styles.buttonclear}
-                onPress={() => this.props.navigation.navigate('GameProgress')}>
-                <Icon type="MaterialIcons" name="videogame-asset" />
-                <Text>Progreso Juegos</Text>
               </Button>
             </View>
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, Image } from 'react-native';
 import {Text, Button, Container, Content, Header,
-  Icon, Body, Title, Left} from 'native-base';
+  Icon, Body, Title, Left, StyleProvider} from 'native-base';
 import styles from '../styles';
 
 export default class PalabraImagen extends Component {
@@ -42,20 +42,19 @@ export default class PalabraImagen extends Component {
           source={{uri: 'https://www.himgs.com/imagenes/hola/comunes/hola-2017.gif'}}
         />
 
-
-        <Button full iconLeft rounded style={styles.buttonjuego}
+        <Button block rounded style={styles.buttonjuego}
           onPress={() => Alert.alert("Holi")}>
-          <Text>Opción #1</Text>
+          <Text style={styles.textoOpcion}>Opción #1</Text>
         </Button>
 
-          <Button full iconLeft rounded style={styles.buttonjuego}
+          <Button block rounded style={styles.buttonjuegowin}
             onPress={() => Alert.alert("Holi")}>
-            <Text>Opción #2</Text>
+            <Text style={styles.textoOpcion}>Opción #2</Text>
           </Button>
 
-          <Button full iconLeft rounded style={styles.buttonjuego}
+          <Button block rounded style={styles.buttonjuegofail}
             onPress={() => Alert.alert("Holi")}>
-            <Text>Opción #3</Text>
+            <Text style={styles.textoOpcion}>Opción #3</Text>
           </Button>
 
         </Content>

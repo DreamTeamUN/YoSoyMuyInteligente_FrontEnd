@@ -429,16 +429,39 @@ const styles = StyleSheet.create({
   },
 
   imagenJuego:{
-    height: hp('50%'),
-    width: hp('50%'),
+    height: hp('40%'),
+    width: hp('40%'),
+    marginTop: hp('6%'),
+    marginBottom: hp('6%'),
   },
 
   buttonjuego: {
       marginBottom: hp('3%'),
-      backgroundColor: '#D3D3D3',
-      justifyContent: 'flex-start',
-      flexDirection:'column',
-      alignItems: 'flex-start',
+      width: wp('92%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
+      backgroundColor: '#909497',
+  },
+
+  buttonjuegowin: {
+      marginBottom: hp('3%'),
+      width: wp('92%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
+      backgroundColor: '#58D68D',
+  },
+
+  buttonjuegofail: {
+      marginBottom: hp('3%'),
+      width: wp('92%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
+      backgroundColor: '#EC7063',
+  },
+
+  textoOpcion: {
+    fontSize: 30,
+    fontWeight: 'bold',
   },
 
 });

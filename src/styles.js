@@ -417,6 +417,10 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
   },
 
+  //Juegos
+  
+
+
 });
 
 export { styles as default };

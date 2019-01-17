@@ -93,7 +93,7 @@ export default class HomeAdult extends Component {
         <ScrollView>
           <View style={styles.homeAdult_TextContainer}>
             <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
-            <Text>Frase PNL del día: {this.state.fraseseleccionada}</Text>
+            <Text style={styles.frasePNL}>“{this.state.fraseseleccionada}”</Text>
           </View>
 
           <View style={styles.homeAdult_buttonsContainer}>

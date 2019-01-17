@@ -421,6 +421,8 @@ const styles = StyleSheet.create({
   centerImage:{
     justifyContent: 'center',
     alignItems: 'center',
+    width: wp('100%'),
+
   },
 
   imagenJuego:{
@@ -477,6 +479,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginLeft: wp('2%'),
     marginRight: wp('2%'),
+  },
+
+  frasePNLEstudiante: {
+    width: wp('100%'),
+    fontWeight: '100',
+    color: '#ABB2B9',
+    fontStyle: 'italic',
+    fontSize: hp('4%'),
+    textAlign: 'center',
+    marginLeft: wp('2%'),
+    marginRight: wp('2%'),
+    marginTop: hp('1%'),
+    marginBottom: hp('3%'),
+  },
+
+
+  imagenBienvenidaEstudiante:{
+    height: hp('40%'),
+    width: hp('40%'),
+    marginTop: hp('6%'),
   },
 
 });

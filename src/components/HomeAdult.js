@@ -4,7 +4,7 @@ import { Text, Button, Icon, Content } from 'native-base';
 import axios from "axios";
 import { API_USERS } from '../config/const';
 import { getToken, removeToken } from '../utils/logIn';
-import { setUserData, getUsername, getTipoUsuario } from '../utils/home';
+import { setUserData, getUsername, getTipoUsuario, getFullname } from '../utils/home';
 import styles from '../styles';
 
 export default class HomeAdult extends Component {
@@ -19,6 +19,7 @@ export default class HomeAdult extends Component {
     this.state = {
       isLoading: false,
       username: '',
+      fullname: '',
       tipoUsuario: '',
     };
   }
@@ -32,6 +33,7 @@ export default class HomeAdult extends Component {
       // let res = await response.json();
       this.setState({
         username: await getUsername(),
+        fullname: await getFullname(),
         tipoUsuario: await getTipoUsuario(),
       })
       console.log("HomeAdult | user: " + this.state.username)
@@ -63,7 +65,7 @@ export default class HomeAdult extends Component {
       return (
         <ScrollView>
           <View style={styles.homeAdult_TextContainer}>
-            <Text style={styles.headling}>¡Bienvenido, {this.state.username}!</Text>
+            <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
           </View>
 
           <View style={styles.homeAdult_buttonsContainer}>
@@ -111,7 +113,7 @@ export default class HomeAdult extends Component {
       return (
         <ScrollView>
           <View style={styles.homeAdult_TextContainer}>
-            <Text style={styles.headling}>¡Bienvenido, {this.state.username}!</Text>
+            <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
           </View>
 
           <View style={styles.homeAdult_buttonsContainer}>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
+import { Imagen } from 'react-native';
+import { Container, View, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
 import { storeForDATA, getForEMAIL, getcomments } from '../utils/CreatePost';
 import Dataset from 'impagination';
 export default class HomeForum extends Component {
@@ -11,6 +11,7 @@ export default class HomeForum extends Component {
     this.state = {
       dataset: null,
       datasetState: null,
+      numComments: {},
 
     };
   }
@@ -25,9 +26,7 @@ export default class HomeForum extends Component {
       });
       let res = await response.json();
       console.log(res);
-      return res
-
-
+      this.state.numComments[id] = res.length;
   }
 
 
@@ -81,12 +80,15 @@ export default class HomeForum extends Component {
             <Text>Crear entrada</Text>
           </Button>
           {this.state.datasetState.map(record => {
+
             if (!record.isSettled) {
               return <Spinner key={Math.random()}/>;
             }
+            this.comments(record.content.id)
             return (
+              <View key={record.content.id}>
           <Card>
-            <CardItem >
+            <CardItem>
               <Left>
                 <Thumbnail source={{uri: 'Image URL'}} />
                 <Body>
@@ -103,7 +105,7 @@ export default class HomeForum extends Component {
               <Left>
                 <Button transparent>
                   <Icon active name="chatbubbles" />
-                  <Text>{this.comments(record.content.id).length}</Text>
+                  <Text>{this.state.numComments[record.content.id]}</Text>
                 </Button>
                 </Left>
               </Body>
@@ -112,6 +114,7 @@ export default class HomeForum extends Component {
               </Right>
             </CardItem>
           </Card>
+          </View>
         );
        })}
         </Content>

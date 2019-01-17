@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ActivityIndicator, View, ScrollView, AsyncStorage, StatusBar } from 'react-native';
 import { Text, Button, Icon, Content } from 'native-base';
 import axios from "axios";
-import { API_USERS } from '../config/const';
+import { API } from '../config/const';
 import { getToken, removeToken } from '../utils/logIn';
 import { setUserData, getUsername, getTipoUsuario, getFullname } from '../utils/home';
 import styles from '../styles';
@@ -13,7 +13,7 @@ export default class HomeAdult extends Component {
     title: 'Bienvenido',
     headerTitleStyle :{textAlign: 'center',alignSelf:'center'},
   };
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +30,6 @@ export default class HomeAdult extends Component {
       let token = await getToken()
       console.log("HomeAdult componentWillMount | token: " + token)
       await setUserData(token);
-      // let res = await response.json();
       this.setState({
         username: await getUsername(),
         fullname: await getFullname(),
@@ -40,7 +39,35 @@ export default class HomeAdult extends Component {
     } catch (error) {
       console.log("HomeAdult componentWillMount | Something went wrong")
     }
+    await this.listarFrasesPNL()
     this.setState({ isLoading: false })
+  }
+
+
+  generateRandomNumber(min, max) {
+   let random_number = Math.random() * (max-min) + min;
+    return Math.floor(random_number);
+  }
+
+  async listarFrasesPNL() {
+
+    this.setState({isLoading: true});
+    const URL = API.concat("/tipo_usuarios/").concat(this.state.tipoUsuario).concat("/frase_pnls");
+    console.log("URL estudiante: " + URL)
+    try {
+      const response = await fetch(URL);
+      const responseJson = await response.json();
+
+      this.setState({
+        frases: responseJson,
+        fraseseleccionada: responseJson[this.generateRandomNumber(0, responseJson.length)].frase, //imprimir más
+      });
+      console.log(this.state.fraseseleccionada);
+    }
+    catch (error) {
+      console.error("Error en la consulta: " + error);
+      this.setState({isLoading: false});
+    }
   }
 
   _signOutAsync = async () => {
@@ -66,6 +93,7 @@ export default class HomeAdult extends Component {
         <ScrollView>
           <View style={styles.homeAdult_TextContainer}>
             <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
+            <Text>Frase PNL del día: {this.state.fraseseleccionada}</Text>
           </View>
 
           <View style={styles.homeAdult_buttonsContainer}>
@@ -114,6 +142,7 @@ export default class HomeAdult extends Component {
         <ScrollView>
           <View style={styles.homeAdult_TextContainer}>
             <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
+            <Text style={styles.frasePNL}>“{this.state.fraseseleccionada}”</Text>
           </View>
 
           <View style={styles.homeAdult_buttonsContainer}>

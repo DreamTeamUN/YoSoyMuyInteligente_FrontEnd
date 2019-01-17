@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
+import { Imagen } from 'react-native';
+import { Container, View, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
+import { storeForDATA, getForEMAIL, getcomments } from '../utils/CreatePost';
 import Dataset from 'impagination';
 export default class HomeForum extends Component {
 
@@ -10,7 +11,32 @@ export default class HomeForum extends Component {
     this.state = {
       dataset: null,
       datasetState: null,
+      numComments: {},
+
     };
+  }
+
+
+   async comments (id){
+
+      let response = await fetch(`https://ysmiapi.herokuapp.com/entradas/3/${id}/1`, {
+          method: 'GET',
+          headers: new Headers({
+          }),
+      });
+      let res = await response.json();
+      console.log(res);
+      this.state.numComments[id] = res.length;
+  }
+
+
+  async _storeforid(id, title, text, user, email){
+
+      await storeForDATA(id, title, text, user, email)
+      let response = await getForEMAIL()
+      console.log("id store | res: " + response)
+      this.props.navigation.navigate('ForumScreen')
+
   }
 
 
@@ -38,22 +64,31 @@ export default class HomeForum extends Component {
       this.setupImpagination();
     }
 
+  setCurrentReadOffset = (event) => {
+    let itemHeight = 402;
+    let currentOffset = Math.floor(event.nativeEvent.contentOffset.y);
+    let currentItemIndex = Math.ceil(currentOffset / itemHeight);
+
+    this.state.dataset.setReadOffset(currentItemIndex);
+    }
 
   render() {
     return (
       <Container>
-        <Header />
-        <Content>
+        <Content onScroll={this.setCurrentReadOffset}>
         <Button full info onPress={() => this.props.navigation.navigate('CardForum')}>
             <Text>Crear entrada</Text>
           </Button>
           {this.state.datasetState.map(record => {
+
             if (!record.isSettled) {
               return <Spinner key={Math.random()}/>;
             }
+            this.comments(record.content.id)
             return (
+              <View key={record.content.id}>
           <Card>
-            <CardItem >
+            <CardItem>
               <Left>
                 <Thumbnail source={{uri: 'Image URL'}} />
                 <Body>
@@ -62,27 +97,24 @@ export default class HomeForum extends Component {
                 </Body>
               </Left>
             </CardItem>
-            <CardItem cardBody button onPress={() => this.props.navigation.navigate('ForumScreen')}>
+            <CardItem cardBody button onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
               <Text>{record.content.resumen}</Text>
             </CardItem>
             <CardItem>
+              <Body>
               <Left>
                 <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
-                </Button>
-              </Left>
-              <Body>
-                <Button transparent>
                   <Icon active name="chatbubbles" />
-                  <Text>{record.content.ramificacion - 1}</Text>
+                  <Text>{this.state.numComments[record.content.id]}</Text>
                 </Button>
+                </Left>
               </Body>
               <Right>
-                <Text>{record.content.created_at}</Text>
+                <Text>{record.content.created_at.substring(0,10)}</Text>
               </Right>
             </CardItem>
           </Card>
+          </View>
         );
        })}
         </Content>

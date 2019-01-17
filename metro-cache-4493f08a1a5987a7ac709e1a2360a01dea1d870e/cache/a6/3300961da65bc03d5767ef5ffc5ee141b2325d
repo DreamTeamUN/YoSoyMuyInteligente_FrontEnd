@@ -10,6 +10,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   var API_LESSONS = exports.API_LESSONS = 'https://ysmiapi.herokuapp.com/leccions/';
   var API_SOCIALS = exports.API_SOCIALS = API + "/socials";
   var API_LIST_AULAS = exports.API_LIST_AULAS = 'https://ysmiapi.herokuapp.com/aulas/2';
+  var API_LIST_DOCENTES = exports.API_LIST_DOCENTES = 'https://ysmiapi.herokuapp.com/docentes';
+  var API_CREATE_DOCENTE_PROGRAMA = exports.API_CREATE_DOCENTE_PROGRAMA = 'https://ysmiapi.herokuapp.com/programas';
   var API_CREATE_AULA = exports.API_CREATE_AULA = 'https://ysmiapi.herokuapp.com/docente_programas';
   var API_TUTORS = exports.API_TUTORS = 'https://ysmiapi.herokuapp.com/tutors';
 });

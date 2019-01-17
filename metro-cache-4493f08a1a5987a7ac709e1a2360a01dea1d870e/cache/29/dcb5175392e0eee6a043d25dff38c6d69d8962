@@ -76,8 +76,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _context.prev = 0;
                 _context.next = 3;
                 return regeneratorRuntime.awrap(_expo2.default.Google.logInAsync({
-                  androidClientId: "99894503572-hi17jagkv4uc28222pdl9eki2n2rsovf.apps.googleusercontent.com",
-                  scopes: ["profile", "email"]
+                  behavior: "web",
+                  scopes: ["profile", "email"],
+                  androidClientId: "99894503572-icicblji5ltq53l8acdcpfs78hkgg4t9.apps.googleusercontent.com",
+                  androidStandaloneAppClientId: "99894503572-68s54laf0toc0c2orjdjt6u2cablrfvr.apps.googleusercontent.com",
+                  webClientId: "99894503572-icicblji5ltq53l8acdcpfs78hkgg4t9.apps.googleusercontent.com"
                 }));
 
               case 3:
@@ -246,7 +249,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 86
+              lineNumber: 87
             }
           },
           _react3.default.createElement(
@@ -255,7 +258,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.imageContainer,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 87
+                lineNumber: 88
               }
             },
             _react3.default.createElement(_reactNative.Image, {
@@ -263,7 +266,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               source: _require(_dependencyMap[7], '../assets/logoinicial.png'),
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 88
+                lineNumber: 89
               }
             })
           ),
@@ -273,7 +276,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.buttonsContainer,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 91
+                lineNumber: 92
               }
             },
             _react3.default.createElement(
@@ -281,7 +284,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 92
+                  lineNumber: 93
                 }
               },
               _react3.default.createElement(
@@ -295,14 +298,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 92
+                    lineNumber: 93
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "person-add",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 94
+                    lineNumber: 95
                   }
                 }),
                 _react3.default.createElement(
@@ -310,7 +313,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 95
+                      lineNumber: 96
                     }
                   },
                   "Registrar con correo"
@@ -322,7 +325,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 99
+                  lineNumber: 100
                 }
               },
               _react3.default.createElement(
@@ -336,7 +339,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 100
+                    lineNumber: 101
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
@@ -344,7 +347,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   name: "google",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 102
+                    lineNumber: 103
                   }
                 }),
                 _react3.default.createElement(
@@ -352,7 +355,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 103
+                      lineNumber: 104
                     }
                   },
                   "Iniciar con Google"
@@ -364,7 +367,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 107
+                  lineNumber: 108
                 }
               },
               _react3.default.createElement(
@@ -378,14 +381,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 108
+                    lineNumber: 109
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "person",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 110
+                    lineNumber: 111
                   }
                 }),
                 _react3.default.createElement(
@@ -393,7 +396,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 111
+                      lineNumber: 112
                     }
                   },
                   "Iniciar sesi\xF3n con correo"

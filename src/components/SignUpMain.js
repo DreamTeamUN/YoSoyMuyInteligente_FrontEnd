@@ -16,16 +16,16 @@ export default class SignUpMain extends Component {
         </View>
 
         <View style={styles.buttonsContainer}>
-          <View style={styles.button}>
-            <Button iconLeft rounded style={styles.buttonclear}
+          <View style={styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttonclear}
               onPress={() => this.props.navigation.navigate('SignUpAdult')}>
               <Icon type="MaterialCommunityIcons" name="face" />
               <Text>Adulto Responsable</Text>
             </Button>
           </View>
 
-          <View style={styles.button}>
-            <Button iconLeft rounded style={styles.buttondark}
+          <View style={styles.viewButtonHome}>
+            <Button full iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('SignUpTeacher')}>
               <Icon name="school" />
               <Text>Docente</Text>

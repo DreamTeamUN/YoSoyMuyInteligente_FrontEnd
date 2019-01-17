@@ -62,88 +62,6 @@ export function paginateComments(
   return comments;
 }
 
-export function like(comments, cmnt) {
-  if (!cmnt.parentId) {
-    //add result to comments
-    if (comments) {
-      comments.find(function(c) {
-        if (c.commentId === cmnt.commentId) {
-          c.liked = !c.liked;
-          return true;
-        }
-      });
-    }
-  } else {
-    comments.find(function(c) {
-      if (c.children) {
-        let isItFound = false;
-        c.children.find(function(child) {
-          if (child.commentId === cmnt.commentId) {
-            child.liked = !child.liked;
-            isItFound = true;
-          }
-        });
-        return isItFound;
-      }
-    });
-  }
-  return comments;
-}
-
-export function edit(comments, cmnt, text) {
-  if (!cmnt.parentId) {
-    //add result to comments
-    if (comments) {
-      comments.find(function(c) {
-        if (c.commentId === cmnt.commentId) {
-          c.body = text;
-          return true;
-        }
-      });
-    }
-  } else {
-    comments.find(function(c) {
-      if (c.children) {
-        let isItFound = false;
-        c.children.find(function(child) {
-          if (child.commentId === cmnt.commentId) {
-            child.body = text;
-            isItFound = true;
-          }
-        });
-        return isItFound;
-      }
-    });
-  }
-  return comments;
-}
-
-export function deleteComment(comments, cmnt) {
-  if (!cmnt.parentId) {
-    //add result to comments
-    if (comments) {
-      const index = comments.findIndex(c => c.commentId === cmnt.commentId);
-      comments.splice(index, 1);
-    }
-  } else {
-    comments.find(function(c) {
-      if (c.children) {
-        let isItFound = false;
-        const index = c.children.findIndex(function(child) {
-          if (child.commentId === cmnt.commentId) {
-            isItFound = true;
-          }
-        });
-
-        if (index) {
-          c.children.splice(index, 1);
-        }
-        return isItFound;
-      }
-    });
-  }
-  return comments;
-}
 
 export function save(comments, text, parentCommentId, date, username) {
   //find last comment id
@@ -191,32 +109,5 @@ export function save(comments, text, parentCommentId, date, username) {
     }, this);
   }
   console.log(3, comments);
-  return comments;
-}
-
-export function report(comments, cmnt) {
-  if (!cmnt.parentId) {
-    //add result to comments
-
-    comments.find(function(c) {
-      if (c.commentId === cmnt.commentId) {
-        c.reported = true;
-        return true;
-      }
-    });
-  } else {
-    comments.find(function(c) {
-      if (c.children) {
-        let isItFound = false;
-        c.children.find(function(child) {
-          if (child.commentId === cmnt.commentId) {
-            child.reported = true;
-            isItFound = true;
-          }
-        });
-        return isItFound;
-      }
-    });
-  }
   return comments;
 }

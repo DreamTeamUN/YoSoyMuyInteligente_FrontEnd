@@ -14,7 +14,6 @@ import HomeStudent from './components/HomeStudent';
 import Practices from './components/Practices';
 import GameProgress from './components/GameProgress';
 import AddStudent from './components/AddStudent';
-
 import EditProfile from './components/EditProfile/EditProfile';
 import ChangeFullname from './components/EditProfile/ChangeFullname';
 import ChangePassword from './components/EditProfile/ChangePassword';
@@ -25,6 +24,7 @@ import ClassRoom from './components/classroom'
 import AddClassRoom from './components/AddClassRoom'
 import AdminStudentsTutor from './components/AdminStudentsTutor'
 import CardForum from './components/CardForum'
+import PalabraImagen from './components/PalabraImagen'
 
 export const AppStack = createStackNavigator(
     {
@@ -36,6 +36,7 @@ export const AppStack = createStackNavigator(
         ClassRoom: ClassRoom,
         Sentence: Sentence,
         Games: Games,
+        PalabraImagen: PalabraImagen,
         Practices: Practices,
         AdminStudentsTutor: AdminStudentsTutor,
         AddStudent: AddStudent,

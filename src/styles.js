@@ -99,6 +99,9 @@ const styles = StyleSheet.create({
     buttonred: {
         marginBottom: hp('3%'),
         backgroundColor: '#DC143C',
+        justifyContent: 'flex-start',
+        flexDirection:'column',
+        alignItems: 'flex-start',
     },
     buttonfb: {
         marginBottom: hp('3%'),
@@ -116,14 +119,6 @@ const styles = StyleSheet.create({
     adult_TextInput: {
         marginBottom: hp('0.5%'),
         backgroundColor: '#E9E9EF',
-    },
-    adult_ButtonsContainer: {
-        height: hp('20%'),
-        width: wp('100%'),
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: hp('5%'),
     },
 
     // Adult login
@@ -157,7 +152,7 @@ const styles = StyleSheet.create({
 
     //Adult/Teacher Home
     homeAdult_TextContainer: {
-        height: hp('25%'),
+        height: hp('40%'),
         justifyContent: 'center',
     },
 
@@ -168,8 +163,8 @@ const styles = StyleSheet.create({
     },
 
     homeAdult_buttonsContainer: {
-        marginTop: hp('5%'),
-        height: hp('70%'),
+        marginTop: hp('3%'),
+        height: hp('55%'),
         flexDirection: 'column',
         alignItems: 'center',
     },
@@ -366,17 +361,146 @@ const styles = StyleSheet.create({
     width: wp('80%'),
     flex: 1,
   },
-  
+
   editDate: {
     alignItems: 'center',
       marginTop: hp('4%'),
       marginBottom: hp('4%'),
   },
-  
+
   simplecenter: {
     width: wp('100%'),
     alignItems: 'center',
   },
+
+  rootf: {
+    backgroundColor: "#ffffff",
+    marginTop:10,
+  },
+  containerf: {
+    paddingLeft: 19,
+    paddingRight: 16,
+    paddingVertical: 12,
+    flexDirection: 'row',
+    alignItems: 'flex-start'
+  },
+  contentf: {
+    marginLeft: 16,
+    flex: 1,
+  },
+  contentHeaderf: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 6
+  },
+  separatorf: {
+    height: 1,
+    backgroundColor: "#CCCCCC"
+  },
+  imagef:{
+    width:45,
+    height:45,
+    borderRadius:20,
+    marginLeft:20
+  },
+  timef:{
+    fontSize:11,
+    color:"#808080",
+  },
+  namef:{
+    fontSize:16,
+    fontWeight:"bold",
+  },
+
+  //Juegos
+  imagenCardview:{
+    height: hp('50%'),
+    width: hp('50%'),
+  },
+
+  centerImage:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: wp('100%'),
+
+  },
+
+  imagenJuego:{
+    height: hp('40%'),
+    width: hp('40%'),
+    marginTop: hp('6%'),
+    marginBottom: hp('6%'),
+  },
+
+
+  imagenJuego:{
+    height: hp('40%'),
+    width: hp('40%'),
+    marginTop: hp('6%'),
+    marginBottom: hp('6%'),
+  },
+
+  buttonjuego: {
+      marginBottom: hp('3%'),
+      width: wp('92%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
+      backgroundColor: '#909497',
+  },
+
+  buttonjuegowin: {
+      marginBottom: hp('3%'),
+      width: wp('92%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
+      backgroundColor: '#58D68D',
+  },
+
+  buttonjuegofail: {
+      marginBottom: hp('3%'),
+      width: wp('92%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
+      backgroundColor: '#EC7063',
+  },
+
+  textoOpcion: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+
+
+  //frasePNL
+  frasePNL: {
+    fontWeight: '100',
+    color: '#ABB2B9',
+    fontStyle: 'italic',
+    fontSize: hp('5%'),
+    textAlign: 'center',
+    marginLeft: wp('2%'),
+    marginRight: wp('2%'),
+  },
+
+  frasePNLEstudiante: {
+    width: wp('100%'),
+    fontWeight: '100',
+    color: '#ABB2B9',
+    fontStyle: 'italic',
+    fontSize: hp('4%'),
+    textAlign: 'center',
+    marginLeft: wp('2%'),
+    marginRight: wp('2%'),
+    marginTop: hp('1%'),
+    marginBottom: hp('3%'),
+  },
+
+
+  imagenBienvenidaEstudiante:{
+    height: hp('40%'),
+    width: hp('40%'),
+    marginTop: hp('6%'),
+  },
+
 });
 
 export { styles as default };

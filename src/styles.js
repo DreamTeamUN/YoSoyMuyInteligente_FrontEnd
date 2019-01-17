@@ -430,6 +430,14 @@ const styles = StyleSheet.create({
     marginBottom: hp('6%'),
   },
 
+
+  imagenJuego:{
+    height: hp('40%'),
+    width: hp('40%'),
+    marginTop: hp('6%'),
+    marginBottom: hp('6%'),
+  },
+
   buttonjuego: {
       marginBottom: hp('3%'),
       width: wp('92%'),

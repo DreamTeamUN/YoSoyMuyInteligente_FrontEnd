@@ -4,7 +4,7 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from "native-b
 import { getForID, getForTITLE, getForTEXT, getForUSER, getForEMAIL, getcomments } from '../utils/CreatePost';
 import styles from '../styles';
 import { API } from '../config/const';
-import Comments from 'react-native-comments';
+import Comments from '../components/Comments'
 import * as commentActions from '../utils/ExampleActions';
 import moment from 'moment';
 
@@ -12,12 +12,10 @@ export default class ForumScreen extends Component {
   constructor(props) {
     super(props);
     this.props = props;
-    this.actions = commentActions;
     this.state = {
       titulo: '',
       texto: '',
       usuario: '',
-      data: []
 
     };
 
@@ -26,7 +24,7 @@ export default class ForumScreen extends Component {
   static navigatorStyle = {};
 
   async componentWillMount() {
-    const c = this.actions.getComments();
+
     this.setState({
       loadingComments: false,
       lastCommentUpdate: new Date().getTime(),
@@ -73,37 +71,7 @@ export default class ForumScreen extends Component {
             <Text>{this.state.usuario}</Text>
           </CardItem>
         </Card>
-        <FlatList
-  style={styles.rootf}
-  data={this.state.data}
-  extraData={this.state}
-  ItemSeparatorComponent={() => {
-    return (
-      <View style={styles.separatorf}/>
-    )
-  }}
-  keyExtractor={(item)=>{
-    return item.id;
-  }}
-  renderItem={(item) => {
-    const Notification = item.item;
-    return(
-      <View style={styles.containerf}>
-        <TouchableOpacity onPress={() => {}}>
-          <Image style={styles.imagef} source={{uri: `${API}${Notification.usuario.archivo.ruta.url}`}}/>
-        </TouchableOpacity>
-        <View style={styles.contentf}>
-          <View style={styles.contentHeaderf}>
-            <Text  style={styles.namef}>{Notification.usuario.user}</Text>
-            <Text style={styles.timef}>
-              9:58 am
-            </Text>
-          </View>
-          <Text rkType='primary3 mediumLine'>{Notification.texto}</Text>
-        </View>
-      </View>
-    );
-  }}/>
+        <Comments/>
       </ScrollView>
     );
   }

@@ -40,8 +40,8 @@ export default class ChangePhoto extends Component {
             // exif: true,
         });
 
-        console.log("pickImage | result: ");
-        console.log(result);
+        // console.log("pickImage | result: ");
+        // console.log(result);
 
         if (!result.cancelled) {
             // ImagePicker saves the taken photo to disk and returns a local URI to it
@@ -54,9 +54,9 @@ export default class ChangePhoto extends Component {
 
             // Filename
             let username = await getUsername();
-            console.log("username: " + username)
+            // console.log("username: " + username)
             let finalName = `${username}_photo${match[0]}`;
-            console.log("finalName: " + finalName)
+            // console.log("finalName: " + finalName)
 
             this.setState({ imageUri: localUri });
             this.setState({ imageType: type });

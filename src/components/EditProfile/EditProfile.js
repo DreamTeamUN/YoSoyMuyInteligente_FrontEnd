@@ -17,6 +17,8 @@ export default class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      source: { uri: 'http://ysmiapi.herokuapp.com/AVN_photo.jpg' + '?' + new Date() },
+      // photoURL: ,
       errors: [],
       isLoading: false,
     };
@@ -40,7 +42,9 @@ export default class EditProfile extends Component {
             <Right>
               <Image
                 style={styles.profilePhoto}
-                source={{ uri: 'https://ysmiapi.herokuapp.com/AVN_photo.jpg' }}
+                // source={ uri: this.state.photoURL + '?' + new Date()}
+                source={ this.state.source}
+              // key={new Date()}
               />
             </Right>
           </Header>

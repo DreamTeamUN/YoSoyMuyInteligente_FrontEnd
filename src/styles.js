@@ -432,8 +432,8 @@ const styles = StyleSheet.create({
     // marginBottom: hp('6%'),
     borderRadius: 30,
     overflow: "hidden",
-    borderWidth: 2,
-    borderColor: "red"
+    borderWidth: 1,
+    borderColor: "orange"
   },
 
 

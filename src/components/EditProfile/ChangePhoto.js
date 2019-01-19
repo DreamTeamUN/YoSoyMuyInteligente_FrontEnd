@@ -4,6 +4,7 @@ import { Container, Header, Content, Text, Button, Icon, Label, Form, Item, Inpu
 import { ImagePicker } from 'expo';
 import styles from '../../styles';
 import { editPhoto } from '../../utils/editProfile';
+import { getUsername } from '../../utils/home';
 
 export default class ChangePhoto extends Component {
 
@@ -52,7 +53,10 @@ export default class ChangePhoto extends Component {
             let type = match ? `image/${match[1]}` : `image`;
 
             // Filename
-            let finalName = `pedro${match[0]}`;
+            let username = await getUsername();
+            console.log("username: " + username)
+            let finalName = `${username}_photo${match[0]}`;
+            console.log("finalName: " + finalName)
 
             this.setState({ imageUri: localUri });
             this.setState({ imageType: type });

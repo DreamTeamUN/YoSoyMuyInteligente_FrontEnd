@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
-import { API_USERS } from '../config/const';
+import { API_FILES } from '../config/const';
 import { getID } from './home';
 import { getToken } from './logIn';
 
@@ -46,4 +46,22 @@ export const editBirthdate = async (birthdate) => {
         }
     })
     editData(body)
+}
+
+export const editPhoto = async (formData) => {
+    try {
+        // let ID = await getID();
+        // const API_USERS_PUT = `${API_USERS}/${ID}`;
+        let response = await fetch(API_FILES, {
+            method: 'POST',
+            // headers: new Headers({
+            //     // "Authorization": 'Bearer ' + await getToken(),
+            //     'Content-Type': 'multipart/form-data',
+            // }),
+            body: formData
+        });
+    } catch (error) {
+        console.log("editPhoto | Something went wrong")
+        console.log(error);
+    }
 }

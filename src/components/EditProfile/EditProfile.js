@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, Image } from 'react-native';
 import { Container, Header, Content, Form, Item, Label, Input, Button, Icon, Title, Left, Right, Body, Text, List, ListItem } from 'native-base';
 import styles from '../../styles';
 
@@ -10,15 +10,13 @@ import variables from "../../../native-base-theme/variables/commonColor";
 // import { putEditData } from '../../utils/editProfile';
 
 export default class EditProfile extends Component {
+  static navigationOptions = {
+    header: null
+  }
 
   constructor(props) {
     super(props);
     this.state = {
-      fullname: '',
-      password: '',
-      password2: '',
-      birthdate: '',
-      // foto: '',
       errors: [],
       isLoading: false,
     };
@@ -28,17 +26,24 @@ export default class EditProfile extends Component {
     return (
       <StyleProvider style={getTheme(variables)}>
         <Container>
-          {/* <Header>
+          <Header style={styles.headerStyle}>
             <Left>
               <Button transparent onPress={() => this.props.navigation.goBack()}>
                 <Icon name="arrow-back" />
               </Button>
             </Left>
+
             <Body>
               <Title>Editar perfil</Title>
             </Body>
-            <Right />
-          </Header> */}
+
+            <Right>
+              <Image
+                style={styles.profilePhoto}
+                source={{ uri: 'https://ysmiapi.herokuapp.com/AVN_photo.jpg' }}
+              />
+            </Right>
+          </Header>
 
           <Content>
 

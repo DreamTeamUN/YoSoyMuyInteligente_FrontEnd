@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
 
     headerStyle: {
       backgroundColor: '#5D99C6',
-      height: hp('12%'),
+      height: hp('14%'),
       zIndex: 10,
-      paddingTop: hp('1.5%'),
+      paddingTop: hp('3.5%'),
     },
 
     maxHeight: {
@@ -425,11 +425,15 @@ const styles = StyleSheet.create({
 
   },
 
-  imagenJuego:{
-    height: hp('40%'),
-    width: hp('40%'),
-    marginTop: hp('6%'),
-    marginBottom: hp('6%'),
+  profilePhoto:{
+    height: hp('8%'),
+    width: hp('8%'),
+    // marginTop: hp('6%'),
+    // marginBottom: hp('6%'),
+    borderRadius: 30,
+    overflow: "hidden",
+    borderWidth: 2,
+    borderColor: "red"
   },
 
 

@@ -3,7 +3,7 @@ import { ActivityIndicator, View, ScrollView, AsyncStorage, StatusBar, Image } f
 import { Container, Header, Content, Title, Left, Right, Body, Text, Button, Icon } from 'native-base';
 import { API } from '../config/const';
 import { getToken, removeToken } from '../utils/logIn';
-import { setUserData, getUsername, getTipoUsuario, getFullname } from '../utils/home';
+import { setUserData, getUsername, getTipoUsuario, getFullname, getFileUrl } from '../utils/home';
 import styles from '../styles';
 
 export default class HomeAdult extends Component {
@@ -22,7 +22,7 @@ export default class HomeAdult extends Component {
       username: '',
       fullname: '',
       tipoUsuario: '',
-      source: { uri: 'http://ysmiapi.herokuapp.com/AVN_photo.jpg' + '?' + new Date() }, // machetazo (src: https://github.com/facebook/react-native/issues/12606#issuecomment-363397371),
+      source: { uri: '' }, // machetazo (src: https://github.com/facebook/react-native/issues/12606#issuecomment-363397371),
     };
   }
 
@@ -36,6 +36,7 @@ export default class HomeAdult extends Component {
         username: await getUsername(),
         fullname: await getFullname(),
         tipoUsuario: await getTipoUsuario(),
+        source: { uri: `${API}${await getFileUrl()}` + '?' + new Date() },
       })
       console.log("HomeAdult | user: " + this.state.username)
     } catch (error) {
@@ -105,51 +106,69 @@ export default class HomeAdult extends Component {
 
     if (this.state.tipoUsuario == 2) {
       return (
-        <ScrollView>
-          <View style={styles.homeAdult_TextContainer}>
-            <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
-            <Text style={styles.frasePNL}>“{this.state.fraseseleccionada}”</Text>
-          </View>
-
-          <View style={styles.homeAdult_buttonsContainer}>
-
-            <View style={styles.viewButtonHome}>
-              <Button full iconLeft rounded style={styles.buttonclear}
-                onPress={() => this.props.navigation.navigate('EditProfile')}>
-                <Icon type="Feather" name="edit" />
-                <Text>Editar perfil</Text>
-              </Button>
-            </View>
-
-            <View style={styles.viewButtonHome}>
-              <Button full iconLeft rounded style={styles.buttondark}
-                onPress={() => this.props.navigation.navigate('HomeForum')}>
-                <Icon type="MaterialCommunityIcons" name="forum" />
-                <Text>Ingreso al foro</Text>
-              </Button>
-            </View>
-
-            <View style={styles.viewButtonHome}>
-              <Button full iconLeft rounded style={styles.buttonclear}
-                onPress={() => this.props.navigation.navigate('ClassRoom')}>
-                <Icon type="MaterialCommunityIcons" name="settings" />
-                <Text>Aulas</Text>
-              </Button>
-            </View>
-
-            <View style={styles.viewButtonHome}>
-              <Button full rounded style={styles.buttondark}
-                onPress={this._signOutAsync}>
-                <Icon type="Entypo" name="log-out" />
-                <Text>Cerrar sesion</Text>
-              </Button>
-              <StatusBar
-                backgroundColor="blue"
-                barStyle="light-content"
+        <Container>
+          <Header style={styles.headerStyle}>
+            <Left>
+              <Image
+                style={styles.profilePhoto}
+                source={this.state.source}
               />
-            </View>
-          </View>
-        </ScrollView>
+            </Left>
+
+            <Body>
+              <Title>Bienvenido</Title>
+            </Body>
+
+            <Right />
+          </Header>
+          <Content>
+            <ScrollView>
+              <View style={styles.homeAdult_TextContainer}>
+                <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
+                <Text style={styles.frasePNL}>“{this.state.fraseseleccionada}”</Text>
+              </View>
+
+              <View style={styles.homeAdult_buttonsContainer}>
+
+                <View style={styles.viewButtonHome}>
+                  <Button full iconLeft rounded style={styles.buttonclear}
+                    onPress={() => this.props.navigation.navigate('EditProfile')}>
+                    <Icon type="Feather" name="edit" />
+                    <Text>Editar perfil</Text>
+                  </Button>
+                </View>
+
+                <View style={styles.viewButtonHome}>
+                  <Button full iconLeft rounded style={styles.buttondark}
+                    onPress={() => this.props.navigation.navigate('HomeForum')}>
+                    <Icon type="MaterialCommunityIcons" name="forum" />
+                    <Text>Ingreso al foro</Text>
+                  </Button>
+                </View>
+
+                <View style={styles.viewButtonHome}>
+                  <Button full iconLeft rounded style={styles.buttonclear}
+                    onPress={() => this.props.navigation.navigate('ClassRoom')}>
+                    <Icon type="MaterialCommunityIcons" name="settings" />
+                    <Text>Aulas</Text>
+                  </Button>
+                </View>
+
+                <View style={styles.viewButtonHome}>
+                  <Button full rounded style={styles.buttondark}
+                    onPress={this._signOutAsync}>
+                    <Icon type="Entypo" name="log-out" />
+                    <Text>Cerrar sesion</Text>
+                  </Button>
+                  <StatusBar
+                    backgroundColor="blue"
+                    barStyle="light-content"
+                  />
+                </View>
+              </View>
+            </ScrollView>
+          </Content>
+        </Container>
       );
     }
     else {

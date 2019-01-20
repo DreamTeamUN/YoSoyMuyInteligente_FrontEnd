@@ -66,7 +66,6 @@ export default class ChangePhoto extends Component {
     };
 
     render() {
-        let image = this.state.imageUri;
         // return (
         //     <View>
         //         <Form style={styles.adult_TextInputContainer}>

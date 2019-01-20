@@ -43,11 +43,11 @@ export default class EditProfile extends Component {
             </Body>
 
             <Right>
-              <Image
+              {/* <Image
                 style={styles.profilePhoto}
                 // source={ uri: this.state.photoURL + '?' + new Date()}
                 source={this.state.source}
-              />
+              /> */}
             </Right>
           </Header>
 

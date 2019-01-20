@@ -10,7 +10,6 @@ import { getToken } from './logIn';
 const editData = async (body) => {
     try {
         let ID = await getID();
-        console.log("antes response");
         const API_USERS_PUT = `${API_USERS}/${ID}`;
         let response = await fetch(API_USERS_PUT, {
             method: 'PUT',
@@ -54,6 +53,7 @@ export const editBirthdate = async (birthdate) => {
 }
 
 export const editPhoto = async (formData) => {
+    let archivo_id = 0
     try {
         // let ID = await getID();
         // const API_USERS_PUT = `${API_USERS}/${ID}`;
@@ -65,9 +65,21 @@ export const editPhoto = async (formData) => {
             // }),
             body: formData
         });
+
+        let res = await response.json();
+        archivo_id = res.id;
+        // console.log("id: " + res.id);
     } catch (error) {
         console.log("editPhoto | Something went wrong")
         console.log(error);
     }
+
+    let body = JSON.stringify({
+        "usuario": {
+            "archivo_id": archivo_id
+        }
+    })
+    editData(body)
+
     await AsyncStorage.setItem('reload', 'true');
 }

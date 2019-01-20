@@ -102,7 +102,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     },
     buttonred: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
-      backgroundColor: '#DC143C'
+      backgroundColor: '#DC143C',
+      justifyContent: 'flex-start',
+      flexDirection: 'column',
+      alignItems: 'flex-start'
     },
     buttonfb: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
@@ -118,14 +121,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     adult_TextInput: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('0.5%'),
       backgroundColor: '#E9E9EF'
-    },
-    adult_ButtonsContainer: {
-      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('20%'),
-      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%')
     },
     login_TextInputContainer: {
       marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('10%'),
@@ -436,6 +431,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     textoOpcion: {
       fontSize: 30,
       fontWeight: 'bold'
+    },
+    textoNiveles: {
+      fontSize: 25,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      margin: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%')
     }
   });
 

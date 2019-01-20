@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import Main from './components/Main';
 import SignUpMain from './components/SignUpMain';
@@ -25,11 +24,13 @@ import AddClassRoom from './components/AddClassRoom'
 import AdminStudentsTutor from './components/AdminStudentsTutor'
 import CardForum from './components/CardForum'
 import PalabraImagen from './components/PalabraImagen'
+import NivelesPalabraImagen from './components/NivelesPalabraImagen'
 
 export const AppStack = createStackNavigator(
     {
         HomeAdult: HomeAdult,
         AddClassRoom: AddClassRoom,
+        NivelesPalabraImagen: NivelesPalabraImagen,
         HomeStudent: HomeStudent,
         WeekProgress: WeekProgress,
         GameProgress: GameProgress,

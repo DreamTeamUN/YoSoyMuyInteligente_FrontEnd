@@ -13,5 +13,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   var API_LIST_DOCENTES = exports.API_LIST_DOCENTES = 'https://ysmiapi.herokuapp.com/docentes';
   var API_CREATE_DOCENTE_PROGRAMA = exports.API_CREATE_DOCENTE_PROGRAMA = 'https://ysmiapi.herokuapp.com/programas';
   var API_CREATE_AULA = exports.API_CREATE_AULA = 'https://ysmiapi.herokuapp.com/docente_programas';
+  var API_JUEGO_PALABRA_IMG = exports.API_JUEGO_PALABRA_IMG = 'https://ysmiapi.herokuapp.com/juego/1/';
   var API_TUTORS = exports.API_TUTORS = 'https://ysmiapi.herokuapp.com/tutors';
 });

@@ -78,6 +78,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           _react3.default.createElement(
             _nativeBase.Card,
             {
+              button: true,
+              onPress: function onPress() {
+                return _this2.props.navigation.navigate('NivelesPalabraImagen');
+              },
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 11
@@ -146,7 +150,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   transparent: true,
                   info: true,
                   onPress: function onPress() {
-                    return _this2.props.navigation.navigate('PalabraImagen');
+                    return _this2.props.navigation.navigate('NivelesPalabraImagen');
                   },
                   __source: {
                     fileName: _jsxFileName,

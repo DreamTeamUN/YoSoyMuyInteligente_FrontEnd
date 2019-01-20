@@ -4,119 +4,118 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     });
     exports.AuthStack = exports.AppStack = undefined;
 
-    var _react = _require(_dependencyMap[0], "react");
+    var _reactNavigation = _require(_dependencyMap[0], "react-navigation");
 
-    var React = _interopRequireWildcard(_react);
-
-    var _reactNavigation = _require(_dependencyMap[1], "react-navigation");
-
-    var _Main = _require(_dependencyMap[2], "./components/Main");
+    var _Main = _require(_dependencyMap[1], "./components/Main");
 
     var _Main2 = _interopRequireDefault(_Main);
 
-    var _SignUpMain = _require(_dependencyMap[3], "./components/SignUpMain");
+    var _SignUpMain = _require(_dependencyMap[2], "./components/SignUpMain");
 
     var _SignUpMain2 = _interopRequireDefault(_SignUpMain);
 
-    var _SignUpAdult = _require(_dependencyMap[4], "./components/SignUpAdult");
+    var _SignUpAdult = _require(_dependencyMap[3], "./components/SignUpAdult");
 
     var _SignUpAdult2 = _interopRequireDefault(_SignUpAdult);
 
-    var _SignUpTeacher = _require(_dependencyMap[5], "./components/SignUpTeacher");
+    var _SignUpTeacher = _require(_dependencyMap[4], "./components/SignUpTeacher");
 
     var _SignUpTeacher2 = _interopRequireDefault(_SignUpTeacher);
 
-    var _LogInTypeUser = _require(_dependencyMap[6], "./components/LogInTypeUser");
+    var _LogInTypeUser = _require(_dependencyMap[5], "./components/LogInTypeUser");
 
     var _LogInTypeUser2 = _interopRequireDefault(_LogInTypeUser);
 
-    var _LogIn = _require(_dependencyMap[7], "./components/LogIn");
+    var _LogIn = _require(_dependencyMap[6], "./components/LogIn");
 
     var _LogIn2 = _interopRequireDefault(_LogIn);
 
-    var _HomeAdult = _require(_dependencyMap[8], "./components/HomeAdult");
+    var _HomeAdult = _require(_dependencyMap[7], "./components/HomeAdult");
 
     var _HomeAdult2 = _interopRequireDefault(_HomeAdult);
 
-    var _WeekProgress = _require(_dependencyMap[9], "./components/WeekProgress");
+    var _WeekProgress = _require(_dependencyMap[8], "./components/WeekProgress");
 
     var _WeekProgress2 = _interopRequireDefault(_WeekProgress);
 
-    var _Sentence = _require(_dependencyMap[10], "./components/Sentence");
+    var _Sentence = _require(_dependencyMap[9], "./components/Sentence");
 
     var _Sentence2 = _interopRequireDefault(_Sentence);
 
-    var _Games = _require(_dependencyMap[11], "./components/Games");
+    var _Games = _require(_dependencyMap[10], "./components/Games");
 
     var _Games2 = _interopRequireDefault(_Games);
 
-    var _HomeStudent = _require(_dependencyMap[12], "./components/HomeStudent");
+    var _HomeStudent = _require(_dependencyMap[11], "./components/HomeStudent");
 
     var _HomeStudent2 = _interopRequireDefault(_HomeStudent);
 
-    var _Practices = _require(_dependencyMap[13], "./components/Practices");
+    var _Practices = _require(_dependencyMap[12], "./components/Practices");
 
     var _Practices2 = _interopRequireDefault(_Practices);
 
-    var _GameProgress = _require(_dependencyMap[14], "./components/GameProgress");
+    var _GameProgress = _require(_dependencyMap[13], "./components/GameProgress");
 
     var _GameProgress2 = _interopRequireDefault(_GameProgress);
 
-    var _AddStudent = _require(_dependencyMap[15], "./components/AddStudent");
+    var _AddStudent = _require(_dependencyMap[14], "./components/AddStudent");
 
     var _AddStudent2 = _interopRequireDefault(_AddStudent);
 
-    var _EditProfile = _require(_dependencyMap[16], "./components/EditProfile/EditProfile");
+    var _EditProfile = _require(_dependencyMap[15], "./components/EditProfile/EditProfile");
 
     var _EditProfile2 = _interopRequireDefault(_EditProfile);
 
-    var _ChangeFullname = _require(_dependencyMap[17], "./components/EditProfile/ChangeFullname");
+    var _ChangeFullname = _require(_dependencyMap[16], "./components/EditProfile/ChangeFullname");
 
     var _ChangeFullname2 = _interopRequireDefault(_ChangeFullname);
 
-    var _ChangePassword = _require(_dependencyMap[18], "./components/EditProfile/ChangePassword");
+    var _ChangePassword = _require(_dependencyMap[17], "./components/EditProfile/ChangePassword");
 
     var _ChangePassword2 = _interopRequireDefault(_ChangePassword);
 
-    var _ChangeBirthdate = _require(_dependencyMap[19], "./components/EditProfile/ChangeBirthdate");
+    var _ChangeBirthdate = _require(_dependencyMap[18], "./components/EditProfile/ChangeBirthdate");
 
     var _ChangeBirthdate2 = _interopRequireDefault(_ChangeBirthdate);
 
-    var _ForumScreen = _require(_dependencyMap[20], "./components/ForumScreen");
+    var _ForumScreen = _require(_dependencyMap[19], "./components/ForumScreen");
 
     var _ForumScreen2 = _interopRequireDefault(_ForumScreen);
 
-    var _HomeForum = _require(_dependencyMap[21], "./components/HomeForum");
+    var _HomeForum = _require(_dependencyMap[20], "./components/HomeForum");
 
     var _HomeForum2 = _interopRequireDefault(_HomeForum);
 
-    var _classroom = _require(_dependencyMap[22], "./components/classroom");
+    var _classroom = _require(_dependencyMap[21], "./components/classroom");
 
     var _classroom2 = _interopRequireDefault(_classroom);
 
-    var _AddClassRoom = _require(_dependencyMap[23], "./components/AddClassRoom");
+    var _AddClassRoom = _require(_dependencyMap[22], "./components/AddClassRoom");
 
     var _AddClassRoom2 = _interopRequireDefault(_AddClassRoom);
 
-    var _AdminStudentsTutor = _require(_dependencyMap[24], "./components/AdminStudentsTutor");
+    var _AdminStudentsTutor = _require(_dependencyMap[23], "./components/AdminStudentsTutor");
 
     var _AdminStudentsTutor2 = _interopRequireDefault(_AdminStudentsTutor);
 
-    var _CardForum = _require(_dependencyMap[25], "./components/CardForum");
+    var _CardForum = _require(_dependencyMap[24], "./components/CardForum");
 
     var _CardForum2 = _interopRequireDefault(_CardForum);
 
-    var _PalabraImagen = _require(_dependencyMap[26], "./components/PalabraImagen");
+    var _PalabraImagen = _require(_dependencyMap[25], "./components/PalabraImagen");
 
     var _PalabraImagen2 = _interopRequireDefault(_PalabraImagen);
 
-    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+    var _NivelesPalabraImagen = _require(_dependencyMap[26], "./components/NivelesPalabraImagen");
 
-    function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+    var _NivelesPalabraImagen2 = _interopRequireDefault(_NivelesPalabraImagen);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     var AppStack = exports.AppStack = (0, _reactNavigation.createStackNavigator)({
         HomeAdult: _HomeAdult2.default,
         AddClassRoom: _AddClassRoom2.default,
+        NivelesPalabraImagen: _NivelesPalabraImagen2.default,
         HomeStudent: _HomeStudent2.default,
         WeekProgress: _WeekProgress2.default,
         GameProgress: _GameProgress2.default,
@@ -135,7 +134,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         HomeForum: _HomeForum2.default,
         CardForum: _CardForum2.default
     }, {
-        initialRouteName: 'Games',
+        initialRouteName: 'HomeAdult',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#5D99C6',

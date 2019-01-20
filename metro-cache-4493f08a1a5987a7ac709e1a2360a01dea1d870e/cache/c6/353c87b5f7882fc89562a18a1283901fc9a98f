@@ -2,6 +2,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.idNivel = undefined;
 
   var _react2 = _require(_dependencyMap[0], "react");
 
@@ -15,21 +16,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _class,
       _temp,
-      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/PalabraImagen.js";
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/NivelesPalabraImagen.js";
 
-  var _reactNative = _require(_dependencyMap[2], "react-native");
+  var _nativeBase = _require(_dependencyMap[2], "native-base");
 
-  var _nativeBase = _require(_dependencyMap[3], "native-base");
-
-  var _styles = _require(_dependencyMap[4], "../styles");
+  var _styles = _require(_dependencyMap[3], "../styles");
 
   var _styles2 = _interopRequireDefault(_styles);
 
-  var _NivelesPalabraImagen = _require(_dependencyMap[5], "./NivelesPalabraImagen");
+  var _home = _require(_dependencyMap[4], "../utils/home");
 
-  var _home = _require(_dependencyMap[6], "../utils/home");
-
-  var _const = _require(_dependencyMap[7], "../config/const");
+  var _const = _require(_dependencyMap[5], "../config/const");
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40,13 +37,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
   var _components = {
-    PalabraImagen: {
-      displayName: "PalabraImagen"
+    NivelesPalabraImagen: {
+      displayName: "NivelesPalabraImagen"
     }
   };
 
   var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/PalabraImagen.js",
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/NivelesPalabraImagen.js",
     components: _components,
     locals: [module],
     imports: [_react3.default]
@@ -58,33 +55,25 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
   }
 
-  var PalabraImagen = _wrapComponent("PalabraImagen")((_temp = _class = function (_Component) {
-    _inherits(PalabraImagen, _Component);
+  var idNivel = exports.idNivel = undefined;
 
-    function PalabraImagen(props) {
-      _classCallCheck(this, PalabraImagen);
+  var NivelesPalabraImagen = _wrapComponent("NivelesPalabraImagen")((_temp = _class = function (_Component) {
+    _inherits(NivelesPalabraImagen, _Component);
 
-      var _this = _possibleConstructorReturn(this, (PalabraImagen.__proto__ || Object.getPrototypeOf(PalabraImagen)).call(this, props));
+    function NivelesPalabraImagen(props) {
+      _classCallCheck(this, NivelesPalabraImagen);
+
+      var _this = _possibleConstructorReturn(this, (NivelesPalabraImagen.__proto__ || Object.getPrototypeOf(NivelesPalabraImagen)).call(this, props));
 
       _this.state = {
         isLoading: false,
         idUsuario: '',
-        boton1: _styles2.default.buttonjuego,
-        boton2: _styles2.default.buttonjuego,
-        boton3: _styles2.default.buttonjuego,
-        nivel: [],
-        imagen: '',
-        opcion1: '',
-        opcion2: '',
-        opcion3: '',
-        opcionCorrecta: '',
-        subnivel: 0
+        lecciones: []
       };
-      _this.selectionOnPress = _this.selectionOnPress.bind(_this);
       return _this;
     }
 
-    _createClass(PalabraImagen, [{
+    _createClass(NivelesPalabraImagen, [{
       key: "componentWillMount",
       value: function componentWillMount() {
         var _this2 = this;
@@ -93,18 +82,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                this.setState({
-                  isLoading: true
-                });
                 (0, _home.getID)().then(function (id) {
                   _this2.setState({
                     idUsuario: id
                   });
                 }).then(function () {
-                  _this2.getNivel();
+                  _this2.listarLecciones();
                 });
 
-              case 2:
+              case 1:
               case "end":
                 return _context.stop();
             }
@@ -112,107 +98,58 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }, null, this);
       }
     }, {
-      key: "selectionOnPress",
-      value: function selectionOnPress(seleccion) {
-        switch (seleccion) {
-          case "uno":
-            this.setState({
-              boton1: _styles2.default.buttonjuegowin,
-              boton2: _styles2.default.buttonjuegofail,
-              boton3: _styles2.default.buttonjuegofail
-            });
-            break;
-
-          case "dos":
-            this.setState({
-              boton1: _styles2.default.buttonjuegofail,
-              boton2: _styles2.default.buttonjuegowin,
-              boton3: _styles2.default.buttonjuegofail
-            });
-            break;
-
-          case "tres":
-            this.setState({
-              boton1: _styles2.default.buttonjuegofail,
-              boton2: _styles2.default.buttonjuegofail,
-              boton3: _styles2.default.buttonjuegowin
-            });
-            break;
-
-          default:
-            break;
-        }
-      }
+      key: "componentDidMount",
+      value: function componentDidMount() {}
     }, {
-      key: "getNivel",
-      value: function getNivel() {
+      key: "listarLecciones",
+      value: function listarLecciones() {
         var URL, response, responseJson;
-        return regeneratorRuntime.async(function getNivel$(_context2) {
+        return regeneratorRuntime.async(function listarLecciones$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                URL = _const.API_JUEGO_PALABRA_IMG.concat("/" + _NivelesPalabraImagen.idNivel).concat("/3").concat("/3");
-                _context2.prev = 1;
-                _context2.next = 4;
+                this.setState({
+                  isLoading: true
+                });
+                URL = _const.API.concat("/programas").concat("/1").concat("/leccions");
+                _context2.prev = 2;
+                _context2.next = 5;
                 return regeneratorRuntime.awrap(fetch(URL));
 
-              case 4:
+              case 5:
                 response = _context2.sent;
-                _context2.next = 7;
+                _context2.next = 8;
                 return regeneratorRuntime.awrap(response.json());
 
-              case 7:
+              case 8:
                 responseJson = _context2.sent;
                 this.setState({
-                  nivel: responseJson
-                });
-                _context2.next = 11;
-                return regeneratorRuntime.awrap(this.renderNivel());
-
-              case 11:
-                this.setState({
+                  lecciones: responseJson,
                   isLoading: false
                 });
-                _context2.next = 18;
+                _context2.next = 16;
                 break;
 
-              case 14:
-                _context2.prev = 14;
-                _context2.t0 = _context2["catch"](1);
+              case 12:
+                _context2.prev = 12;
+                _context2.t0 = _context2["catch"](2);
                 console.error("Error en la consulta de lecciones: " + _context2.t0);
                 this.setState({
                   isLoading: false
                 });
 
-              case 18:
+              case 16:
               case "end":
                 return _context2.stop();
             }
           }
-        }, null, this, [[1, 14]]);
+        }, null, this, [[2, 12]]);
       }
     }, {
-      key: "renderNivel",
-      value: function renderNivel() {
-        var juego;
-        return regeneratorRuntime.async(function renderNivel$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                juego = "Juego".concat(this.state.subnivel);
-                this.setState({
-                  imagen: _const.API.concat(this.state.nivel[juego].url),
-                  opcion1: this.state.nivel[juego].opciones[0].frase,
-                  opcion2: this.state.nivel[juego].opciones[1].frase,
-                  opcion3: this.state.nivel[juego].opciones[2].frase
-                });
-
-              case 2:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, null, this);
+      key: "navegarPalabraImagen",
+      value: function navegarPalabraImagen(semana) {
+        exports.idNivel = idNivel = semana;
+        this.props.navigation.navigate('PalabraImagen');
       }
     }, {
       key: "render",
@@ -225,7 +162,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 118
+                lineNumber: 72
               }
             },
             _react3.default.createElement(
@@ -234,7 +171,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.home_TextContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 119
+                  lineNumber: 73
                 }
               },
               _react3.default.createElement(
@@ -243,7 +180,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.headling,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 120
+                    lineNumber: 74
                   }
                 },
                 "Cargando..."
@@ -257,7 +194,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 127
+              lineNumber: 81
             }
           },
           _react3.default.createElement(
@@ -266,7 +203,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 128
+                lineNumber: 82
               }
             },
             _react3.default.createElement(
@@ -274,7 +211,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 130
+                  lineNumber: 84
                 }
               },
               _react3.default.createElement(
@@ -286,14 +223,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 131
+                    lineNumber: 85
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 132
+                    lineNumber: 86
                   }
                 })
               )
@@ -303,7 +240,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 136
+                  lineNumber: 90
                 }
               },
               _react3.default.createElement(
@@ -311,10 +248,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 137
+                    lineNumber: 91
                   }
                 },
-                "Juego Palabra/Imagen"
+                "Niveles"
               )
             )
           ),
@@ -322,109 +259,84 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             _nativeBase.Content,
             {
               style: _styles2.default.maxHeight,
-              contentContainerStyle: _styles2.default.centerImage,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 142
+                lineNumber: 96
               }
             },
-            _react3.default.createElement(_reactNative.Image, {
-              style: _styles2.default.imagenJuego,
-              source: {
-                uri: this.state.imagen
-              },
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 145
-              }
-            }),
             _react3.default.createElement(
-              _nativeBase.Button,
+              _nativeBase.Text,
               {
-                block: true,
-                rounded: true,
-                style: this.state.boton1,
-                onPress: function onPress() {
-                  return _this3.selectionOnPress("uno");
-                },
+                style: _styles2.default.textoNiveles,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 150
+                  lineNumber: 98
                 }
               },
-              _react3.default.createElement(
-                _nativeBase.Text,
-                {
-                  style: _styles2.default.textoOpcion,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 152
-                  }
-                },
-                this.state.opcion1
-              )
+              " Selecciona un nivel :D "
             ),
-            _react3.default.createElement(
-              _nativeBase.Button,
-              {
-                block: true,
-                rounded: true,
-                style: this.state.boton2,
-                onPress: function onPress() {
-                  return _this3.selectionOnPress("dos");
-                },
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 157
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Text,
+            this.state.lecciones.map(function (NewsData) {
+              return _react3.default.createElement(
+                _nativeBase.View,
                 {
-                  style: _styles2.default.textoOpcion,
+                  key: NewsData.id,
+                  style: _styles2.default.marginAddAula,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 159
+                    lineNumber: 102
                   }
                 },
-                this.state.opcion2
-              )
-            ),
-            _react3.default.createElement(
-              _nativeBase.Button,
-              {
-                block: true,
-                rounded: true,
-                style: this.state.boton3,
-                onPress: function onPress() {
-                  return _this3.selectionOnPress("tres");
-                },
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 164
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Text,
-                {
-                  style: _styles2.default.textoOpcion,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 166
-                  }
-                },
-                this.state.opcion3
-              )
-            )
+                _react3.default.createElement(
+                  _nativeBase.Card,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 103
+                    }
+                  },
+                  _react3.default.createElement(
+                    _nativeBase.CardItem,
+                    {
+                      button: true,
+                      onPress: function onPress() {
+                        return _this3.navegarPalabraImagen(NewsData.semana);
+                      },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 104
+                      }
+                    },
+                    _react3.default.createElement(_nativeBase.Icon, {
+                      type: "MaterialIcons",
+                      name: "videogame-asset",
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 105
+                      }
+                    }),
+                    _react3.default.createElement(
+                      _nativeBase.Text,
+                      {
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 106
+                        }
+                      },
+                      "Nivel ".concat(NewsData.semana)
+                    )
+                  )
+                )
+              );
+            })
           )
         );
       }
     }]);
 
-    return PalabraImagen;
+    return NivelesPalabraImagen;
   }(_react2.Component), _class.navigationOptions = {
     header: null
   }, _temp));
 
-  exports.default = PalabraImagen;
+  exports.default = NivelesPalabraImagen;
 });

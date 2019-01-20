@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Alert} from 'react-native';
+import {Alert, ToastAndroid} from 'react-native';
 import {Text, Picker, Icon, Container, Header, Body, Title,
   Content, Left, Button, Item, Form, Label, Input} from 'native-base';
 import styles from '../styles';
@@ -92,6 +92,7 @@ export default class AddClassRoom extends Component {
           });
 
           console.log(status + "Nueva aula creada!!");
+          ToastAndroid.show('Nueva aula creada!!!', ToastAndroid.SHORT);
           this.props.navigation.state.params.onNavigateBack();
           this.props.navigation.goBack()
           break;

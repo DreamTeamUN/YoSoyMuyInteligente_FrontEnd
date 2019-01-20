@@ -2,7 +2,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.idEstudiante = undefined;
+  exports.idNivel = undefined;
 
   var _react2 = _require(_dependencyMap[0], "react");
 
@@ -16,7 +16,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _class,
       _temp,
-      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/AdminStudentsTutor.js";
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/NivelesPalabraImagen.js";
 
   var _nativeBase = _require(_dependencyMap[2], "native-base");
 
@@ -24,11 +24,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _styles2 = _interopRequireDefault(_styles);
 
-  var _const = _require(_dependencyMap[4], "../config/const");
+  var _home = _require(_dependencyMap[4], "../utils/home");
 
-  var _home = _require(_dependencyMap[5], "../utils/home");
-
-  var _createStudent = _require(_dependencyMap[6], "../utils/createStudent");
+  var _const = _require(_dependencyMap[5], "../config/const");
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39,13 +37,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
   var _components = {
-    AdminStudentsTutor: {
-      displayName: "AdminStudentsTutor"
+    NivelesPalabraImagen: {
+      displayName: "NivelesPalabraImagen"
     }
   };
 
   var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/AdminStudentsTutor.js",
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/NivelesPalabraImagen.js",
     components: _components,
     locals: [module],
     imports: [_react3.default]
@@ -57,27 +55,25 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
   }
 
-  var idEstudiante = exports.idEstudiante = undefined;
+  var idNivel = exports.idNivel = undefined;
 
-  var AdminStudentsTutor = _wrapComponent("AdminStudentsTutor")((_temp = _class = function (_Component) {
-    _inherits(AdminStudentsTutor, _Component);
+  var NivelesPalabraImagen = _wrapComponent("NivelesPalabraImagen")((_temp = _class = function (_Component) {
+    _inherits(NivelesPalabraImagen, _Component);
 
-    function AdminStudentsTutor(props) {
-      _classCallCheck(this, AdminStudentsTutor);
+    function NivelesPalabraImagen(props) {
+      _classCallCheck(this, NivelesPalabraImagen);
 
-      var _this = _possibleConstructorReturn(this, (AdminStudentsTutor.__proto__ || Object.getPrototypeOf(AdminStudentsTutor)).call(this, props));
+      var _this = _possibleConstructorReturn(this, (NivelesPalabraImagen.__proto__ || Object.getPrototypeOf(NivelesPalabraImagen)).call(this, props));
 
       _this.state = {
-        active: 'true',
         isLoading: false,
         idUsuario: '',
-        idTutor: '',
-        estudiantes: []
+        lecciones: []
       };
       return _this;
     }
 
-    _createClass(AdminStudentsTutor, [{
+    _createClass(NivelesPalabraImagen, [{
       key: "componentWillMount",
       value: function componentWillMount() {
         var _this2 = this;
@@ -91,13 +87,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     idUsuario: id
                   });
                 }).then(function () {
-                  (0, _createStudent.getID_TUTOR)(_this2.state.idUsuario).then(function (idTutor) {
-                    _this2.setState({
-                      idTutor: idTutor
-                    });
-                  }).then(function () {
-                    _this2.listarEstudiantes();
-                  });
+                  _this2.listarLecciones();
                 });
 
               case 1:
@@ -108,71 +98,103 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }, null, this);
       }
     }, {
-      key: "listarEstudiantes",
-      value: function listarEstudiantes() {
+      key: "componentDidMount",
+      value: function componentDidMount() {}
+    }, {
+      key: "listarLecciones",
+      value: function listarLecciones() {
         var URL, response, responseJson;
-        return regeneratorRuntime.async(function listarEstudiantes$(_context2) {
+        return regeneratorRuntime.async(function listarLecciones$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 this.setState({
                   isLoading: true
                 });
-                URL = _const.API_TUTORS.concat("/" + this.state.idTutor).concat("/estudiantes");
-                console.log("URL estudiante: " + URL);
-                _context2.prev = 3;
-                _context2.next = 6;
+                URL = _const.API.concat("/programas").concat("/1").concat("/leccions");
+                _context2.prev = 2;
+                _context2.next = 5;
                 return regeneratorRuntime.awrap(fetch(URL));
 
-              case 6:
+              case 5:
                 response = _context2.sent;
-                _context2.next = 9;
+                _context2.next = 8;
                 return regeneratorRuntime.awrap(response.json());
 
-              case 9:
+              case 8:
                 responseJson = _context2.sent;
                 this.setState({
-                  estudiantes: responseJson,
+                  lecciones: responseJson,
                   isLoading: false
                 });
-                _context2.next = 17;
+                _context2.next = 16;
                 break;
 
-              case 13:
-                _context2.prev = 13;
-                _context2.t0 = _context2["catch"](3);
-                console.error("Error en la consulta: " + _context2.t0);
+              case 12:
+                _context2.prev = 12;
+                _context2.t0 = _context2["catch"](2);
+                console.error("Error en la consulta de lecciones: " + _context2.t0);
                 this.setState({
                   isLoading: false
                 });
 
-              case 17:
+              case 16:
               case "end":
                 return _context2.stop();
             }
           }
-        }, null, this, [[3, 13]]);
+        }, null, this, [[2, 12]]);
       }
     }, {
-      key: "componentDidMount",
-      value: function componentDidMount() {}
-    }, {
-      key: "navegarHomeStudent",
-      value: function navegarHomeStudent(isEstudiante) {
-        exports.idEstudiante = idEstudiante = idEstudiante;
-        this.props.navigation.navigate('HomeStudent');
+      key: "navegarPalabraImagen",
+      value: function navegarPalabraImagen(semana) {
+        exports.idNivel = idNivel = semana;
+        this.props.navigation.navigate('PalabraImagen');
       }
     }, {
       key: "render",
       value: function render() {
         var _this3 = this;
 
+        if (this.state.isLoading) {
+          return _react3.default.createElement(
+            _nativeBase.View,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 72
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.View,
+              {
+                style: _styles2.default.home_TextContainer,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 73
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  style: _styles2.default.headling,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 74
+                  }
+                },
+                "Cargando..."
+              )
+            )
+          );
+        }
+
         return _react3.default.createElement(
           _nativeBase.Container,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 83
+              lineNumber: 81
             }
           },
           _react3.default.createElement(
@@ -181,7 +203,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 84
+                lineNumber: 82
               }
             },
             _react3.default.createElement(
@@ -189,7 +211,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 86
+                  lineNumber: 84
                 }
               },
               _react3.default.createElement(
@@ -201,14 +223,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 87
+                    lineNumber: 85
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 88
+                    lineNumber: 86
                   }
                 })
               )
@@ -218,7 +240,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 92
+                  lineNumber: 90
                 }
               },
               _react3.default.createElement(
@@ -226,10 +248,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 93
+                    lineNumber: 91
                   }
                 },
-                "Panel de estudiantes"
+                "Niveles"
               )
             )
           ),
@@ -239,10 +261,21 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.maxHeight,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 98
+                lineNumber: 96
               }
             },
-            this.state.estudiantes.map(function (NewsData) {
+            _react3.default.createElement(
+              _nativeBase.Text,
+              {
+                style: _styles2.default.textoNiveles,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 98
+                }
+              },
+              " Selecciona un nivel :D "
+            ),
+            this.state.lecciones.map(function (NewsData) {
               return _react3.default.createElement(
                 _nativeBase.View,
                 {
@@ -250,7 +283,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.marginAddAula,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 101
+                    lineNumber: 102
                   }
                 },
                 _react3.default.createElement(
@@ -258,7 +291,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 102
+                      lineNumber: 103
                     }
                   },
                   _react3.default.createElement(
@@ -266,19 +299,19 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       button: true,
                       onPress: function onPress() {
-                        return _this3.navegarHomeStudent(NewsData.id);
+                        return _this3.navegarPalabraImagen(NewsData.semana);
                       },
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 103
+                        lineNumber: 104
                       }
                     },
                     _react3.default.createElement(_nativeBase.Icon, {
-                      active: true,
-                      name: "person",
+                      type: "MaterialIcons",
+                      name: "videogame-asset",
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 104
+                        lineNumber: 105
                       }
                     }),
                     _react3.default.createElement(
@@ -286,52 +319,24 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       {
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 105
+                          lineNumber: 106
                         }
                       },
-                      NewsData.nombre
+                      "Nivel ".concat(NewsData.semana)
                     )
                   )
                 )
               );
-            })
-          ),
-          _react3.default.createElement(
-            _nativeBase.Fab,
-            {
-              active: this.state.active,
-              direction: "up",
-              containerStyle: {},
-              style: {
-                backgroundColor: '#5067FF'
-              },
-              position: "bottomRight",
-              onPress: function onPress() {
-                return _this3.props.navigation.navigate('AddStudent', {
-                  onNavigateBack: _this3.listarEstudiantes.bind(_this3)
-                });
-              },
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 114
-              }
-            },
-            _react3.default.createElement(_nativeBase.Icon, {
-              name: "add",
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 122
-              }
             })
           )
         );
       }
     }]);
 
-    return AdminStudentsTutor;
+    return NivelesPalabraImagen;
   }(_react2.Component), _class.navigationOptions = {
     header: null
   }, _temp));
 
-  exports.default = AdminStudentsTutor;
+  exports.default = NivelesPalabraImagen;
 });

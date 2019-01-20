@@ -192,7 +192,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 92
+                lineNumber: 87
               }
             },
             _react3.default.createElement(
@@ -201,7 +201,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.home_TextContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 93
+                  lineNumber: 88
                 }
               },
               _react3.default.createElement(
@@ -210,7 +210,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.headling,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 94
+                    lineNumber: 89
                   }
                 },
                 "Creando usuario"
@@ -220,7 +220,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 color: "#4267B2",
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 95
+                  lineNumber: 90
                 }
               })
             )
@@ -232,7 +232,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 102
+              lineNumber: 96
             }
           },
           _react3.default.createElement(
@@ -241,7 +241,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.adult_TextInputContainer,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 104
+                lineNumber: 98
               }
             },
             _react3.default.createElement(
@@ -251,7 +251,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.adult_TextInput,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 106
+                  lineNumber: 100
                 }
               },
               _react3.default.createElement(
@@ -259,7 +259,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 107
+                    lineNumber: 101
                   }
                 },
                 "Nombre de usuario"
@@ -274,7 +274,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 value: this.state.username,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 109
+                  lineNumber: 102
                 }
               })
             ),
@@ -285,7 +285,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.adult_TextInput,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 119
+                  lineNumber: 109
                 }
               },
               _react3.default.createElement(
@@ -293,7 +293,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 120
+                    lineNumber: 110
                   }
                 },
                 "Contrase\xF1a"
@@ -308,7 +308,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 value: this.state.password,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 121
+                  lineNumber: 111
                 }
               })
             ),
@@ -319,7 +319,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.adult_TextInput,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 128
+                  lineNumber: 118
                 }
               },
               _react3.default.createElement(
@@ -327,7 +327,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 129
+                    lineNumber: 119
                   }
                 },
                 "Repita su contrase\xF1a"
@@ -342,7 +342,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 value: this.state.password2,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 130
+                  lineNumber: 120
                 }
               })
             ),
@@ -354,7 +354,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.adult_TextInput,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 137
+                  lineNumber: 127
                 }
               },
               _react3.default.createElement(
@@ -362,7 +362,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 138
+                    lineNumber: 128
                   }
                 },
                 "Correo electr\xF3nico"
@@ -376,7 +376,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 value: this.state.email,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 139
+                  lineNumber: 129
                 }
               })
             )
@@ -384,63 +384,32 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           _react3.default.createElement(
             _reactNative.View,
             {
-              style: _styles2.default.adult_ButtonsContainer,
+              style: _styles2.default.homeAdult_buttonsContainer,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 147
+                lineNumber: 136
               }
             },
             _react3.default.createElement(
               _reactNative.View,
               {
-                style: _styles2.default.button,
+                style: _styles2.default.viewButtonHome,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 148
+                  lineNumber: 137
                 }
               },
               _react3.default.createElement(
                 _nativeBase.Button,
                 {
-                  iconLeft: true,
-                  rounded: true,
-                  style: _styles2.default.buttonclear,
-                  onPress: function onPress() {
-                    return _this2.props.navigation.navigate('AddStudent');
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 149
-                  }
-                },
-                _react3.default.createElement(_nativeBase.Icon, {
-                  name: "person-add",
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 151
-                  }
-                }),
-                _react3.default.createElement(
-                  _nativeBase.Text,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 152
-                    }
-                  },
-                  "A\xF1adir Estudiante"
-                )
-              ),
-              _react3.default.createElement(
-                _nativeBase.Button,
-                {
+                  full: true,
                   iconLeft: true,
                   rounded: true,
                   style: _styles2.default.buttondark,
                   onPress: this._createAdult.bind(this),
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 157
+                    lineNumber: 138
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
@@ -448,7 +417,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   name: "done",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 160
+                    lineNumber: 141
                   }
                 }),
                 _react3.default.createElement(
@@ -456,23 +425,23 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 161
+                      lineNumber: 142
                     }
                   },
                   "Finalizar Registro"
                 )
               )
-            ),
-            _react3.default.createElement(
-              _nativeBase.Text,
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 164
-                }
-              },
-              this.state.errors.toString()
             )
+          ),
+          _react3.default.createElement(
+            _nativeBase.Text,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 146
+              }
+            },
+            this.state.errors.toString()
           )
         );
       }

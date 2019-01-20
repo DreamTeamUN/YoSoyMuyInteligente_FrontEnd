@@ -192,7 +192,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 response = _context3.sent;
                 status = response.status;
                 _context3.t0 = status;
-                _context3.next = _context3.t0 === 201 ? 11 : 16;
+                _context3.next = _context3.t0 === 201 ? 11 : 17;
                 break;
 
               case 11:
@@ -200,35 +200,38 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   isLoading: false
                 });
                 console.log(status + "Nueva aula creada!!");
+
+                _reactNative.ToastAndroid.show('Nueva aula creada!!!', _reactNative.ToastAndroid.SHORT);
+
                 this.props.navigation.state.params.onNavigateBack();
                 this.props.navigation.goBack();
-                return _context3.abrupt("break", 19);
+                return _context3.abrupt("break", 20);
 
-              case 16:
+              case 17:
                 console.log("Error creando la aula, status code: " + status);
 
                 _reactNative.Alert.alert("Error!!", "Lo sentimos, ocurrió un error durante la creación del aula, por favor intente de nuevo.");
 
-                return _context3.abrupt("break", 19);
+                return _context3.abrupt("break", 20);
 
-              case 19:
-                _context3.next = 25;
+              case 20:
+                _context3.next = 26;
                 break;
 
-              case 21:
-                _context3.prev = 21;
+              case 22:
+                _context3.prev = 22;
                 _context3.t1 = _context3["catch"](1);
                 this.setState({
                   isLoading: false
                 });
                 console.log("Error creando el aula: " + _context3.t1);
 
-              case 25:
+              case 26:
               case "end":
                 return _context3.stop();
             }
           }
-        }, null, this, [[1, 21]]);
+        }, null, this, [[1, 22]]);
       }
     }, {
       key: "render",
@@ -240,7 +243,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 117
+              lineNumber: 118
             }
           },
           _react3.default.createElement(
@@ -249,7 +252,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 119
+                lineNumber: 120
               }
             },
             _react3.default.createElement(
@@ -257,7 +260,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 120
+                  lineNumber: 121
                 }
               },
               _react3.default.createElement(
@@ -269,14 +272,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 121
+                    lineNumber: 122
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 122
+                    lineNumber: 123
                   }
                 })
               )
@@ -286,7 +289,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 125
+                  lineNumber: 126
                 }
               },
               _react3.default.createElement(
@@ -294,7 +297,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 126
+                    lineNumber: 127
                   }
                 },
                 "Crear Aula"
@@ -306,7 +309,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 130
+                lineNumber: 131
               }
             },
             _react3.default.createElement(
@@ -315,7 +318,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.subtitle,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 131
+                  lineNumber: 132
                 }
               },
               "Por favor ingrese los siguientes datos para crear la nueva aula"
@@ -325,7 +328,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 135
+                  lineNumber: 136
                 }
               },
               _react3.default.createElement(
@@ -335,7 +338,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.marginAddAula,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 137
+                    lineNumber: 138
                   }
                 },
                 _react3.default.createElement(
@@ -346,7 +349,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       name: "ios-arrow-down-outline",
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 140
+                        lineNumber: 141
                       }
                     }),
                     style: {
@@ -361,7 +364,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     onValueChange: this.onValueChange.bind(this),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 138
+                      lineNumber: 139
                     }
                   },
                   _react3.default.createElement(_nativeBase.Picker.Item, {
@@ -369,7 +372,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     value: "1",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 149
+                      lineNumber: 150
                     }
                   }),
                   _react3.default.createElement(_nativeBase.Picker.Item, {
@@ -377,7 +380,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     value: "2",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 150
+                      lineNumber: 151
                     }
                   }),
                   _react3.default.createElement(_nativeBase.Picker.Item, {
@@ -385,7 +388,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     value: "3",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 151
+                      lineNumber: 152
                     }
                   })
                 )
@@ -397,7 +400,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.marginAddAula,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 155
+                    lineNumber: 156
                   }
                 },
                 _react3.default.createElement(
@@ -405,7 +408,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 156
+                      lineNumber: 157
                     }
                   },
                   " Nombre del Aula"
@@ -419,7 +422,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 157
+                    lineNumber: 158
                   }
                 })
               ),
@@ -430,7 +433,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.marginAddAula,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 164
+                    lineNumber: 165
                   }
                 },
                 _react3.default.createElement(
@@ -438,7 +441,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 165
+                      lineNumber: 166
                     }
                   },
                   "Descripci\xF3n"
@@ -451,7 +454,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 166
+                    lineNumber: 167
                   }
                 })
               )
@@ -465,7 +468,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 onPress: this.createAula.bind(this),
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 174
+                  lineNumber: 175
                 }
               },
               _react3.default.createElement(
@@ -473,7 +476,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 176
+                    lineNumber: 177
                   }
                 },
                 "Aceptar"

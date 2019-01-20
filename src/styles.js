@@ -473,6 +473,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
+  textoNiveles: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    margin: hp('3%'),
+  },
 
   //frasePNL
   frasePNL: {

@@ -25,6 +25,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _styles2 = _interopRequireDefault(_styles);
 
+  var _NivelesPalabraImagen = _require(_dependencyMap[5], "./NivelesPalabraImagen");
+
+  var _home = _require(_dependencyMap[6], "../utils/home");
+
+  var _const = _require(_dependencyMap[7], "../config/const");
+
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62,19 +68,57 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
       _this.state = {
         isLoading: false,
+        idUsuario: '',
         boton1: _styles2.default.buttonjuego,
         boton2: _styles2.default.buttonjuego,
-        boton3: _styles2.default.buttonjuego
+        boton3: _styles2.default.buttonjuego,
+        nivel: [],
+        imagen: '',
+        opcion1: '',
+        opcion2: '',
+        opcion3: '',
+        opcionCorrecta: '',
+        subnivel: 0,
+        puntuacion: 0,
+        cantidadJuegos: 5
       };
-      _this.selectionOnPress = _this.selectionOnPress.bind(_this);
+      _this.cambiarColorBotones = _this.cambiarColorBotones.bind(_this);
+      _this.evaluarOpcion = _this.evaluarOpcion.bind(_this);
       return _this;
     }
 
     _createClass(PalabraImagen, [{
-      key: "selectionOnPress",
-      value: function selectionOnPress(seleccion) {
+      key: "componentWillMount",
+      value: function componentWillMount() {
+        var _this2 = this;
+
+        return regeneratorRuntime.async(function componentWillMount$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.setState({
+                  isLoading: true
+                });
+                (0, _home.getID)().then(function (id) {
+                  _this2.setState({
+                    idUsuario: id
+                  });
+                }).then(function () {
+                  _this2.getNivel();
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "cambiarColorBotones",
+      value: function cambiarColorBotones(seleccion) {
         switch (seleccion) {
-          case "uno":
+          case this.state.opcion1:
             this.setState({
               boton1: _styles2.default.buttonjuegowin,
               boton2: _styles2.default.buttonjuegofail,
@@ -82,7 +126,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             });
             break;
 
-          case "dos":
+          case this.state.opcion2:
             this.setState({
               boton1: _styles2.default.buttonjuegofail,
               boton2: _styles2.default.buttonjuegowin,
@@ -90,7 +134,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             });
             break;
 
-          case "tres":
+          case this.state.opcion3:
             this.setState({
               boton1: _styles2.default.buttonjuegofail,
               boton2: _styles2.default.buttonjuegofail,
@@ -99,20 +143,159 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             break;
 
           default:
+            this.setState({
+              boton1: _styles2.default.buttonjuego,
+              boton2: _styles2.default.buttonjuego,
+              boton3: _styles2.default.buttonjuego
+            });
             break;
         }
       }
     }, {
+      key: "getNivel",
+      value: function getNivel() {
+        var URL, response, responseJson;
+        return regeneratorRuntime.async(function getNivel$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                URL = _const.API_JUEGO_PALABRA_IMG.concat("/" + _NivelesPalabraImagen.idNivel).concat("/3").concat("/" + this.state.cantidadJuegos);
+                _context2.prev = 1;
+                _context2.next = 4;
+                return regeneratorRuntime.awrap(fetch(URL));
+
+              case 4:
+                response = _context2.sent;
+                _context2.next = 7;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 7:
+                responseJson = _context2.sent;
+                this.setState({
+                  nivel: responseJson
+                });
+                this.renderNivel();
+                this.setState({
+                  isLoading: false
+                });
+                _context2.next = 17;
+                break;
+
+              case 13:
+                _context2.prev = 13;
+                _context2.t0 = _context2["catch"](1);
+                console.error("Error en la consulta de lecciones: " + _context2.t0);
+                this.setState({
+                  isLoading: false
+                });
+
+              case 17:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, null, this, [[1, 13]]);
+      }
+    }, {
+      key: "renderNivel",
+      value: function renderNivel() {
+        var juego;
+        return regeneratorRuntime.async(function renderNivel$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                juego = "Juego".concat(this.state.subnivel);
+
+                if (this.state.subnivel < this.state.cantidadJuegos) {
+                  this.setState({
+                    imagen: _const.API.concat(this.state.nivel[juego].url),
+                    opcion1: this.state.nivel[juego].opciones[0].frase,
+                    opcion2: this.state.nivel[juego].opciones[1].frase,
+                    opcion3: this.state.nivel[juego].opciones[2].frase,
+                    opcionCorrecta: this.state.nivel[juego].correcta
+                  });
+                } else {
+                  this.props.navigation.goBack();
+                }
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "evaluarOpcion",
+      value: function evaluarOpcion(opcion) {
+        var _this3 = this;
+
+        if (this.state.opcionCorrecta == opcion) {
+          _reactNative.ToastAndroid.show('Bien!! :D', _reactNative.ToastAndroid.SHORT);
+
+          this.setState({
+            puntuacion: this.state.puntuacion + 10
+          });
+        } else {
+          _reactNative.ToastAndroid.show('Incorrecto :(', _reactNative.ToastAndroid.SHORT);
+        }
+
+        this.cambiarColorBotones(this.state.opcionCorrecta);
+        setTimeout(function () {
+          _this3.cambiarColorBotones("cambiar");
+
+          _this3.setState({
+            subnivel: _this3.state.subnivel + 1
+          });
+
+          _this3.renderNivel();
+        }, 2000);
+        clearTimeout();
+      }
+    }, {
       key: "render",
       value: function render() {
-        var _this2 = this;
+        var _this4 = this;
+
+        if (this.state.isLoading) {
+          return _react3.default.createElement(
+            _nativeBase.View,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 157
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.View,
+              {
+                style: _styles2.default.home_TextContainer,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 158
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  style: _styles2.default.headling,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 159
+                  }
+                },
+                "Cargando..."
+              )
+            )
+          );
+        }
 
         return _react3.default.createElement(
           _nativeBase.Container,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 59
+              lineNumber: 166
             }
           },
           _react3.default.createElement(
@@ -121,7 +304,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 60
+                lineNumber: 167
               }
             },
             _react3.default.createElement(
@@ -129,7 +312,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 62
+                  lineNumber: 169
                 }
               },
               _react3.default.createElement(
@@ -137,18 +320,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   transparent: true,
                   onPress: function onPress() {
-                    return _this2.props.navigation.goBack();
+                    return _this4.props.navigation.goBack();
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 63
+                    lineNumber: 170
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 64
+                    lineNumber: 171
                   }
                 })
               )
@@ -158,7 +341,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 68
+                  lineNumber: 175
                 }
               },
               _react3.default.createElement(
@@ -166,7 +349,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 69
+                    lineNumber: 176
                   }
                 },
                 "Juego Palabra/Imagen"
@@ -180,17 +363,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               contentContainerStyle: _styles2.default.centerImage,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 74
+                lineNumber: 181
               }
             },
             _react3.default.createElement(_reactNative.Image, {
               style: _styles2.default.imagenJuego,
               source: {
-                uri: 'https://www.himgs.com/imagenes/hola/comunes/hola-2017.gif'
+                uri: this.state.imagen
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 77
+                lineNumber: 183
               }
             }),
             _react3.default.createElement(
@@ -200,11 +383,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 rounded: true,
                 style: this.state.boton1,
                 onPress: function onPress() {
-                  return _this2.selectionOnPress("uno");
+                  return _this4.evaluarOpcion(_this4.state.opcion1);
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 82
+                  lineNumber: 188
                 }
               },
               _react3.default.createElement(
@@ -213,10 +396,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.textoOpcion,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 84
+                    lineNumber: 190
                   }
                 },
-                "Opci\xF3n #1"
+                this.state.opcion1
               )
             ),
             _react3.default.createElement(
@@ -226,11 +409,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 rounded: true,
                 style: this.state.boton2,
                 onPress: function onPress() {
-                  return _this2.selectionOnPress("dos");
+                  return _this4.evaluarOpcion(_this4.state.opcion2);
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 87
+                  lineNumber: 195
                 }
               },
               _react3.default.createElement(
@@ -239,10 +422,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.textoOpcion,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 89
+                    lineNumber: 197
                   }
                 },
-                "Opci\xF3n #2"
+                this.state.opcion2
               )
             ),
             _react3.default.createElement(
@@ -252,11 +435,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 rounded: true,
                 style: this.state.boton3,
                 onPress: function onPress() {
-                  return _this2.selectionOnPress("tres");
+                  return _this4.evaluarOpcion(_this4.state.opcion3);
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 92
+                  lineNumber: 202
                 }
               },
               _react3.default.createElement(
@@ -265,10 +448,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.textoOpcion,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 94
+                    lineNumber: 204
                   }
                 },
-                "Opci\xF3n #3"
+                this.state.opcion3
               )
             )
           )

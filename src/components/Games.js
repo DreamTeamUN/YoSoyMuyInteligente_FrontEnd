@@ -8,7 +8,7 @@ export default class Games extends Component {
   render() {
     return (
       <Content style = {{margin: 10}}>
-        <Card>
+        <Card button onPress={() => this.props.navigation.navigate('NivelesPalabraImagen')}>
             <CardItem header>
               <Text>Enlazar Palabras con su Imagen</Text>
             </CardItem>
@@ -21,7 +21,7 @@ export default class Games extends Component {
               </Body>
             </CardItem>
             <CardItem footer>
-              <Button transparent info  onPress={() => this.props.navigation.navigate('PalabraImagen')}>
+              <Button transparent info  onPress={() => this.props.navigation.navigate('NivelesPalabraImagen')}>
             <Text>¡Quiero jugar!</Text>
           </Button>
             </CardItem>

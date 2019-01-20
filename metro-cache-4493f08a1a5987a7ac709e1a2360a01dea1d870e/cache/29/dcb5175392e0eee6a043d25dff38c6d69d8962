@@ -282,14 +282,16 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             _react3.default.createElement(
               _reactNative.View,
               {
+                style: _styles2.default.viewButtonHome,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 93
+                  lineNumber: 94
                 }
               },
               _react3.default.createElement(
                 _nativeBase.Button,
                 {
+                  full: true,
                   iconLeft: true,
                   rounded: true,
                   style: _styles2.default.buttonclear,
@@ -298,14 +300,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 93
+                    lineNumber: 95
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "person-add",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 95
+                    lineNumber: 97
                   }
                 }),
                 _react3.default.createElement(
@@ -313,7 +315,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 96
+                      lineNumber: 98
                     }
                   },
                   "Registrar con correo"
@@ -323,14 +325,16 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             _react3.default.createElement(
               _reactNative.View,
               {
+                style: _styles2.default.viewButtonHome,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 100
+                  lineNumber: 102
                 }
               },
               _react3.default.createElement(
                 _nativeBase.Button,
                 {
+                  full: true,
                   iconLeft: true,
                   rounded: true,
                   style: _styles2.default.buttonred,
@@ -339,7 +343,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 101
+                    lineNumber: 103
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
@@ -347,7 +351,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   name: "google",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 103
+                    lineNumber: 105
                   }
                 }),
                 _react3.default.createElement(
@@ -355,7 +359,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 104
+                      lineNumber: 106
                     }
                   },
                   "Iniciar con Google"
@@ -365,14 +369,16 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             _react3.default.createElement(
               _reactNative.View,
               {
+                style: _styles2.default.viewButtonHome,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 108
+                  lineNumber: 110
                 }
               },
               _react3.default.createElement(
                 _nativeBase.Button,
                 {
+                  full: true,
                   iconLeft: true,
                   rounded: true,
                   style: _styles2.default.buttondark,
@@ -381,14 +387,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 109
+                    lineNumber: 111
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "person",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 111
+                    lineNumber: 113
                   }
                 }),
                 _react3.default.createElement(
@@ -396,7 +402,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 112
+                      lineNumber: 114
                     }
                   },
                   "Iniciar sesi\xF3n con correo"

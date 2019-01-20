@@ -107,7 +107,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             _react3.default.createElement(
               _reactNative.View,
               {
-                style: _styles2.default.button,
+                style: _styles2.default.viewButtonHome,
                 __source: {
                   fileName: _jsxFileName,
                   lineNumber: 19
@@ -116,6 +116,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               _react3.default.createElement(
                 _nativeBase.Button,
                 {
+                  full: true,
                   iconLeft: true,
                   rounded: true,
                   style: _styles2.default.buttonclear,
@@ -150,7 +151,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             _react3.default.createElement(
               _reactNative.View,
               {
-                style: _styles2.default.button,
+                style: _styles2.default.viewButtonHome,
                 __source: {
                   fileName: _jsxFileName,
                   lineNumber: 27
@@ -159,6 +160,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               _react3.default.createElement(
                 _nativeBase.Button,
                 {
+                  full: true,
                   iconLeft: true,
                   rounded: true,
                   style: _styles2.default.buttondark,

@@ -12,7 +12,7 @@ export default class LogIn extends Component {
 
   constructor(props) {
     super(props);
-    this.toggleSwitch = this.toggleSwitch.bind(this);
+    // this.toggleSwitch = this.toggleSwitch.bind(this);
     this.state = {
       email: 'AVN@gmail.com',
       password: '123123',
@@ -25,9 +25,9 @@ export default class LogIn extends Component {
     };
   }
 
-  toggleSwitch() {
-    this.setState({ rememberMe: !this.state.rememberMe });
-  }
+  // toggleSwitch() {
+  //   this.setState({ rememberMe: !this.state.rememberMe });
+  // }
 
   async _sendData() {
 
@@ -96,7 +96,7 @@ export default class LogIn extends Component {
             />
           </Item>
 
-          <View style={styles.login_Toggle}>
+          {/* <View style={styles.login_Toggle}>
             <Text style={styles.login_ToggleText}>
               Recordar usuario
             </Text>
@@ -104,7 +104,7 @@ export default class LogIn extends Component {
               onValueChange={this.toggleSwitch}
               value={this.state.rememberMe}
             />
-          </View>
+          </View> */}
 
         </Form>
 

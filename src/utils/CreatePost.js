@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
-import { API_USERS } from '../config/const';
+import { API_USERS, API } from '../config/const';
 import { getID } from './home';
 
-const FORUM_ID = 'id';
+const FORUM_ID = 'forum_id';
 const FORUM_TITLE = 'title';
 const FORUM_TEXT = 'text';
-const FORUM_USER = 'user';
+const FORUM_USER = 'forum_user';
 const FORUM_EMAIL = 'email';
 
 export const createPost = async (titulo,texto,resumen) => {
@@ -24,7 +24,9 @@ export const createPost = async (titulo,texto,resumen) => {
 	                         "nivel_acceso_id": 0,
                             "titulo": titulo,
                             "resumen": resumen,
-                            "texto": texto
+                            "texto": texto,
+                            "abierto": "true",
+                            "publicado": "true"
                           }
             })
         });
@@ -95,15 +97,42 @@ export const getForEMAIL = async () => {
 export const getcomments= async () => {
 
     let ID = await getForID();
-
+    console.log(ID);
     let response = await fetch(`https://ysmiapi.herokuapp.com/entradas/3/${ID}/1`, {
         method: 'GET',
         headers: new Headers({
         }),
     });
     let res = await response.json();
-    console.log(res);
     return res
 
 
+}
+
+export const createComment = async (texto) => {
+    try {
+        let UID = await getID();
+        let FID = await getForID();
+        const API_ENTRADA_POST = `${API}/usuarios/${UID}/entradas/${FID}/entradas`;
+        console.log(API_ENTRADA_POST)
+        return await fetch(API_ENTRADA_POST, {
+            method: 'POST',
+            headers: new Headers({
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            }),
+            body: JSON.stringify({
+              "entrada": {
+	                         "nivel_acceso_id": 0,
+                            "titulo": "comentario",
+                            "resumen": "comentario",
+                            "texto": texto,
+                            "abierto": "true",
+                            "publicado": "true"
+                          }
+            })
+        });
+    } catch (error) {
+        console.log("cratePOst | Something went wrong")
+    }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Imagen } from 'react-native';
 import { Container, View, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
 import { storeForDATA, getForEMAIL, getcomments } from '../utils/CreatePost';
+import { getID } from '../utils/home';
 import Dataset from 'impagination';
 export default class HomeForum extends Component {
 
@@ -60,8 +61,10 @@ export default class HomeForum extends Component {
     this.setState({dataset});
   }
 
-  componentWillMount() {
+  async componentWillMount() {
       this.setupImpagination();
+      await getID();
+
     }
 
   setCurrentReadOffset = (event) => {

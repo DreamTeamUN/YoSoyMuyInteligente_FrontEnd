@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
-import { storeForDATA, getForEMAIL } from '../utils/CreatePost';
+import { Imagen } from 'react-native';
+import { Container, View, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
+import { storeForDATA, getForEMAIL, getcomments } from '../utils/CreatePost';
 import Dataset from 'impagination';
 export default class HomeForum extends Component {
 
@@ -11,8 +11,24 @@ export default class HomeForum extends Component {
     this.state = {
       dataset: null,
       datasetState: null,
+      numComments: {},
+
     };
   }
+
+
+   async comments (id){
+
+      let response = await fetch(`https://ysmiapi.herokuapp.com/entradas/3/${id}/1`, {
+          method: 'GET',
+          headers: new Headers({
+          }),
+      });
+      let res = await response.json();
+      console.log(res);
+      this.state.numComments[id] = res.length;
+  }
+
 
   async _storeforid(id, title, text, user, email){
 
@@ -22,6 +38,7 @@ export default class HomeForum extends Component {
       this.props.navigation.navigate('ForumScreen')
 
   }
+
 
   setupImpagination() {
     let dataset = new Dataset({
@@ -58,18 +75,20 @@ export default class HomeForum extends Component {
   render() {
     return (
       <Container>
-        <Header />
         <Content onScroll={this.setCurrentReadOffset}>
         <Button full info onPress={() => this.props.navigation.navigate('CardForum')}>
             <Text>Crear entrada</Text>
           </Button>
           {this.state.datasetState.map(record => {
+
             if (!record.isSettled) {
               return <Spinner key={Math.random()}/>;
             }
+            this.comments(record.content.id)
             return (
+              <View key={record.content.id}>
           <Card>
-            <CardItem >
+            <CardItem>
               <Left>
                 <Thumbnail source={{uri: 'Image URL'}} />
                 <Body>
@@ -82,23 +101,20 @@ export default class HomeForum extends Component {
               <Text>{record.content.resumen}</Text>
             </CardItem>
             <CardItem>
+              <Body>
               <Left>
                 <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
-                </Button>
-              </Left>
-              <Body>
-                <Button transparent>
                   <Icon active name="chatbubbles" />
-                  <Text>{record.content.ramificacion - 1}</Text>
+                  <Text>{this.state.numComments[record.content.id]}</Text>
                 </Button>
+                </Left>
               </Body>
               <Right>
-                <Text>{record.content.created_at}</Text>
+                <Text>{record.content.created_at.substring(0,10)}</Text>
               </Right>
             </CardItem>
           </Card>
+          </View>
         );
        })}
         </Content>

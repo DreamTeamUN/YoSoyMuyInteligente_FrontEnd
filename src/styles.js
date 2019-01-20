@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
 
     headerStyle: {
       backgroundColor: '#5D99C6',
-      height: hp('12%'),
+      height: hp('14%'),
       zIndex: 10,
-      paddingTop: hp('1.5%'),
+      paddingTop: hp('3.5%'),
     },
 
     maxHeight: {
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
 
     //Adult/Teacher Home
     homeAdult_TextContainer: {
-        height: hp('25%'),
+        height: hp('40%'),
         justifyContent: 'center',
     },
 
@@ -163,8 +163,8 @@ const styles = StyleSheet.create({
     },
 
     homeAdult_buttonsContainer: {
-        marginTop: hp('5%'),
-        height: hp('70%'),
+        marginTop: hp('3%'),
+        height: hp('55%'),
         flexDirection: 'column',
         alignItems: 'center',
     },
@@ -421,7 +421,21 @@ const styles = StyleSheet.create({
   centerImage:{
     justifyContent: 'center',
     alignItems: 'center',
+    width: wp('100%'),
+
   },
+
+  profilePhoto:{
+    height: hp('8%'),
+    width: hp('8%'),
+    // marginTop: hp('6%'),
+    // marginBottom: hp('6%'),
+    borderRadius: 30,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "orange"
+  },
+
 
   imagenJuego:{
     height: hp('40%'),
@@ -464,6 +478,37 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     margin: hp('3%'),
+  },
+
+  //frasePNL
+  frasePNL: {
+    fontWeight: '100',
+    color: '#ABB2B9',
+    fontStyle: 'italic',
+    fontSize: hp('5%'),
+    textAlign: 'center',
+    marginLeft: wp('2%'),
+    marginRight: wp('2%'),
+  },
+
+  frasePNLEstudiante: {
+    width: wp('100%'),
+    fontWeight: '100',
+    color: '#ABB2B9',
+    fontStyle: 'italic',
+    fontSize: hp('4%'),
+    textAlign: 'center',
+    marginLeft: wp('2%'),
+    marginRight: wp('2%'),
+    marginTop: hp('1%'),
+    marginBottom: hp('3%'),
+  },
+
+
+  imagenBienvenidaEstudiante:{
+    height: hp('40%'),
+    width: hp('40%'),
+    marginTop: hp('6%'),
   },
 
 });

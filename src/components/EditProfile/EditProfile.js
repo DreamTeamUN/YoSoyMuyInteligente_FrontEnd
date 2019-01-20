@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Alert } from 'react-native';
-import { Container, Header, Content, Form, Item, Label, Input, Button, Icon, Title, Left, Right, Body, Text, List, ListItem } from 'native-base';
+import { View, Alert, Image, AsyncStorage } from 'react-native';
+import { Container, Header, Content, Button, Icon, Title, Left, Right, Body, Text, List, ListItem } from 'native-base';
 import styles from '../../styles';
 
 import { StyleProvider } from "native-base";
@@ -10,35 +10,46 @@ import variables from "../../../native-base-theme/variables/commonColor";
 // import { putEditData } from '../../utils/editProfile';
 
 export default class EditProfile extends Component {
+  static navigationOptions = {
+    header: null
+  }
 
   constructor(props) {
     super(props);
     this.state = {
-      fullname: '',
-      password: '',
-      password2: '',
-      birthdate: '',
-      // foto: '',
+      source: { uri: 'http://ysmiapi.herokuapp.com/AVN_photo.jpg' + '?' + new Date() }, // machetazo (src: https://github.com/facebook/react-native/issues/12606#issuecomment-363397371)
       errors: [],
       isLoading: false,
     };
+  }
+
+  componentWillMount = async () => {
+    await AsyncStorage.setItem('reload', 'false');
   }
 
   render() {
     return (
       <StyleProvider style={getTheme(variables)}>
         <Container>
-          {/* <Header>
+          <Header style={styles.headerStyle}>
             <Left>
               <Button transparent onPress={() => this.props.navigation.goBack()}>
                 <Icon name="arrow-back" />
               </Button>
             </Left>
+
             <Body>
               <Title>Editar perfil</Title>
             </Body>
-            <Right />
-          </Header> */}
+
+            <Right>
+              <Image
+                style={styles.profilePhoto}
+                // source={ uri: this.state.photoURL + '?' + new Date()}
+                source={this.state.source}
+              />
+            </Right>
+          </Header>
 
           <Content>
 
@@ -57,8 +68,9 @@ export default class EditProfile extends Component {
                 onPress={() => this.props.navigation.navigate('ChangeBirthdate')}>
                 <Text>Fecha de nacimiento</Text>
               </ListItem>
-              <ListItem>
-                <Text>Cambiar foto (temporal)</Text>
+              <ListItem
+                onPress={() => this.props.navigation.navigate('ChangePhoto')}>
+                <Text>Cambiar foto</Text>
               </ListItem>
             </List>
 
@@ -67,5 +79,10 @@ export default class EditProfile extends Component {
         </Container>
       </StyleProvider>
     );
+  }
+
+  componentWillUnmount() {
+    this.props.navigation.state.params.onNavigateBack()
+    console.log("componentWillUnmount");
   }
 }

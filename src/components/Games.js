@@ -16,7 +16,7 @@ export default class Games extends Component {
               <Body>
                 <Image
                   style={styles.imagenCardview}
-                  source={{uri: 'https://images.vexels.com/media/users/17482/105815/preview2/3732f81f4bc3d33fdbf1a8e3c180c70d-animal-lindo-del-dibujo-animado.png'}}
+                  source={require('../assets/juego1.png')}
                 />
               </Body>
             </CardItem>

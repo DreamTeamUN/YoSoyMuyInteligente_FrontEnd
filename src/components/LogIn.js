@@ -32,6 +32,7 @@ export default class LogIn extends Component {
   async _sendData() {
 
     try {
+      this.setState({ isLoading: true })
       let response = await sendDataToLogIn(this.state.email, this.state.password)
 
       console.log("login | res status: " + response.status)
@@ -43,23 +44,36 @@ export default class LogIn extends Component {
         let accessToken = res.jwt
         storeToken(accessToken);
         console.log("Access Token: " + accessToken)
+        this.setState({ isLoading: false })
         this.props.navigation.navigate('HomeAdult')
       } else {
         // Error
         // let error = res;
         // throw error;
         removeToken()
+        this.setState({ isLoading: false })
         this.setState({ error: "Algo salio mal" })
       }
-      // this.setState({ isLoading: false })
+      
     } catch (error) {
       // this._removeToken()
+      this.setState({ isLoading: false })
       this.setState({ error: error })
       console.log("error: " + error)
     }
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (
+        <View>
+          <View style={styles.home_TextContainer}>
+            <Text style={styles.headling}>Entrando</Text>
+            <ActivityIndicator size="large" color="#4267B2" />
+          </View>
+        </View>
+      );
+    }
     return (
       <View>
         <Form style={styles.adult_TextInputContainer}>

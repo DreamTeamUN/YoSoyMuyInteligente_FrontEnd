@@ -78,9 +78,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         opcion2: '',
         opcion3: '',
         opcionCorrecta: '',
-        subnivel: 0
+        subnivel: 0,
+        puntuacion: 0
       };
-      _this.selectionOnPress = _this.selectionOnPress.bind(_this);
+      _this.cambiarColorBotones = _this.cambiarColorBotones.bind(_this);
+      _this.evaluarOpcion = _this.evaluarOpcion.bind(_this);
       return _this;
     }
 
@@ -112,10 +114,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }, null, this);
       }
     }, {
-      key: "selectionOnPress",
-      value: function selectionOnPress(seleccion) {
+      key: "cambiarColorBotones",
+      value: function cambiarColorBotones(seleccion) {
         switch (seleccion) {
-          case "uno":
+          case this.state.opcion1:
             this.setState({
               boton1: _styles2.default.buttonjuegowin,
               boton2: _styles2.default.buttonjuegofail,
@@ -123,7 +125,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             });
             break;
 
-          case "dos":
+          case this.state.opcion2:
             this.setState({
               boton1: _styles2.default.buttonjuegofail,
               boton2: _styles2.default.buttonjuegowin,
@@ -131,7 +133,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             });
             break;
 
-          case "tres":
+          case this.state.opcion3:
             this.setState({
               boton1: _styles2.default.buttonjuegofail,
               boton2: _styles2.default.buttonjuegofail,
@@ -204,7 +206,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   imagen: _const.API.concat(this.state.nivel[juego].url),
                   opcion1: this.state.nivel[juego].opciones[0].frase,
                   opcion2: this.state.nivel[juego].opciones[1].frase,
-                  opcion3: this.state.nivel[juego].opciones[2].frase
+                  opcion3: this.state.nivel[juego].opciones[2].frase,
+                  opcionCorrecta: this.state.nivel[juego].correcta
                 });
 
               case 2:
@@ -213,6 +216,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }
           }
         }, null, this);
+      }
+    }, {
+      key: "evaluarOpcion",
+      value: function evaluarOpcion(opcion) {
+        if (this.state.opcionCorrecta == opcion) {
+          this.setState({
+            puntuacion: this.state.puntuacion + 10
+          });
+          this.cambiarColorBotones(opcion);
+        } else {
+          this.cambiarColorBotones(opcion);
+        }
       }
     }, {
       key: "render",
@@ -225,7 +240,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 118
+                lineNumber: 133
               }
             },
             _react3.default.createElement(
@@ -234,7 +249,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.home_TextContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 119
+                  lineNumber: 134
                 }
               },
               _react3.default.createElement(
@@ -243,7 +258,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.headling,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 120
+                    lineNumber: 135
                   }
                 },
                 "Cargando..."
@@ -257,7 +272,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 127
+              lineNumber: 142
             }
           },
           _react3.default.createElement(
@@ -266,7 +281,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 128
+                lineNumber: 143
               }
             },
             _react3.default.createElement(
@@ -274,7 +289,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 130
+                  lineNumber: 145
                 }
               },
               _react3.default.createElement(
@@ -286,14 +301,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 131
+                    lineNumber: 146
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 132
+                    lineNumber: 147
                   }
                 })
               )
@@ -303,7 +318,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 136
+                  lineNumber: 151
                 }
               },
               _react3.default.createElement(
@@ -311,7 +326,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 137
+                    lineNumber: 152
                   }
                 },
                 "Juego Palabra/Imagen"
@@ -325,7 +340,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               contentContainerStyle: _styles2.default.centerImage,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 142
+                lineNumber: 157
               }
             },
             _react3.default.createElement(_reactNative.Image, {
@@ -335,7 +350,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 145
+                lineNumber: 159
               }
             }),
             _react3.default.createElement(
@@ -345,59 +360,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 rounded: true,
                 style: this.state.boton1,
                 onPress: function onPress() {
-                  return _this3.selectionOnPress("uno");
-                },
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 150
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Text,
-                {
-                  style: _styles2.default.textoOpcion,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 152
-                  }
-                },
-                this.state.opcion1
-              )
-            ),
-            _react3.default.createElement(
-              _nativeBase.Button,
-              {
-                block: true,
-                rounded: true,
-                style: this.state.boton2,
-                onPress: function onPress() {
-                  return _this3.selectionOnPress("dos");
-                },
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 157
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Text,
-                {
-                  style: _styles2.default.textoOpcion,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 159
-                  }
-                },
-                this.state.opcion2
-              )
-            ),
-            _react3.default.createElement(
-              _nativeBase.Button,
-              {
-                block: true,
-                rounded: true,
-                style: this.state.boton3,
-                onPress: function onPress() {
-                  return _this3.selectionOnPress("tres");
+                  return _this3.evaluarOpcion(_this3.state.opcion1);
                 },
                 __source: {
                   fileName: _jsxFileName,
@@ -411,6 +374,58 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   __source: {
                     fileName: _jsxFileName,
                     lineNumber: 166
+                  }
+                },
+                this.state.opcion1
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.Button,
+              {
+                block: true,
+                rounded: true,
+                style: this.state.boton2,
+                onPress: function onPress() {
+                  return _this3.evaluarOpcion(_this3.state.opcion2);
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 171
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  style: _styles2.default.textoOpcion,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 173
+                  }
+                },
+                this.state.opcion2
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.Button,
+              {
+                block: true,
+                rounded: true,
+                style: this.state.boton3,
+                onPress: function onPress() {
+                  return _this3.evaluarOpcion(_this3.state.opcion3);
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 178
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  style: _styles2.default.textoOpcion,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 180
                   }
                 },
                 this.state.opcion3

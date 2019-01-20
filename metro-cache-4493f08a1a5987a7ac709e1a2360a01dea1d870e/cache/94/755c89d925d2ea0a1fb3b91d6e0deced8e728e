@@ -129,43 +129,46 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 response = _context2.sent;
                 status = response.status;
                 _context2.t0 = status;
-                _context2.next = _context2.t0 === 201 ? 9 : 14;
+                _context2.next = _context2.t0 === 201 ? 9 : 15;
                 break;
 
               case 9:
                 console.log(status + "Nuevo estudiante creado!!");
+
+                _reactNative.ToastAndroid.show('Nuevo estudiante creado', _reactNative.ToastAndroid.SHORT);
+
                 this.setState({
                   isLoading: false
                 });
                 this.props.navigation.state.params.onNavigateBack();
                 this.props.navigation.goBack();
-                return _context2.abrupt("break", 17);
+                return _context2.abrupt("break", 18);
 
-              case 14:
+              case 15:
                 console.log("Error creando estudiante, status code: " + status);
 
                 _reactNative.Alert.alert("Error!!", "Lo sentimos, ocurrió un error durante la creación del estudiante, por favor intente de nuevo.");
 
-                return _context2.abrupt("break", 17);
+                return _context2.abrupt("break", 18);
 
-              case 17:
-                _context2.next = 23;
+              case 18:
+                _context2.next = 24;
                 break;
 
-              case 19:
-                _context2.prev = 19;
+              case 20:
+                _context2.prev = 20;
                 _context2.t1 = _context2["catch"](0);
                 this.setState({
                   isLoading: false
                 });
                 console.log("Error creando estudiante: " + _context2.t1);
 
-              case 23:
+              case 24:
               case "end":
                 return _context2.stop();
             }
           }
-        }, null, this, [[0, 19]]);
+        }, null, this, [[0, 20]]);
       }
     }, {
       key: "render",
@@ -177,7 +180,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 82
+              lineNumber: 83
             }
           },
           _react3.default.createElement(
@@ -186,7 +189,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 84
+                lineNumber: 85
               }
             },
             _react3.default.createElement(
@@ -194,7 +197,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 86
+                  lineNumber: 87
                 }
               },
               _react3.default.createElement(
@@ -206,14 +209,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 87
+                    lineNumber: 88
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 88
+                    lineNumber: 89
                   }
                 })
               )
@@ -223,7 +226,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 92
+                  lineNumber: 93
                 }
               },
               _react3.default.createElement(
@@ -231,7 +234,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 93
+                    lineNumber: 94
                   }
                 },
                 "Agregar estudiante"
@@ -243,7 +246,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 97
+                lineNumber: 98
               }
             },
             _react3.default.createElement(
@@ -252,7 +255,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.estudiante_TextInputContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 98
+                  lineNumber: 99
                 }
               },
               _react3.default.createElement(
@@ -261,7 +264,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   floatingLabel: true,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 99
+                    lineNumber: 100
                   }
                 },
                 _react3.default.createElement(
@@ -269,7 +272,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 100
+                      lineNumber: 101
                     }
                   },
                   "Nombre de usuario"
@@ -283,7 +286,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 101
+                    lineNumber: 102
                   }
                 })
               ),
@@ -294,7 +297,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   last: true,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 108
+                    lineNumber: 109
                   }
                 },
                 _react3.default.createElement(
@@ -302,7 +305,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 109
+                      lineNumber: 110
                     }
                   },
                   "Foto (ac\xE1 se subir\xE1 un archivo)."
@@ -315,7 +318,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 110
+                    lineNumber: 111
                   }
                 })
               ),
@@ -342,7 +345,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 disabled: false,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 115
+                  lineNumber: 116
                 }
               })
             ),
@@ -352,7 +355,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.buttonsContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 132
+                  lineNumber: 133
                 }
               },
               _react3.default.createElement(
@@ -361,7 +364,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.button,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 133
+                    lineNumber: 134
                   }
                 },
                 _react3.default.createElement(
@@ -373,7 +376,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     onPress: this.createStudent.bind(this),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 134
+                      lineNumber: 135
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
@@ -381,7 +384,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     name: "done",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 136
+                      lineNumber: 137
                     }
                   }),
                   _react3.default.createElement(
@@ -389,7 +392,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 137
+                        lineNumber: 138
                       }
                     },
                     "Finalizar Registro"

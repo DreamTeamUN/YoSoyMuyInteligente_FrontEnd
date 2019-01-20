@@ -28,8 +28,10 @@ export default class PalabraImagen extends Component {
       opcion3: '',
       opcionCorrecta: '',
       subnivel: 0,
+      puntuacion: 0,
     };
     this.cambiarColorBotones = this.cambiarColorBotones.bind(this);
+    this.evaluarOpcion = this.evaluarOpcion.bind(this);
   }
 
   async componentWillMount(){
@@ -50,14 +52,14 @@ export default class PalabraImagen extends Component {
   cambiarColorBotones(seleccion) {
  
     switch (seleccion) {
-      case "uno":
+      case this.state.opcion1:
         this.setState({ 
           boton1: styles.buttonjuegowin,
           boton2: styles.buttonjuegofail,
           boton3: styles.buttonjuegofail
         });
         break;
-      case "dos":
+      case this.state.opcion2:
         this.setState({ 
           boton1: styles.buttonjuegofail,
           boton2: styles.buttonjuegowin,
@@ -65,7 +67,7 @@ export default class PalabraImagen extends Component {
         });
         break;
 
-      case "tres":
+      case this.state.opcion3:
         this.setState({ 
           boton1: styles.buttonjuegofail,
           boton2: styles.buttonjuegofail,
@@ -113,10 +115,14 @@ export default class PalabraImagen extends Component {
   }
 
   evaluarOpcion(opcion){
-    if (opcion == this.state.opcionCorrecta) {
-      
+
+    if (this.state.opcionCorrecta == opcion) {
+      this.setState({
+        puntuacion: this.state.puntuacion + 10,
+      })
+      this.cambiarColorBotones(opcion);
     } else {
-      
+      this.cambiarColorBotones(opcion);
     }
   }
 
@@ -156,21 +162,21 @@ export default class PalabraImagen extends Component {
           />
 
           <Button block rounded style = {this.state.boton1}
-            onPress={() => this.cambiarColorBotones("uno")}>
+            onPress={() => this.evaluarOpcion(this.state.opcion1)}>
             <Text style={styles.textoOpcion}>
               {this.state.opcion1}
             </Text>          
           </Button>
 
           <Button block rounded style={this.state.boton2}
-            onPress={() => this.cambiarColorBotones("dos")}>
+            onPress={() => this.evaluarOpcion(this.state.opcion2)}>
             <Text style={styles.textoOpcion}>
               {this.state.opcion2}
             </Text>
           </Button>
 
           <Button block rounded style={this.state.boton3}
-            onPress={() => this.cambiarColorBotones("tres")}>
+            onPress={() => this.evaluarOpcion(this.state.opcion3)}>
             <Text style={styles.textoOpcion}>
               {this.state.opcion3}
             </Text>

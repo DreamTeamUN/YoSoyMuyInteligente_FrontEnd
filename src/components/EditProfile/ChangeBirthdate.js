@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, ToastAndroid } from 'react-native';
 import { Container, Header, Content, Text, Button, Icon, Label, Form, Item, Input, DatePicker } from 'native-base';
 import styles from '../../styles';
 import { validatePassword } from '../../utils/validations';
@@ -21,6 +21,7 @@ export default class ChangeBirthdate extends Component {
         // let date = year + "-" + month + "-" + day
         editBirthdate(year + "-" + month + "-" + day)
         console.log("editBirthdate Done")
+        ToastAndroid.show('Fecha de nacimiento cambiada', ToastAndroid.SHORT);
         this.props.navigation.goBack()
 
     }

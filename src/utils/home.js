@@ -6,12 +6,12 @@ const USERNAME = 'user';
 const FULLNAME = 'nombre';
 const TIPO_USUARIO = 'tipo_usuario_id';
 
-const storeUserData = async (id, username, tipo_usuario_id, fullname) => {
+const storeUserData = async (id, username, fullname, tipo_usuario_id) => {
     try {
         AsyncStorage.setItem(ID, id.toString())
         AsyncStorage.setItem(USERNAME, username);
-        AsyncStorage.setItem(TIPO_USUARIO, tipo_usuario_id.toString());
         AsyncStorage.setItem(FULLNAME, fullname);
+        AsyncStorage.setItem(TIPO_USUARIO, tipo_usuario_id.toString());
     } catch (error) {
         console.log("storeUserData | Something went wrong")
     }
@@ -26,7 +26,7 @@ export const setUserData = async (token) => {
             }),
         });
         let res = await response.json();
-        storeUserData(res.id, res.user, res.tipo_usuario.id, res.nombre);
+        storeUserData(res.id, res.user, res.nombre, res.tipo_usuario.id);
         return response
     } catch (error) {
         console.log("setUserData | Something went wrong")

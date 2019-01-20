@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Alert, Image } from 'react-native';
+import { Image, ToastAndroid } from 'react-native';
 import {Text, Button, Container, Content, Header, View,
-  Icon, Body, Title, Left, StyleProvider} from 'native-base';
+  Icon, Body, Title, Left} from 'native-base';
 import styles from '../styles';
 import {idNivel} from './NivelesPalabraImagen'
 import {getID} from '../utils/home';
@@ -29,6 +29,7 @@ export default class PalabraImagen extends Component {
       opcionCorrecta: '',
       subnivel: 0,
       puntuacion: 0,
+      cantidadJuegos: 5,
     };
     this.cambiarColorBotones = this.cambiarColorBotones.bind(this);
     this.evaluarOpcion = this.evaluarOpcion.bind(this);
@@ -76,13 +77,18 @@ export default class PalabraImagen extends Component {
         break;
 
       default:
+        this.setState({
+          boton1: styles.buttonjuego,
+          boton2: styles.buttonjuego,
+          boton3: styles.buttonjuego,
+        });
         break;
     }
   }
 
   async getNivel (){
     
-    const URL = API_JUEGO_PALABRA_IMG.concat("/" + idNivel).concat("/3").concat("/3");
+    const URL = API_JUEGO_PALABRA_IMG.concat("/" + idNivel).concat("/3").concat("/" + this.state.cantidadJuegos);
 
     try {
       const response = await fetch(URL);
@@ -91,7 +97,7 @@ export default class PalabraImagen extends Component {
       this.setState({
         nivel: responseJson,
       });
-      await this.renderNivel()
+      this.renderNivel()
       this.setState({
         isLoading: false
       })
@@ -105,25 +111,43 @@ export default class PalabraImagen extends Component {
   async renderNivel(){
     
     var juego = "Juego".concat(this.state.subnivel);
-    this.setState({
-      imagen: API.concat(this.state.nivel[juego].url),
-      opcion1: this.state.nivel[juego].opciones[0].frase,
-      opcion2: this.state.nivel[juego].opciones[1].frase,
-      opcion3: this.state.nivel[juego].opciones[2].frase,
-      opcionCorrecta: this.state.nivel[juego].correcta,
-    })
+
+    if (this.state.subnivel < this.state.cantidadJuegos) {
+
+      this.setState({
+        imagen: API.concat(this.state.nivel[juego].url),
+        opcion1: this.state.nivel[juego].opciones[0].frase,
+        opcion2: this.state.nivel[juego].opciones[1].frase,
+        opcion3: this.state.nivel[juego].opciones[2].frase,
+        opcionCorrecta: this.state.nivel[juego].correcta,
+      })
+    } else {      
+      this.props.navigation.goBack();
+    }    
   }
 
   evaluarOpcion(opcion){
 
     if (this.state.opcionCorrecta == opcion) {
+      ToastAndroid.show('Bien!! :D', ToastAndroid.SHORT);
       this.setState({
         puntuacion: this.state.puntuacion + 10,
-      })
-      this.cambiarColorBotones(opcion);
-    } else {
-      this.cambiarColorBotones(opcion);
+      })      
+    }else{
+      ToastAndroid.show('Incorrecto :(', ToastAndroid.SHORT);
     }
+
+    this.cambiarColorBotones(this.state.opcionCorrecta);
+
+    setTimeout(() => {
+      this.cambiarColorBotones("cambiar");
+      this.setState({
+        subnivel: this.state.subnivel + 1
+      });
+      this.renderNivel()
+    }, 2000);
+
+    clearTimeout();
   }
 
   render() {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View } from 'react-native';
+import { Image, View, ToastAndroid } from 'react-native';
 import { Container, Header, Content, Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import { ImagePicker } from 'expo';
 import styles from '../../styles';
@@ -27,6 +27,7 @@ export default class ChangePhoto extends Component {
         formdata.append('ruta', photo)
         editPhoto(formdata)
         console.log("editPhoto Done")
+        ToastAndroid.show('Foto cambiada', ToastAndroid.SHORT);
         this.props.navigation.goBack()
     }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Alert, Image } from 'react-native';
-import { Container, Header, Content, Form, Item, Label, Input, Button, Icon, Title, Left, Right, Body, Text, List, ListItem } from 'native-base';
+import { View, Alert, Image, AsyncStorage } from 'react-native';
+import { Container, Header, Content, Button, Icon, Title, Left, Right, Body, Text, List, ListItem } from 'native-base';
 import styles from '../../styles';
 
 import { StyleProvider } from "native-base";
@@ -17,11 +17,14 @@ export default class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      source: { uri: 'http://ysmiapi.herokuapp.com/AVN_photo.jpg' + '?' + new Date() },
-      // photoURL: ,
+      source: { uri: 'http://ysmiapi.herokuapp.com/AVN_photo.jpg' + '?' + new Date() }, // machetazo (src: https://github.com/facebook/react-native/issues/12606#issuecomment-363397371)
       errors: [],
       isLoading: false,
     };
+  }
+
+  componentWillMount = async () => {
+    await AsyncStorage.setItem('reload', 'false');
   }
 
   render() {
@@ -43,8 +46,7 @@ export default class EditProfile extends Component {
               <Image
                 style={styles.profilePhoto}
                 // source={ uri: this.state.photoURL + '?' + new Date()}
-                source={ this.state.source}
-              // key={new Date()}
+                source={this.state.source}
               />
             </Right>
           </Header>
@@ -77,5 +79,10 @@ export default class EditProfile extends Component {
         </Container>
       </StyleProvider>
     );
+  }
+
+  componentWillUnmount() {
+    this.props.navigation.state.params.onNavigateBack()
+    console.log("componentWillUnmount");
   }
 }

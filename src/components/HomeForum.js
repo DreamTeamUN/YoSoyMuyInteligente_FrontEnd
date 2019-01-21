@@ -50,7 +50,7 @@ export default class HomeForum extends Component {
 
       // Where to fetch the data from.
       fetch(pageOffset, pageSize, stats) {
-        return fetch(`https://ysmiapi.herokuapp.com/entradas/1/0/${pageOffset + 1}`)
+        return fetch(`https://ysmiapi.herokuapp.com/entradas/3/0/${pageOffset + 1}`)
           .then(response => response.json())
           .catch((error) => {
             console.error(error);
@@ -68,7 +68,7 @@ export default class HomeForum extends Component {
     }
 
   setCurrentReadOffset = (event) => {
-    let itemHeight = 402;
+    let itemHeight = 202;
     let currentOffset = Math.floor(event.nativeEvent.contentOffset.y);
     let currentItemIndex = Math.ceil(currentOffset / itemHeight);
 
@@ -76,6 +76,7 @@ export default class HomeForum extends Component {
     }
 
   render() {
+    const { refresh } = this.state;
     return (
       <Container>
         <Content onScroll={this.setCurrentReadOffset}>

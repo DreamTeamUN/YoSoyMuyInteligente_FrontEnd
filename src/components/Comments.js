@@ -44,7 +44,7 @@ export default class Comments extends Component {
   }
 
   render() {
-    const { iwi } = this.state; // Refresh
+    const { Refresh } = this.state; // Refresh
     return (
       <ScrollView
         style={styles.container}

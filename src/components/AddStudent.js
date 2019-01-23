@@ -106,13 +106,6 @@ export default class AddStudent extends Component {
               />
             </Item>
 
-            <Item floatingLabel last>
-              <Label>Foto (acá se subirá un archivo).</Label>
-              <Input
-                onChangeText={(idFoto) => this.setState({ idFoto })}
-              />
-            </Item>
-
             <DatePicker
               defaultDate={new Date()}
               minimumDate={new Date(1930, 1, 1)}

@@ -132,7 +132,9 @@ export default class HomeAdult extends Component {
 
                 <View style={styles.viewButtonHome}>
                   <Button full iconLeft rounded style={styles.buttonclear}
-                    onPress={() => this.props.navigation.navigate('EditProfile')}>
+                    onPress={() => this.props.navigation.navigate('EditProfile', {
+                      onNavigateBack: this.handleOnNavigateBack
+                    })}>
                     <Icon type="Feather" name="edit" />
                     <Text>Editar perfil</Text>
                   </Button>

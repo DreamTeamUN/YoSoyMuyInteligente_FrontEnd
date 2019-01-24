@@ -6,11 +6,19 @@ import { getToken, removeToken } from '../utils/logIn';
 import { setUserData, getUsername, getTipoUsuario, getFullname, getFileUrl } from '../utils/home';
 import styles from '../styles';
 
+const ButtonHome = (props) => {
+  return (
+    <View style={styles.viewButtonHome}>
+      <Button full iconLeft rounded style={props.styleButton}
+        onPress={props.onPress}>
+        <Icon type={props.typeIcon} name={props.nameIcon} />
+        <Text>{props.text}</Text>
+      </Button>
+    </View>
+  )
+}
+
 export default class HomeAdult extends Component {
-  // static navigationOptions = {
-  //   title: 'Bienvenido',
-  //   headerTitleStyle: { textAlign: 'center', alignSelf: 'center' },
-  // };
   static navigationOptions = {
     header: null
   }
@@ -103,150 +111,66 @@ export default class HomeAdult extends Component {
         </Container>
       );
     }
+    return (
+      <Container>
+        <Header style={styles.headerStyle}>
+          <Left>
+            <Image
+              style={styles.profilePhoto}
+              // source={ uri: this.state.photoURL + '?' + new Date()}
+              source={this.state.source}
+            />
+          </Left>
 
-    if (this.state.tipoUsuario == 2) {
-      return (
-        <Container>
-          <Header style={styles.headerStyle}>
-            <Left>
-              <Image
-                style={styles.profilePhoto}
-                source={this.state.source}
-              />
-            </Left>
+          <Body>
+            <Title>Bienvenido</Title>
+          </Body>
 
-            <Body>
-              <Title>Bienvenido</Title>
-            </Body>
+          <Right />
+        </Header>
+        <Content>
+          <ScrollView>
+            <View style={styles.homeAdult_TextContainer}>
+              <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
+              <Text style={styles.frasePNL}>“{this.state.fraseseleccionada}”</Text>
+            </View>
 
-            <Right />
-          </Header>
-          <Content>
-            <ScrollView>
-              <View style={styles.homeAdult_TextContainer}>
-                <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
-                <Text style={styles.frasePNL}>“{this.state.fraseseleccionada}”</Text>
+            <View style={styles.homeAdult_buttonsContainer}>
+
+              <ButtonHome styleButton={styles.buttonclear}
+                typeIcon={"Feather"} nameIcon={"edit"}
+                onPress={() => this.props.navigation.navigate('EditProfile', {
+                  onNavigateBack: this.handleOnNavigateBack
+                })}
+                text={'Editar perfil'} />
+
+              <ButtonHome styleButton={styles.buttondark}
+                typeIcon={"MaterialCommunityIcons"} nameIcon={"forum"}
+                onPress={() => this.props.navigation.navigate('HomeForum')} text={'Ingreso al foro'} />
+
+              { // Adulto
+                this.state.tipoUsuario == 1 && <ButtonHome styleButton={styles.buttonclear}
+                  typeIcon={"MaterialCommunityIcons"} nameIcon={"settings"}
+                  onPress={() => this.props.navigation.navigate('AdminStudentsTutor')} text={'Estudiantes'} />
+              }
+
+              { // Docente
+                this.state.tipoUsuario == 2 && <ButtonHome styleButton={styles.buttonclear}
+                  typeIcon={"MaterialCommunityIcons"} nameIcon={"settings"}
+                  onPress={() => this.props.navigation.navigate('ClassRoom')} text={'Aulas'} />
+              }
+
+              <View style={styles.viewButtonHome}>
+                <Button full rounded style={styles.buttondark}
+                  onPress={this._signOutAsync}>
+                  <Icon type="Entypo" name="log-out" />
+                  <Text>Cerrar sesion</Text>
+                </Button>
               </View>
-
-              <View style={styles.homeAdult_buttonsContainer}>
-
-                <View style={styles.viewButtonHome}>
-                  <Button full iconLeft rounded style={styles.buttonclear}
-                    onPress={() => this.props.navigation.navigate('EditProfile', {
-                      onNavigateBack: this.handleOnNavigateBack
-                    })}>
-                    <Icon type="Feather" name="edit" />
-                    <Text>Editar perfil</Text>
-                  </Button>
-                </View>
-
-                <View style={styles.viewButtonHome}>
-                  <Button full iconLeft rounded style={styles.buttondark}
-                    onPress={() => this.props.navigation.navigate('HomeForum')}>
-                    <Icon type="MaterialCommunityIcons" name="forum" />
-                    <Text>Ingreso al foro</Text>
-                  </Button>
-                </View>
-
-                <View style={styles.viewButtonHome}>
-                  <Button full iconLeft rounded style={styles.buttonclear}
-                    onPress={() => this.props.navigation.navigate('ClassRoom')}>
-                    <Icon type="MaterialCommunityIcons" name="settings" />
-                    <Text>Aulas</Text>
-                  </Button>
-                </View>
-
-                <View style={styles.viewButtonHome}>
-                  <Button full rounded style={styles.buttondark}
-                    onPress={this._signOutAsync}>
-                    <Icon type="Entypo" name="log-out" />
-                    <Text>Cerrar sesion</Text>
-                  </Button>
-                  <StatusBar
-                    backgroundColor="blue"
-                    barStyle="light-content"
-                  />
-                </View>
-              </View>
-            </ScrollView>
-          </Content>
-        </Container>
-      );
-    }
-    else {
-      return (
-        <Container>
-          <Header style={styles.headerStyle}>
-            <Left>
-              <Image
-                style={styles.profilePhoto}
-                // source={ uri: this.state.photoURL + '?' + new Date()}
-                source={this.state.source}
-              />
-            </Left>
-
-            <Body>
-              <Title>Bienvenido</Title>
-            </Body>
-
-            <Right />
-          </Header>
-          <Content>
-            <ScrollView>
-              <View style={styles.homeAdult_TextContainer}>
-                <Text style={styles.headling}>¡Bienvenido, {this.state.fullname}!</Text>
-                <Text style={styles.frasePNL}>“{this.state.fraseseleccionada}”</Text>
-              </View>
-
-              <View style={styles.homeAdult_buttonsContainer}>
-
-                <View style={styles.viewButtonHome}>
-                  <Button full iconLeft rounded style={styles.buttonclear}
-                    // onPress={() => this.props.navigation.navigate('EditProfile')}>
-                    onPress={() => this.props.navigation.navigate('EditProfile', {
-                      onNavigateBack: this.handleOnNavigateBack
-                    })}>
-
-                    <Icon type="Feather" name="edit" />
-                    <Text>Editar perfil</Text>
-                  </Button>
-                </View>
-
-                <View style={styles.viewButtonHome}>
-                  <Button full iconLeft rounded style={styles.buttondark}
-                    onPress={() => this.props.navigation.navigate('HomeForum')}>
-                    <Icon type="MaterialCommunityIcons" name="forum" />
-                    <Text>Ingreso al foro</Text>
-                  </Button>
-                </View>
-
-                <View style={styles.viewButtonHome}>
-                  <Button full iconLeft rounded style={styles.buttonclear}
-                    onPress={() => this.props.navigation.navigate('AdminStudentsTutor')}>
-                    <Icon type="MaterialCommunityIcons" name="settings" />
-                    <Text>Estudiantes</Text>
-                  </Button>
-                </View>
-
-                <View style={styles.viewButtonHome}>
-                  <Button full rounded style={styles.buttondark}
-                    onPress={this._signOutAsync}>
-                    <Icon type="Entypo" name="log-out" />
-                    <Text>Cerrar sesion</Text>
-                  </Button>
-                  <StatusBar
-                    backgroundColor="blue"
-                    barStyle="light-content"
-                  />
-                </View>
-              </View>
-            </ScrollView>
-          </Content>
-        </Container>
-      );
-    }
-
-  }
-
-
+            </View>
+          </ScrollView>
+        </Content>
+      </Container>
+    );
+  } // end of render()
 }

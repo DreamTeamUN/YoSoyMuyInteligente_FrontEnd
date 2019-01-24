@@ -6,6 +6,48 @@ import { getToken, removeToken } from '../utils/logIn';
 import { setUserData, getUsername, getTipoUsuario, getFullname, getFileUrl } from '../utils/home';
 import styles from '../styles';
 
+const OurButton = (props) => {
+  return (
+    //  <View>
+    //     <Text onPress = {props.updateState}>
+    //        {props.myState}
+    //     </Text>
+    //  </View>
+    <View style={styles.viewButtonHome}>
+      <Button full iconLeft rounded style={props.styleButton}
+        onPress={props.navigate}>
+        <Icon type="MaterialCommunityIcons" name="forum" />
+        <Text>{props.text}</Text>
+      </Button>
+    </View>
+
+  )
+}
+
+// class OurButton extends Component {
+//   constructor(props) {
+//     super(props);
+//   }
+
+//   render() {
+//     return (
+//       //  <View>
+//       //     <Text onPress = {props.updateState}>
+//       //        {props.myState}
+//       //     </Text>
+//       //  </View>
+//       <View style={this.props.styleView}>
+//         <Button full iconLeft rounded style={this.props.styleButton}
+//           onPress={this.props.navigate}>
+//           <Icon type="MaterialCommunityIcons" name="forum" />
+//           <Text>{this.props.text}</Text>
+//         </Button>
+//       </View>
+
+//     )
+//   }
+// }
+
 export default class HomeAdult extends Component {
   // static navigationOptions = {
   //   title: 'Bienvenido',
@@ -212,13 +254,15 @@ export default class HomeAdult extends Component {
                   </Button>
                 </View>
 
-                <View style={styles.viewButtonHome}>
+                {/* <View style={{styles.viewButtonHome}}>
                   <Button full iconLeft rounded style={styles.buttondark}
                     onPress={() => this.props.navigation.navigate('HomeForum')}>
                     <Icon type="MaterialCommunityIcons" name="forum" />
                     <Text>Ingreso al foro</Text>
                   </Button>
-                </View>
+                </View> */}
+                <OurButton styleButton={styles.buttondark}
+                  navigate={() => this.props.navigation.navigate('HomeForum')} text={'OurButton | Foro'} />
 
                 <View style={styles.viewButtonHome}>
                   <Button full iconLeft rounded style={styles.buttonclear}

@@ -26,8 +26,8 @@ export default class AddStudent extends Component {
   }
 
   setDate(newDate) {
-    this.setState({ 
-      chosenDate: newDate 
+    this.setState({
+      chosenDate: newDate
     });
   }
 
@@ -46,13 +46,13 @@ export default class AddStudent extends Component {
         isLoading: true,
       });
 
-      let response = await CREATE_STUDENT(this.state.idUsuario, 
-        this.state.nameStudent, 
+      let response = await CREATE_STUDENT(this.state.idUsuario,
+        this.state.nameStudent,
         this.state.chosenDate
       );
-      
+
       let status = response.status;
-      
+
       switch (status) {
         case 201:
           console.log(status + "Nuevo estudiante creado!!");
@@ -61,16 +61,16 @@ export default class AddStudent extends Component {
           this.props.navigation.state.params.onNavigateBack();
           this.props.navigation.goBack()
           break;
-      
+
         default:
           console.log("Error creando estudiante, status code: " + status)
-          Alert.alert("Error!!", 
+          Alert.alert("Error!!",
             "Lo sentimos, ocurrió un error durante la creación del estudiante, por favor intente de nuevo."
           );
 
           break;
       }
-      
+
     } catch (error) {
       this.setState({isLoading: false});
       console.log("Error creando estudiante: " + error);
@@ -99,7 +99,7 @@ export default class AddStudent extends Component {
           <Form style={styles.estudiante_TextInputContainer}>
             <Item floatingLabel>
               <Label>Nombre de usuario</Label>
-              <Input 
+              <Input
                 maxLength={45}
                 onChangeText={
                   (nameStudent) => this.setState({ nameStudent })}
@@ -128,7 +128,7 @@ export default class AddStudent extends Component {
               <Button iconLeft rounded style={styles.buttondark}
                 onPress={this.createStudent.bind(this)}>
                 <Icon type="MaterialIcons" name="done" />
-                <Text>Finalizar Registro</Text>
+                <Text style={{flex: 1}}>Finalizar Registro</Text>
               </Button>
             </View>
           </View>

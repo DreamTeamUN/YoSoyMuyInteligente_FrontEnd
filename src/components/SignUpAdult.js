@@ -137,7 +137,7 @@ export default class SignUpAdult extends Component {
               style={styles.buttondark}
               onPress={this._createAdult.bind(this)} >
               <Icon type="MaterialIcons" name="done" />
-              <Text>Finalizar Registro</Text>
+              <Text style={{flex: 1}}>Finalizar Registro</Text>
             </Button>
           </View>
         </View>

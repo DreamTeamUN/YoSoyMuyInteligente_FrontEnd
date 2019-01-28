@@ -20,7 +20,7 @@ export default class SignUpMain extends Component {
             <Button full iconLeft rounded style={styles.buttonclear}
               onPress={() => this.props.navigation.navigate('SignUpAdult')}>
               <Icon type="MaterialCommunityIcons" name="face" />
-              <Text>Adulto Responsable</Text>
+              <Text style={{flex: 1}}>Adulto Responsable</Text>
             </Button>
           </View>
 
@@ -28,7 +28,7 @@ export default class SignUpMain extends Component {
             <Button full iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('SignUpTeacher')}>
               <Icon name="school" />
-              <Text>Docente</Text>
+              <Text style={{flex: 1}}>Docente</Text>
             </Button>
           </View>
         </View>

@@ -51,7 +51,7 @@ export default class CardForum extends Component {
               <Textarea rowSpan={5} bordered placeholder="Texto" onChangeText={(texto) => this.setState({ texto })}
               value={this.state.texto}/>
             </Form>
-            <Button info onPress={this._createNewPost.bind(this) }><Text> Enviar </Text></Button>
+            <Button info onPress={this._createNewPost.bind(this) }><Text style={{flex: 1}}> Enviar </Text></Button>
           </Content>
         </Container>
     );

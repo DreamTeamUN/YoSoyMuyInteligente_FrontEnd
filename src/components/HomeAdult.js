@@ -12,7 +12,7 @@ const ButtonHome = (props) => {
       <Button full iconLeft rounded style={props.styleButton}
         onPress={props.onPress}>
         <Icon type={props.typeIcon} name={props.nameIcon} />
-        <Text>{props.text}</Text>
+        <Text style={{flex: 1}}>{props.text}</Text>
       </Button>
     </View>
   )
@@ -54,7 +54,7 @@ export default class HomeAdult extends Component {
     this.setState({ isLoading: false })
   }
 
-  // Funcion que hace de F5 (refresh) cuando se viene de editar perfil 
+  // Funcion que hace de F5 (refresh) cuando se viene de editar perfil
   handleOnNavigateBack = async () => {
     console.log("handleOnNavigateBack")
     let reload = (await AsyncStorage.getItem('reload') == 'true');
@@ -161,10 +161,10 @@ export default class HomeAdult extends Component {
               }
 
               <View style={styles.viewButtonHome}>
-                <Button full rounded style={styles.buttondark}
+                <Button full iconLeft rounded style={styles.buttondark}
                   onPress={this._signOutAsync}>
-                  <Icon type="Entypo" name="log-out" />
-                  <Text>Cerrar sesion</Text>
+                  <Icon type="Entypo" name="log-out"/>
+                  <Text style={{flex: 1}}>Cerrar sesión</Text>
                 </Button>
               </View>
             </View>

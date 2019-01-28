@@ -75,7 +75,7 @@ export default class HomeStudent extends Component {
           <Button full iconLeft rounded style={styles.buttondark}
             onPress={() => this.props.navigation.navigate('Practices')}>
             <Icon name="apps" />
-            <Text>Progreso Semanas</Text>
+            <Text style={{flex: 1}}>Progreso Semanas</Text>
           </Button>
           </View>
 
@@ -83,7 +83,7 @@ export default class HomeStudent extends Component {
           <Button full iconLeft rounded style={styles.buttonclear}
             onPress={() => this.props.navigation.navigate('Games')}>
             <Icon type="MaterialIcons" name="videogame-asset" />
-            <Text>Juegos</Text>
+            <Text style={{flex: 1}}>Juegos</Text>
           </Button>
           </View>
 

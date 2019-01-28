@@ -54,7 +54,7 @@ export default class LogIn extends Component {
         this.setState({ isLoading: false })
         this.setState({ error: "Algo salio mal" })
       }
-      
+
     } catch (error) {
       // this._removeToken()
       this.setState({ isLoading: false })
@@ -111,11 +111,11 @@ export default class LogIn extends Component {
         <View style={styles.login_buttonsContainer}>
           <Text>{this.state.error}</Text>
 
-          <View>
+          <View style={styles.viewButtonHome}>
             <Button iconLeft rounded style={styles.buttonclear}
               onPress={() => this._sendData()}>
               <Icon type="MaterialIcons" name="done" />
-              <Text>Enviar</Text>
+              <Text style={{flex: 1}}>Enviar</Text>
             </Button>
           </View>
         </View>

@@ -44,19 +44,19 @@ export default class AddClassRoom extends Component {
         isLoading: true,
       });
 
-      let response = await CREATE_DOCENTE_PROGRAMA(this.state.idUsuario, 
+      let response = await CREATE_DOCENTE_PROGRAMA(this.state.idUsuario,
         this.state.programa
       );
-      
+
       const responseJson = await response.json();
       let status = response.status;
-    
+
       switch (status) {
         case 201:
           console.log(status + " Nuevo docente_programa creado!!");
           await storeIdDocentePrograma(responseJson.id);
           break;
-      
+
         case 226:
           console.log(status + " El docente_programa ya existe.");
 
@@ -64,15 +64,15 @@ export default class AddClassRoom extends Component {
 
         default:
           console.log("Error creando docente_programa, status code: " + status)
-          Alert.alert("Error!!", 
+          Alert.alert("Error!!",
             "Lo sentimos, ocurrió un error durante la creación del aula, por favor intente de nuevo."
-          );  
+          );
           break;
       }
     } catch (error) {
       console.log("Error creando el docente_programa: " + error);
     }
-  } 
+  }
 
   async createAula(){
 
@@ -97,12 +97,12 @@ export default class AddClassRoom extends Component {
           this.props.navigation.state.params.onNavigateBack();
           this.props.navigation.goBack()
           break;
-          
+
         default:
           console.log("Error creando la aula, status code: " + status)
-          Alert.alert("Error!!", 
+          Alert.alert("Error!!",
             "Lo sentimos, ocurrió un error durante la creación del aula, por favor intente de nuevo."
-          );  
+          );
           break;
       }
 
@@ -156,7 +156,7 @@ export default class AddClassRoom extends Component {
 
             <Item floatingLabel style = {styles.marginAddAula}>
               <Label > Nombre del Aula</Label>
-              <Input 
+              <Input
                 maxLength={45}
                 onChangeText={
                   (nombreAula) => this.setState({ nombreAula })}
@@ -173,9 +173,9 @@ export default class AddClassRoom extends Component {
 
           </Form>
 
-          <Button full rounded style = {styles.buttonAceptarAula} 
+          <Button full rounded style = {styles.buttonAceptarAula}
             onPress={this.createAula.bind(this)}>
-            <Text>Aceptar</Text>
+            <Text style={{flex: 1}}>Aceptar</Text>
           </Button>
 
         </Content>

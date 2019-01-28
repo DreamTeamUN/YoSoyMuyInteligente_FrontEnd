@@ -139,7 +139,7 @@ export default class SignUpTeacher extends Component {
             <Button full iconLeft rounded style={styles.buttondark}
               onPress={this._createTeacher.bind(this)} >
               <Icon type="MaterialIcons" name="done" />
-              <Text>Finalizar Registro</Text>
+              <Text style={{flex: 1}}>Finalizar Registro</Text>
             </Button>
           </View>
         </View>

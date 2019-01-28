@@ -75,16 +75,14 @@ const styles = StyleSheet.create({
     buttonclear: {
         marginBottom: hp('3%'),
         backgroundColor: '#90CAF9',
-        justifyContent: 'flex-start',
-        flexDirection:'column',
         alignItems: 'flex-start',
+        flexDirection:'column',
     },
     buttondark: {
         marginBottom: hp('3%'),
         backgroundColor: '#5D99C6',
-        justifyContent: 'flex-start',
-        flexDirection:'column',
         alignItems: 'flex-start',
+        flexDirection:'column',
     },
     buttonclearpra: {
         marginBottom: hp('3%'),
@@ -99,9 +97,8 @@ const styles = StyleSheet.create({
     buttonred: {
         marginBottom: hp('3%'),
         backgroundColor: '#DC143C',
-        justifyContent: 'flex-start',
-        flexDirection:'column',
         alignItems: 'flex-start',
+        flexDirection:'column',
     },
     buttonfb: {
         marginBottom: hp('3%'),
@@ -187,8 +184,8 @@ const styles = StyleSheet.create({
     containerSentence: {
       width: hp('100%'),
       height: wp('100%'),
-      alignItems: 'center', 
-      justifyContent: 'center', 
+      alignItems: 'center',
+      justifyContent: 'center',
       padding: wp('3%'),
     },
 

@@ -183,25 +183,29 @@ const styles = StyleSheet.create({
 
     // Practicas
     textopracticas: {
-        marginBottom: hp('3%'),
-        width: wp('100%'),
-        fontSize: wp('13%'),
-        textAlign: 'center',
+      marginBottom: hp('3%'),
+      width: wp('100%'),
+      fontSize: wp('13%'),
+      textAlign: 'center',
+    },
 
+    textSentence: {
+      width: hp('95%'),
+      fontSize: 60,
+      textAlign: 'center',
+      margin: wp('5%'),
     },
 
     containerSentence: {
       width: hp('100%'),
       height: wp('100%'),
-      alignItems: 'center',
       justifyContent: 'center',
-      padding: wp('3%'),
+      alignItems: 'center', 
     },
 
     menupracticas: {
-
-        paddingTop: hp('3%'),
-        justifyContent: 'space-between',
+      paddingTop: hp('3%'),
+      justifyContent: 'space-between',
     },
     filapracticas: {
         width: wp('90%'),

@@ -176,12 +176,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       fontSize: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('13%'),
       textAlign: 'center'
     },
+    textSentence: {
+      width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('95%'),
+      fontSize: 60,
+      textAlign: 'center',
+      margin: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%')
+    },
     containerSentence: {
       width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('100%'),
       height: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
-      alignItems: 'center',
       justifyContent: 'center',
-      padding: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('3%')
+      alignItems: 'center'
     },
     menupracticas: {
       paddingTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),

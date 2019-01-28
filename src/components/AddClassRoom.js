@@ -10,7 +10,7 @@ import { CREATE_DOCENTE_PROGRAMA, storeIdDocentePrograma, getID_Docente_Programa
 export default class AddClassRoom extends Component {
 
   static navigationOptions = {
-      header: null
+    header: null
   }
 
   constructor(props) {
@@ -59,6 +59,7 @@ export default class AddClassRoom extends Component {
       
         case 226:
           console.log(status + " El docente_programa ya existe.");
+
           break;
 
         default:

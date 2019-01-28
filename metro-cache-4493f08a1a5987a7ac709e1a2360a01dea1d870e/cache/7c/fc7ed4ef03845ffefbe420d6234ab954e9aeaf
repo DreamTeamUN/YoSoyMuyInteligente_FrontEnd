@@ -78,35 +78,39 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _ChangeBirthdate2 = _interopRequireDefault(_ChangeBirthdate);
 
-    var _ForumScreen = _require(_dependencyMap[19], "./components/ForumScreen");
+    var _ChangePhoto = _require(_dependencyMap[19], "./components/EditProfile/ChangePhoto");
+
+    var _ChangePhoto2 = _interopRequireDefault(_ChangePhoto);
+
+    var _ForumScreen = _require(_dependencyMap[20], "./components/ForumScreen");
 
     var _ForumScreen2 = _interopRequireDefault(_ForumScreen);
 
-    var _HomeForum = _require(_dependencyMap[20], "./components/HomeForum");
+    var _HomeForum = _require(_dependencyMap[21], "./components/HomeForum");
 
     var _HomeForum2 = _interopRequireDefault(_HomeForum);
 
-    var _classroom = _require(_dependencyMap[21], "./components/classroom");
+    var _classroom = _require(_dependencyMap[22], "./components/classroom");
 
     var _classroom2 = _interopRequireDefault(_classroom);
 
-    var _AddClassRoom = _require(_dependencyMap[22], "./components/AddClassRoom");
+    var _AddClassRoom = _require(_dependencyMap[23], "./components/AddClassRoom");
 
     var _AddClassRoom2 = _interopRequireDefault(_AddClassRoom);
 
-    var _AdminStudentsTutor = _require(_dependencyMap[23], "./components/AdminStudentsTutor");
+    var _AdminStudentsTutor = _require(_dependencyMap[24], "./components/AdminStudentsTutor");
 
     var _AdminStudentsTutor2 = _interopRequireDefault(_AdminStudentsTutor);
 
-    var _CardForum = _require(_dependencyMap[24], "./components/CardForum");
+    var _CardForum = _require(_dependencyMap[25], "./components/CardForum");
 
     var _CardForum2 = _interopRequireDefault(_CardForum);
 
-    var _PalabraImagen = _require(_dependencyMap[25], "./components/PalabraImagen");
+    var _PalabraImagen = _require(_dependencyMap[26], "./components/PalabraImagen");
 
     var _PalabraImagen2 = _interopRequireDefault(_PalabraImagen);
 
-    var _NivelesPalabraImagen = _require(_dependencyMap[26], "./components/NivelesPalabraImagen");
+    var _NivelesPalabraImagen = _require(_dependencyMap[27], "./components/NivelesPalabraImagen");
 
     var _NivelesPalabraImagen2 = _interopRequireDefault(_NivelesPalabraImagen);
 
@@ -130,6 +134,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         ChangeFullname: _ChangeFullname2.default,
         ChangePassword: _ChangePassword2.default,
         ChangeBirthdate: _ChangeBirthdate2.default,
+        ChangePhoto: _ChangePhoto2.default,
         ForumScreen: _ForumScreen2.default,
         HomeForum: _HomeForum2.default,
         CardForum: _CardForum2.default

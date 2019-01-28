@@ -21,7 +21,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _CreatePost = _require(_dependencyMap[4], "../utils/CreatePost");
 
-  var _impagination = _require(_dependencyMap[5], "impagination");
+  var _home = _require(_dependencyMap[5], "../utils/home");
+
+  var _impagination = _require(_dependencyMap[6], "impagination");
 
   var _impagination2 = _interopRequireDefault(_impagination);
 
@@ -61,7 +63,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       var _this = _possibleConstructorReturn(this, (HomeForum.__proto__ || Object.getPrototypeOf(HomeForum)).call(this, props));
 
       _this.setCurrentReadOffset = function (event) {
-        var itemHeight = 402;
+        var itemHeight = 202;
         var currentOffset = Math.floor(event.nativeEvent.contentOffset.y);
         var currentItemIndex = Math.ceil(currentOffset / itemHeight);
 
@@ -70,34 +72,66 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
       _this.state = {
         dataset: null,
-        datasetState: null
+        datasetState: null,
+        numComments: {}
       };
       return _this;
     }
 
     _createClass(HomeForum, [{
-      key: "_storeforid",
-      value: function _storeforid(id, title, text, user, email) {
-        var response;
-        return regeneratorRuntime.async(function _storeforid$(_context) {
+      key: "comments",
+      value: function comments(id) {
+        var response, res;
+        return regeneratorRuntime.async(function comments$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
+                return regeneratorRuntime.awrap(fetch("https://ysmiapi.herokuapp.com/entradas/3/" + id + "/1", {
+                  method: 'GET',
+                  headers: new Headers({})
+                }));
+
+              case 2:
+                response = _context.sent;
+                _context.next = 5;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 5:
+                res = _context.sent;
+                console.log(res);
+                this.state.numComments[id] = res.length;
+
+              case 8:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "_storeforid",
+      value: function _storeforid(id, title, text, user, email) {
+        var response;
+        return regeneratorRuntime.async(function _storeforid$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
                 return regeneratorRuntime.awrap((0, _CreatePost.storeForDATA)(id, title, text, user, email));
 
               case 2:
-                _context.next = 4;
+                _context2.next = 4;
                 return regeneratorRuntime.awrap((0, _CreatePost.getForEMAIL)());
 
               case 4:
-                response = _context.sent;
+                response = _context2.sent;
                 console.log("id store | res: " + response);
                 this.props.navigation.navigate('ForumScreen');
 
               case 7:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
         }, null, this);
@@ -125,7 +159,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
             return fetch;
           }(function (pageOffset, pageSize, stats) {
-            return fetch("https://ysmiapi.herokuapp.com/entradas/1/0/" + (pageOffset + 1)).then(function (response) {
+            return fetch("https://ysmiapi.herokuapp.com/entradas/3/0/" + (pageOffset + 1)).then(function (response) {
               return response.json();
             }).catch(function (error) {
               console.error(error);
@@ -140,34 +174,42 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     }, {
       key: "componentWillMount",
       value: function componentWillMount() {
-        this.setupImpagination();
+        return regeneratorRuntime.async(function componentWillMount$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                this.setupImpagination();
+                _context3.next = 3;
+                return regeneratorRuntime.awrap((0, _home.getID)());
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, null, this);
       }
     }, {
       key: "render",
       value: function render() {
         var _this3 = this;
 
+        var refresh = this.state.refresh;
         return _react3.default.createElement(
           _nativeBase.Container,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 60
+              lineNumber: 81
             }
           },
-          _react3.default.createElement(_nativeBase.Header, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 61
-            }
-          }),
           _react3.default.createElement(
             _nativeBase.Content,
             {
               onScroll: this.setCurrentReadOffset,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 62
+                lineNumber: 82
               }
             },
             _react3.default.createElement(
@@ -180,7 +222,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 63
+                  lineNumber: 83
                 }
               },
               _react3.default.createElement(
@@ -188,7 +230,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 64
+                    lineNumber: 84
                   }
                 },
                 "Crear entrada"
@@ -200,188 +242,98 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   key: Math.random(),
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 68
+                    lineNumber: 89
                   }
                 });
               }
 
+              _this3.comments(record.content.id);
+
               return _react3.default.createElement(
-                _nativeBase.Card,
+                _nativeBase.View,
                 {
+                  key: record.content.id,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 71
+                    lineNumber: 93
                   }
                 },
                 _react3.default.createElement(
-                  _nativeBase.CardItem,
+                  _nativeBase.Card,
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 72
+                      lineNumber: 94
                     }
                   },
                   _react3.default.createElement(
-                    _nativeBase.Left,
+                    _nativeBase.CardItem,
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 73
-                      }
-                    },
-                    _react3.default.createElement(_nativeBase.Thumbnail, {
-                      source: {
-                        uri: 'Image URL'
-                      },
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 74
-                      }
-                    }),
-                    _react3.default.createElement(
-                      _nativeBase.Body,
-                      {
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 75
-                        }
-                      },
-                      _react3.default.createElement(
-                        _nativeBase.Text,
-                        {
-                          __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 76
-                          }
-                        },
-                        record.content.titulo
-                      ),
-                      _react3.default.createElement(
-                        _nativeBase.Text,
-                        {
-                          note: true,
-                          __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 77
-                          }
-                        },
-                        record.content.usuario.user
-                      )
-                    )
-                  )
-                ),
-                _react3.default.createElement(
-                  _nativeBase.CardItem,
-                  {
-                    cardBody: true,
-                    button: true,
-                    onPress: function onPress() {
-                      return _this3._storeforid(record.content.id, record.content.titulo, record.content.texto, record.content.usuario.user, record.content.usuario.email);
-                    },
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 81
-                    }
-                  },
-                  _react3.default.createElement(
-                    _nativeBase.Text,
-                    {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 82
-                      }
-                    },
-                    record.content.resumen
-                  )
-                ),
-                _react3.default.createElement(
-                  _nativeBase.CardItem,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 84
-                    }
-                  },
-                  _react3.default.createElement(
-                    _nativeBase.Left,
-                    {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 85
+                        lineNumber: 95
                       }
                     },
                     _react3.default.createElement(
-                      _nativeBase.Button,
+                      _nativeBase.Left,
                       {
-                        transparent: true,
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 86
+                          lineNumber: 96
                         }
                       },
-                      _react3.default.createElement(_nativeBase.Icon, {
-                        active: true,
-                        name: "thumbs-up",
+                      _react3.default.createElement(_nativeBase.Thumbnail, {
+                        source: {
+                          uri: 'Image URL'
+                        },
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 87
+                          lineNumber: 97
                         }
                       }),
                       _react3.default.createElement(
-                        _nativeBase.Text,
+                        _nativeBase.Body,
                         {
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 88
+                            lineNumber: 98
                           }
                         },
-                        "12 Likes"
+                        _react3.default.createElement(
+                          _nativeBase.Text,
+                          {
+                            __source: {
+                              fileName: _jsxFileName,
+                              lineNumber: 99
+                            }
+                          },
+                          record.content.titulo
+                        ),
+                        _react3.default.createElement(
+                          _nativeBase.Text,
+                          {
+                            note: true,
+                            __source: {
+                              fileName: _jsxFileName,
+                              lineNumber: 100
+                            }
+                          },
+                          record.content.usuario.user
+                        )
                       )
                     )
                   ),
                   _react3.default.createElement(
-                    _nativeBase.Body,
+                    _nativeBase.CardItem,
                     {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 91
-                      }
-                    },
-                    _react3.default.createElement(
-                      _nativeBase.Button,
-                      {
-                        transparent: true,
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 92
-                        }
+                      cardBody: true,
+                      button: true,
+                      onPress: function onPress() {
+                        return _this3._storeforid(record.content.id, record.content.titulo, record.content.texto, record.content.usuario.user, record.content.usuario.email);
                       },
-                      _react3.default.createElement(_nativeBase.Icon, {
-                        active: true,
-                        name: "chatbubbles",
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 93
-                        }
-                      }),
-                      _react3.default.createElement(
-                        _nativeBase.Text,
-                        {
-                          __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 94
-                          }
-                        },
-                        record.content.ramificacion - 1
-                      )
-                    )
-                  ),
-                  _react3.default.createElement(
-                    _nativeBase.Right,
-                    {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 97
+                        lineNumber: 104
                       }
                     },
                     _react3.default.createElement(
@@ -389,10 +341,84 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       {
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 98
+                          lineNumber: 105
                         }
                       },
-                      record.content.created_at
+                      record.content.resumen
+                    )
+                  ),
+                  _react3.default.createElement(
+                    _nativeBase.CardItem,
+                    {
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 107
+                      }
+                    },
+                    _react3.default.createElement(
+                      _nativeBase.Body,
+                      {
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 108
+                        }
+                      },
+                      _react3.default.createElement(
+                        _nativeBase.Left,
+                        {
+                          __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 109
+                          }
+                        },
+                        _react3.default.createElement(
+                          _nativeBase.Button,
+                          {
+                            transparent: true,
+                            __source: {
+                              fileName: _jsxFileName,
+                              lineNumber: 110
+                            }
+                          },
+                          _react3.default.createElement(_nativeBase.Icon, {
+                            active: true,
+                            name: "chatbubbles",
+                            __source: {
+                              fileName: _jsxFileName,
+                              lineNumber: 111
+                            }
+                          }),
+                          _react3.default.createElement(
+                            _nativeBase.Text,
+                            {
+                              __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 112
+                              }
+                            },
+                            _this3.state.numComments[record.content.id]
+                          )
+                        )
+                      )
+                    ),
+                    _react3.default.createElement(
+                      _nativeBase.Right,
+                      {
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 116
+                        }
+                      },
+                      _react3.default.createElement(
+                        _nativeBase.Text,
+                        {
+                          __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 117
+                          }
+                        },
+                        record.content.created_at.substring(0, 10)
+                      )
                     )
                   )
                 )

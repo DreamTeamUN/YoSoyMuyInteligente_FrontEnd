@@ -11,9 +11,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _index2 = _interopRequireDefault(_index);
 
-  var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/EditProfile/EditProfile.js";
-
   var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/EditProfile/EditProfile.js";
 
   var _reactNative = _require(_dependencyMap[2], "react-native");
 
@@ -58,19 +60,36 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
   }
 
-  var EditProfile = _wrapComponent("EditProfile")(function (_Component) {
+  var EditProfile = _wrapComponent("EditProfile")((_temp = _class = function (_Component) {
     _inherits(EditProfile, _Component);
 
     function EditProfile(props) {
+      var _this2 = this;
+
       _classCallCheck(this, EditProfile);
 
       var _this = _possibleConstructorReturn(this, (EditProfile.__proto__ || Object.getPrototypeOf(EditProfile)).call(this, props));
 
+      _this.componentWillMount = function _callee() {
+        return regeneratorRuntime.async(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return regeneratorRuntime.awrap(_reactNative.AsyncStorage.setItem('reload', 'false'));
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, _this2);
+      };
+
       _this.state = {
-        fullname: '',
-        password: '',
-        password2: '',
-        birthdate: '',
+        source: {
+          uri: 'http://ysmiapi.herokuapp.com/AVN_photo.jpg' + '?' + new Date()
+        },
         errors: [],
         isLoading: false
       };
@@ -80,7 +99,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     _createClass(EditProfile, [{
       key: "render",
       value: function render() {
-        var _this2 = this;
+        var _this3 = this;
 
         return _react3.default.createElement(
           _nativeBase.StyleProvider,
@@ -88,7 +107,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             style: (0, _components3.default)(_commonColor2.default),
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 29
+              lineNumber: 32
             }
           },
           _react3.default.createElement(
@@ -96,15 +115,79 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 30
+                lineNumber: 33
               }
             },
+            _react3.default.createElement(
+              _nativeBase.Header,
+              {
+                style: _styles2.default.headerStyle,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 34
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Left,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 35
+                  }
+                },
+                _react3.default.createElement(
+                  _nativeBase.Button,
+                  {
+                    transparent: true,
+                    onPress: function onPress() {
+                      return _this3.props.navigation.goBack();
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 36
+                    }
+                  },
+                  _react3.default.createElement(_nativeBase.Icon, {
+                    name: "arrow-back",
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 37
+                    }
+                  })
+                )
+              ),
+              _react3.default.createElement(
+                _nativeBase.Body,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 41
+                  }
+                },
+                _react3.default.createElement(
+                  _nativeBase.Title,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 42
+                    }
+                  },
+                  "Editar perfil"
+                )
+              ),
+              _react3.default.createElement(_nativeBase.Right, {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 45
+                }
+              })
+            ),
             _react3.default.createElement(
               _nativeBase.Content,
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 43
+                  lineNumber: 54
                 }
               },
               _react3.default.createElement(
@@ -112,18 +195,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 45
+                    lineNumber: 56
                   }
                 },
                 _react3.default.createElement(
                   _nativeBase.ListItem,
                   {
                     onPress: function onPress() {
-                      return _this2.props.navigation.navigate('ChangeFullname');
+                      return _this3.props.navigation.navigate('ChangeFullname');
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 46
+                      lineNumber: 57
                     }
                   },
                   _react3.default.createElement(
@@ -131,7 +214,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 48
+                        lineNumber: 59
                       }
                     },
                     "Nombre"
@@ -141,11 +224,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   _nativeBase.ListItem,
                   {
                     onPress: function onPress() {
-                      return _this2.props.navigation.navigate('ChangePassword');
+                      return _this3.props.navigation.navigate('ChangePassword');
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 51
+                      lineNumber: 62
                     }
                   },
                   _react3.default.createElement(
@@ -153,7 +236,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 53
+                        lineNumber: 64
                       }
                     },
                     "Cambiar Contrase\xF1a"
@@ -163,11 +246,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   _nativeBase.ListItem,
                   {
                     onPress: function onPress() {
-                      return _this2.props.navigation.navigate('ChangeBirthdate');
+                      return _this3.props.navigation.navigate('ChangeBirthdate');
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 56
+                      lineNumber: 67
                     }
                   },
                   _react3.default.createElement(
@@ -175,7 +258,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 58
+                        lineNumber: 69
                       }
                     },
                     "Fecha de nacimiento"
@@ -184,9 +267,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _react3.default.createElement(
                   _nativeBase.ListItem,
                   {
+                    onPress: function onPress() {
+                      return _this3.props.navigation.navigate('ChangePhoto');
+                    },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 60
+                      lineNumber: 71
                     }
                   },
                   _react3.default.createElement(
@@ -194,10 +280,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 61
+                        lineNumber: 73
                       }
                     },
-                    "Cambiar foto (temporal)"
+                    "Cambiar foto"
                   )
                 )
               )
@@ -205,10 +291,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           )
         );
       }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        this.props.navigation.state.params.onNavigateBack();
+        console.log("componentWillUnmount");
+      }
     }]);
 
     return EditProfile;
-  }(_react2.Component));
+  }(_react2.Component), _class.navigationOptions = {
+    header: null
+  }, _temp));
 
   exports.default = EditProfile;
 });

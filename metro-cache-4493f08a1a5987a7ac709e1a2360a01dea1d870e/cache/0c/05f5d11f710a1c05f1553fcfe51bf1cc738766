@@ -1,0 +1,263 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _react2 = _require(_dependencyMap[0], "react");
+
+    var _react3 = _interopRequireDefault(_react2);
+
+    var _index = _require(_dependencyMap[1], "./../../../node_modules/react-transform-hmr/lib/index.js");
+
+    var _index2 = _interopRequireDefault(_index);
+
+    var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/EditProfile/ChangePhoto.js";
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _reactNative = _require(_dependencyMap[2], "react-native");
+
+    var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+    var _expo = _require(_dependencyMap[4], "expo");
+
+    var _styles = _require(_dependencyMap[5], "../../styles");
+
+    var _styles2 = _interopRequireDefault(_styles);
+
+    var _editProfile = _require(_dependencyMap[6], "../../utils/editProfile");
+
+    var _home = _require(_dependencyMap[7], "../../utils/home");
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    var _components = {
+        ChangePhoto: {
+            displayName: "ChangePhoto"
+        }
+    };
+
+    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+        filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/EditProfile/ChangePhoto.js",
+        components: _components,
+        locals: [module],
+        imports: [_react3.default]
+    });
+
+    function _wrapComponent(id) {
+        return function (Component) {
+            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+        };
+    }
+
+    var ChangePhoto = _wrapComponent("ChangePhoto")(function (_Component) {
+        _inherits(ChangePhoto, _Component);
+
+        function ChangePhoto(props) {
+            var _this2 = this;
+
+            _classCallCheck(this, ChangePhoto);
+
+            var _this = _possibleConstructorReturn(this, (ChangePhoto.__proto__ || Object.getPrototypeOf(ChangePhoto)).call(this, props));
+
+            _this._pickImage = function _callee() {
+                var result, localUri, filename, match, type, username, finalName;
+                return regeneratorRuntime.async(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return regeneratorRuntime.awrap(_expo.ImagePicker.launchImageLibraryAsync({
+                                    mediaTypes: "Images",
+                                    allowsEditing: true,
+                                    aspect: [4, 4],
+                                    quality: 1
+                                }));
+
+                            case 2:
+                                result = _context.sent;
+
+                                if (result.cancelled) {
+                                    _context.next = 15;
+                                    break;
+                                }
+
+                                localUri = result.uri;
+                                filename = localUri.split('/').pop();
+                                match = /\.(\w+)$/.exec(filename);
+                                type = match ? "image/" + match[1] : "image";
+                                _context.next = 10;
+                                return regeneratorRuntime.awrap((0, _home.getUsername)());
+
+                            case 10:
+                                username = _context.sent;
+                                finalName = username + "_photo" + match[0];
+
+                                _this.setState({
+                                    imageUri: localUri
+                                });
+
+                                _this.setState({
+                                    imageType: type
+                                });
+
+                                _this.setState({
+                                    imageName: finalName
+                                });
+
+                            case 15:
+                            case "end":
+                                return _context.stop();
+                        }
+                    }
+                }, null, _this2);
+            };
+
+            _this.state = {
+                imageUri: null,
+                imageType: null,
+                imageName: null
+            };
+            return _this;
+        }
+
+        _createClass(ChangePhoto, [{
+            key: "_sendNewData",
+            value: function _sendNewData() {
+                var photo, formdata;
+                return regeneratorRuntime.async(function _sendNewData$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                photo = {
+                                    uri: this.state.imageUri,
+                                    type: this.state.imageType,
+                                    name: this.state.imageName
+                                };
+                                formdata = new FormData();
+                                formdata.append('ruta', photo);
+                                (0, _editProfile.editPhoto)(formdata);
+                                console.log("editPhoto Done");
+
+                                _reactNative.ToastAndroid.show('Foto cambiada', _reactNative.ToastAndroid.SHORT);
+
+                                this.props.navigation.goBack();
+
+                            case 7:
+                            case "end":
+                                return _context2.stop();
+                        }
+                    }
+                }, null, this);
+            }
+        }, {
+            key: "render",
+            value: function render() {
+                return _react3.default.createElement(
+                    _reactNative.View,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 101
+                        }
+                    },
+                    _react3.default.createElement(
+                        _nativeBase.Form,
+                        {
+                            style: _styles2.default.adult_TextInputContainer,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 102
+                            }
+                        },
+                        _react3.default.createElement(
+                            _nativeBase.Button,
+                            {
+                                iconLeft: true,
+                                rounded: true,
+                                style: _styles2.default.buttondark,
+                                onPress: this._pickImage.bind(this),
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 103
+                                }
+                            },
+                            _react3.default.createElement(_nativeBase.Icon, {
+                                type: "MaterialIcons",
+                                name: "photo",
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 106
+                                }
+                            }),
+                            _react3.default.createElement(
+                                _nativeBase.Text,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 107
+                                    }
+                                },
+                                "Cargar foto desde la galeria"
+                            )
+                        ),
+                        _react3.default.createElement(_reactNative.Image, {
+                            source: {
+                                uri: this.state.imageUri
+                            },
+                            style: {
+                                width: 200,
+                                height: 200
+                            },
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 110
+                            }
+                        }),
+                        _react3.default.createElement(
+                            _nativeBase.Button,
+                            {
+                                iconLeft: true,
+                                rounded: true,
+                                style: _styles2.default.buttondark,
+                                onPress: this._sendNewData.bind(this),
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 112
+                                }
+                            },
+                            _react3.default.createElement(_nativeBase.Icon, {
+                                type: "MaterialIcons",
+                                name: "done",
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 115
+                                }
+                            }),
+                            _react3.default.createElement(
+                                _nativeBase.Text,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 116
+                                    }
+                                },
+                                "Subir foto"
+                            )
+                        )
+                    )
+                );
+            }
+        }]);
+
+        return ChangePhoto;
+    }(_react2.Component));
+
+    exports.default = ChangePhoto;
+});

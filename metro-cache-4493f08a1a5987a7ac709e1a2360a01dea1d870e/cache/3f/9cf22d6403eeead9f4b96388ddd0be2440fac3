@@ -125,9 +125,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 _react3.default.createElement(_reactNative.Image, {
                   style: _styles2.default.imagenCardview,
-                  source: {
-                    uri: 'https://images.vexels.com/media/users/17482/105815/preview2/3732f81f4bc3d33fdbf1a8e3c180c70d-animal-lindo-del-dibujo-animado.png'
-                  },
+                  source: _require(_dependencyMap[5], '../assets/juego1.png'),
                   __source: {
                     fileName: _jsxFileName,
                     lineNumber: 17

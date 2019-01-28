@@ -1,20 +1,38 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, TouchableNativeFeedback, View, Switch, TextInput } from 'react-native';
-import { Container, Header, Content, Text, List, ListItem, Button } from 'native-base';
+import { Container, Header, Content, Text, View, Icon, Body, Title, Button, Left } from 'native-base';
 import styles from '../styles';
 export var WEEK;
 
 export default class Practices extends Component {
 
-penWeek(week){
+  static navigationOptions = {
+    header: null
+  }
+
+  penWeek(week){
     WEEK = week;
     this.props.navigation.navigate('Sentence');
-}
+  }
 
   render() {
     return (
-      <View style={styles.menupracticas}>
-        <Text style={styles.textopracticas}>Prácticas</Text>
+
+      <Container>
+
+        <Header style = {styles.headerStyle}>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Prácticas</Title>
+          </Body>
+        </Header>
+
+        <Content>
+
+          <Text style={styles.textopracticas}>Prácticas</Text>
 
           <View style={styles.filapracticas}>
             <View style={styles.button}>
@@ -194,6 +212,7 @@ penWeek(week){
 
               </Button>
             </View>
+            
             <View style={styles.button}>
               <Button style={styles.buttondarkpra}
                 onPress={() => this.penWeek(24)}>
@@ -201,8 +220,9 @@ penWeek(week){
               </Button>
             </View>
           </View>
+        </Content>
 
-      </View>
+      </Container>
     );
   }
 }

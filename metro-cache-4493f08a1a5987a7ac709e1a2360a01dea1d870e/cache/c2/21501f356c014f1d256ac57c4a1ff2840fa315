@@ -2,7 +2,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.getcomments = exports.getForEMAIL = exports.getForUSER = exports.getForTEXT = exports.getForTITLE = exports.getForID = exports.storeForDATA = exports.createPost = undefined;
+    exports.createComment = exports.getcomments = exports.getForEMAIL = exports.getForUSER = exports.getForTEXT = exports.getForTITLE = exports.getForID = exports.storeForDATA = exports.createPost = undefined;
 
     var _this = this;
 
@@ -18,10 +18,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-    var FORUM_ID = 'id';
+    var FORUM_ID = 'forum_id';
     var FORUM_TITLE = 'title';
     var FORUM_TEXT = 'text';
-    var FORUM_USER = 'user';
+    var FORUM_USER = 'forum_user';
     var FORUM_EMAIL = 'email';
 
     var createPost = exports.createPost = function createPost(titulo, texto, resumen) {
@@ -49,7 +49,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                     "nivel_acceso_id": 0,
                                     "titulo": titulo,
                                     "resumen": resumen,
-                                    "texto": texto
+                                    "texto": texto,
+                                    "abierto": "true",
+                                    "publicado": "true"
                                 }
                             })
                         }));
@@ -263,20 +265,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
                     case 2:
                         ID = _context8.sent;
-                        _context8.next = 5;
+                        console.log(ID);
+                        _context8.next = 6;
                         return regeneratorRuntime.awrap(fetch("https://ysmiapi.herokuapp.com/entradas/3/" + ID + "/1", {
                             method: 'GET',
                             headers: new Headers({})
                         }));
 
-                    case 5:
+                    case 6:
                         response = _context8.sent;
-                        _context8.next = 8;
+                        _context8.next = 9;
                         return regeneratorRuntime.awrap(response.json());
 
-                    case 8:
+                    case 9:
                         res = _context8.sent;
-                        console.log(res);
                         return _context8.abrupt("return", res);
 
                     case 11:
@@ -285,5 +287,59 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 }
             }
         }, null, _this);
+    };
+
+    var createComment = exports.createComment = function createComment(texto) {
+        var UID, FID, API_ENTRADA_POST;
+        return regeneratorRuntime.async(function createComment$(_context9) {
+            while (1) {
+                switch (_context9.prev = _context9.next) {
+                    case 0:
+                        _context9.prev = 0;
+                        _context9.next = 3;
+                        return regeneratorRuntime.awrap((0, _home.getID)());
+
+                    case 3:
+                        UID = _context9.sent;
+                        _context9.next = 6;
+                        return regeneratorRuntime.awrap(getForID());
+
+                    case 6:
+                        FID = _context9.sent;
+                        API_ENTRADA_POST = _const.API + "/usuarios/" + UID + "/entradas/" + FID + "/entradas";
+                        console.log(API_ENTRADA_POST);
+                        _context9.next = 11;
+                        return regeneratorRuntime.awrap(fetch(API_ENTRADA_POST, {
+                            method: 'POST',
+                            headers: new Headers({
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            }),
+                            body: JSON.stringify({
+                                "entrada": {
+                                    "nivel_acceso_id": 0,
+                                    "titulo": "comentario",
+                                    "resumen": "comentario",
+                                    "texto": texto,
+                                    "abierto": "true",
+                                    "publicado": "true"
+                                }
+                            })
+                        }));
+
+                    case 11:
+                        return _context9.abrupt("return", _context9.sent);
+
+                    case 14:
+                        _context9.prev = 14;
+                        _context9.t0 = _context9["catch"](0);
+                        console.log("cratePOst | Something went wrong");
+
+                    case 17:
+                    case "end":
+                        return _context9.stop();
+                }
+            }
+        }, null, _this, [[0, 14]]);
     };
 });

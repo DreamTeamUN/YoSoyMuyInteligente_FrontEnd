@@ -86,8 +86,8 @@ import { API_LESSONS } from '../config/const';
       );
     }
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }} >
-        <Text style={{fontSize: 60}}>
+      <View style={styles.containerSentence} >
+        <Text style={{fontSize: 60, alignSelf: "center"}}>
           {this.state.text}
         </Text>
       </View>

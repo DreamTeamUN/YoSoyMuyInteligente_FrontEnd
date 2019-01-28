@@ -290,38 +290,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   }
                 })
               ),
-              _react3.default.createElement(
-                _nativeBase.Item,
-                {
-                  floatingLabel: true,
-                  last: true,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 109
-                  }
-                },
-                _react3.default.createElement(
-                  _nativeBase.Label,
-                  {
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 110
-                    }
-                  },
-                  "Foto (ac\xE1 se subir\xE1 un archivo)."
-                ),
-                _react3.default.createElement(_nativeBase.Input, {
-                  onChangeText: function onChangeText(idFoto) {
-                    return _this2.setState({
-                      idFoto: idFoto
-                    });
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 111
-                  }
-                })
-              ),
               _react3.default.createElement(_nativeBase.DatePicker, {
                 defaultDate: new Date(),
                 minimumDate: new Date(1930, 1, 1),
@@ -345,7 +313,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 disabled: false,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 116
+                  lineNumber: 109
                 }
               })
             ),
@@ -355,7 +323,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.buttonsContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 133
+                  lineNumber: 126
                 }
               },
               _react3.default.createElement(
@@ -364,7 +332,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.button,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 134
+                    lineNumber: 127
                   }
                 },
                 _react3.default.createElement(
@@ -376,7 +344,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     onPress: this.createStudent.bind(this),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 135
+                      lineNumber: 128
                     }
                   },
                   _react3.default.createElement(_nativeBase.Icon, {
@@ -384,7 +352,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     name: "done",
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 137
+                      lineNumber: 130
                     }
                   }),
                   _react3.default.createElement(
@@ -392,7 +360,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 138
+                        lineNumber: 131
                       }
                     },
                     "Finalizar Registro"

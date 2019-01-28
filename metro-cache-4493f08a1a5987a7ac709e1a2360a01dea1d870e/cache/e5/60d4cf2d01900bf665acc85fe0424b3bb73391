@@ -206,11 +206,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         return _react3.default.createElement(
           _reactNative.View,
           {
-            style: {
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center'
-            },
+            style: _styles2.default.containerSentence,
             __source: {
               fileName: _jsxFileName,
               lineNumber: 89
@@ -220,7 +216,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             _nativeBase.Text,
             {
               style: {
-                fontSize: 60
+                fontSize: 60,
+                alignSelf: "center"
               },
               __source: {
                 fileName: _jsxFileName,

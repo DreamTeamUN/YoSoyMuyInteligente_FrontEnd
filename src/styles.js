@@ -183,6 +183,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
 
     },
+
+    containerSentence: {
+      width: hp('100%'),
+      height: wp('100%'),
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      padding: wp('3%'),
+    },
+
     menupracticas: {
 
         paddingTop: hp('3%'),

@@ -38,3 +38,7 @@ adb I  7895  7895 main.cpp:78]
 adb I  6830  6830 main.cpp:78] Android Debug Bridge version 1.0.36
 adb I  6830  6830 main.cpp:78] Revision af05c7354fe1-android
 adb I  6830  6830 main.cpp:78] 
+--- adb starting (pid 6993) ---
+adb I  6993  6993 main.cpp:78] Android Debug Bridge version 1.0.36
+adb I  6993  6993 main.cpp:78] Revision af05c7354fe1-android
+adb I  6993  6993 main.cpp:78] 

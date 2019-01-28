@@ -159,7 +159,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 i = 0;
               }
             }
-          }, 1000);
+          }, 800);
         }
       }
     }, {
@@ -215,10 +215,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           _react3.default.createElement(
             _nativeBase.Text,
             {
-              style: {
-                fontSize: 60,
-                alignSelf: "center"
-              },
+              style: _styles2.default.textSentence,
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 90

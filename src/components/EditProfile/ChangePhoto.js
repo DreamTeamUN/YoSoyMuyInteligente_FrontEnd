@@ -46,7 +46,7 @@ export default class ChangePhoto extends Component {
 
         if (!result.cancelled) {
             // ImagePicker saves the taken photo to disk and returns a local URI to it
-            let localUri = result.uri;            
+            let localUri = result.uri;
             let filename = localUri.split('/').pop();
 
             // Infer the type of the image
@@ -99,22 +99,25 @@ export default class ChangePhoto extends Component {
 
         return (
             <View>
+
+            <Image source={{ uri: this.state.imageUri }} style={styles.uploadImageContainer} />
+
                 <Form style={styles.adult_TextInputContainer}>
-                    <Button iconLeft rounded
-                        style={styles.buttondark}
+                <View style={styles.viewButtonHome}>
+                    <Button full iconLeft rounded style={styles.buttonclear}
                         onPress={this._pickImage.bind(this)}>
                         <Icon type="MaterialIcons" name="photo" />
                         <Text>Cargar foto desde la galeria</Text>
                     </Button>
+                    </View>
 
-                    <Image source={{ uri: this.state.imageUri }} style={{ width: 200, height: 200 }} />
-
-                    <Button iconLeft rounded
-                        style={styles.buttondark}
+                    <View style={styles.viewButtonHome}>
+                    <Button full iconLeft rounded style={styles.buttondark}
                         onPress={this._sendNewData.bind(this)}>
                         <Icon type="MaterialIcons" name="done" />
                         <Text>Subir foto</Text>
                     </Button>
+                    </View>
                 </Form>
             </View>
         );

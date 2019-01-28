@@ -39,6 +39,15 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
 
+    uploadImageContainer: {
+        height: hp('40%'),
+        marginTop: hp('5%'),
+        marginBottom: hp('5%'),
+        marginRight: wp('3%'),
+        marginLeft: wp('3%'),
+        justifyContent: 'flex-end',
+    },
+
     title: {
         color: '#1F363D',
         fontSize: hp('8%'),

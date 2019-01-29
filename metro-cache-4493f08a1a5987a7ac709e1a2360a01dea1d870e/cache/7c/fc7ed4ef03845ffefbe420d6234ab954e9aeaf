@@ -114,11 +114,16 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _NivelesPalabraImagen2 = _interopRequireDefault(_NivelesPalabraImagen);
 
+    var _ClassroomView = _require(_dependencyMap[28], "./components/ClassroomView");
+
+    var _ClassroomView2 = _interopRequireDefault(_ClassroomView);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     var AppStack = exports.AppStack = (0, _reactNavigation.createStackNavigator)({
         HomeAdult: _HomeAdult2.default,
         AddClassRoom: _AddClassRoom2.default,
+        ClassroomView: _ClassroomView2.default,
         NivelesPalabraImagen: _NivelesPalabraImagen2.default,
         HomeStudent: _HomeStudent2.default,
         WeekProgress: _WeekProgress2.default,

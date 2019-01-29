@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
 
     marginAddAula: {
       marginTop: hp('1%'),
-      marginLeft: wp('5%'),
-      marginRight: wp('5%'),
+      marginLeft: wp('4%'),
+      marginRight: wp('4%'),
     },
 
     buttonAceptarAula: {

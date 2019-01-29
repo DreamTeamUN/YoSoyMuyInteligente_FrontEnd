@@ -92,6 +92,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         _react3.default.createElement(
           _nativeBase.Text,
           {
+            style: {
+              flex: 1
+            },
             __source: {
               fileName: _jsxFileName,
               lineNumber: 15
@@ -570,6 +573,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     _nativeBase.Button,
                     {
                       full: true,
+                      iconLeft: true,
                       rounded: true,
                       style: _styles2.default.buttondark,
                       onPress: this._signOutAsync,
@@ -589,12 +593,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     _react3.default.createElement(
                       _nativeBase.Text,
                       {
+                        style: {
+                          flex: 1
+                        },
                         __source: {
                           fileName: _jsxFileName,
                           lineNumber: 167
                         }
                       },
-                      "Cerrar sesion"
+                      "Cerrar sesi\xF3n"
                     )
                   )
                 )

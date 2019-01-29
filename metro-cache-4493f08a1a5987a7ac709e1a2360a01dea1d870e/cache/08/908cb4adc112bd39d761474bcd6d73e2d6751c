@@ -15,15 +15,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _class,
       _temp,
-      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/SignUpMain.js";
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/ClassroomView.js";
 
-  var _reactNative = _require(_dependencyMap[2], "react-native");
+  var _nativeBase = _require(_dependencyMap[2], "native-base");
 
-  var _nativeBase = _require(_dependencyMap[3], "native-base");
-
-  var _styles = _require(_dependencyMap[4], "../styles");
+  var _styles = _require(_dependencyMap[3], "../styles");
 
   var _styles2 = _interopRequireDefault(_styles);
+
+  var _classroom = _require(_dependencyMap[4], "./classroom");
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,13 +34,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
   var _components = {
-    SignUpMain: {
-      displayName: "SignUpMain"
+    ClassroomView: {
+      displayName: "ClassroomView"
     }
   };
 
   var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/SignUpMain.js",
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/ClassroomView.js",
     components: _components,
     locals: [module],
     imports: [_react3.default]
@@ -52,148 +52,157 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
   }
 
-  var SignUpMain = _wrapComponent("SignUpMain")((_temp = _class = function (_Component) {
-    _inherits(SignUpMain, _Component);
+  var ClassroomView = _wrapComponent("ClassroomView")((_temp = _class = function (_Component) {
+    _inherits(ClassroomView, _Component);
 
-    function SignUpMain() {
-      _classCallCheck(this, SignUpMain);
+    function ClassroomView(props) {
+      _classCallCheck(this, ClassroomView);
 
-      return _possibleConstructorReturn(this, (SignUpMain.__proto__ || Object.getPrototypeOf(SignUpMain)).apply(this, arguments));
+      var _this = _possibleConstructorReturn(this, (ClassroomView.__proto__ || Object.getPrototypeOf(ClassroomView)).call(this, props));
+
+      _this.state = {
+        isLoading: false,
+        idAula: ''
+      };
+      return _this;
     }
 
-    _createClass(SignUpMain, [{
+    _createClass(ClassroomView, [{
+      key: "componentWillMount",
+      value: function componentWillMount() {
+        return regeneratorRuntime.async(function componentWillMount$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.setState({
+                  idAula: _classroom.idAula
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "componentDidMount",
+      value: function componentDidMount() {}
+    }, {
       key: "render",
       value: function render() {
         var _this2 = this;
 
         return _react3.default.createElement(
-          _reactNative.View,
+          _nativeBase.Container,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 13
+              lineNumber: 34
             }
           },
           _react3.default.createElement(
-            _reactNative.View,
+            _nativeBase.Header,
             {
-              style: _styles2.default.textContainer,
+              style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 14
+                lineNumber: 35
               }
             },
             _react3.default.createElement(
-              _nativeBase.Text,
+              _nativeBase.Left,
               {
-                style: _styles2.default.headling,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 15
-                }
-              },
-              "\xBFQu\xE9 tipo de usuario desea crear?"
-            )
-          ),
-          _react3.default.createElement(
-            _reactNative.View,
-            {
-              style: _styles2.default.buttonsContainer,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 18
-              }
-            },
-            _react3.default.createElement(
-              _reactNative.View,
-              {
-                style: _styles2.default.viewButtonHome,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 19
+                  lineNumber: 37
                 }
               },
               _react3.default.createElement(
                 _nativeBase.Button,
                 {
-                  full: true,
-                  iconLeft: true,
-                  rounded: true,
-                  style: _styles2.default.buttonclear,
+                  transparent: true,
                   onPress: function onPress() {
-                    return _this2.props.navigation.navigate('SignUpAdult');
+                    return _this2.props.navigation.goBack();
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 20
+                    lineNumber: 38
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
-                  type: "MaterialCommunityIcons",
-                  name: "face",
+                  name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 22
+                    lineNumber: 39
                   }
-                }),
-                _react3.default.createElement(
-                  _nativeBase.Text,
-                  {
-                    style: {
-                      flex: 1
-                    },
-                    __source: {
-                      fileName: _jsxFileName,
-                      lineNumber: 23
-                    }
-                  },
-                  "Adulto Responsable"
-                )
+                })
               )
             ),
             _react3.default.createElement(
-              _reactNative.View,
+              _nativeBase.Body,
               {
-                style: _styles2.default.viewButtonHome,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 27
+                  lineNumber: 43
                 }
               },
               _react3.default.createElement(
-                _nativeBase.Button,
+                _nativeBase.Title,
                 {
-                  full: true,
-                  iconLeft: true,
-                  rounded: true,
-                  style: _styles2.default.buttondark,
-                  onPress: function onPress() {
-                    return _this2.props.navigation.navigate('SignUpTeacher');
-                  },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 28
+                    lineNumber: 44
                   }
                 },
-                _react3.default.createElement(_nativeBase.Icon, {
-                  name: "school",
+                "Detalle Aula"
+              )
+            )
+          ),
+          _react3.default.createElement(
+            _nativeBase.Content,
+            {
+              style: _styles2.default.maxHeight,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 49
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Card,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 50
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.CardItem,
+                {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 30
+                    lineNumber: 51
                   }
-                }),
+                },
                 _react3.default.createElement(
                   _nativeBase.Text,
                   {
-                    style: {
-                      flex: 1
-                    },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 31
+                      lineNumber: 52
                     }
                   },
-                  "Docente"
+                  "MUndo"
+                ),
+                _react3.default.createElement(
+                  _nativeBase.Text,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 55
+                    }
+                  },
+                  this.state.idAula
                 )
               )
             )
@@ -202,10 +211,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       }
     }]);
 
-    return SignUpMain;
+    return ClassroomView;
   }(_react2.Component), _class.navigationOptions = {
-    title: 'Registro'
+    header: null
   }, _temp));
 
-  exports.default = SignUpMain;
+  exports.default = ClassroomView;
 });

@@ -313,6 +313,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _react3.default.createElement(
                   _nativeBase.Text,
                   {
+                    style: {
+                      flex: 1
+                    },
                     __source: {
                       fileName: _jsxFileName,
                       lineNumber: 98
@@ -357,6 +360,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _react3.default.createElement(
                   _nativeBase.Text,
                   {
+                    style: {
+                      flex: 1
+                    },
                     __source: {
                       fileName: _jsxFileName,
                       lineNumber: 106
@@ -400,6 +406,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 _react3.default.createElement(
                   _nativeBase.Text,
                   {
+                    style: {
+                      flex: 1
+                    },
                     __source: {
                       fileName: _jsxFileName,
                       lineNumber: 114

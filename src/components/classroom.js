@@ -6,6 +6,8 @@ import {API_LIST_AULAS} from '../config/const';
 import {getID} from '../utils/home';
 import {getID_Docente} from '../utils/aulas';
 
+export var idAula;
+
 export default class ClassRoom extends Component {
 
   static navigationOptions = {
@@ -71,20 +73,12 @@ export default class ClassRoom extends Component {
     
   }
 
-  render() {
+  navegarClassroomView(id){
+    idAula = id;
+    this.props.navigation.navigate('ClassroomView');
+  }
 
-    let display = this.state.aulas.map(function (NewsData, index) {
-        return (
-            <View key={NewsData.id}>
-              <Card>
-                <CardItem button onPress={() => this.props.navigation.navigate('AddClassRoom')}>
-                  <Icon active name="home" />
-                  <Text>{NewsData.nombre}</Text>
-                </CardItem>
-              </Card>
-            </View>
-        )
-    });
+  render() {
 
     return (
       <Container>
@@ -103,7 +97,18 @@ export default class ClassRoom extends Component {
         </Header>
 
         <Content style = {styles.maxHeight}>
-          {display}
+          {this.state.aulas.map( (NewsData) => {
+            return (
+              <View key={NewsData.id} style = {styles.marginAddAula}>
+                <Card>
+                  <CardItem button onPress={() => this.navegarClassroomView(NewsData.id)}>
+                    <Icon active name="home" />
+                    <Text>{NewsData.nombre}</Text>
+                  </CardItem>
+                </Card>
+              </View>
+            )
+          })}
         </Content>
 
         <Fab

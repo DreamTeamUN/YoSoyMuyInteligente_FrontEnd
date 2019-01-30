@@ -43,10 +43,10 @@ export default class CardForum extends Component {
             <Form>
             <Item regular>
           <Input placeholder='Titulo' onChangeText={(titulo) => this.setState({ titulo })}
-          value={this.state.titulo} />
+          value={this.state.titulo} style={{backgroundColor: 'white'}} />
               </Item>
               <Textarea rowSpan={5} bordered placeholder="Texto" onChangeText={(texto) => this.setState({ texto })}
-              value={this.state.texto}/>
+              value={this.state.texto} style={{backgroundColor: 'white'}}/>
             </Form>
             </View>
 

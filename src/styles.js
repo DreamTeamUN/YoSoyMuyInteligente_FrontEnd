@@ -69,10 +69,8 @@ const styles = StyleSheet.create({
         margin: hp('5%'),
     },
     singlebuttonContainer: {
-        height: hp('20%'),
+        height: hp('10%'),
         alignItems: 'center',
-        paddingTop: hp('20%'),
-        justifyContent: 'center',
     },
     buttonsContainer: {
         height: wp('50%'),
@@ -538,13 +536,11 @@ const styles = StyleSheet.create({
 
   crearEntrada:{
     marginTop: hp('5%'),
-    marginLeft: wp('6%'),
-    marginRight: wp('6%'),
-    width: wp('88%'),
-    height: hp('40%'),
-  }
-
-
+    marginLeft: wp('5%'),
+    marginRight: wp('5%'),
+    width: wp('90%'),
+    height: hp('30%'),
+  },
 
 });
 

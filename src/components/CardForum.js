@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import { Container, Header, Content, Text, Button, Icon, Left, Body, Right, Form, Input, Item, Label, Textarea } from 'native-base';
 import { createPost } from '../utils/CreatePost';
+import styles from '../styles';
 import Expo from "expo";
 export default class CardForum extends Component {
 
@@ -36,9 +37,9 @@ export default class CardForum extends Component {
 
   render() {
     return (
-      <Container>
-          <Header />
-          <Content>
+      <View>
+
+            <View style={styles.crearEntrada}>
             <Form>
             <Item regular>
           <Input placeholder='Titulo' onChangeText={(titulo) => this.setState({ titulo })}
@@ -47,9 +48,18 @@ export default class CardForum extends Component {
               <Textarea rowSpan={5} bordered placeholder="Texto" onChangeText={(texto) => this.setState({ texto })}
               value={this.state.texto}/>
             </Form>
-            <Button info onPress={this._createNewPost.bind(this) }><Text style={{flex: 1}}> Enviar </Text></Button>
-          </Content>
-        </Container>
+            </View>
+
+            <View style={styles.singlebuttonContainer}>
+            <View style={styles.viewButtonHome}>
+              <Button full iconLeft rounded style={styles.buttonclear}
+                onPress={this._createNewPost.bind(this) }>
+                <Icon type="FontAwesome" name="send" />
+                <Text style={{flex: 1}}>Enviar</Text>
+              </Button>
+            </View>
+            </View>
+          </View>
     );
   }
 }

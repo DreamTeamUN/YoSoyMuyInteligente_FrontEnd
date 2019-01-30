@@ -68,6 +68,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: hp('5%'),
     },
+    singlebuttonContainer: {
+        height: hp('20%'),
+        alignItems: 'center',
+        paddingTop: hp('20%'),
+        justifyContent: 'center',
+    },
     buttonsContainer: {
         height: wp('50%'),
         alignItems: 'center',
@@ -200,7 +206,7 @@ const styles = StyleSheet.create({
       width: hp('100%'),
       height: wp('100%'),
       justifyContent: 'center',
-      alignItems: 'center', 
+      alignItems: 'center',
     },
 
     menupracticas: {
@@ -529,6 +535,16 @@ const styles = StyleSheet.create({
     width: hp('40%'),
     marginTop: hp('6%'),
   },
+
+  crearEntrada:{
+    marginTop: hp('5%'),
+    marginLeft: wp('6%'),
+    marginRight: wp('6%'),
+    width: wp('88%'),
+    height: hp('40%'),
+  }
+
+
 
 });
 

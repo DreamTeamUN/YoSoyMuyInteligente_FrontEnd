@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, Alert, View, ScrollView } from 'react-native';
+import { ActivityIndicator, Alert, View, ScrollView, ToastAndroid } from 'react-native';
 import { Container, Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import { API_SIGN_UP_ADULT } from '../config/const';
 import { validateForm } from "../utils/validations";
@@ -65,6 +65,7 @@ export default class SignUpAdult extends Component {
                 this.state.errors.push(res[properties[i]].toString())
               }
             }
+            ToastAndroid.show(this.state.errors.join(". \n").concat('.'), ToastAndroid.LONG);
             this.setState({ isLoading: false })
             break;
 

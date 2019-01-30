@@ -145,7 +145,6 @@ export default class SignUpTeacher extends Component {
             </Button>
           </View>
         </View>
-        <Text>{this.state.errors.toString()}</Text>
       </View>
     );
   }

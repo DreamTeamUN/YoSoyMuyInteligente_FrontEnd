@@ -19,18 +19,20 @@ import ChangePassword from './components/EditProfile/ChangePassword';
 import ChangeBirthdate from './components/EditProfile/ChangeBirthdate';
 import ChangePhoto from './components/EditProfile/ChangePhoto';
 import ForumScreen from './components/ForumScreen';
-import HomeForum from './components/HomeForum'
-import ClassRoom from './components/classroom'
-import AddClassRoom from './components/AddClassRoom'
-import AdminStudentsTutor from './components/AdminStudentsTutor'
-import CardForum from './components/CardForum'
-import PalabraImagen from './components/PalabraImagen'
-import NivelesPalabraImagen from './components/NivelesPalabraImagen'
+import HomeForum from './components/HomeForum';
+import ClassRoom from './components/classroom';
+import AddClassRoom from './components/AddClassRoom';
+import AdminStudentsTutor from './components/AdminStudentsTutor';
+import CardForum from './components/CardForum';
+import PalabraImagen from './components/PalabraImagen';
+import NivelesPalabraImagen from './components/NivelesPalabraImagen';
+import ClassroomView from './components/ClassroomView';
 
 export const AppStack = createStackNavigator(
     {
         HomeAdult: HomeAdult,
         AddClassRoom: AddClassRoom,
+        ClassroomView: ClassroomView,
         NivelesPalabraImagen: NivelesPalabraImagen,
         HomeStudent: HomeStudent,
         WeekProgress: WeekProgress,

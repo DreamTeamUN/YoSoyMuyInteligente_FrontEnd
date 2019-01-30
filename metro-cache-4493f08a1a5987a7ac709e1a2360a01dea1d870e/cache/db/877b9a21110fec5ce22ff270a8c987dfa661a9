@@ -26,8 +26,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     },
     marginAddAula: {
       marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1%'),
-      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%'),
-      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%')
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%')
     },
     buttonAceptarAula: {
       backgroundColor: '#5D99C6',
@@ -43,6 +43,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     },
     imageContainer: {
       height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      justifyContent: 'flex-end'
+    },
+    uploadImageContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%'),
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('3%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('3%'),
       justifyContent: 'flex-end'
     },
     title: {
@@ -79,16 +87,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     buttonclear: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
       backgroundColor: '#90CAF9',
-      justifyContent: 'flex-start',
-      flexDirection: 'column',
-      alignItems: 'flex-start'
+      alignItems: 'flex-start',
+      flexDirection: 'column'
     },
     buttondark: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
       backgroundColor: '#5D99C6',
-      justifyContent: 'flex-start',
-      flexDirection: 'column',
-      alignItems: 'flex-start'
+      alignItems: 'flex-start',
+      flexDirection: 'column'
     },
     buttonclearpra: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
@@ -103,9 +109,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     buttonred: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
       backgroundColor: '#DC143C',
-      justifyContent: 'flex-start',
-      flexDirection: 'column',
-      alignItems: 'flex-start'
+      alignItems: 'flex-start',
+      flexDirection: 'column'
     },
     buttonfb: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),

@@ -167,88 +167,107 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             lineNumber: 101
                         }
                     },
+                    _react3.default.createElement(_reactNative.Image, {
+                        source: {
+                            uri: this.state.imageUri
+                        },
+                        style: _styles2.default.uploadImageContainer,
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 103
+                        }
+                    }),
                     _react3.default.createElement(
                         _nativeBase.Form,
                         {
                             style: _styles2.default.adult_TextInputContainer,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 102
+                                lineNumber: 105
                             }
                         },
                         _react3.default.createElement(
-                            _nativeBase.Button,
+                            _reactNative.View,
                             {
-                                iconLeft: true,
-                                rounded: true,
-                                style: _styles2.default.buttondark,
-                                onPress: this._pickImage.bind(this),
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 103
-                                }
-                            },
-                            _react3.default.createElement(_nativeBase.Icon, {
-                                type: "MaterialIcons",
-                                name: "photo",
+                                style: _styles2.default.viewButtonHome,
                                 __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 106
                                 }
-                            }),
+                            },
                             _react3.default.createElement(
-                                _nativeBase.Text,
+                                _nativeBase.Button,
                                 {
+                                    full: true,
+                                    iconLeft: true,
+                                    rounded: true,
+                                    style: _styles2.default.buttonclear,
+                                    onPress: this._pickImage.bind(this),
                                     __source: {
                                         fileName: _jsxFileName,
                                         lineNumber: 107
                                     }
                                 },
-                                "Cargar foto desde la galeria"
-                            )
-                        ),
-                        _react3.default.createElement(_reactNative.Image, {
-                            source: {
-                                uri: this.state.imageUri
-                            },
-                            style: {
-                                width: 200,
-                                height: 200
-                            },
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 110
-                            }
-                        }),
-                        _react3.default.createElement(
-                            _nativeBase.Button,
-                            {
-                                iconLeft: true,
-                                rounded: true,
-                                style: _styles2.default.buttondark,
-                                onPress: this._sendNewData.bind(this),
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 112
-                                }
-                            },
-                            _react3.default.createElement(_nativeBase.Icon, {
-                                type: "MaterialIcons",
-                                name: "done",
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 115
-                                }
-                            }),
-                            _react3.default.createElement(
-                                _nativeBase.Text,
-                                {
+                                _react3.default.createElement(_nativeBase.Icon, {
+                                    type: "MaterialIcons",
+                                    name: "photo",
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 116
+                                        lineNumber: 109
+                                    }
+                                }),
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 110
+                                        }
+                                    },
+                                    "Cargar foto desde la galeria"
+                                )
+                            )
+                        ),
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            {
+                                style: _styles2.default.viewButtonHome,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 114
+                                }
+                            },
+                            _react3.default.createElement(
+                                _nativeBase.Button,
+                                {
+                                    full: true,
+                                    iconLeft: true,
+                                    rounded: true,
+                                    style: _styles2.default.buttondark,
+                                    onPress: this._sendNewData.bind(this),
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 115
                                     }
                                 },
-                                "Subir foto"
+                                _react3.default.createElement(_nativeBase.Icon, {
+                                    type: "MaterialIcons",
+                                    name: "done",
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 117
+                                    }
+                                }),
+                                _react3.default.createElement(
+                                    _nativeBase.Text,
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 118
+                                        }
+                                    },
+                                    "Subir foto"
+                                )
                             )
                         )
                     )

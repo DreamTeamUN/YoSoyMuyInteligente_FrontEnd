@@ -5,6 +5,7 @@ import styles from '../styles';
 import {API_TUTORS} from '../config/const'
 import {getID} from '../utils/home';
 import {getID_TUTOR} from '../utils/createStudent';
+
 export var idEstudiante;
 
 export default class AdminStudentsTutor extends Component {
@@ -72,8 +73,8 @@ export default class AdminStudentsTutor extends Component {
     
   }
 
-  navegarHomeStudent(isEstudiante) {
-    idEstudiante = idEstudiante;
+  navegarHomeStudent(id) {
+    idEstudiante = id;
     this.props.navigation.navigate('HomeStudent');
   }
 

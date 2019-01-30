@@ -15,9 +15,7 @@ export default class ForumScreen extends Component {
       titulo: '',
       texto: '',
       usuario: '',
-
     };
-
   }
 
   static navigatorStyle = {};
@@ -31,7 +29,6 @@ export default class ForumScreen extends Component {
       texto: await getForTEXT(),
       usuario: await getForUSER(),
       data: await getcomments(),
-
     });
   }
 

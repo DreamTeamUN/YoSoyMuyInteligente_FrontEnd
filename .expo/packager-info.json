@@ -1,11 +1,5 @@
 {
-<<<<<<< HEAD
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null
-=======
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 6898
->>>>>>> develop
+  "packagerPid": 6259
 }

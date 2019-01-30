@@ -92,27 +92,25 @@ export default class HomeForum extends Component {
             return (
               <View key={record.content.id}>
           <Card>
-            <CardItem>
+            <CardItem button onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
               <Left>
-                <Thumbnail source={{uri: 'Image URL'}} />
+                <Thumbnail source={{uri: 'https://ysmiapi.herokuapp.com/0_default.png'}} />
                 <Body>
                   <Text>{record.content.titulo}</Text>
                   <Text note>{record.content.usuario.user}</Text>
                 </Body>
               </Left>
             </CardItem>
-            <CardItem cardBody button onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
+            <CardItem button onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
               <Text>{record.content.resumen}</Text>
             </CardItem>
             <CardItem>
-              <Body>
               <Left>
-                <Button transparent>
+                <Button transparent onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
                   <Icon active name="chatbubbles" />
                   <Text>{this.state.numComments[record.content.id]}</Text>
                 </Button>
                 </Left>
-              </Body>
               <Right>
                 <Text>{record.content.created_at.substring(0,10)}</Text>
               </Right>

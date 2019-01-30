@@ -31,12 +31,8 @@ export default class CardForum extends Component {
               this.setState({ error: error })
               console.log("error: " + error)
           }
-
-
-
-
-
   }
+
 
   render() {
     return (

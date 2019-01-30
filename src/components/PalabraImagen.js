@@ -36,7 +36,7 @@ export default class PalabraImagen extends Component {
   }
 
   async componentWillMount(){
-    
+
     this.setState({isLoading: true});
 
     getID()
@@ -51,17 +51,17 @@ export default class PalabraImagen extends Component {
   }
 
   cambiarColorBotones(seleccion) {
- 
+
     switch (seleccion) {
       case this.state.opcion1:
-        this.setState({ 
+        this.setState({
           boton1: styles.buttonjuegowin,
           boton2: styles.buttonjuegofail,
           boton3: styles.buttonjuegofail
         });
         break;
       case this.state.opcion2:
-        this.setState({ 
+        this.setState({
           boton1: styles.buttonjuegofail,
           boton2: styles.buttonjuegowin,
           boton3: styles.buttonjuegofail
@@ -69,7 +69,7 @@ export default class PalabraImagen extends Component {
         break;
 
       case this.state.opcion3:
-        this.setState({ 
+        this.setState({
           boton1: styles.buttonjuegofail,
           boton2: styles.buttonjuegofail,
           boton3: styles.buttonjuegowin
@@ -87,7 +87,7 @@ export default class PalabraImagen extends Component {
   }
 
   async getNivel (){
-    
+
     const URL = API_JUEGO_PALABRA_IMG.concat("/" + idNivel).concat("/3").concat("/" + this.state.cantidadJuegos);
 
     try {
@@ -109,7 +109,7 @@ export default class PalabraImagen extends Component {
   }
 
   async renderNivel(){
-    
+
     var juego = "Juego".concat(this.state.subnivel);
 
     if (this.state.subnivel < this.state.cantidadJuegos) {
@@ -121,20 +121,20 @@ export default class PalabraImagen extends Component {
         opcion3: this.state.nivel[juego].opciones[2].frase,
         opcionCorrecta: this.state.nivel[juego].correcta,
       })
-    } else {      
+    } else {
       this.props.navigation.goBack();
-    }    
+    }
   }
 
   evaluarOpcion(opcion){
 
     if (this.state.opcionCorrecta == opcion) {
-      ToastAndroid.show('Bien!! :D', ToastAndroid.SHORT);
+      ToastAndroid.show('¡Bien, opción correcta!', ToastAndroid.SHORT);
       this.setState({
         puntuacion: this.state.puntuacion + 10,
-      })      
+      })
     }else{
-      ToastAndroid.show('Incorrecto :(', ToastAndroid.SHORT);
+      ToastAndroid.show('Sigue intentando.', ToastAndroid.SHORT);
     }
 
     this.cambiarColorBotones(this.state.opcionCorrecta);
@@ -189,7 +189,7 @@ export default class PalabraImagen extends Component {
             onPress={() => this.evaluarOpcion(this.state.opcion1)}>
             <Text style={styles.textoOpcion}>
               {this.state.opcion1}
-            </Text>          
+            </Text>
           </Button>
 
           <Button block rounded style={this.state.boton2}

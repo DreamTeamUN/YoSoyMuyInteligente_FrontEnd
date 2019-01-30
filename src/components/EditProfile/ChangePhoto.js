@@ -107,7 +107,7 @@ export default class ChangePhoto extends Component {
                     <Button full iconLeft rounded style={styles.buttonclear}
                         onPress={this._pickImage.bind(this)}>
                         <Icon type="MaterialIcons" name="photo" />
-                        <Text>Cargar foto desde la galeria</Text>
+                        <Text style={{flex: 1}}>Cargar foto desde la galeria</Text>
                     </Button>
                     </View>
 
@@ -115,7 +115,7 @@ export default class ChangePhoto extends Component {
                     <Button full iconLeft rounded style={styles.buttondark}
                         onPress={this._sendNewData.bind(this)}>
                         <Icon type="MaterialIcons" name="done" />
-                        <Text>Subir foto</Text>
+                        <Text style={{flex: 1}}>Subir foto</Text>
                     </Button>
                     </View>
                 </Form>

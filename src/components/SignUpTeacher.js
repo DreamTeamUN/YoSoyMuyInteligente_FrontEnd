@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, Alert, View, ScrollView } from 'react-native';
+import { ActivityIndicator, Alert, View, ScrollView, ToastAndroid } from 'react-native';
 import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import axios from 'axios';
 import { API_SIGN_UP_TEACHER } from '../config/const';
@@ -66,6 +66,8 @@ export default class SignUpTeacher extends Component {
                 this.state.errors.push(res[properties[i]].toString())
               }
             }
+
+            ToastAndroid.show(this.state.errors.join(". \n").concat('.'), ToastAndroid.LONG);
             this.setState({ isLoading: false })
             break;
 

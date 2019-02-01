@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Imagen } from 'react-native';
-import { Container, View, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
+import { Container, View, Header, Content, Card, CardItem, Fab, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
 import { storeForDATA, getForEMAIL, getcomments } from '../utils/CreatePost';
 import { getID } from '../utils/home';
 import Dataset from 'impagination';
@@ -26,7 +26,6 @@ export default class HomeForum extends Component {
           }),
       });
       let res = await response.json();
-      console.log(res);
       this.state.numComments[id] = res.length;
   }
 
@@ -80,9 +79,7 @@ export default class HomeForum extends Component {
     return (
       <Container>
         <Content onScroll={this.setCurrentReadOffset}>
-        <Button full info onPress={() => this.props.navigation.navigate('CardForum')}>
-            <Text>Crear entrada</Text>
-          </Button>
+
           {this.state.datasetState.map(record => {
 
             if (!record.isSettled) {
@@ -120,6 +117,15 @@ export default class HomeForum extends Component {
         );
        })}
         </Content>
+        <Fab
+          active={this.state.active}
+          direction="up"
+          containerStyle={{ }}
+          style={{ backgroundColor: '#5067FF' }}
+          position="bottomRight"
+          onPress={() => this.props.navigation.navigate('CardForum')}>
+          <Icon name="add" />
+        </Fab>
       </Container>
     );
   }

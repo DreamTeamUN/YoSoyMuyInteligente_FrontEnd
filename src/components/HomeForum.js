@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { Imagen } from 'react-native';
-import { Container, View, Header, Content, Card, CardItem, Fab, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
+import { Container, View, Header, Content, Card, CardItem, Title, Fab, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
 import { storeForDATA, getForEMAIL, getcomments } from '../utils/CreatePost';
 import { getID } from '../utils/home';
 import Dataset from 'impagination';
+import styles from '../styles';
+
+var BUTTONS = ["Mis entradas", "Cancelar"];
+var DESTRUCTIVE_INDEX = 0;
+var CANCEL_INDEX = 1;
 export default class HomeForum extends Component {
+  static navigationOptions = {
+    header: null
+  }
 
   constructor(props) {
     super(props);
@@ -78,6 +86,21 @@ export default class HomeForum extends Component {
     const { refresh } = this.state;
     return (
       <Container>
+        <Header style = {styles.headerStyle}>
+
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+
+          <Body>
+            <Title>Foro</Title>
+          </Body>
+
+  
+
+        </Header>
         <Content onScroll={this.setCurrentReadOffset}>
 
           {this.state.datasetState.map(record => {

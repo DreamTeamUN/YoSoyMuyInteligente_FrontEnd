@@ -61,7 +61,7 @@ export default class ChangePhoto extends Component {
 
             this.setState({ imageUri: localUri });
             this.setState({ imageType: type });
-            this.setState({ imageName:  finalName});
+            this.setState({ imageName: finalName });
         }
     };
 
@@ -100,23 +100,25 @@ export default class ChangePhoto extends Component {
         return (
             <View>
 
-            <Image source={{ uri: this.state.imageUri }} style={styles.uploadImageContainer} />
+                <View style={styles.uploadImageContainer}>
+                    <Image source={{ uri: this.state.imageUri }} style={styles.uploadImage} />
+                </View>
 
                 <Form style={styles.adult_TextInputContainer}>
-                <View style={styles.viewButtonHome}>
-                    <Button full iconLeft rounded style={styles.buttonclear}
-                        onPress={this._pickImage.bind(this)}>
-                        <Icon type="MaterialIcons" name="photo" />
-                        <Text style={{flex: 1}}>Cargar foto desde la galeria</Text>
-                    </Button>
+                    <View style={styles.viewButtonHome}>
+                        <Button full iconLeft rounded style={styles.buttonclear}
+                            onPress={this._pickImage.bind(this)}>
+                            <Icon type="MaterialIcons" name="photo" />
+                            <Text style={{ flex: 1 }}>Cargar foto desde la galeria</Text>
+                        </Button>
                     </View>
 
                     <View style={styles.viewButtonHome}>
-                    <Button full iconLeft rounded style={styles.buttondark}
-                        onPress={this._sendNewData.bind(this)}>
-                        <Icon type="MaterialIcons" name="done" />
-                        <Text style={{flex: 1}}>Subir foto</Text>
-                    </Button>
+                        <Button full iconLeft rounded style={styles.buttondark}
+                            onPress={this._sendNewData.bind(this)}>
+                            <Icon type="MaterialIcons" name="done" />
+                            <Text style={{ flex: 1 }}>Subir foto</Text>
+                        </Button>
                     </View>
                 </Form>
             </View>

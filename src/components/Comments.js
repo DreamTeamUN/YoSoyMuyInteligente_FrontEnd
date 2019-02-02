@@ -81,7 +81,7 @@ export default class Comments extends Component {
               <View style={styles.containerf}>
                 <TouchableOpacity onPress={() => { }}>
 
-                  <Image style={styles.imagef} source={{ uri: `${API}${Notification.usuario.archivo.ruta.url}` }} />
+                  <Image style={styles.imagef} source={{ uri: `${API}${Notification.usuario.archivo.ruta.url}` + '?' + new Date() }} />
                 </TouchableOpacity>
                 <View style={styles.contentf}>
                   <View style={styles.contentHeaderf}>

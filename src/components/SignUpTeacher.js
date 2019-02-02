@@ -16,10 +16,10 @@ export default class SignUpTeacher extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'IwiDocente',
+      username: 'DocentePrueba',
       password: '123123',
       password2: '123123',
-      email: 'iwidocente@unal.edu.co',
+      email: 'DocentePrueba@unal.edu.co',
       errors: [],
       isLoading: false,
     };

@@ -1,0 +1,361 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/Comments.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _nativeBase = _require(_dependencyMap[3], "native-base");
+
+  var _CreatePost = _require(_dependencyMap[4], "../utils/CreatePost");
+
+  var _styles = _require(_dependencyMap[5], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  var _const = _require(_dependencyMap[6], "../config/const");
+
+  var _moment = _require(_dependencyMap[7], "moment");
+
+  var _moment2 = _interopRequireDefault(_moment);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    Comments: {
+      displayName: "Comments"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/Comments.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Comments = _wrapComponent("Comments")(function (_Component) {
+    _inherits(Comments, _Component);
+
+    function Comments(props) {
+      _classCallCheck(this, Comments);
+
+      var _this = _possibleConstructorReturn(this, (Comments.__proto__ || Object.getPrototypeOf(Comments)).call(this, props));
+
+      _this.props = props;
+      _this.state = {
+        texto: '',
+        data: []
+      };
+      return _this;
+    }
+
+    _createClass(Comments, [{
+      key: "componentWillMount",
+      value: function componentWillMount() {
+        return regeneratorRuntime.async(function componentWillMount$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.t0 = this;
+                _context.next = 3;
+                return regeneratorRuntime.awrap((0, _CreatePost.getcomments)());
+
+              case 3:
+                _context.t1 = _context.sent;
+                _context.t2 = {
+                  data: _context.t1
+                };
+
+                _context.t0.setState.call(_context.t0, _context.t2);
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "_createNewComment",
+      value: function _createNewComment() {
+        var response;
+        return regeneratorRuntime.async(function _createNewComment$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return regeneratorRuntime.awrap((0, _CreatePost.createComment)(this.state.texto));
+
+              case 3:
+                response = _context2.sent;
+                console.log(response.status);
+
+                if (!(response.status >= 200 && response.status < 300)) {
+                  _context2.next = 16;
+                  break;
+                }
+
+                _context2.t0 = this;
+                _context2.next = 9;
+                return regeneratorRuntime.awrap((0, _CreatePost.getcomments)());
+
+              case 9:
+                _context2.t1 = _context2.sent;
+                _context2.t2 = {
+                  data: _context2.t1
+                };
+
+                _context2.t0.setState.call(_context2.t0, _context2.t2);
+
+                console.log("createComment Done");
+
+                if (this.input != null) {
+                  this.input._root.clear();
+                }
+
+                _context2.next = 17;
+                break;
+
+              case 16:
+                this.setState({
+                  error: "Algo salio mal :("
+                });
+
+              case 17:
+                _context2.next = 23;
+                break;
+
+              case 19:
+                _context2.prev = 19;
+                _context2.t3 = _context2["catch"](0);
+                this.setState({
+                  error: _context2.t3
+                });
+                console.log("error: " + _context2.t3);
+
+              case 23:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, null, this, [[0, 19]]);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        var Refresh = this.state.Refresh;
+        return _react3.default.createElement(
+          _reactNative.ScrollView,
+          {
+            style: _styles2.default.container,
+            keyboardShouldPersistTaps: "always",
+            onScroll: function onScroll(event) {
+              _this2.scrollIndex = event.nativeEvent.contentOffset.y;
+            },
+            ref: "scrollView",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 49
+            }
+          },
+          _react3.default.createElement(
+            _nativeBase.Content,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 57
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Item,
+              {
+                rounded: true,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 58
+                }
+              },
+              _react3.default.createElement(_nativeBase.Input, {
+                ref: function ref(_ref) {
+                  _this2.input = _ref;
+                },
+                placeholder: "Comentar",
+                onChangeText: function onChangeText(texto) {
+                  return _this2.setState({
+                    texto: texto
+                  });
+                },
+                value: this.state.texto,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 59
+                }
+              }),
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  transparent: true,
+                  onPress: this._createNewComment.bind(this),
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 61
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  active: true,
+                  type: "MaterialIcons",
+                  name: "play-arrow",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 62
+                  }
+                })
+              )
+            )
+          ),
+          _react3.default.createElement(_reactNative.FlatList, {
+            style: _styles2.default.rootf,
+            data: this.state.data,
+            extraData: this.state,
+            ItemSeparatorComponent: function ItemSeparatorComponent() {
+              return _react3.default.createElement(_reactNative.View, {
+                style: _styles2.default.separatorf,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 72
+                }
+              });
+            },
+            keyExtractor: function keyExtractor(item) {
+              return item.id.toString();
+            },
+            renderItem: function renderItem(item) {
+              var Notification = item.item;
+              return _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: _styles2.default.containerf,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 81
+                  }
+                },
+                _react3.default.createElement(
+                  _reactNative.TouchableOpacity,
+                  {
+                    onPress: function onPress() {},
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 82
+                    }
+                  },
+                  _react3.default.createElement(_reactNative.Image, {
+                    style: _styles2.default.imagef,
+                    source: {
+                      uri: "" + _const.API + Notification.usuario.archivo.ruta.url
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 84
+                    }
+                  })
+                ),
+                _react3.default.createElement(
+                  _reactNative.View,
+                  {
+                    style: _styles2.default.contentf,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 86
+                    }
+                  },
+                  _react3.default.createElement(
+                    _reactNative.View,
+                    {
+                      style: _styles2.default.contentHeaderf,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 87
+                      }
+                    },
+                    _react3.default.createElement(
+                      _nativeBase.Text,
+                      {
+                        style: _styles2.default.namef,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 88
+                        }
+                      },
+                      Notification.usuario.user
+                    ),
+                    _react3.default.createElement(
+                      _nativeBase.Text,
+                      {
+                        style: _styles2.default.timef,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 89
+                        }
+                      },
+                      " ",
+                      Notification.created_at.substring(11, 16),
+                      " "
+                    )
+                  ),
+                  _react3.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      rkType: "primary3 mediumLine",
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 91
+                      }
+                    },
+                    Notification.texto
+                  )
+                )
+              );
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 66
+            }
+          })
+        );
+      }
+    }]);
+
+    return Comments;
+  }(_react2.Component));
+
+  exports.default = Comments;
+});

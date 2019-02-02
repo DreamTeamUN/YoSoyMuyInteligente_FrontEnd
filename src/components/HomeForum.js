@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { Imagen } from 'react-native';
-import { Container, View, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
+import { Container, View, Header, Content, Card, CardItem, Title, Fab, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
 import { storeForDATA, getForEMAIL, getcomments } from '../utils/CreatePost';
+import { getID } from '../utils/home';
 import Dataset from 'impagination';
+import styles from '../styles';
+
+var BUTTONS = ["Mis entradas", "Cancelar"];
+var DESTRUCTIVE_INDEX = 0;
+var CANCEL_INDEX = 1;
 export default class HomeForum extends Component {
+  static navigationOptions = {
+    header: null
+  }
 
   constructor(props) {
     super(props);
@@ -25,7 +34,6 @@ export default class HomeForum extends Component {
           }),
       });
       let res = await response.json();
-      console.log(res);
       this.state.numComments[id] = res.length;
   }
 
@@ -49,7 +57,7 @@ export default class HomeForum extends Component {
 
       // Where to fetch the data from.
       fetch(pageOffset, pageSize, stats) {
-        return fetch(`https://ysmiapi.herokuapp.com/entradas/1/0/${pageOffset + 1}`)
+        return fetch(`https://ysmiapi.herokuapp.com/entradas/3/0/${pageOffset + 1}`)
           .then(response => response.json())
           .catch((error) => {
             console.error(error);
@@ -60,12 +68,14 @@ export default class HomeForum extends Component {
     this.setState({dataset});
   }
 
-  componentWillMount() {
+  async componentWillMount() {
       this.setupImpagination();
+      await getID();
+
     }
 
   setCurrentReadOffset = (event) => {
-    let itemHeight = 402;
+    let itemHeight = 202;
     let currentOffset = Math.floor(event.nativeEvent.contentOffset.y);
     let currentItemIndex = Math.ceil(currentOffset / itemHeight);
 
@@ -73,12 +83,26 @@ export default class HomeForum extends Component {
     }
 
   render() {
+    const { refresh } = this.state;
     return (
       <Container>
+        <Header style = {styles.headerStyle}>
+
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+
+          <Body>
+            <Title>Foro</Title>
+          </Body>
+
+  
+
+        </Header>
         <Content onScroll={this.setCurrentReadOffset}>
-        <Button full info onPress={() => this.props.navigation.navigate('CardForum')}>
-            <Text>Crear entrada</Text>
-          </Button>
+
           {this.state.datasetState.map(record => {
 
             if (!record.isSettled) {
@@ -88,27 +112,25 @@ export default class HomeForum extends Component {
             return (
               <View key={record.content.id}>
           <Card>
-            <CardItem>
+            <CardItem button onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
               <Left>
-                <Thumbnail source={{uri: 'Image URL'}} />
+                <Thumbnail source={{uri: 'https://ysmiapi.herokuapp.com/0_default.png'}} />
                 <Body>
                   <Text>{record.content.titulo}</Text>
                   <Text note>{record.content.usuario.user}</Text>
                 </Body>
               </Left>
             </CardItem>
-            <CardItem cardBody button onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
+            <CardItem button onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
               <Text>{record.content.resumen}</Text>
             </CardItem>
             <CardItem>
-              <Body>
               <Left>
-                <Button transparent>
+                <Button transparent onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
                   <Icon active name="chatbubbles" />
                   <Text>{this.state.numComments[record.content.id]}</Text>
                 </Button>
                 </Left>
-              </Body>
               <Right>
                 <Text>{record.content.created_at.substring(0,10)}</Text>
               </Right>
@@ -118,6 +140,15 @@ export default class HomeForum extends Component {
         );
        })}
         </Content>
+        <Fab
+          active={this.state.active}
+          direction="up"
+          containerStyle={{ }}
+          style={{ backgroundColor: '#5067FF' }}
+          position="bottomRight"
+          onPress={() => this.props.navigation.navigate('CardForum')}>
+          <Icon name="add" />
+        </Fab>
       </Container>
     );
   }

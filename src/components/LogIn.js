@@ -12,9 +12,9 @@ export default class LogIn extends Component {
 
   constructor(props) {
     super(props);
-    this.toggleSwitch = this.toggleSwitch.bind(this);
+    // this.toggleSwitch = this.toggleSwitch.bind(this);
     this.state = {
-      email: 'AVN@gmail.com',
+      email: 'AdultoPrueba@gmail.com',
       password: '123123',
       rememberMe: false,
       error: '',
@@ -25,13 +25,14 @@ export default class LogIn extends Component {
     };
   }
 
-  toggleSwitch() {
-    this.setState({ rememberMe: !this.state.rememberMe });
-  }
+  // toggleSwitch() {
+  //   this.setState({ rememberMe: !this.state.rememberMe });
+  // }
 
   async _sendData() {
 
     try {
+      this.setState({ isLoading: true })
       let response = await sendDataToLogIn(this.state.email, this.state.password)
 
       console.log("login | res status: " + response.status)
@@ -43,23 +44,36 @@ export default class LogIn extends Component {
         let accessToken = res.jwt
         storeToken(accessToken);
         console.log("Access Token: " + accessToken)
+        this.setState({ isLoading: false })
         this.props.navigation.navigate('HomeAdult')
       } else {
         // Error
         // let error = res;
         // throw error;
         removeToken()
+        this.setState({ isLoading: false })
         this.setState({ error: "Algo salio mal" })
       }
-      // this.setState({ isLoading: false })
+
     } catch (error) {
       // this._removeToken()
+      this.setState({ isLoading: false })
       this.setState({ error: error })
       console.log("error: " + error)
     }
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (
+        <View>
+          <View style={styles.home_TextContainer}>
+            <Text style={styles.headling}>Entrando</Text>
+            <ActivityIndicator size="large" color="#4267B2" />
+          </View>
+        </View>
+      );
+    }
     return (
       <View>
         <Form style={styles.adult_TextInputContainer}>
@@ -82,7 +96,7 @@ export default class LogIn extends Component {
             />
           </Item>
 
-          <View style={styles.login_Toggle}>
+          {/* <View style={styles.login_Toggle}>
             <Text style={styles.login_ToggleText}>
               Recordar usuario
             </Text>
@@ -90,18 +104,18 @@ export default class LogIn extends Component {
               onValueChange={this.toggleSwitch}
               value={this.state.rememberMe}
             />
-          </View>
+          </View> */}
 
         </Form>
 
         <View style={styles.login_buttonsContainer}>
           <Text>{this.state.error}</Text>
 
-          <View>
+          <View style={styles.viewButtonHome}>
             <Button iconLeft rounded style={styles.buttonclear}
               onPress={() => this._sendData()}>
               <Icon type="MaterialIcons" name="done" />
-              <Text>Enviar</Text>
+              <Text style={{flex: 1}}>Enviar</Text>
             </Button>
           </View>
         </View>

@@ -6,6 +6,8 @@ import {API_TUTORS} from '../config/const'
 import {getID} from '../utils/home';
 import {getID_TUTOR} from '../utils/createStudent';
 
+export var idEstudiante;
+
 export default class AdminStudentsTutor extends Component {
 
   static navigationOptions = {
@@ -71,7 +73,8 @@ export default class AdminStudentsTutor extends Component {
     
   }
 
-  navegarHomeStudent() {
+  navegarHomeStudent(id) {
+    idEstudiante = id;
     this.props.navigation.navigate('HomeStudent');
   }
 
@@ -98,7 +101,7 @@ export default class AdminStudentsTutor extends Component {
               return (
                 <View key={NewsData.id} style = {styles.marginAddAula}>
                   <Card>
-                    <CardItem button onPress = {() => this.navegarHomeStudent()}>
+                    <CardItem button onPress = {() => this.navegarHomeStudent(NewsData.id)}>
                         <Icon active name="person" />
                         <Text>{NewsData.nombre}</Text>
                     </CardItem>

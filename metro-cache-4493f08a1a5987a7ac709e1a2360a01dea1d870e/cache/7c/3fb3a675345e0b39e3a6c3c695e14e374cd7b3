@@ -2,6 +2,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.idEstudiante = undefined;
 
   var _react2 = _require(_dependencyMap[0], "react");
 
@@ -55,6 +56,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
     };
   }
+
+  var idEstudiante = exports.idEstudiante = undefined;
 
   var AdminStudentsTutor = _wrapComponent("AdminStudentsTutor")((_temp = _class = function (_Component) {
     _inherits(AdminStudentsTutor, _Component);
@@ -155,7 +158,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       value: function componentDidMount() {}
     }, {
       key: "navegarHomeStudent",
-      value: function navegarHomeStudent() {
+      value: function navegarHomeStudent(id) {
+        exports.idEstudiante = idEstudiante = id;
         this.props.navigation.navigate('HomeStudent');
       }
     }, {
@@ -168,7 +172,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 81
+              lineNumber: 84
             }
           },
           _react3.default.createElement(
@@ -177,7 +181,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.headerStyle,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 82
+                lineNumber: 85
               }
             },
             _react3.default.createElement(
@@ -185,7 +189,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 84
+                  lineNumber: 87
                 }
               },
               _react3.default.createElement(
@@ -197,14 +201,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 85
+                    lineNumber: 88
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
                   name: "arrow-back",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 86
+                    lineNumber: 89
                   }
                 })
               )
@@ -214,7 +218,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 90
+                  lineNumber: 93
                 }
               },
               _react3.default.createElement(
@@ -222,7 +226,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 91
+                    lineNumber: 94
                   }
                 },
                 "Panel de estudiantes"
@@ -235,7 +239,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.maxHeight,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 96
+                lineNumber: 99
               }
             },
             this.state.estudiantes.map(function (NewsData) {
@@ -246,7 +250,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.marginAddAula,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 99
+                    lineNumber: 102
                   }
                 },
                 _react3.default.createElement(
@@ -254,7 +258,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   {
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 100
+                      lineNumber: 103
                     }
                   },
                   _react3.default.createElement(
@@ -262,11 +266,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     {
                       button: true,
                       onPress: function onPress() {
-                        return _this3.navegarHomeStudent();
+                        return _this3.navegarHomeStudent(NewsData.id);
                       },
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 101
+                        lineNumber: 104
                       }
                     },
                     _react3.default.createElement(_nativeBase.Icon, {
@@ -274,7 +278,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       name: "person",
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 102
+                        lineNumber: 105
                       }
                     }),
                     _react3.default.createElement(
@@ -282,7 +286,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                       {
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 103
+                          lineNumber: 106
                         }
                       },
                       NewsData.nombre
@@ -309,14 +313,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 112
+                lineNumber: 115
               }
             },
             _react3.default.createElement(_nativeBase.Icon, {
               name: "add",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 120
+                lineNumber: 123
               }
             })
           )

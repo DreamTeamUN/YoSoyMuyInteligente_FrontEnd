@@ -119,7 +119,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         });
       };
 
-      console.log(_Practices.WEEK);
       _this2.state = {
         isLoading: false,
         lessons: [],
@@ -135,6 +134,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         var _this3 = this;
 
         Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
+
+        _reactNative.BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+
         this.getLessons();
 
         if (!this.state.isLoading) {
@@ -157,8 +159,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 i = 0;
               }
             }
-          }, 1000);
+          }, 800);
         }
+      }
+    }, {
+      key: "handleBackButton",
+      value: function handleBackButton() {
+        return true;
       }
     }, {
       key: "render",
@@ -169,7 +176,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 78
+                lineNumber: 81
               }
             },
             _react3.default.createElement(
@@ -178,7 +185,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.home_TextContainer,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 79
+                  lineNumber: 82
                 }
               },
               _react3.default.createElement(
@@ -187,7 +194,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   style: _styles2.default.headling,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 80
+                    lineNumber: 83
                   }
                 },
                 "Cargando..."
@@ -199,25 +206,19 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         return _react3.default.createElement(
           _reactNative.View,
           {
-            style: {
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center'
-            },
+            style: _styles2.default.containerSentence,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 86
+              lineNumber: 89
             }
           },
           _react3.default.createElement(
             _nativeBase.Text,
             {
-              style: {
-                fontSize: 60
-              },
+              style: _styles2.default.textSentence,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 87
+                lineNumber: 90
               }
             },
             this.state.text
@@ -228,7 +229,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       key: "componentWillUnmount",
       value: function componentWillUnmount() {
         if (!this.state.isLoading) {
-          Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAID);
+          _reactNative.BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+
+          Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
         }
       }
     }]);

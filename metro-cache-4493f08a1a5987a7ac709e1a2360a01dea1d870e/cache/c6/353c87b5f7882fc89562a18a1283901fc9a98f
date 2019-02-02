@@ -1,0 +1,342 @@
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.idNivel = undefined;
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/NivelesPalabraImagen.js";
+
+  var _nativeBase = _require(_dependencyMap[2], "native-base");
+
+  var _styles = _require(_dependencyMap[3], "../styles");
+
+  var _styles2 = _interopRequireDefault(_styles);
+
+  var _home = _require(_dependencyMap[4], "../utils/home");
+
+  var _const = _require(_dependencyMap[5], "../config/const");
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    NivelesPalabraImagen: {
+      displayName: "NivelesPalabraImagen"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/alejosebasp/Documentos/YoSoyMuyInteligente_FrontEnd/src/components/NivelesPalabraImagen.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var idNivel = exports.idNivel = undefined;
+
+  var NivelesPalabraImagen = _wrapComponent("NivelesPalabraImagen")((_temp = _class = function (_Component) {
+    _inherits(NivelesPalabraImagen, _Component);
+
+    function NivelesPalabraImagen(props) {
+      _classCallCheck(this, NivelesPalabraImagen);
+
+      var _this = _possibleConstructorReturn(this, (NivelesPalabraImagen.__proto__ || Object.getPrototypeOf(NivelesPalabraImagen)).call(this, props));
+
+      _this.state = {
+        isLoading: false,
+        idUsuario: '',
+        lecciones: []
+      };
+      return _this;
+    }
+
+    _createClass(NivelesPalabraImagen, [{
+      key: "componentWillMount",
+      value: function componentWillMount() {
+        var _this2 = this;
+
+        return regeneratorRuntime.async(function componentWillMount$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                (0, _home.getID)().then(function (id) {
+                  _this2.setState({
+                    idUsuario: id
+                  });
+                }).then(function () {
+                  _this2.listarLecciones();
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "componentDidMount",
+      value: function componentDidMount() {}
+    }, {
+      key: "listarLecciones",
+      value: function listarLecciones() {
+        var URL, response, responseJson;
+        return regeneratorRuntime.async(function listarLecciones$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.setState({
+                  isLoading: true
+                });
+                URL = _const.API.concat("/programas").concat("/1").concat("/leccions");
+                _context2.prev = 2;
+                _context2.next = 5;
+                return regeneratorRuntime.awrap(fetch(URL));
+
+              case 5:
+                response = _context2.sent;
+                _context2.next = 8;
+                return regeneratorRuntime.awrap(response.json());
+
+              case 8:
+                responseJson = _context2.sent;
+                this.setState({
+                  lecciones: responseJson,
+                  isLoading: false
+                });
+                _context2.next = 16;
+                break;
+
+              case 12:
+                _context2.prev = 12;
+                _context2.t0 = _context2["catch"](2);
+                console.error("Error en la consulta de lecciones: " + _context2.t0);
+                this.setState({
+                  isLoading: false
+                });
+
+              case 16:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, null, this, [[2, 12]]);
+      }
+    }, {
+      key: "navegarPalabraImagen",
+      value: function navegarPalabraImagen(semana) {
+        exports.idNivel = idNivel = semana;
+        this.props.navigation.navigate('PalabraImagen');
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this3 = this;
+
+        if (this.state.isLoading) {
+          return _react3.default.createElement(
+            _nativeBase.View,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 72
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.View,
+              {
+                style: _styles2.default.home_TextContainer,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 73
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  style: _styles2.default.headling,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 74
+                  }
+                },
+                "Cargando..."
+              )
+            )
+          );
+        }
+
+        return _react3.default.createElement(
+          _nativeBase.Container,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 81
+            }
+          },
+          _react3.default.createElement(
+            _nativeBase.Header,
+            {
+              style: _styles2.default.headerStyle,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 82
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Left,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 84
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Button,
+                {
+                  transparent: true,
+                  onPress: function onPress() {
+                    return _this3.props.navigation.goBack();
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 85
+                  }
+                },
+                _react3.default.createElement(_nativeBase.Icon, {
+                  name: "arrow-back",
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 86
+                  }
+                })
+              )
+            ),
+            _react3.default.createElement(
+              _nativeBase.Body,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 90
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Title,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 91
+                  }
+                },
+                "Niveles"
+              )
+            )
+          ),
+          _react3.default.createElement(
+            _nativeBase.Content,
+            {
+              style: _styles2.default.maxHeight,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 96
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.Text,
+              {
+                style: _styles2.default.textoNiveles,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 98
+                }
+              },
+              " Selecciona un nivel :D "
+            ),
+            this.state.lecciones.map(function (NewsData) {
+              return _react3.default.createElement(
+                _nativeBase.View,
+                {
+                  key: NewsData.id,
+                  style: _styles2.default.marginAddAula,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 102
+                  }
+                },
+                _react3.default.createElement(
+                  _nativeBase.Card,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 103
+                    }
+                  },
+                  _react3.default.createElement(
+                    _nativeBase.CardItem,
+                    {
+                      button: true,
+                      onPress: function onPress() {
+                        return _this3.navegarPalabraImagen(NewsData.semana);
+                      },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 104
+                      }
+                    },
+                    _react3.default.createElement(_nativeBase.Icon, {
+                      type: "MaterialIcons",
+                      name: "videogame-asset",
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 105
+                      }
+                    }),
+                    _react3.default.createElement(
+                      _nativeBase.Text,
+                      {
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 106
+                        }
+                      },
+                      "Nivel ".concat(NewsData.semana)
+                    )
+                  )
+                )
+              );
+            })
+          )
+        );
+      }
+    }]);
+
+    return NivelesPalabraImagen;
+  }(_react2.Component), _class.navigationOptions = {
+    header: null
+  }, _temp));
+
+  exports.default = NivelesPalabraImagen;
+});

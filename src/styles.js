@@ -4,206 +4,234 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const styles = StyleSheet.create({
 
-    headerStyle: {
-      backgroundColor: '#5D99C6',
-      height: hp('12%'),
-      zIndex: 10,
-      paddingTop: hp('1.5%'),
-    },
+  headerStyle: {
+    backgroundColor: '#5D99C6',
+    height: hp('14%'),
+    zIndex: 10,
+    paddingTop: hp('3.5%'),
+  },
 
-    maxHeight: {
-      flex:1,
-    },
+  maxHeight: {
+    flex: 1,
+  },
 
-    marginAddAula: {
-      marginTop: hp('1%'),
-      marginLeft: wp('5%'),
-      marginRight: wp('5%'),
-    },
+  marginAddAula: {
+    marginTop: hp('1%'),
+    marginLeft: wp('4%'),
+    marginRight: wp('4%'),
+  },
 
-    buttonAceptarAula: {
-      backgroundColor: '#5D99C6',
-      margin: wp('5%'),
-    },
+  buttonAceptarAula: {
+    backgroundColor: '#5D99C6',
+    margin: wp('5%'),
+  },
 
-    logoinicial: {
-        width: wp('100%'),
-        resizeMode: 'contain',
-    },
-    textContainer: {
-        height: hp('40%'),
-        justifyContent: 'center',
-    },
-    imageContainer: {
-        height: hp('40%'),
-        justifyContent: 'flex-end',
-    },
+  logoinicial: {
+    width: wp('100%'),
+    resizeMode: 'contain',
+  },
+  textContainer: {
+    height: hp('40%'),
+    justifyContent: 'center',
+  },
+  imageContainer: {
+    height: hp('40%'),
+    justifyContent: 'flex-end',
+  },
 
-    title: {
-        color: '#1F363D',
-        fontSize: hp('8%'),
-        textAlign: 'center',
-        margin: hp('5%'),
-    },
+  uploadImageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
-    subtitle: {
-      color: '#1F363D',
-      fontSize: hp('4%'),
-      textAlign: 'center',
-      margin: hp('3%'),
-    },
+    uploadImage: {
+    height: hp('45%'),
+    width: hp('45%'),
+    marginTop: hp('5%'),
+    marginBottom: hp('5%'),
+    marginRight: wp('3%'),
+    marginLeft: wp('3%'),
+  },
 
-    headling: {
-        color: '#1F363D',
-        fontSize: hp('6%'),
-        textAlign: 'center',
-        margin: hp('5%'),
-    },
-    buttonsContainer: {
-        height: wp('50%'),
-        alignItems: 'center',
-        paddingTop: hp('20%'),
-        justifyContent: 'center',
-    },
-    threebuttonsContainer: {
-        height: hp('50%'),
-        flexDirection: 'column',
-        paddingTop: 60,
-        paddingBottom: 10,
-        alignItems: 'center',
-    },
-    buttonclear: {
-        marginBottom: hp('3%'),
-        backgroundColor: '#90CAF9',
-        justifyContent: 'flex-start',
-        flexDirection:'column',
-        alignItems: 'flex-start',
-    },
-    buttondark: {
-        marginBottom: hp('3%'),
-        backgroundColor: '#5D99C6',
-        justifyContent: 'flex-start',
-        flexDirection:'column',
-        alignItems: 'flex-start',
-    },
-    buttonclearpra: {
-        marginBottom: hp('3%'),
-        width: wp('18%'),
-        backgroundColor: '#90CAF9',
-    },
-    buttondarkpra: {
-        marginBottom: hp('3%'),
-        width: wp('18%'),
-        backgroundColor: '#5D99C6',
-    },
-    buttonred: {
-        marginBottom: hp('3%'),
-        backgroundColor: '#DC143C',
-        justifyContent: 'flex-start',
-        flexDirection:'column',
-        alignItems: 'flex-start',
-    },
-    buttonfb: {
-        marginBottom: hp('3%'),
-        backgroundColor: '#4267B2',
-    },
+  title: {
+    color: '#1F363D',
+    fontSize: hp('8%'),
+    textAlign: 'center',
+    margin: hp('5%'),
+  },
 
-    // Adult Sign Up
-    adult_TextInputContainer: {
-        height: hp('50%'),
-        marginTop: hp('1.0%'),
-        marginLeft: wp('7%'),
-        width: wp('80%'),
-        alignItems: 'center',
-    },
-    adult_TextInput: {
-        marginBottom: hp('0.5%'),
-        backgroundColor: '#E9E9EF',
-    },
+  subtitle: {
+    color: '#1F363D',
+    fontSize: hp('4%'),
+    textAlign: 'center',
+    margin: hp('3%'),
+  },
 
-    // Adult login
-    login_TextInputContainer: {
-        marginTop: hp('10%'),
-        marginLeft: wp('10%'),
-        width: wp('80%'),
-        alignItems: 'center',
-    },
-    login_TextInput: {
-        marginBottom: hp('1.5%'),
-        backgroundColor: '#E9E9EF',
-    },
-    login_Toggle: {
-        flexDirection: 'row',
-    },
-    login_ToggleText: {
-        padding: 10,
-        fontSize: 20,
-    },
-    googleIconViewStyle: {
+  headling: {
+    color: '#1F363D',
+    fontSize: hp('6%'),
+    textAlign: 'center',
+    margin: hp('5%'),
+  },
+  singlebuttonContainer: {
+    height: hp('10%'),
+    alignItems: 'center',
+  },
+  buttonsContainer: {
+    height: wp('50%'),
+    alignItems: 'center',
+    paddingTop: hp('20%'),
+    justifyContent: 'center',
+  },
+  threebuttonsContainer: {
+    height: hp('50%'),
+    flexDirection: 'column',
+    paddingTop: 60,
+    paddingBottom: 10,
+    alignItems: 'center',
+  },
+  buttonclear: {
+    marginBottom: hp('3%'),
+    backgroundColor: '#90CAF9',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+  },
+  buttondark: {
+    marginBottom: hp('3%'),
+    backgroundColor: '#5D99C6',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+  },
+  buttonclearpra: {
+    marginBottom: hp('3%'),
+    width: wp('18%'),
+    backgroundColor: '#90CAF9',
+  },
+  buttondarkpra: {
+    marginBottom: hp('3%'),
+    width: wp('18%'),
+    backgroundColor: '#5D99C6',
+  },
+  buttonred: {
+    marginBottom: hp('3%'),
+    backgroundColor: '#DC143C',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+  },
+  buttonfb: {
+    marginBottom: hp('3%'),
+    backgroundColor: '#4267B2',
+  },
+
+  // Adult Sign Up
+  adult_TextInputContainer: {
+    height: hp('50%'),
+    marginTop: hp('1.0%'),
+    marginLeft: wp('7%'),
+    width: wp('80%'),
+    alignItems: 'center',
+  },
+  adult_TextInput: {
+    marginBottom: hp('0.5%'),
+    backgroundColor: '#E9E9EF',
+  },
+
+  // Adult login
+  login_TextInputContainer: {
+    marginTop: hp('10%'),
+    marginLeft: wp('10%'),
+    width: wp('80%'),
+    alignItems: 'center',
+  },
+  login_TextInput: {
+    marginBottom: hp('1.5%'),
+    backgroundColor: '#E9E9EF',
+  },
+  login_Toggle: {
+    flexDirection: 'row',
+  },
+  login_ToggleText: {
+    padding: 10,
+    fontSize: 20,
+  },
+  googleIconViewStyle: {
     height: 21,
-    width: 21 ,
+    width: 21,
     marginLeft: wp('5%'),
   },
   fbIconViewStyle: {
-  height: 22,
-  width: 22 ,
-  marginLeft: wp('5%'),
-},
+    height: 22,
+    width: 22,
+    marginLeft: wp('5%'),
+  },
 
-    //Adult/Teacher Home
-    homeAdult_TextContainer: {
-        height: hp('40%'),
-        justifyContent: 'center',
-    },
+  //Adult/Teacher Home
+  homeAdult_TextContainer: {
+    height: hp('40%'),
+    justifyContent: 'center',
+  },
 
-    viewButtonHome: {
-      width:wp('80%'),
-      marginLeft: wp('3%'),
-      marginRight: wp('3%'),
-    },
+  viewButtonHome: {
+    width: wp('80%'),
+    marginLeft: wp('3%'),
+    marginRight: wp('3%'),
+  },
 
-    homeAdult_buttonsContainer: {
-        marginTop: hp('3%'),
-        height: hp('55%'),
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    login_buttonsContainer: {
-        marginTop: hp('1%'),
-        height: hp('70%'),
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
+  homeAdult_buttonsContainer: {
+    marginTop: hp('3%'),
+    height: hp('55%'),
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  login_buttonsContainer: {
+    marginTop: hp('1%'),
+    height: hp('70%'),
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
 
-    // Practicas
-    textopracticas: {
-        marginBottom: hp('3%'),
-        width: wp('100%'),
-        fontSize: wp('13%'),
-        textAlign: 'center',
+  // Practicas
+  textopracticas: {
+    marginBottom: hp('3%'),
+    width: wp('100%'),
+    fontSize: wp('13%'),
+    textAlign: 'center',
+  },
 
-    },
-    menupracticas: {
+  textSentence: {
+    width: hp('95%'),
+    fontSize: 60,
+    textAlign: 'center',
+    margin: wp('5%'),
+  },
 
-        paddingTop: hp('3%'),
-        justifyContent: 'space-between',
-    },
-    filapracticas: {
-        width: wp('90%'),
-        marginTop: hp('2%'),
-        marginLeft: hp('2%'),
-        marginRight: hp('2%'),
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    numbers: {
-        fontSize: wp('8%'),
-        fontWeight: 'bold',
-        width: wp('18%'),
-        textAlign: 'center',
-    },
-    commentContainer: {
+  containerSentence: {
+    width: hp('100%'),
+    height: wp('100%'),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  menupracticas: {
+    paddingTop: hp('3%'),
+    justifyContent: 'space-between',
+  },
+  filapracticas: {
+    width: wp('90%'),
+    marginTop: hp('2%'),
+    marginLeft: hp('2%'),
+    marginRight: hp('2%'),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  numbers: {
+    fontSize: wp('8%'),
+    fontWeight: 'bold',
+    width: wp('18%'),
+    textAlign: 'center',
+  },
+  commentContainer: {
     padding: 5,
     flexDirection: 'row'
   },
@@ -334,8 +362,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "silver"
   },
-  editButtons:{
-    flexDirection:"row",
+  editButtons: {
+    flexDirection: "row",
     justifyContent: "space-around",
     height: 40,
     width: 80,
@@ -350,8 +378,8 @@ const styles = StyleSheet.create({
 
   //Editarperfil
   editprofile_TextInput: {
-      marginBottom: hp('4%'),
-      backgroundColor: '#E9E9EF',
+    marginBottom: hp('4%'),
+    backgroundColor: '#E9E9EF',
   },
 
   estudiante_TextInputContainer: {
@@ -364,8 +392,8 @@ const styles = StyleSheet.create({
 
   editDate: {
     alignItems: 'center',
-      marginTop: hp('4%'),
-      marginBottom: hp('4%'),
+    marginTop: hp('4%'),
+    marginBottom: hp('4%'),
   },
 
   simplecenter: {
@@ -375,7 +403,7 @@ const styles = StyleSheet.create({
 
   rootf: {
     backgroundColor: "#ffffff",
-    marginTop:10,
+    marginTop: 10,
   },
   containerf: {
     paddingLeft: 19,
@@ -397,43 +425,47 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "#CCCCCC"
   },
-  imagef:{
-    width:45,
-    height:45,
-    borderRadius:20,
-    marginLeft:20
+  imagef: {
+    width: 45,
+    height: 45,
+    borderRadius: 20,
+    marginLeft: 20
   },
-  timef:{
-    fontSize:11,
-    color:"#808080",
+  timef: {
+    fontSize: 11,
+    color: "#808080",
   },
-  namef:{
-    fontSize:16,
-    fontWeight:"bold",
+  namef: {
+    fontSize: 16,
+    fontWeight: "bold",
   },
 
   //Juegos
-  imagenCardview:{
+  imagenCardview: {
     height: hp('50%'),
     width: hp('50%'),
   },
 
-  centerImage:{
+  centerImage: {
     justifyContent: 'center',
     alignItems: 'center',
     width: wp('100%'),
 
   },
 
-  imagenJuego:{
-    height: hp('40%'),
-    width: hp('40%'),
-    marginTop: hp('6%'),
-    marginBottom: hp('6%'),
+  profilePhoto: {
+    height: hp('8%'),
+    width: hp('8%'),
+    // marginTop: hp('6%'),
+    // marginBottom: hp('6%'),
+    borderRadius: 30,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "orange"
   },
 
 
-  imagenJuego:{
+  imagenJuego: {
     height: hp('40%'),
     width: hp('40%'),
     marginTop: hp('6%'),
@@ -441,27 +473,27 @@ const styles = StyleSheet.create({
   },
 
   buttonjuego: {
-      marginBottom: hp('3%'),
-      width: wp('92%'),
-      marginLeft: wp('4%'),
-      marginRight: wp('4%'),
-      backgroundColor: '#909497',
+    marginBottom: hp('3%'),
+    width: wp('92%'),
+    marginLeft: wp('4%'),
+    marginRight: wp('4%'),
+    backgroundColor: '#909497',
   },
 
   buttonjuegowin: {
-      marginBottom: hp('3%'),
-      width: wp('92%'),
-      marginLeft: wp('4%'),
-      marginRight: wp('4%'),
-      backgroundColor: '#58D68D',
+    marginBottom: hp('3%'),
+    width: wp('92%'),
+    marginLeft: wp('4%'),
+    marginRight: wp('4%'),
+    backgroundColor: '#58D68D',
   },
 
   buttonjuegofail: {
-      marginBottom: hp('3%'),
-      width: wp('92%'),
-      marginLeft: wp('4%'),
-      marginRight: wp('4%'),
-      backgroundColor: '#EC7063',
+    marginBottom: hp('3%'),
+    width: wp('92%'),
+    marginLeft: wp('4%'),
+    marginRight: wp('4%'),
+    backgroundColor: '#EC7063',
   },
 
   textoOpcion: {
@@ -469,6 +501,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
+  textoNiveles: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    margin: hp('3%'),
+  },
 
   //frasePNL
   frasePNL: {
@@ -495,10 +533,18 @@ const styles = StyleSheet.create({
   },
 
 
-  imagenBienvenidaEstudiante:{
+  imagenBienvenidaEstudiante: {
     height: hp('40%'),
     width: hp('40%'),
     marginTop: hp('6%'),
+  },
+
+  crearEntrada: {
+    marginTop: hp('5%'),
+    marginLeft: wp('5%'),
+    marginRight: wp('5%'),
+    width: wp('90%'),
+    height: hp('30%'),
   },
 
 });

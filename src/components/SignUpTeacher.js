@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Alert, View, TextInput } from 'react-native';
+import { ActivityIndicator, Alert, View, ScrollView, ToastAndroid } from 'react-native';
 import { Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import axios from 'axios';
 import { API_SIGN_UP_TEACHER } from '../config/const';
 import { validateForm } from '../utils/validations';
+import { sendDataToSignUp } from "../utils/signUp";
+import { sendDataToLogIn, storeToken, getToken, removeToken } from '../utils/logIn';
 import styles from '../styles';
 
 export default class SignUpTeacher extends Component {
@@ -14,30 +16,84 @@ export default class SignUpTeacher extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
-      password2: '',
-      email: '',
-      birthdate: ''
+      username: 'DocentePrueba',
+      password: '123123',
+      password2: '123123',
+      email: 'DocentePrueba@unal.edu.co',
+      errors: [],
+      isLoading: false,
     };
   }
 
-  _createTeacher() {
+  async _createTeacher() {
     if (validateForm(this.state.username, this.state.password, this.state.password2, this.state.email)) {
-      Alert.alert("Creando docente")
-      axios.post(API_SIGN_UP_TEACHER, {
-        "usuario": {
-          "user": this.state.username,
-          "password": this.state.password,
-          "nombre": this.state.username,
-          "email": this.state.email,
-          "archivo_id": 0
+      try {
+        this.setState({ isLoading: true })
+
+        let response = await sendDataToSignUp(API_SIGN_UP_TEACHER,
+          this.state.username,
+          this.state.password,
+          this.state.username,
+          this.state.email
+        )
+
+        let status = response.status;
+        console.log("res status: " + status);
+
+        switch (status) {
+          case 201:
+            this.setState({ errors: [] })
+            console.log("Nuevo usuario (docente)!");
+
+            let resToken = await sendDataToLogIn(this.state.email, this.state.password)
+            resToken = await resToken.json()
+            let accessToken = resToken.jwt
+            storeToken(accessToken);
+            console.log("Access Token: " + accessToken)
+
+            this.setState({ isLoading: false })
+            this.props.navigation.navigate('HomeAdult')
+
+            break;
+
+          case 422:
+            let res = await response.json();
+            this.setState({ errors: [] })
+            var properties = ["user", "email"];
+            for (var i = 0; i < properties.length; i++) {
+              if (res[properties[i]] != undefined) {
+                console.log(res[properties[i]].toString())
+                this.state.errors.push(res[properties[i]].toString())
+              }
+            }
+
+            ToastAndroid.show(this.state.errors.join(". \n").concat('.'), ToastAndroid.LONG);
+            this.setState({ isLoading: false })
+            break;
+
+          default:
+            break;
         }
-      });
+
+      } catch (error) {
+        this.setState({ isLoading: false })
+        console.log("catch errors: " + error)
+      }
     }
   };
 
+
   render() {
+    if (this.state.isLoading) {
+      return (
+        <View>
+          <View style={styles.home_TextContainer}>
+            <Text style={styles.headling}>Creando usuario</Text>
+            <ActivityIndicator size="large" color="#4267B2" />
+          </View>
+        </View>
+      );
+    }
     return (
       <View>
 
@@ -85,7 +141,7 @@ export default class SignUpTeacher extends Component {
             <Button full iconLeft rounded style={styles.buttondark}
               onPress={this._createTeacher.bind(this)} >
               <Icon type="MaterialIcons" name="done" />
-              <Text>Finalizar Registro</Text>
+              <Text style={{flex: 1}}>Finalizar Registro</Text>
             </Button>
           </View>
         </View>

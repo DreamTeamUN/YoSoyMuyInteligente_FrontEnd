@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, ToastAndroid } from 'react-native';
 import { Container, Header, Content, Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
 import styles from '../../styles';
 import { editFullname } from '../../utils/editProfile';
@@ -16,6 +16,7 @@ export default class ChangeFullname extends Component {
     async _sendNewData() {
         editFullname(this.state.fullname)
         console.log("editFullname Done")
+        ToastAndroid.show('Nombre cambiado', ToastAndroid.SHORT);
         this.props.navigation.goBack()
     }
 

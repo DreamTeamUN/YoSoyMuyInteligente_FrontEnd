@@ -95,7 +95,7 @@ export default class Main extends Component {
             <Button full iconLeft rounded style={styles.buttonclear}
               onPress={() => this.props.navigation.navigate('SignUpMain')}>
               <Icon name="person-add" />
-              <Text>Registrar con correo</Text>
+              <Text style={{flex: 1}}>Registrar con correo</Text>
             </Button>
           </View>
 
@@ -103,7 +103,7 @@ export default class Main extends Component {
             <Button full iconLeft rounded style={styles.buttonred}
               onPress={() => this._signIn()}>
               <Icon type="FontAwesome" name="google" />
-              <Text >Iniciar con Google</Text>
+              <Text style={{flex: 1}}>Iniciar con Google</Text>
             </Button>
             </View>
 
@@ -111,7 +111,7 @@ export default class Main extends Component {
             <Button full iconLeft rounded style={styles.buttondark}
               onPress={() => this.props.navigation.navigate('LogIn')}>
               <Icon name="person" />
-              <Text>Iniciar sesión con correo</Text>
+              <Text style={{flex: 1}}>Iniciar sesión con correo</Text>
             </Button>
           </View>
         </View>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, Alert, View, ScrollView } from 'react-native';
+import { ActivityIndicator, Alert, View, ScrollView, ToastAndroid } from 'react-native';
 import { Container, Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
-import axios from 'axios';
 import { API_SIGN_UP_ADULT } from '../config/const';
 import { validateForm } from "../utils/validations";
 import { sendDataToSignUp } from "../utils/signUp";
@@ -16,11 +15,10 @@ export default class SignUpAdult extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'AVN',
+      username: 'AdultoPrueba',
       password: '123123',
       password2: '123123',
-      email: 'AVN@gmail.com',
-      birthdate: '',
+      email: 'AdultoPrueba@gmail.com',
       errors: [],
       isLoading: false,
     };
@@ -44,7 +42,7 @@ export default class SignUpAdult extends Component {
         switch (status) {
           case 201:
             this.setState({ errors: [] })
-            console.log("Nuevo usuario!");
+            console.log("Nuevo usuario! (adulto)");
 
             let resToken = await sendDataToLogIn(this.state.email, this.state.password)
             resToken = await resToken.json()
@@ -67,6 +65,7 @@ export default class SignUpAdult extends Component {
                 this.state.errors.push(res[properties[i]].toString())
               }
             }
+            ToastAndroid.show(this.state.errors.join(". \n").concat('.'), ToastAndroid.LONG);
             this.setState({ isLoading: false })
             break;
 
@@ -134,16 +133,16 @@ export default class SignUpAdult extends Component {
 
         </Form>
         <View style={styles.homeAdult_buttonsContainer}>
-        <View style={styles.viewButtonHome}>
+          <View style={styles.viewButtonHome}>
             <Button full iconLeft rounded
               style={styles.buttondark}
               onPress={this._createAdult.bind(this)} >
               <Icon type="MaterialIcons" name="done" />
-              <Text>Finalizar Registro</Text>
+              <Text style={{flex: 1}}>Finalizar Registro</Text>
             </Button>
           </View>
-          </View>
-          <Text>{this.state.errors.toString()}</Text>
+        </View>
+        <Text>{this.state.errors.toString()}</Text>
       </View>
     );
   }

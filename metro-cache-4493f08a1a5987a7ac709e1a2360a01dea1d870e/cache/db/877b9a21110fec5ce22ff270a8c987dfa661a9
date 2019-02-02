@@ -17,17 +17,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   var styles = _reactNative.StyleSheet.create({
     headerStyle: {
       backgroundColor: '#5D99C6',
-      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('12%'),
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('14%'),
       zIndex: 10,
-      paddingTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1.5%')
+      paddingTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3.5%')
     },
     maxHeight: {
       flex: 1
     },
     marginAddAula: {
       marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1%'),
-      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%'),
-      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%')
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('4%')
     },
     buttonAceptarAula: {
       backgroundColor: '#5D99C6',
@@ -43,6 +43,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     },
     imageContainer: {
       height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      justifyContent: 'flex-end'
+    },
+    uploadImageContainer: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%'),
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('3%'),
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('3%'),
       justifyContent: 'flex-end'
     },
     title: {
@@ -79,16 +87,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     buttonclear: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
       backgroundColor: '#90CAF9',
-      justifyContent: 'flex-start',
-      flexDirection: 'column',
-      alignItems: 'flex-start'
+      alignItems: 'flex-start',
+      flexDirection: 'column'
     },
     buttondark: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
       backgroundColor: '#5D99C6',
-      justifyContent: 'flex-start',
-      flexDirection: 'column',
-      alignItems: 'flex-start'
+      alignItems: 'flex-start',
+      flexDirection: 'column'
     },
     buttonclearpra: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
@@ -102,7 +108,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     },
     buttonred: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
-      backgroundColor: '#DC143C'
+      backgroundColor: '#DC143C',
+      alignItems: 'flex-start',
+      flexDirection: 'column'
     },
     buttonfb: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
@@ -118,14 +126,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     adult_TextInput: {
       marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('0.5%'),
       backgroundColor: '#E9E9EF'
-    },
-    adult_ButtonsContainer: {
-      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('20%'),
-      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%')
     },
     login_TextInputContainer: {
       marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('10%'),
@@ -155,7 +155,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%')
     },
     homeAdult_TextContainer: {
-      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('25%'),
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
       justifyContent: 'center'
     },
     viewButtonHome: {
@@ -164,8 +164,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('3%')
     },
     homeAdult_buttonsContainer: {
-      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%'),
-      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('70%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('55%'),
       flexDirection: 'column',
       alignItems: 'center'
     },
@@ -180,6 +180,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
       fontSize: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('13%'),
       textAlign: 'center'
+    },
+    textSentence: {
+      width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('95%'),
+      fontSize: 60,
+      textAlign: 'center',
+      margin: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('5%')
+    },
+    containerSentence: {
+      width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('100%'),
+      height: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
+      justifyContent: 'center',
+      alignItems: 'center'
     },
     menupracticas: {
       paddingTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%'),
@@ -404,7 +416,16 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     },
     centerImage: {
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%')
+    },
+    profilePhoto: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('8%'),
+      width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('8%'),
+      borderRadius: 30,
+      overflow: "hidden",
+      borderWidth: 1,
+      borderColor: "orange"
     },
     imagenJuego: {
       height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
@@ -436,6 +457,38 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     textoOpcion: {
       fontSize: 30,
       fontWeight: 'bold'
+    },
+    textoNiveles: {
+      fontSize: 25,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      margin: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%')
+    },
+    frasePNL: {
+      fontWeight: '100',
+      color: '#ABB2B9',
+      fontStyle: 'italic',
+      fontSize: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('5%'),
+      textAlign: 'center',
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('2%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('2%')
+    },
+    frasePNLEstudiante: {
+      width: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('100%'),
+      fontWeight: '100',
+      color: '#ABB2B9',
+      fontStyle: 'italic',
+      fontSize: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('4%'),
+      textAlign: 'center',
+      marginLeft: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('2%'),
+      marginRight: (0, _reactNativeResponsiveScreen.widthPercentageToDP)('2%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('1%'),
+      marginBottom: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('3%')
+    },
+    imagenBienvenidaEstudiante: {
+      height: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      width: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('40%'),
+      marginTop: (0, _reactNativeResponsiveScreen.heightPercentageToDP)('6%')
     }
   });
 

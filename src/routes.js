@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import Main from './components/Main';
 import SignUpMain from './components/SignUpMain';
@@ -18,18 +17,23 @@ import EditProfile from './components/EditProfile/EditProfile';
 import ChangeFullname from './components/EditProfile/ChangeFullname';
 import ChangePassword from './components/EditProfile/ChangePassword';
 import ChangeBirthdate from './components/EditProfile/ChangeBirthdate';
+import ChangePhoto from './components/EditProfile/ChangePhoto';
 import ForumScreen from './components/ForumScreen';
-import HomeForum from './components/HomeForum'
-import ClassRoom from './components/classroom'
-import AddClassRoom from './components/AddClassRoom'
-import AdminStudentsTutor from './components/AdminStudentsTutor'
-import CardForum from './components/CardForum'
-import PalabraImagen from './components/PalabraImagen'
+import HomeForum from './components/HomeForum';
+import ClassRoom from './components/classroom';
+import AddClassRoom from './components/AddClassRoom';
+import AdminStudentsTutor from './components/AdminStudentsTutor';
+import CardForum from './components/CardForum';
+import PalabraImagen from './components/PalabraImagen';
+import NivelesPalabraImagen from './components/NivelesPalabraImagen';
+import ClassroomView from './components/ClassroomView';
 
 export const AppStack = createStackNavigator(
     {
         HomeAdult: HomeAdult,
         AddClassRoom: AddClassRoom,
+        ClassroomView: ClassroomView,
+        NivelesPalabraImagen: NivelesPalabraImagen,
         HomeStudent: HomeStudent,
         WeekProgress: WeekProgress,
         GameProgress: GameProgress,
@@ -44,6 +48,7 @@ export const AppStack = createStackNavigator(
         ChangeFullname: ChangeFullname,
         ChangePassword: ChangePassword,
         ChangeBirthdate: ChangeBirthdate,
+        ChangePhoto: ChangePhoto,
         ForumScreen: ForumScreen,
         HomeForum: HomeForum,
         CardForum: CardForum,

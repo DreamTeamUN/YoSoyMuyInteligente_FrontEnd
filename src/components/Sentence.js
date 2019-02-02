@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, TouchableNativeFeedback, View, ScrollView, FlatList } from 'react-native';
-import {Text, Button, Icon} from 'native-base';
+import {View, BackHandler} from 'react-native';
+import {Text} from 'native-base';
 import styles from '../styles';
 import { WEEK } from './Practices';
 import { API_LESSONS } from '../config/const';
@@ -17,12 +17,11 @@ import { API_LESSONS } from '../config/const';
  export default class WeekProgress extends Component {
 
    static navigationOptions = {
-       header: null
+      header: null,
    }
 
    constructor(props) {
     super(props);
-    console.log(WEEK);
     this.state = {
       isLoading: false,
       lessons: [],
@@ -34,7 +33,7 @@ import { API_LESSONS } from '../config/const';
   componentDidMount() {
 
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.LANDSCAPE);
-
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
     this.getLessons();
 
     if (!this.state.isLoading){
@@ -53,7 +52,7 @@ import { API_LESSONS } from '../config/const';
             i=0;
           }
         }
-      }, 1000);
+      }, 800);
     }
 
   }
@@ -72,6 +71,10 @@ import { API_LESSONS } from '../config/const';
       });
   };
 
+  handleBackButton() {
+    return true;
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -83,8 +86,8 @@ import { API_LESSONS } from '../config/const';
       );
     }
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }} >
-        <Text style={{fontSize: 60}}>
+      <View style={styles.containerSentence} >
+        <Text style={styles.textSentence}>
           {this.state.text}
         </Text>
       </View>
@@ -92,9 +95,9 @@ import { API_LESSONS } from '../config/const';
   }
 
   componentWillUnmount(){
-      if (!this.state.isLoading) {
-        Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAID);
-      }
-
+    if (!this.state.isLoading) {
+      BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+      Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
+    }
   }
 }

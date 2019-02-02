@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Alert} from 'react-native';
+import {Alert, ToastAndroid} from 'react-native';
 import {  View, Text, Button, Icon, DatePicker,
   Header, Left, Body, Title, Label, Form, Item, Input, Content, Container } from 'native-base';
 import { DocumentPicker, ImagePicker } from 'expo'; //por usar
@@ -26,8 +26,8 @@ export default class AddStudent extends Component {
   }
 
   setDate(newDate) {
-    this.setState({ 
-      chosenDate: newDate 
+    this.setState({
+      chosenDate: newDate
     });
   }
 
@@ -46,30 +46,31 @@ export default class AddStudent extends Component {
         isLoading: true,
       });
 
-      let response = await CREATE_STUDENT(this.state.idUsuario, 
-        this.state.nameStudent, 
+      let response = await CREATE_STUDENT(this.state.idUsuario,
+        this.state.nameStudent,
         this.state.chosenDate
       );
-      
+
       let status = response.status;
-      
+
       switch (status) {
         case 201:
           console.log(status + "Nuevo estudiante creado!!");
+          ToastAndroid.show('Nuevo estudiante creado', ToastAndroid.SHORT);
           this.setState({ isLoading: false });
           this.props.navigation.state.params.onNavigateBack();
           this.props.navigation.goBack()
           break;
-      
+
         default:
           console.log("Error creando estudiante, status code: " + status)
-          Alert.alert("Error!!", 
+          Alert.alert("Error!!",
             "Lo sentimos, ocurrió un error durante la creación del estudiante, por favor intente de nuevo."
           );
 
           break;
       }
-      
+
     } catch (error) {
       this.setState({isLoading: false});
       console.log("Error creando estudiante: " + error);
@@ -98,17 +99,10 @@ export default class AddStudent extends Component {
           <Form style={styles.estudiante_TextInputContainer}>
             <Item floatingLabel>
               <Label>Nombre de usuario</Label>
-              <Input 
+              <Input
                 maxLength={45}
                 onChangeText={
                   (nameStudent) => this.setState({ nameStudent })}
-              />
-            </Item>
-
-            <Item floatingLabel last>
-              <Label>Foto (acá se subirá un archivo).</Label>
-              <Input
-                onChangeText={(idFoto) => this.setState({ idFoto })}
               />
             </Item>
 
@@ -134,7 +128,7 @@ export default class AddStudent extends Component {
               <Button iconLeft rounded style={styles.buttondark}
                 onPress={this.createStudent.bind(this)}>
                 <Icon type="MaterialIcons" name="done" />
-                <Text>Finalizar Registro</Text>
+                <Text style={{flex: 1}}>Finalizar Registro</Text>
               </Button>
             </View>
           </View>

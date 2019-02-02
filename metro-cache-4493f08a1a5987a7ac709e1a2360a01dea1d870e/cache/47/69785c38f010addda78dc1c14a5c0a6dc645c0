@@ -66,7 +66,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
       var _this = _possibleConstructorReturn(this, (LogIn.__proto__ || Object.getPrototypeOf(LogIn)).call(this, props));
 
-      _this.toggleSwitch = _this.toggleSwitch.bind(_this);
       _this.state = {
         email: 'AVN@gmail.com',
         password: '123123',
@@ -81,13 +80,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     }
 
     _createClass(LogIn, [{
-      key: "toggleSwitch",
-      value: function toggleSwitch() {
-        this.setState({
-          rememberMe: !this.state.rememberMe
-        });
-      }
-    }, {
       key: "_sendData",
       value: function _sendData() {
         var response, res, accessToken;
@@ -96,22 +88,25 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
+                this.setState({
+                  isLoading: true
+                });
+                _context.next = 4;
                 return regeneratorRuntime.awrap((0, _logIn.sendDataToLogIn)(this.state.email, this.state.password));
 
-              case 3:
+              case 4:
                 response = _context.sent;
                 console.log("login | res status: " + response.status);
 
                 if (!(response.status >= 200 && response.status < 300)) {
-                  _context.next = 16;
+                  _context.next = 18;
                   break;
                 }
 
-                _context.next = 8;
+                _context.next = 9;
                 return regeneratorRuntime.awrap(response.json());
 
-              case 8:
+              case 9:
                 res = _context.sent;
                 this.setState({
                   error: ""
@@ -119,46 +114,96 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 accessToken = res.jwt;
                 (0, _logIn.storeToken)(accessToken);
                 console.log("Access Token: " + accessToken);
+                this.setState({
+                  isLoading: false
+                });
                 this.props.navigation.navigate('HomeAdult');
-                _context.next = 18;
+                _context.next = 21;
                 break;
 
-              case 16:
+              case 18:
                 (0, _logIn.removeToken)();
+                this.setState({
+                  isLoading: false
+                });
                 this.setState({
                   error: "Algo salio mal"
                 });
 
-              case 18:
-                _context.next = 24;
+              case 21:
+                _context.next = 28;
                 break;
 
-              case 20:
-                _context.prev = 20;
+              case 23:
+                _context.prev = 23;
                 _context.t0 = _context["catch"](0);
+                this.setState({
+                  isLoading: false
+                });
                 this.setState({
                   error: _context.t0
                 });
                 console.log("error: " + _context.t0);
 
-              case 24:
+              case 28:
               case "end":
                 return _context.stop();
             }
           }
-        }, null, this, [[0, 20]]);
+        }, null, this, [[0, 23]]);
       }
     }, {
       key: "render",
       value: function render() {
         var _this2 = this;
 
+        if (this.state.isLoading) {
+          return _react3.default.createElement(
+            _nativeBase.View,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 69
+              }
+            },
+            _react3.default.createElement(
+              _nativeBase.View,
+              {
+                style: _styles2.default.home_TextContainer,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 70
+                }
+              },
+              _react3.default.createElement(
+                _nativeBase.Text,
+                {
+                  style: _styles2.default.headling,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 71
+                  }
+                },
+                "Entrando"
+              ),
+              _react3.default.createElement(_reactNative.ActivityIndicator, {
+                size: "large",
+                color: "#4267B2",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 72
+                }
+              })
+            )
+          );
+        }
+
         return _react3.default.createElement(
           _nativeBase.View,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 64
+              lineNumber: 78
             }
           },
           _react3.default.createElement(
@@ -167,7 +212,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.adult_TextInputContainer,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 65
+                lineNumber: 79
               }
             },
             _react3.default.createElement(
@@ -177,7 +222,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.adult_TextInput,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 67
+                  lineNumber: 81
                 }
               },
               _react3.default.createElement(
@@ -185,7 +230,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 68
+                    lineNumber: 82
                   }
                 },
                 "Correo electronico"
@@ -200,7 +245,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 value: this.state.email,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 69
+                  lineNumber: 83
                 }
               })
             ),
@@ -211,7 +256,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 style: _styles2.default.adult_TextInput,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 76
+                  lineNumber: 90
                 }
               },
               _react3.default.createElement(
@@ -219,7 +264,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 77
+                    lineNumber: 91
                   }
                 },
                 "Contrase\xF1a"
@@ -234,36 +279,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 value: this.state.password,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 78
-                }
-              })
-            ),
-            _react3.default.createElement(
-              _nativeBase.View,
-              {
-                style: _styles2.default.login_Toggle,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 85
-                }
-              },
-              _react3.default.createElement(
-                _nativeBase.Text,
-                {
-                  style: _styles2.default.login_ToggleText,
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 86
-                  }
-                },
-                "Recordar usuario"
-              ),
-              _react3.default.createElement(_reactNative.Switch, {
-                onValueChange: this.toggleSwitch,
-                value: this.state.rememberMe,
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 89
+                  lineNumber: 92
                 }
               })
             )
@@ -274,7 +290,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               style: _styles2.default.login_buttonsContainer,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 97
+                lineNumber: 111
               }
             },
             _react3.default.createElement(
@@ -282,7 +298,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               {
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 98
+                  lineNumber: 112
                 }
               },
               this.state.error
@@ -290,9 +306,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             _react3.default.createElement(
               _nativeBase.View,
               {
+                style: _styles2.default.viewButtonHome,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 100
+                  lineNumber: 114
                 }
               },
               _react3.default.createElement(
@@ -306,7 +323,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   },
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 101
+                    lineNumber: 115
                   }
                 },
                 _react3.default.createElement(_nativeBase.Icon, {
@@ -314,15 +331,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                   name: "done",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 103
+                    lineNumber: 117
                   }
                 }),
                 _react3.default.createElement(
                   _nativeBase.Text,
                   {
+                    style: {
+                      flex: 1
+                    },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 104
+                      lineNumber: 118
                     }
                   },
                   "Enviar"

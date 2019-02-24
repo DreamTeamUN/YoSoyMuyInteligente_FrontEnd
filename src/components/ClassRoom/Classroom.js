@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {Text, Fab, Icon, View, Container, Content, Header, Title, Button,
    Left, Body, Card, CardItem, Right} from 'native-base';
-import styles from '../styles';
-import {API_LIST_AULAS} from '../config/const';
-import {getID} from '../utils/home';
-import {getID_Docente} from '../utils/aulas';
+import styles from '../../styles';
+import {API_LIST_AULAS} from '../../config/const';
+import {getID} from '../../utils/home';
+import {getID_Docente} from '../../utils/aulas';
 
 export var idAula;
 

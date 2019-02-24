@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Text, Fab, Icon, View, Container, Content, Header, Title, Button,
    Left, Body, Card, CardItem, Right} from 'native-base';
-import styles from '../styles';
-import { idAula } from './classroom';
+import styles from '../../styles';
+import { idAula } from './Classroom';
 
 export default class ClassroomView extends Component {
 

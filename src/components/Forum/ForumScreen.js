@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { ScrollView, Image, AsyncStorage, StyleSheet,View,TouchableOpacity,FlatList } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Text, Body, Input, Item, Icon, Button } from "native-base";
-import { getForID, getForTITLE, getForTEXT, getForUSER, getForEMAIL, getcomments } from '../utils/CreatePost';
-import styles from '../styles';
-import { API } from '../config/const';
-import Comments from '../components/Comments'
+import { getForID, getForTITLE, getForTEXT, getForUSER, getForEMAIL, getcomments } from '../../utils/CreatePost';
+import styles from '../../styles';
+import { API } from '../../config/const';
+import Comments from './Comments'
 import moment from 'moment';
 
 export default class ForumScreen extends Component {

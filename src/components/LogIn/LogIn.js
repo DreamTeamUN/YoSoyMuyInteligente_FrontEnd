@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, Switch, AsyncStorage, Image } from 'react-native';
 import { View, Text, Button, Icon, Label, Form, Item, Input } from 'native-base';
-import { sendDataToLogIn, storeToken, getToken, removeToken } from '../utils/logIn';
-import styles from '../styles';
+import { sendDataToLogIn, storeToken, getToken, removeToken } from '../../utils/logIn';
+import styles from '../../styles';
 import Expo from "expo";
 
 export default class LogIn extends Component {

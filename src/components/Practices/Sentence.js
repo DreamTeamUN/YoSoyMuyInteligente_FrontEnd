@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {View, BackHandler} from 'react-native';
 import {Text} from 'native-base';
-import styles from '../styles';
+import styles from '../../styles';
 import { WEEK } from './Practices';
-import { API_LESSONS } from '../config/const';
+import { API_LESSONS } from '../../config/const';
 
  class LogoTitle extends React.Component {
 

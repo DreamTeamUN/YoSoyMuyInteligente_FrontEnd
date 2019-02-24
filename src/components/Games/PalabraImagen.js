@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Image, ToastAndroid } from 'react-native';
 import {Text, Button, Container, Content, Header, View,
   Icon, Body, Title, Left} from 'native-base';
-import styles from '../styles';
+import styles from '../../styles';
 import {idNivel} from './NivelesPalabraImagen'
-import {getID} from '../utils/home';
-import {API, API_JUEGO_PALABRA_IMG} from '../config/const'
+import {getID} from '../../utils/home';
+import {API, API_JUEGO_PALABRA_IMG} from '../../config/const'
 
 export default class PalabraImagen extends Component {
 

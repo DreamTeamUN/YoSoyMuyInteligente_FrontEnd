@@ -1,32 +1,50 @@
 import { createStackNavigator } from 'react-navigation';
+
 import Main from './components/Main';
-import SignUpMain from './components/SignUpMain';
-import SignUpAdult from './components/SignUpAdult';
-import SignUpTeacher from './components/SignUpTeacher';
-import LogInTypeUser from './components/LogInTypeUser';
-import LogIn from './components/LogIn';
+
+// SignUp Folder
+import SignUpMain from './components/SignUp/SignUpMain';
+import SignUpAdult from './components/SignUp/SignUpAdult';
+import SignUpTeacher from './components/SignUp/SignUpTeacher';
+
+// LogIn Folder
+import LogInTypeUser from './components/LogIn/LogInTypeUser';
+import LogIn from './components/LogIn/LogIn';
+
 import HomeAdult from './components/HomeAdult';
-import WeekProgress from './components/WeekProgress';
-import Sentence from './components/Sentence';
-import Games from './components/Games';
 import HomeStudent from './components/HomeStudent';
-import Practices from './components/Practices';
-import GameProgress from './components/GameProgress';
-import AddStudent from './components/AddStudent';
+
+// Games Folder
+import Games from './components/Games/Games';
+import GameProgress from './components/Games/GameProgress';
+import PalabraImagen from './components/Games/PalabraImagen';
+import NivelesPalabraImagen from './components/Games/NivelesPalabraImagen';
+import WeekProgress from './components/Games/WeekProgress';
+
+// Practices Folder
+import Practices from './components/Practices/Practices';
+import Sentence from './components/Practices/Sentence';
+
+// AdminStudents Folder
+import AddStudent from './components/AdminStudents/AddStudent';
+import AdminStudentsTutor from './components/AdminStudents/AdminStudentsTutor';
+
+// EditProfile folder
 import EditProfile from './components/EditProfile/EditProfile';
 import ChangeFullname from './components/EditProfile/ChangeFullname';
 import ChangePassword from './components/EditProfile/ChangePassword';
 import ChangeBirthdate from './components/EditProfile/ChangeBirthdate';
 import ChangePhoto from './components/EditProfile/ChangePhoto';
-import ForumScreen from './components/ForumScreen';
-import HomeForum from './components/HomeForum';
-import ClassRoom from './components/classroom';
-import AddClassRoom from './components/AddClassRoom';
-import AdminStudentsTutor from './components/AdminStudentsTutor';
-import CardForum from './components/CardForum';
-import PalabraImagen from './components/PalabraImagen';
-import NivelesPalabraImagen from './components/NivelesPalabraImagen';
-import ClassroomView from './components/ClassroomView';
+
+// Forum folder
+import ForumScreen from './components/Forum/ForumScreen';
+import HomeForum from './components/Forum/HomeForum';
+import CardForum from './components/Forum/CardForum';
+
+// ClassRoom Folder
+import ClassRoom from './components/ClassRoom/Classroom';
+import AddClassRoom from './components/ClassRoom/AddClassRoom';
+import ClassroomView from './components/ClassRoom/ClassroomView';
 
 export const AppStack = createStackNavigator(
     {

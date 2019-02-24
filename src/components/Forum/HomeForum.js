@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Imagen } from 'react-native';
 import { Container, View, Header, Content, Card, CardItem, Title, Fab, Thumbnail, Text, Button, Icon, Left, Body, Right, Spinner, } from 'native-base';
-import { storeForDATA, getForEMAIL, getcomments } from '../utils/CreatePost';
-import { getID } from '../utils/home';
+import { storeForDATA, getForEMAIL, getcomments } from '../../utils/CreatePost';
+import { getID } from '../../utils/home';
 import Dataset from 'impagination';
-import styles from '../styles';
+import styles from '../../styles';
+import { API } from '../../config/const';
 
 var BUTTONS = ["Mis entradas", "Cancelar"];
 var DESTRUCTIVE_INDEX = 0;
@@ -114,7 +115,9 @@ export default class HomeForum extends Component {
           <Card>
             <CardItem button onPress={() => this._storeforid(record.content.id, record.content.titulo, record.content.texto,record.content.usuario.user, record.content.usuario.email )}>
               <Left>
-                <Thumbnail source={{uri: 'https://ysmiapi.herokuapp.com/0_default.png'}} />
+                <Thumbnail source={{ uri: `${API}${record.content.usuario.archivo.ruta.url}`}} />
+                {/* <Thumbnail source={{uri: 'https://ysmiapi.herokuapp.com/0_default.png'}} /> */}
+                
                 <Body>
                   <Text>{record.content.titulo}</Text>
                   <Text note>{record.content.usuario.user}</Text>

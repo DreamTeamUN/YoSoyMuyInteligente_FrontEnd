@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 import { Container, Header, Content, Text, Button, Icon, Left, Body, Right, Form, Input, Item, Label, Textarea } from 'native-base';
-import { createPost } from '../utils/CreatePost';
-import styles from '../styles';
+import { createPost } from '../../utils/CreatePost';
+import styles from '../../styles';
 import Expo from "expo";
 export default class CardForum extends Component {
 

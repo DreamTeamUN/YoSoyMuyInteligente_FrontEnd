@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, View } from 'react-native';
 import { Text, Button, Icon } from 'native-base';
-import styles from '../styles';
+import styles from '../../styles';
 
 export default class LogInTypeUser extends Component {
 

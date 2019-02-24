@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Text, Icon, View, Container, Content, Header, Title, Button,
    Left, Body, Card, CardItem, Right} from 'native-base';
-import styles from '../styles';
-import {getID} from '../utils/home';
-import {API} from '../config/const'
+import styles from '../../styles';
+import {getID} from '../../utils/home';
+import {API} from '../../config/const'
 export var idNivel;
 
 export default class NivelesPalabraImagen extends Component {

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Alert, ToastAndroid} from 'react-native';
 import {Text, Picker, Icon, Container, Header, Body, Title,
   Content, Left, Button, Item, Form, Label, Input} from 'native-base';
-import styles from '../styles';
-import {getID} from '../utils/home';
-import { CREATE_DOCENTE_PROGRAMA, storeIdDocentePrograma, getID_Docente_Programa, CREATE_AULA } from '../utils/aulas';
+import styles from '../../styles';
+import {getID} from '../../utils/home';
+import { CREATE_DOCENTE_PROGRAMA, storeIdDocentePrograma, getID_Docente_Programa, CREATE_AULA } from '../../utils/aulas';
 
 
 export default class AddClassRoom extends Component {

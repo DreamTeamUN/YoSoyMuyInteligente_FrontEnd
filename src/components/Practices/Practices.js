@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Text, View, Icon, Body, Title, Button, Left } from 'native-base';
-import styles from '../styles';
+import styles from '../../styles';
 export var WEEK;
 
 export default class Practices extends Component {
